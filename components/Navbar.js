@@ -11,12 +11,8 @@ const Navbar = () => {
           height={40}
         />
       </div>
-      <Link href='/'>
-        <a>HOME</a>
-      </Link>
-      <Link href='auth/signin'>
-        <a>Sign In</a>
-      </Link>
+      <Link href='/'>HOME</Link>
+      <Link href='/auth/signin'>Sign In</Link>
       {/* <Link>
         <a>See Users</a>
       </Link>
