@@ -1,11 +1,14 @@
 import Layout from '../components/Layout';
 import '../styles/globals.css';
-
+import { AuthProviderWrapper } from '../context/auth.context';
+//
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <AuthProviderWrapper>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AuthProviderWrapper>
   );
 }
 
