@@ -10,7 +10,7 @@ export async function getStaticProps() {
   const themes = await res.data;
   return {
     props: {
-      themes,
+      themes: themes || [],
     },
   };
 }

@@ -6,10 +6,6 @@ import { AuthContext } from '../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import SignupTheme from './SignupTheme';
-
-import { BACKEND_URL } from '../../utils/consts';
-
 //
 
 const SignupForm = ({ themes }) => {
@@ -149,7 +145,6 @@ const SignupForm = ({ themes }) => {
           </div>
         </fieldset>
         <fieldset form='signupForm' id='themesSelection'>
-          {/* <SignupTheme></SignupTheme> */}
           {themes.map((theme) => (
             <p key={theme.id}>{theme.name}</p>
           ))}
