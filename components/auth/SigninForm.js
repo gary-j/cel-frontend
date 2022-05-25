@@ -48,7 +48,7 @@ const SigninForm = () => {
 
   return (
     <>
-      <div>SigninForm</div>
+      <div>Signin Form</div>
       <form onSubmit={handleLoginSubmit}>
         <input
           placeholder='email'
@@ -69,7 +69,7 @@ const SigninForm = () => {
           SUBMIT
         </button>
 
-        <Link href={'/signup'}>CREATE A NEW ACCOUNT</Link>
+        <Link href={'/signup'}>Create a new account</Link>
       </form>
     </>
   );

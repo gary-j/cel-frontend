@@ -7,6 +7,7 @@ const Navbar = () => {
       <div className='logo'>
         <Image
           src='/logos/logo-green-flash-1-ligne.svg'
+          alt=''
           width={230}
           height={40}
         />
