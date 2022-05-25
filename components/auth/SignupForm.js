@@ -6,6 +6,8 @@ import { AuthContext } from '../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
+import styles from './SignupForm.module.css';
+
 //
 
 const SignupForm = ({ themes }) => {
@@ -146,7 +148,14 @@ const SignupForm = ({ themes }) => {
         </fieldset>
         <fieldset form='signupForm' id='themesSelection'>
           {themes.map((theme) => (
-            <p key={theme.id}>{theme.name}</p>
+            <div key={theme.id} className={styles.themeBtn}>
+              <p>{theme.name}</p>
+
+              <img
+                src={`/assets/img/themes-icons-40x40-svg/${theme.svg_title}-unselected.svg`}
+                height='40px'
+                width='40px'></img>
+            </div>
           ))}
         </fieldset>
 
