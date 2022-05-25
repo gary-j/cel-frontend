@@ -2,8 +2,20 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import SigninForm from '../components/auth/SigninForm';
+import SignupForm from '../components/auth/SignupForm';
+import { publicRequest } from '../utils/axiosRequest';
 
-export default function Home() {
+export async function getStaticProps() {
+  const res = await publicRequest.get('/theme/all');
+  const themes = await res.data;
+  return {
+    props: {
+      themes,
+    },
+  };
+}
+
+export default function Home({ themes }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,6 +32,8 @@ export default function Home() {
           HOMEPAGE <br></br> CITRON EN Limonade
         </h1>
         <SigninForm></SigninForm>
+        <hr />
+        <SignupForm themes={themes}></SignupForm>
       </main>
     </div>
   );
