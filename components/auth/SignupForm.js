@@ -6,10 +6,6 @@ import { AuthContext } from '../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import SignupTheme from './SignupTheme';
-
-import { BACKEND_URL } from '../../utils/consts';
-
 //
 
 const SignupForm = ({ themes }) => {
@@ -99,7 +95,7 @@ const SignupForm = ({ themes }) => {
             onChange={handleFirstname}
           />
 
-          <label htmlFor='username'>Nom d'utilisateur</label>
+          <label htmlFor='username'>Nom d\'utilisateur</label>
           <input
             form='signupForm'
             id='username'
