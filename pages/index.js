@@ -3,10 +3,10 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import SigninForm from '../components/auth/SigninForm';
 import SignupForm from '../components/auth/SignupForm';
-import { publicRequest } from '../utils/axiosRequest';
+import { getServerSideProps } from '../utils/axiosRequest';
 //
 export async function getStaticProps() {
-  const res = await publicRequest.get(`/theme/all`);
+  const res = await getServerSideProps.get(`/theme/all`);
   const themes = await res.data;
   return {
     props: {
