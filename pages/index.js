@@ -4,12 +4,9 @@ import styles from '../styles/Home.module.css';
 import SigninForm from '../components/auth/SigninForm';
 import SignupForm from '../components/auth/SignupForm';
 import { publicRequest } from '../utils/axiosRequest';
-import axios from 'axios';
 
 export async function getStaticProps() {
-  const res = await axios.get(
-    'https://citron-en-limonade.herokuapp.com/api/theme/all'
-  );
+  const res = await publicRequest.get(`/theme/all`);
   const themes = await res.data;
   return {
     props: {
