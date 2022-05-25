@@ -95,7 +95,7 @@ const SignupForm = ({ themes }) => {
             onChange={handleFirstname}
           />
 
-          <label htmlFor='username'>Nom d\'utilisateur</label>
+          <label htmlFor='username'>Nom d'utilisateur</label>
           <input
             form='signupForm'
             id='username'
@@ -145,7 +145,6 @@ const SignupForm = ({ themes }) => {
           </div>
         </fieldset>
         <fieldset form='signupForm' id='themesSelection'>
-          {/* <SignupTheme></SignupTheme> */}
           {themes.map((theme) => (
             <p key={theme.id}>{theme.name}</p>
           ))}
