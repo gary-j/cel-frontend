@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 
 import { publicRequest } from '../../utils/axiosRequest';
 import { AuthContext } from '../../context/auth.context';
@@ -31,7 +31,9 @@ const SignupForm = ({ themes }) => {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleDateOfBirth = (e) => setDateOfBirth(e.target.value);
   const handleSelectedThemes = (e) => setSelectedThemes(e.target.value);
+  //
 
+  //
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
@@ -67,6 +69,49 @@ const SignupForm = ({ themes }) => {
   };
 
   //
+  const [active, setActive] = useState([]);
+
+  const handleToggle = (e) => {
+    let themeID = e.target.closest('div').dataset.target;
+    console.log("*** handleToggle, voici l'id : ", themeID);
+    let themeGroup = document.querySelectorAll(`[data-target='${themeID}']`);
+    console.log('*** handleToggle, themeGroup: ', themeGroup);
+    //
+    if (selectedThemes.includes(themeID)) {
+      // Removing already selected theme
+      const cleanedArray = selectedThemes.filter((item) => item !== themeID);
+      setSelectedThemes(cleanedArray);
+      console.log('*** CE QUIL Y A DANS selectedThemes *** : ', selectedThemes);
+
+      return;
+    } else if (
+      selectedThemes.length <= 3 &&
+      !selectedThemes.includes(themeID)
+    ) {
+      // Adding new theme
+
+      setSelectedThemes((selectedThemes) => [...selectedThemes, themeID]);
+
+      console.log('*** CE QUIL Y A DANS selectedThemes *** : ', selectedThemes);
+      return;
+    }
+
+    //
+    // 1. toggle classList à lui et ses enfants
+    // themeBox.classList.toggle('selected');
+    // themeGroup.forEach((element) => {
+    //   // element.classList.toggle('selected');
+    //   // if (element.hasAttribute('data-active')) {
+    //   //   element.removeAttribute('data-active');
+    //   //   setActive('');
+    //   // } else {
+    //   //   element.setAttribute('data-active', 'true');
+    //   //   setActive(themeID);
+    //   // }
+    // });
+    // themeGroup[themeGroup.length-1].src=
+    // 2. useState Array logique
+  };
 
   //
 
@@ -148,13 +193,22 @@ const SignupForm = ({ themes }) => {
         </fieldset>
         <fieldset form='signupForm' id='themesSelection'>
           {themes.map((theme) => (
-            <div key={theme.id} className={styles.themeBtn}>
-              <p>{theme.name}</p>
+            <div
+              key={theme._id}
+              className={` ${styles.themeBtn} ${
+                active === theme._id ? styles.selected : ''
+              } `}
+              id={theme._id}
+              data-target={theme._id}
+              onClick={handleToggle}>
+              <p data-target={theme._id}>{theme.name}</p>
 
               <img
+                className={theme.svg_title}
                 src={`/assets/img/themes-icons-40x40-svg/${theme.svg_title}-unselected.svg`}
                 height='40px'
-                width='40px'></img>
+                width='40px'
+                data-target={theme._id}></img>
             </div>
           ))}
         </fieldset>
