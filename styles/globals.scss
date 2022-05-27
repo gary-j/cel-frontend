@@ -1,32 +1,19 @@
 @import './tools/reset', './tools/fonts', './tools/colors';
 
-// body {
-//   background: #f2f2f2;
-//   color: #333;
-//   font-family: "Nunito";
+// nav {
+//   margin: 10px auto 80px;
+//   padding: 10px 0;
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: flex-end;
+//   border-bottom: 1px solid #ddd;
 // }
-// a {
-//   color: #333;
-//   text-decoration: none;
+// nav a {
+//   margin-left: 12px;
 // }
-// .content {
-//   max-width: 960px;
-//   margin: 0 auto;
+// nav .logo {
+//   margin-right: auto;
 // }
-nav {
-  margin: 10px auto 80px;
-  padding: 10px 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  border-bottom: 1px solid #ddd;
-}
-nav a {
-  margin-left: 12px;
-}
-nav .logo {
-  margin-right: auto;
-}
 footer {
   display: block;
   text-align: center;
@@ -48,9 +35,7 @@ text-align: center;
   }
   @media only screen and (max-width: 767px) {
   /* smartphone */
-  nav{
-    display: none;
-  }
+
   }
   @media only screen and (max-width: 767px) and (orientation: portrait) {
   /* smartphone en mode portait */

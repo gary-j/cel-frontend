@@ -1,0 +1,11 @@
+@import'../styles/tools/colors';
+.navbar{
+    padding: 20px 28px;
+    height: 80px;
+    width: 100vw;
+    background-color: $dark-green-1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
