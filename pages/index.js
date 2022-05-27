@@ -31,9 +31,9 @@ export default function Home({ themes }) {
         <h1 className={styles.title}>
           HOMEPAGE <br></br> CITRON EN Limonade
         </h1>
-        <SigninForm></SigninForm>
+        {/* <SigninForm></SigninForm> */}
         <hr />
-        <SignupForm themes={themes}></SignupForm>
+        {/* <SignupForm themes={themes}></SignupForm> */}
       </main>
     </div>
   );
