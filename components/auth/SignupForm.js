@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import styles from './SignupForm.module.css';
+import styles from './SignupForm.module.scss';
 
 //
 

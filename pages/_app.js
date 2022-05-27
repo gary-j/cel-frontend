@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import { AuthProviderWrapper } from '../context/auth.context';
 //
 function MyApp({ Component, pageProps }) {
