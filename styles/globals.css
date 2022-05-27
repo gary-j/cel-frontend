@@ -42,3 +42,13 @@ text-align: center;
   color: #01989f;
   text-decoration: underline;
 }
+
+@media only screen and (min-width: 768px) {
+  /* tablettes et ordinateurs */
+  }
+  @media only screen and (max-width: 767px) {
+  /* smartphone */
+  }
+  @media only screen and (max-width: 767px) and (orientation: portrait) {
+  /* smartphone en mode portait */
+  }

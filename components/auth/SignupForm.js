@@ -1,10 +1,12 @@
 import React from 'react';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 
 import { publicRequest } from '../../utils/axiosRequest';
 import { AuthContext } from '../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+
+import styles from './SignupForm.module.css';
 
 //
 
@@ -29,7 +31,9 @@ const SignupForm = ({ themes }) => {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleDateOfBirth = (e) => setDateOfBirth(e.target.value);
   const handleSelectedThemes = (e) => setSelectedThemes(e.target.value);
+  //
 
+  //
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
@@ -65,6 +69,32 @@ const SignupForm = ({ themes }) => {
   };
 
   //
+  const handleToggle = (e) => {
+    console.log('*** selectedThemes *** : ', selectedThemes);
+
+    let themeID = e.target.closest('div').dataset.target;
+    console.log("*** handleToggle, voici l'id : ", themeID);
+    let themeGroup = document.querySelectorAll(`[data-target='${themeID}']`);
+    console.log('*** handleToggle, themeGroup: ', themeGroup);
+    //
+    if (selectedThemes.includes(themeID)) {
+      // Removing already selected theme
+      const cleanedArray = selectedThemes.filter((item) => item !== themeID);
+      setSelectedThemes(cleanedArray);
+      console.log('*** CLEANED ARRAY *** : ', cleanedArray);
+
+      console.log('*** REMOVE FROM selectedThemes *** : ', selectedThemes);
+    } else if (
+      selectedThemes.length <= 2 &&
+      !selectedThemes.includes(themeID)
+    ) {
+      // Adding new theme
+
+      setSelectedThemes((selectedThemes) => [...selectedThemes, themeID]);
+
+      console.log('*** ADD TO selectedThemes *** : ', selectedThemes);
+    }
+  };
 
   //
 
@@ -77,7 +107,7 @@ const SignupForm = ({ themes }) => {
           <input
             form='signupForm'
             id='lastname'
-            placeholder='Danvers - Vissac'
+            placeholder='Dupont'
             type='text'
             name='lastname'
             value={lastname}
@@ -88,7 +118,7 @@ const SignupForm = ({ themes }) => {
           <input
             form='signupForm'
             id='firstname'
-            placeholder='Baptiste'
+            placeholder='Catherine'
             type='text'
             name='firstname'
             value={firstname}
@@ -99,7 +129,7 @@ const SignupForm = ({ themes }) => {
           <input
             form='signupForm'
             id='username'
-            placeholder='Baptiste_danv'
+            placeholder='Cathy_cat'
             type='text'
             name='username'
             value={username}
@@ -109,7 +139,7 @@ const SignupForm = ({ themes }) => {
           <label htmlFor='email'>Adresse email</label>
           <input
             form='signupForm'
-            placeholder='d-baptiste@gmail.com'
+            placeholder='catherine-dupont@gmail.com'
             type='email'
             name='email'
             value={email}
@@ -146,7 +176,23 @@ const SignupForm = ({ themes }) => {
         </fieldset>
         <fieldset form='signupForm' id='themesSelection'>
           {themes.map((theme) => (
-            <p key={theme.id}>{theme.name}</p>
+            <div
+              key={theme._id}
+              className={` ${styles.themeBtn} ${
+                selectedThemes.includes(theme._id) ? styles.selected : ''
+              } `}
+              id={theme._id}
+              data-target={theme._id}
+              onClick={handleToggle}>
+              <p data-target={theme._id}>{theme.name}</p>
+
+              <img
+                className={theme.svg_title}
+                src={`/assets/img/themes-icons-40x40-svg/${theme.svg_title}-unselected.svg`}
+                height='40px'
+                width='40px'
+                data-target={theme._id}></img>
+            </div>
           ))}
         </fieldset>
 
