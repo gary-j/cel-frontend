@@ -107,7 +107,7 @@ const SignupForm = ({ themes }) => {
           <input
             form='signupForm'
             id='lastname'
-            placeholder='Danvers - Vissac'
+            placeholder='Dupont'
             type='text'
             name='lastname'
             value={lastname}
@@ -118,7 +118,7 @@ const SignupForm = ({ themes }) => {
           <input
             form='signupForm'
             id='firstname'
-            placeholder='Baptiste'
+            placeholder='Catherine'
             type='text'
             name='firstname'
             value={firstname}
@@ -129,7 +129,7 @@ const SignupForm = ({ themes }) => {
           <input
             form='signupForm'
             id='username'
-            placeholder='Baptiste_danv'
+            placeholder='Cathy_cat'
             type='text'
             name='username'
             value={username}
@@ -139,7 +139,7 @@ const SignupForm = ({ themes }) => {
           <label htmlFor='email'>Adresse email</label>
           <input
             form='signupForm'
-            placeholder='d-baptiste@gmail.com'
+            placeholder='catherine-dupont@gmail.com'
             type='email'
             name='email'
             value={email}
