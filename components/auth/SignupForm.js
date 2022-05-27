@@ -69,9 +69,9 @@ const SignupForm = ({ themes }) => {
   };
 
   //
-  const [active, setActive] = useState([]);
-
   const handleToggle = (e) => {
+    console.log('*** selectedThemes *** : ', selectedThemes);
+
     let themeID = e.target.closest('div').dataset.target;
     console.log("*** handleToggle, voici l'id : ", themeID);
     let themeGroup = document.querySelectorAll(`[data-target='${themeID}']`);
@@ -81,36 +81,19 @@ const SignupForm = ({ themes }) => {
       // Removing already selected theme
       const cleanedArray = selectedThemes.filter((item) => item !== themeID);
       setSelectedThemes(cleanedArray);
-      console.log('*** CE QUIL Y A DANS selectedThemes *** : ', selectedThemes);
+      console.log('*** CLEANED ARRAY *** : ', cleanedArray);
 
-      return;
+      console.log('*** REMOVE FROM selectedThemes *** : ', selectedThemes);
     } else if (
-      selectedThemes.length <= 3 &&
+      selectedThemes.length <= 2 &&
       !selectedThemes.includes(themeID)
     ) {
       // Adding new theme
 
       setSelectedThemes((selectedThemes) => [...selectedThemes, themeID]);
 
-      console.log('*** CE QUIL Y A DANS selectedThemes *** : ', selectedThemes);
-      return;
+      console.log('*** ADD TO selectedThemes *** : ', selectedThemes);
     }
-
-    //
-    // 1. toggle classList à lui et ses enfants
-    // themeBox.classList.toggle('selected');
-    // themeGroup.forEach((element) => {
-    //   // element.classList.toggle('selected');
-    //   // if (element.hasAttribute('data-active')) {
-    //   //   element.removeAttribute('data-active');
-    //   //   setActive('');
-    //   // } else {
-    //   //   element.setAttribute('data-active', 'true');
-    //   //   setActive(themeID);
-    //   // }
-    // });
-    // themeGroup[themeGroup.length-1].src=
-    // 2. useState Array logique
   };
 
   //
@@ -196,7 +179,7 @@ const SignupForm = ({ themes }) => {
             <div
               key={theme._id}
               className={` ${styles.themeBtn} ${
-                active === theme._id ? styles.selected : ''
+                selectedThemes.includes(theme._id) ? styles.selected : ''
               } `}
               id={theme._id}
               data-target={theme._id}
