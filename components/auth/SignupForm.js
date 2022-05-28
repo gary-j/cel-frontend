@@ -188,7 +188,7 @@ const SignupForm = ({ themes }) => {
 
               <img
                 className={theme.svg_title}
-                src={`/assets/img/themes-icons-40x40-svg/${theme.svg_title}-unselected.svg`}
+                src={`/assets/img/svgs/${theme.svg_title}-unselected.svg`}
                 height='40px'
                 width='40px'
                 data-target={theme._id}></img>

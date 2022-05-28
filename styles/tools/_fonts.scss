@@ -11,11 +11,7 @@ $bold : 700;
 $extra-bold : 800;
 $black : 900;
 
-
-*{
-    font-family: $font;
-}
-
-body{
-    font-size: 18px;
-}
+$main-text : 16px;
+$secondary-text : 14px;
+$icon24 : 24px;
+$big : 58px;

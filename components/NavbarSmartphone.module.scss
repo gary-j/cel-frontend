@@ -1,26 +1,42 @@
-@import'../styles/tools/colors';
-.navbar{
-    padding: 20px 28px;
-    height: 80px;
-    width: 100vw;
-    background-color: $dark-green-1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
+@import '../styles/tools/colors', '../styles/tools/fonts';
+
+.navbar {
+  padding: 20px 28px;
+  height: 80px;
+  width: 100vw;
+  background-color: $dark-green-1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.sideMenu{
-    // border: 2px solid red;
-    height: calc(100vh - 80px);
-    width: 100%;
-    background-color: $dark-green-1 ;
-    padding: 24px 28px 0px 28px;
-    position: fixed;
-    transform: translateX(100%);
-    transition: all 0.5s ease-in-out;
-    &.active{
+.sideMenuContainer {
+  // border: 2px solid red;
+  height: calc(100vh - 80px);
+  width: 100%;
+  background-color: $dark-green-1;
+  padding: 24px 28px 0px 28px;
+  position: fixed;
+  transform: translateX(100%);
+  transition: all 0.5s ease-in-out;
+  &.active {
     transform: translateX(0%);
-
+  }
+  .menuItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    .p {
+      font-size: 1.4em;
+      color: $white;
+      font-weight: $light;
+      font-family: $font;
+      font-style: italic;
     }
+    .icon {
+      // border: 2px solid red;
+      font-size: $icon24;
+      fill: white;
+    }
+  }
 }
