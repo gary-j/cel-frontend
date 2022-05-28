@@ -3,11 +3,11 @@ import NavbarSmartphone from './NavbarSmartphone';
 
 const Layout = ({ children }) => {
   return (
-    <div className='content'>
+    <>
       <NavbarSmartphone />
       {children}
-      <Footer />
-    </div>
+      {/* <Footer /> */}
+    </>
   );
 };
 

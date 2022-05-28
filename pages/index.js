@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
+import HomepageMenu from '../components/menu/HomepageMenu';
 import SigninForm from '../components/auth/SigninForm';
 import SignupForm from '../components/auth/SignupForm';
 import { getServerSideProps } from '../utils/axiosRequest';
@@ -17,7 +18,7 @@ export async function getStaticProps() {
 
 export default function Home({ themes }) {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Citron en Limonade</title>
         <meta
@@ -28,13 +29,11 @@ export default function Home({ themes }) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          HOMEPAGE <br></br> CITRON EN Limonade
-        </h1>
+        {/* <HomepageMenu></HomepageMenu> */}
         {/* <SigninForm></SigninForm> */}
         <hr />
         {/* <SignupForm themes={themes}></SignupForm> */}
       </main>
-    </div>
+    </>
   );
 }
