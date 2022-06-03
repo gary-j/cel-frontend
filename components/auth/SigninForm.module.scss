@@ -1,0 +1,21 @@
+@import '../../styles/tools/colors', '../../styles/tools/fonts';
+
+.formContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  border: 2px solid purple;
+  padding: 118px 28px;
+  background-color: $dark-green-1;
+  opacity: 88%;
+
+  .formContent {
+    width: 100%;
+    height: 100%;
+    // margin: auto;
+    padding: 140px 0 32px;
+    border-radius: 8px;
+    background-color: #f5f7f8;
+  }
+}

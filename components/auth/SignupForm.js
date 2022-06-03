@@ -200,7 +200,9 @@ const SignupForm = ({ themes }) => {
         <button type='submit' className='btn'>
           SUBMIT
         </button>
-        <Link href={'/signin'}>Already have an account</Link>
+        <Link href={'/signin'}>
+          <a>Already have an account</a>
+        </Link>
       </form>
     </>
   );

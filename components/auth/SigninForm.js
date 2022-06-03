@@ -5,7 +5,7 @@ import { publicRequest } from '../../utils/axiosRequest';
 import { AuthContext } from '../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
+import styles from './SigninForm.module.scss';
 //
 const SigninForm = () => {
   const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -48,29 +48,35 @@ const SigninForm = () => {
 
   return (
     <>
-      <div>Signin Form</div>
-      <form onSubmit={handleLoginSubmit}>
-        <input
-          placeholder='email'
-          type='text'
-          name='email'
-          value={email}
-          onChange={handleEmail}
-        />
-        <input
-          placeholder='password'
-          type='password'
-          name='password'
-          value={password}
-          onChange={handlePassword}
-        />
-        {errorMessage && <p className='error-message'>{errorMessage}</p>}
-        <button type='submit' className='btn'>
-          SUBMIT
-        </button>
+      <div className={styles.formContainer}>
+        <div className={styles.formContent}>
+          <h3>Signin Form</h3>
+          <form onSubmit={handleLoginSubmit}>
+            <input
+              placeholder='email'
+              type='text'
+              name='email'
+              value={email}
+              onChange={handleEmail}
+            />
+            <input
+              placeholder='password'
+              type='password'
+              name='password'
+              value={password}
+              onChange={handlePassword}
+            />
+            {errorMessage && <p className='error-message'>{errorMessage}</p>}
+            <button type='submit' className='btn'>
+              SUBMIT
+            </button>
 
-        <Link href={'/signup'}>Create a new account</Link>
-      </form>
+            <Link href={'/signup'}>
+              <a>Create a new account</a>
+            </Link>
+          </form>
+        </div>
+      </div>
     </>
   );
 };
