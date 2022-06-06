@@ -6,12 +6,19 @@ import { AuthContext } from '../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from './SigninForm.module.scss';
+import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
+import Icon_facebook from '../../public/assets/img/svgs/icon-rs-facebook.svg';
+import Icon_google from '../../public/assets/img/svgs/icon-rs-google.svg';
+import Icon_instagram from '../../public/assets/img/svgs/icon-rs-insta.svg';
+import Icon_checkboxOff from '../../public/assets/img/svgs/icon-page-checkbox-off.svg';
+import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.svg';
 //
 const SigninForm = () => {
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [stayConnected, setStayConnected] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
@@ -19,11 +26,12 @@ const SigninForm = () => {
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
+  const handleStayConnected = () => setStayConnected(!stayConnected);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = { email, password };
+    const requestBody = { email, password, stayConnected };
 
     // Make an axios request to the API
     // If POST request is successful redirect to login page
@@ -50,29 +58,73 @@ const SigninForm = () => {
     <>
       <div className={styles.formContainer}>
         <div className={styles.formContent}>
-          <h3>Signin Form</h3>
-          <form onSubmit={handleLoginSubmit}>
+          <div className={styles.title}>
+            <h3>Connexion</h3>
+            <Icon_close className={styles.close} />
+          </div>
+          <div className={styles.socials}>
+            <Icon_facebook />
+            <Icon_google />
+            <Icon_instagram />
+          </div>
+          <div className={styles.or}>
+            <div className={styles.separator}></div>
+            <p className={styles.p}>ou</p>
+            <div className={styles.separator}></div>
+          </div>
+          <form className={styles.form} onSubmit={handleLoginSubmit}>
+            <label className={styles.label} htmlFor='email'>
+              Adresse mail
+            </label>
             <input
-              placeholder='email'
+              placeholder='bonjour@gmail.com'
               type='text'
               name='email'
               value={email}
               onChange={handleEmail}
+              className={styles.input}
             />
+            <label className={styles.label} htmlFor='password'>
+              Mot de passe
+            </label>
             <input
               placeholder='password'
               type='password'
               name='password'
               value={password}
               onChange={handlePassword}
+              className={styles.input}
             />
+            <div
+              className={styles.connected}
+              onClick={() => {
+                // console.log('value is : ', stayConnected);
+                handleStayConnected();
+              }}>
+              <input
+                type='hidden'
+                name='stayConnected'
+                value={stayConnected}></input>
+              {/**/}
+              {stayConnected ? (
+                <Icon_checkboxOn className={styles.checkbox} />
+              ) : (
+                <Icon_checkboxOff className={styles.checkbox} />
+              )}
+              <label className={styles.checkboxLabel}>Rester connecté</label>
+            </div>
             {errorMessage && <p className='error-message'>{errorMessage}</p>}
-            <button type='submit' className='btn'>
-              SUBMIT
+            <button className={styles.btnRose} type='submit'>
+              Se connecter
             </button>
 
             <Link href={'/signup'}>
-              <a>Create a new account</a>
+              <a className={styles.link}>Créer mon compte</a>
+              {/* on clique afficher le formulaire de création de compte*/}
+            </Link>
+            <Link href={'/signup'}>
+              <a className={styles.link}>Informations de comptes oubliés</a>
+              {/* on clique page reinitialisation mot de passe*/}
             </Link>
           </form>
         </div>
