@@ -11,7 +11,8 @@ import SigninForm from './auth/SigninForm';
 //
 const NavbarSmartphone = () => {
   const [isOpen, toggleMenu] = useState(false);
-  const [displayForm, toggleForm] = useState(false);
+  const [displayForm, setDisplayForm] = useState(false);
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -45,7 +46,7 @@ const NavbarSmartphone = () => {
         }`}>
         <div
           className={styles.menuLogin}
-          onClick={() => toggleForm(!displayForm)}>
+          onClick={() => setDisplayForm(!displayForm)}>
           <Icon_connect className={styles.icon} />
           <p className={styles.p}>Connexion/Inscription</p>
         </div>
@@ -78,7 +79,7 @@ const NavbarSmartphone = () => {
           </div>
         </div>
       </div>
-      {displayForm && <SigninForm />}
+      {displayForm && <SigninForm closeForm={setDisplayForm} />}
     </>
   );
 };
