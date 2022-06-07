@@ -123,7 +123,7 @@ const SigninForm = () => {
               {/* on clique afficher le formulaire de création de compte*/}
             </Link>
             <Link href={'/signup'}>
-              <a className={styles.link}>Informations de comptes oubliés</a>
+              <a className={styles.link2}>Informations de comptes oubliés</a>
               {/* on clique page reinitialisation mot de passe*/}
             </Link>
           </form>
