@@ -29,23 +29,23 @@ function AuthProviderWrapper(props) {
     // If the token exists in the localStorage
     if (storedToken) {
       // We must send the JWT token in the request's "Authorization" Headers
-      console.log('* envoi du stored token * : ', storedToken);
+      // console.log('* envoi du stored token au back-end * : ', storedToken);
 
       publicRequest
         .get(`/auth/verify`, {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
-          console.log(
-            '*** Reponse de /auth/verify, authenticateUser() *** : ',
-            response
-          );
+          // console.log(
+          //   '*** Reponse de /auth/verify, authenticateUser() *** : ',
+          //   response
+          // );
 
           // If the server verifies that JWT is valid
           const user = response.data;
-          console.log('user de reponse.data : ', user);
           // Update state variables
           setIsLoggedIn(true);
+          // console.log('user de reponse.data : ', user);
           if (user?.isAdmin === true) {
             setIsAdmin(true);
           }
@@ -86,6 +86,7 @@ function AuthProviderWrapper(props) {
       value={{
         isLoggedIn,
         isLoading,
+        setIsLoading,
         isAdmin,
         user,
         storeToken,

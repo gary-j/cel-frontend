@@ -26,13 +26,13 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    &:hover{
+    &:hover {
       cursor: pointer;
       padding-left: 1em;
-      .p{
+      .p {
         color: $red;
       }
-      .icon{
+      .icon {
         fill: $red;
       }
     }
@@ -73,7 +73,7 @@
     }
   }
   .menuItemContainer {
-      margin-top: 3em;
+    margin-top: 3em;
     .item {
       display: flex;
       align-items: center;
@@ -90,13 +90,13 @@
         fill: white;
       }
     }
-    &:hover{
+    &:hover {
       cursor: pointer;
       padding-left: 1em;
-      .p{
+      .p {
         color: $red;
       }
-      .icon{
+      .icon {
         fill: $red;
       }
     }

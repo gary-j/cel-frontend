@@ -9,6 +9,9 @@ const nextConfig = withPwa({
     skipWaiting: true,
     disable: process.env.NODE_ENV === 'development',
   },
+  images: {
+    domains: ['avatars.dicebear.com'],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

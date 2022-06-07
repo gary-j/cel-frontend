@@ -17,6 +17,22 @@
     border-radius: 8px;
     background-color: #f5f7f8;
 
+    .loading{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap:1em;
+      .p{
+        text-transform: uppercase;
+        font-weight: $semi-bold;
+        font-size: $main-text;
+        color: $dark-green-2;
+      }
+      .image{
+        animation: rotation 2s infinite linear;
+      }
+    }
+
     .title {
       display: flex;
       align-items: center;
@@ -134,5 +150,14 @@
         margin: 0 auto;
       }
     }
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
   }
 }
