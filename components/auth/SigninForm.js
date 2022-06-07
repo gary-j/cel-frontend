@@ -13,7 +13,7 @@ import Icon_instagram from '../../public/assets/img/svgs/icon-rs-insta.svg';
 import Icon_checkboxOff from '../../public/assets/img/svgs/icon-page-checkbox-off.svg';
 import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.svg';
 //
-const SigninForm = () => {
+const SigninForm = (props) => {
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
@@ -60,7 +60,10 @@ const SigninForm = () => {
         <div className={styles.formContent}>
           <div className={styles.title}>
             <h3>Connexion</h3>
-            <Icon_close className={styles.close} />
+            <Icon_close
+              className={styles.close}
+              onClick={() => props.closeForm(false)}
+            />
           </div>
           <div className={styles.socials}>
             <Icon_facebook />
