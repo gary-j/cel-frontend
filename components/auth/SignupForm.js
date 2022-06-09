@@ -186,12 +186,12 @@ const SignupForm = ({ themes }) => {
               onClick={handleToggle}>
               <p data-target={theme._id}>{theme.name}</p>
 
-              <img
+              <Image
                 className={theme.svg_title}
                 src={`/assets/img/svgs/${theme.svg_title}-unselected.svg`}
                 height='40px'
                 width='40px'
-                data-target={theme._id}></img>
+                data-target={theme._id}></Image>
             </div>
           ))}
         </fieldset>
