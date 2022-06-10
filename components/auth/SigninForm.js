@@ -15,6 +15,8 @@ import Icon_checkboxOff from '../../public/assets/img/svgs/icon-page-checkbox-of
 import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.svg';
 //
 const SigninForm = (props) => {
+  console.log('*** PROPS signin : ', props);
+
   const { storeToken, authenticateUser, isLoading, setIsLoading } =
     useContext(AuthContext);
 
@@ -49,7 +51,7 @@ const SigninForm = (props) => {
         authenticateUser();
         setIsLoading(false);
 
-        props.closeForm(false);
+        props.props.closeForm(false);
         // router.push('/');
         // navigate('/');
       })
@@ -61,103 +63,97 @@ const SigninForm = (props) => {
 
   return (
     <>
-      <div className={styles.formContainer}>
-        <div className={styles.formContent}>
-          {isLoading ? (
-            <div className={styles.loading}>
-              <p className={styles.p}>Authentification en cours...</p>
-              <Image
-                src='/logos/logo-green-light-2-.png'
-                alt='image chargement - citron en limonade'
-                width={50}
-                height={50}
-                className={styles.image}
-              />
-            </div>
-          ) : (
-            <>
-              <div className={styles.title}>
-                <h3>Connexion</h3>
-                <Icon_close
-                  className={styles.close}
-                  onClick={() => props.closeForm(false)}
-                />
-              </div>
-              <div className={styles.socials}>
-                <Icon_facebook />
-                <Icon_google />
-                <Icon_instagram />
-              </div>
-              <div className={styles.or}>
-                <div className={styles.separator}></div>
-                <p className={styles.p}>ou</p>
-                <div className={styles.separator}></div>
-              </div>
-              <form className={styles.form} onSubmit={handleLoginSubmit}>
-                <label className={styles.label} htmlFor='email'>
-                  Adresse mail
-                </label>
-                <input
-                  placeholder='bonjour@gmail.com'
-                  type='text'
-                  name='email'
-                  value={email}
-                  onChange={handleEmail}
-                  className={styles.input}
-                />
-                <label className={styles.label} htmlFor='password'>
-                  Mot de passe
-                </label>
-                <input
-                  placeholder='password'
-                  type='password'
-                  name='password'
-                  value={password}
-                  onChange={handlePassword}
-                  className={styles.input}
-                />
-                <div
-                  className={styles.connected}
-                  onClick={() => {
-                    // console.log('value is : ', stayConnected);
-                    handleStayConnected();
-                  }}>
-                  <input
-                    type='hidden'
-                    name='stayConnected'
-                    value={stayConnected}></input>
-                  {/**/}
-                  {stayConnected ? (
-                    <Icon_checkboxOn className={styles.checkbox} />
-                  ) : (
-                    <Icon_checkboxOff className={styles.checkbox} />
-                  )}
-                  <label className={styles.checkboxLabel}>
-                    Rester connecté
-                  </label>
-                </div>
-                {errorMessage && (
-                  <p className='error-message'>{errorMessage}</p>
-                )}
-                <button className={styles.btnRose} type='submit'>
-                  Se connecter
-                </button>
-
-                <Link href={'/signup'}>
-                  <a className={styles.link}>Créer mon compte</a>
-                  {/* on clique afficher le formulaire de création de compte*/}
-                </Link>
-                <Link href={'/signup'}>
-                  <a className={styles.link2}>
-                    Informations de comptes oubliés
-                  </a>
-                  {/* on clique page reinitialisation mot de passe*/}
-                </Link>
-              </form>
-            </>
-          )}
+      {isLoading ? (
+        <div className={styles.loading}>
+          <p className={styles.p}>Authentification en cours...</p>
+          <Image
+            src='/logos/logo-green-light-2-.png'
+            alt='image chargement - citron en limonade'
+            width={50}
+            height={50}
+            className={styles.image}
+          />
         </div>
-      </div>
+      ) : (
+        <>
+          <div className={styles.title}>
+            <h3>Connexion</h3>
+            <Icon_close
+              className={styles.close}
+              onClick={() => props.props.closeForm(false)}
+            />
+          </div>
+          <div className={styles.socials}>
+            <Icon_facebook />
+            <Icon_google />
+            <Icon_instagram />
+          </div>
+          <div className={styles.or}>
+            <div className={styles.separator}></div>
+            <p className={styles.p}>ou</p>
+            <div className={styles.separator}></div>
+          </div>
+          <form className={styles.form} onSubmit={handleLoginSubmit}>
+            <label className={styles.label} htmlFor='email'>
+              Adresse mail
+            </label>
+            <input
+              placeholder='bonjour@gmail.com'
+              type='text'
+              name='email'
+              value={email}
+              onChange={handleEmail}
+              className={styles.input}
+            />
+            <label className={styles.label} htmlFor='password'>
+              Mot de passe
+            </label>
+            <input
+              placeholder='password'
+              type='password'
+              name='password'
+              value={password}
+              onChange={handlePassword}
+              className={styles.input}
+            />
+            <div
+              className={styles.connected}
+              onClick={() => {
+                // console.log('value is : ', stayConnected);
+                handleStayConnected();
+              }}>
+              <input
+                type='hidden'
+                name='stayConnected'
+                value={stayConnected}></input>
+              {/**/}
+              {stayConnected ? (
+                <Icon_checkboxOn className={styles.checkbox} />
+              ) : (
+                <Icon_checkboxOff className={styles.checkbox} />
+              )}
+              <label className={styles.checkboxLabel}>Rester connecté</label>
+            </div>
+            {errorMessage && <p className='error-message'>{errorMessage}</p>}
+            <button className={styles.btnRose} type='submit'>
+              Se connecter
+            </button>
+
+            <Link href='#'>
+              <a
+                className={styles.link}
+                onClick={() => props.props.setSignForm('signup')}>
+                Créer mon compte
+              </a>
+              {/* on clique afficher le formulaire de création de compte*/}
+            </Link>
+            <Link href={'/signup'}>
+              <a className={styles.link2}>Informations de comptes oubliés</a>
+              {/* on clique page reinitialisation mot de passe*/}
+            </Link>
+          </form>
+        </>
+      )}
     </>
   );
 };

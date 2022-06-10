@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import SignupForm from '../components/auth/SignupForm';
 import styles from '../styles/Home.module.scss';
 import { getServerSideProps } from '../utils/axiosRequest';
 //

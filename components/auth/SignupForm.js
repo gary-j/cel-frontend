@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 
 import { publicRequest } from '../../utils/axiosRequest';
 import { AuthContext } from '../../context/auth.context';
@@ -7,10 +7,13 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './SignupForm.module.scss';
+import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
+
+import axios from 'axios';
 
 //
-
-const SignupForm = ({ themes }) => {
+// plus de themes en props provenant getStaticProps, useEffect à la place
+const SignupForm = (props) => {
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const [lastname, setLastname] = useState('');
@@ -22,6 +25,15 @@ const SignupForm = ({ themes }) => {
   const [selectedThemes, setSelectedThemes] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
+  const [themesFromDB, setThemesFromDB] = useState([
+    {
+      _id: '628e45c54ba27fe24bdc726d',
+      name: ' Grossesse pathologique & Suivi médical',
+      slug: 'grossesse-pathologique-et-suivi-medical',
+      svg_title: 'pathological-pregnancy',
+      number: '7',
+    },
+  ]);
 
   //   const navigate = useNavigate();
   const handleLastname = (e) => setLastname(e.target.value);
@@ -30,10 +42,24 @@ const SignupForm = ({ themes }) => {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleDateOfBirth = (e) => setDateOfBirth(e.target.value);
-  const handleSelectedThemes = (e) => setSelectedThemes(e.target.value);
+  // const handleSelectedThemes = (e) => setSelectedThemes(e.target.value);
   //
+  // useEffect appel BD pour récupérer les thèmes hors staticprops
+  useEffect(() => {
+    async function getThemesFromDB() {
+      const res = await axios.get('http://localhost:5005/api/theme/all');
+      // await publicRequest.get(`/theme/all`);
+      const themes = await res.data;
+      console.log('*** themes from DB USE EFFECT: ', themes);
+      setThemesFromDB(themes);
 
+      // return themes;
+    }
+    getThemesFromDB();
+  }, []);
   //
+  console.log('*** themes const : ', themesFromDB);
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
@@ -96,11 +122,15 @@ const SignupForm = ({ themes }) => {
     }
   };
 
-  //
-
   return (
     <>
-      <div>Signup Form</div>
+      <div className={styles.title}>
+        <h3>Inscription</h3>
+        <Icon_close
+          className={styles.close}
+          onClick={() => props.props.closeForm(false)}
+        />
+      </div>
       <form id='signupForm' onSubmit={handleLoginSubmit}>
         <fieldset form='signupForm' id='userInfos' style={{ border: 'none' }}>
           <label htmlFor='lastname'>Nom</label>
@@ -175,7 +205,7 @@ const SignupForm = ({ themes }) => {
           </div>
         </fieldset>
         <fieldset form='signupForm' id='themesSelection'>
-          {themes.map((theme) => (
+          {themesFromDB.map((theme) => (
             <div
               key={theme._id}
               className={` ${styles.themeBtn} ${
