@@ -47,13 +47,11 @@ const SignupForm = (props) => {
   // useEffect appel BD pour récupérer les thèmes hors staticprops
   useEffect(() => {
     async function getThemesFromDB() {
-      const res = await axios.get('http://localhost:5005/api/theme/all');
-      // await publicRequest.get(`/theme/all`);
+      // const res = await axios.get('http://localhost:5005/api/theme/all');
+      await publicRequest.get(`/theme/all`);
       const themes = await res.data;
       console.log('*** themes from DB USE EFFECT: ', themes);
       setThemesFromDB(themes);
-
-      // return themes;
     }
     getThemesFromDB();
   }, []);
@@ -230,8 +228,10 @@ const SignupForm = (props) => {
         <button type='submit' className='btn'>
           SUBMIT
         </button>
-        <Link href={'/signin'}>
-          <a>Already have an account</a>
+        <Link href='#'>
+          <a onClick={() => props.props.setSignForm('signin')}>
+            Already have an account
+          </a>
         </Link>
       </form>
     </>
