@@ -19,7 +19,7 @@ const NavbarSmartphone = () => {
   const [displayForm, setDisplayForm] = useState(false);
 
   const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
-  console.log('le USER : ', user);
+  // console.log('le USER : ', user);
 
   return (
     <>
