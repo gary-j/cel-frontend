@@ -10,6 +10,7 @@ import Icon_aLaUne from '../public/assets/img/svgs/icon-menu-une.svg';
 import Icon_close from '../public/assets/img/svgs/icon-page-close.svg';
 
 import SigninForm from './auth/SigninForm';
+import SignFormContainer from './auth/SignFormContainer';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 //
@@ -108,7 +109,7 @@ const NavbarSmartphone = () => {
           </div>
         ) : null}
       </div>
-      {displayForm && <SigninForm closeForm={setDisplayForm} />}
+      {displayForm && <SignFormContainer closeForm={setDisplayForm} />}
     </>
   );
 };
