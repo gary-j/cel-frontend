@@ -6,20 +6,18 @@ import styles from './SignFormContainer.module.scss';
 
 const SignFormContainer = (props) => {
   const [signForm, setSignForm] = useState('signin');
-  console.log('*** PROPS : ', props);
+  // console.log('*** PROPS : ', props);
   let newprops = {
     closeForm: props.closeForm,
     setSignForm: setSignForm,
   };
   return (
     <div className={styles.formContainer}>
-      <div className={styles.formContent}>
-        {signForm === 'signin' ? (
-          <SigninForm props={newprops} />
-        ) : (
-          <SignupForm props={newprops} />
-        )}
-      </div>
+      {signForm === 'signin' ? (
+        <SigninForm props={newprops} />
+      ) : (
+        <SignupForm props={newprops} />
+      )}
     </div>
   );
 };

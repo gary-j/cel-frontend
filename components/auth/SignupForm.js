@@ -8,7 +8,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './SignupForm.module.scss';
 import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
-
 import axios from 'axios';
 
 //
@@ -47,16 +46,15 @@ const SignupForm = (props) => {
   // useEffect appel BD pour récupérer les thèmes hors staticprops
   useEffect(() => {
     async function getThemesFromDB() {
-      // const res = await axios.get('http://localhost:5005/api/theme/all');
-      const res = await publicRequest.get(`/theme/all`);
+      const res = await axios.get('http://localhost:5005/api/theme/all');
+      // const res = await publicRequest.get(`/theme/all`);
       const themes = await res.data;
-      console.log('*** themes from DB USE EFFECT: ', themes);
+      // console.log('*** themes from DB USE EFFECT: ', themes);
       setThemesFromDB(themes);
     }
     getThemesFromDB();
   }, []);
   //
-  console.log('*** themes const : ', themesFromDB);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -94,20 +92,22 @@ const SignupForm = (props) => {
 
   //
   const handleToggle = (e) => {
-    console.log('*** selectedThemes *** : ', selectedThemes);
+    {
+      /*console.log('*** selectedThemes *** : ', selectedThemes); */
+    }
 
     let themeID = e.target.closest('div').dataset.target;
-    console.log("*** handleToggle, voici l'id : ", themeID);
+    //  console.log("*** handleToggle, voici l'id : ", themeID);
     let themeGroup = document.querySelectorAll(`[data-target='${themeID}']`);
-    console.log('*** handleToggle, themeGroup: ', themeGroup);
+    // console.log('*** handleToggle, themeGroup: ', themeGroup);
     //
     if (selectedThemes.includes(themeID)) {
       // Removing already selected theme
       const cleanedArray = selectedThemes.filter((item) => item !== themeID);
       setSelectedThemes(cleanedArray);
-      console.log('*** CLEANED ARRAY *** : ', cleanedArray);
+      // console.log('*** CLEANED ARRAY *** : ', cleanedArray);
 
-      console.log('*** REMOVE FROM selectedThemes *** : ', selectedThemes);
+      // console.log('*** REMOVE FROM selectedThemes *** : ', selectedThemes);
     } else if (
       selectedThemes.length <= 2 &&
       !selectedThemes.includes(themeID)
@@ -116,124 +116,174 @@ const SignupForm = (props) => {
 
       setSelectedThemes((selectedThemes) => [...selectedThemes, themeID]);
 
-      console.log('*** ADD TO selectedThemes *** : ', selectedThemes);
+      // console.log('*** ADD TO selectedThemes *** : ', selectedThemes);
     }
   };
 
   return (
     <>
-      <div className={styles.title}>
-        <h3>Inscription</h3>
-        <Icon_close
-          className={styles.close}
-          onClick={() => props.props.closeForm(false)}
-        />
-      </div>
-      <form id='signupForm' onSubmit={handleLoginSubmit}>
-        <fieldset form='signupForm' id='userInfos' style={{ border: 'none' }}>
-          <label htmlFor='lastname'>Nom</label>
-          <input
-            form='signupForm'
-            id='lastname'
-            placeholder='Dupont'
-            type='text'
-            name='lastname'
-            value={lastname}
-            onChange={handleLastname}
-          />
-
-          <label htmlFor='firstname'>Prenom</label>
-          <input
-            form='signupForm'
-            id='firstname'
-            placeholder='Catherine'
-            type='text'
-            name='firstname'
-            value={firstname}
-            onChange={handleFirstname}
-          />
-
-          <label htmlFor='username'>Nom d'utilisateur</label>
-          <input
-            form='signupForm'
-            id='username'
-            placeholder='Cathy_cat'
-            type='text'
-            name='username'
-            value={username}
-            onChange={handleUsername}
-          />
-
-          <label htmlFor='email'>Adresse email</label>
-          <input
-            form='signupForm'
-            placeholder='catherine-dupont@gmail.com'
-            type='email'
-            name='email'
-            value={email}
-            onChange={handleEmail}
-          />
-
-          <label htmlFor='password'>Mot de passe</label>
-          <input
-            form='signupForm'
-            placeholder='password'
-            type='password'
-            name='password'
-            value={password}
-            onChange={handlePassword}
-          />
-          <label htmlFor='dateOfBirth'>Date de naissance</label>
-          <input
-            form='signupForm'
-            id='dateOfBirth'
-            type='date'
-            name='dateOfBirth'
-            value={dateOfBirth}
-            onChange={handleDateOfBirth}
-          />
-          <div>
-            <p>
-              En vous inscrivant, vous acceptez nos Conditions générales.
-              Découvrez comment nous recueillons, utilisons et partageons vos
-              données en consultant notre Politique d’utilisation des données et
-              comment nous utilisons les cookies et autres technologies
-              similaires en lisant notre Politique d’utilisation des cookies.
+      <div className={styles.formContent}>
+        <div className={styles.formHeader}>
+          <div className={styles.title}>
+            <h3>Inscription</h3>
+            <Icon_close
+              className={styles.close}
+              onClick={() => props.props.closeForm(false)}
+            />
+          </div>
+          <div className={styles.description}>
+            <p className={styles.p}>
+              Rejoignez la communauté pour partager les citrons et les limonades
+              !
             </p>
           </div>
-        </fieldset>
-        <fieldset form='signupForm' id='themesSelection'>
-          {themesFromDB.map((theme) => (
-            <div
-              key={theme._id}
-              className={` ${styles.themeBtn} ${
-                selectedThemes.includes(theme._id) ? styles.selected : ''
-              } `}
-              id={theme._id}
-              data-target={theme._id}
-              onClick={handleToggle}>
-              <p data-target={theme._id}>{theme.name}</p>
+          <div className={styles.progressBar}>progressBar</div>
+        </div>
+        <div className={styles.formBody}>
+          <form
+            id='signupForm'
+            className={styles.form}
+            onSubmit={handleLoginSubmit}>
+            <div className={styles.fieldContainer}>
+              <fieldset
+                form='signupForm'
+                id='userInfos'
+                className={styles.fieldset}>
+                {/* <div> */}
+                <label className={styles.label} htmlFor='lastname'>
+                  Nom
+                </label>
+                <input
+                  className={styles.input}
+                  form='signupForm'
+                  id='lastname'
+                  placeholder='Dupont'
+                  type='text'
+                  name='lastname'
+                  value={lastname}
+                  onChange={handleLastname}
+                />
 
-              <Image
-                className={theme.svg_title}
-                src={`/assets/img/svgs/${theme.svg_title}-unselected.svg`}
-                height='40px'
-                width='40px'
-                data-target={theme._id}></Image>
+                <label className={styles.label} htmlFor='firstname'>
+                  Prenom
+                </label>
+                <input
+                  className={styles.input}
+                  form='signupForm'
+                  id='firstname'
+                  placeholder='Catherine'
+                  type='text'
+                  name='firstname'
+                  value={firstname}
+                  onChange={handleFirstname}
+                />
+
+                <label className={styles.label} htmlFor='username'>
+                  Nom d'utilisateur
+                </label>
+                <input
+                  className={styles.input}
+                  form='signupForm'
+                  id='username'
+                  placeholder='Cathy_cat'
+                  type='text'
+                  name='username'
+                  value={username}
+                  onChange={handleUsername}
+                />
+
+                <label className={styles.label} htmlFor='email'>
+                  Adresse email
+                </label>
+                <input
+                  className={styles.input}
+                  form='signupForm'
+                  placeholder='catherine-dupont@gmail.com'
+                  type='email'
+                  name='email'
+                  value={email}
+                  onChange={handleEmail}
+                />
+
+                <label className={styles.label} htmlFor='password'>
+                  Mot de passe
+                </label>
+                <input
+                  className={styles.input}
+                  form='signupForm'
+                  placeholder='password'
+                  type='password'
+                  name='password'
+                  value={password}
+                  onChange={handlePassword}
+                />
+                <label className={styles.label} htmlFor='dateOfBirth'>
+                  Date de naissance
+                </label>
+                <input
+                  className={styles.input}
+                  form='signupForm'
+                  id='dateOfBirth'
+                  type='date'
+                  name='dateOfBirth'
+                  value={dateOfBirth}
+                  onChange={handleDateOfBirth}
+                />
+                <div>
+                  <p>
+                    En vous inscrivant, vous acceptez nos Conditions générales.
+                    Découvrez comment nous recueillons, utilisons et partageons
+                    vos données en consultant notre Politique d’utilisation des
+                    données et comment nous utilisons les cookies et autres
+                    technologies similaires en lisant notre Politique
+                    d’utilisation des cookies.
+                  </p>
+                </div>
+                {/* </div> */}
+                <button className={styles.btnVert} type='submit'>
+                  Se connecter
+                </button>
+              </fieldset>
             </div>
-          ))}
-        </fieldset>
+            <div className={`${styles.fieldContainer} ${styles.themes}`}>
+              <fieldset
+                form='signupForm'
+                id='themesSelection'
+                className={`${styles.fieldset} `}>
+                {themesFromDB.map((theme) => (
+                  <div
+                    key={theme._id}
+                    className={` ${styles.themeBtn} ${
+                      selectedThemes.includes(theme._id) ? styles.selected : ''
+                    } `}
+                    id={theme._id}
+                    data-target={theme._id}
+                    onClick={handleToggle}>
+                    <p data-target={theme._id}>{theme.name}</p>
 
-        {errorMessage && <p className='error-message'>{errorMessage}</p>}
-        <button type='submit' className='btn'>
-          SUBMIT
-        </button>
-        <Link href='#'>
-          <a onClick={() => props.props.setSignForm('signin')}>
-            Already have an account
-          </a>
-        </Link>
-      </form>
+                    <Image
+                      className={theme.svg_title}
+                      src={`/assets/img/svgs/${theme.svg_title}-unselected.svg`}
+                      height='40px'
+                      width='40px'
+                      data-target={theme._id}></Image>
+                  </div>
+                ))}
+                <button type='submit' className='btn'>
+                  CONFIRMER
+                </button>
+              </fieldset>
+            </div>
+
+            {errorMessage && <p className='error-message'>{errorMessage}</p>}
+            {/* <Link href='#'>
+            <a onClick={() => props.props.setSignForm('signin')}>
+              Already have an account
+            </a>
+          </Link> */}
+          </form>
+        </div>
+      </div>
     </>
   );
 };
