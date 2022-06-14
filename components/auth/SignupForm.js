@@ -316,17 +316,23 @@ const SignupForm = (props) => {
                     id={theme._id}
                     data-target={theme._id}
                     onClick={handleToggle}>
-                    <p data-target={theme._id}>{theme.name}</p>
+                    <p data-target={theme._id} className={styles.text}>
+                      {theme.name}
+                    </p>
 
                     <Image
-                      className={theme.svg_title}
-                      src={`/assets/img/svgs/${theme.svg_title}-unselected.svg`}
+                      className={`${theme.svg_title} ${styles.svg}`}
+                      src={`${
+                        selectedThemes.includes(theme._id)
+                          ? `/assets/img/svgs/${theme.svg_title}-selected.svg`
+                          : `/assets/img/svgs/${theme.svg_title}-unselected.svg`
+                      }`}
                       height='40px'
                       width='40px'
                       data-target={theme._id}></Image>
                   </div>
                 ))}
-                <button type='submit' className='btn'>
+                <button type='submit' className={styles.btnVert}>
                   CONFIRMER
                 </button>
               </fieldset>

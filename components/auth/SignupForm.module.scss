@@ -46,7 +46,7 @@
       overflow-y: scroll;
       .fieldContainer {
         height: 100%;
-        padding-bottom: 2em;
+        padding-bottom: 48px;
         // border: 2px solid orangered;
         position: absolute;
         overflow-y: scroll;
@@ -55,7 +55,7 @@
           height: max-content;
           overflow-y: scroll;
           border: none;
-          //   border: 2px solid blue;
+          // border: 2px solid blue;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -70,10 +70,10 @@
             line-height: 1;
             letter-spacing: normal;
             color: $black;
-            .asterisque{
-                color: red;
-                font-weight: $light;
-                vertical-align: text-bottom;
+            .asterisque {
+              color: red;
+              font-weight: $light;
+              vertical-align: text-bottom;
             }
           }
           .input {
@@ -112,12 +112,60 @@
   }
 }
 .step2 {
-  border: 2px solid rgb(21, 119, 113);
-  left: 100%;
+  // border: 2px solid rgb(21, 119, 113);
+  left: 100vw;
   width: 100%;
   transition: all 0.3s ease-in-out;
   &.display {
     left: 0%;
+  }
+  .fieldset {
+    width: 100%;
+    .themeBtn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 72px;
+      margin: auto;
+      margin-bottom: 16px;
+      padding: 0 16px;
+      border-radius: 12px;
+      box-shadow: 8px 8px 32px 0 rgba(0, 60, 63, 0.12);
+      background-color: #fff;
+      .text {
+        font-family: $font;
+        font-size: $secondary-text;
+        font-weight: $medium;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.71;
+        letter-spacing: normal;
+        color: $inactive;
+      }
+      &.selected{
+      background-color: #fff;
+      border: solid 4px #00565b;
+      border-radius: 12px;
+      box-shadow: 8px 8px 32px 0 rgba(0, 60, 63, 0.12);
+        .text{
+        color: #00565b;
+
+        }
+      }
+    }
+    .btnVert {
+      height: 40px;
+      margin: 28px 0 20px;
+      padding: 12px 20px 14px;
+      border-radius: 4px;
+      background-color: $dark-green-2;
+      color: $white;
+      text-transform: uppercase;
+      position: fixed;
+      width: calc(100% - 60px);
+      bottom: 28px;
+    }
   }
 }
 
@@ -126,11 +174,11 @@
   background-color: rgb(182, 182, 192);
 }
 
-div.selected {
-  border: 2px solid green;
-  background-color: rgb(23, 175, 114);
-}
+// div.selected {
+//   border: 2px solid green;
+//   background-color: rgb(23, 175, 114);
+// }
 
-.selected {
-  color: purple;
-}
+// .selected {
+//   color: purple;
+// }
