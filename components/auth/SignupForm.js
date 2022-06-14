@@ -47,8 +47,8 @@ const SignupForm = (props) => {
   // useEffect appel BD pour récupérer les thèmes hors staticprops
   useEffect(() => {
     async function getThemesFromDB() {
-      const res = await axios.get('http://localhost:5005/api/theme/all');
-      // const res = await publicRequest.get(`/theme/all`);
+      // const res = await axios.get('http://localhost:5005/api/theme/all');
+      const res = await publicRequest.get(`/theme/all`);
       const themes = await res.data;
       // console.log('*** themes from DB USE EFFECT: ', themes);
       setThemesFromDB(themes);
