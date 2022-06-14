@@ -10,7 +10,7 @@
   //   overflow-y: scroll;
   .formHeader {
     height: 20%;
-    border: 2px solid purple;
+    // border: 2px solid purple;
     .title {
       display: flex;
       align-items: center;
@@ -47,19 +47,15 @@
       .fieldContainer {
         height: 100%;
         padding-bottom: 2em;
-        border: 2px solid orangered;
+        // border: 2px solid orangered;
         position: absolute;
-      overflow-y: scroll;
+        overflow-y: scroll;
 
-        &.themes {
-            left: 0%;
-            width: 100%;
-          }
         .fieldset {
           height: max-content;
           overflow-y: scroll;
-
-          border: 2px solid blue;
+          border: none;
+          //   border: 2px solid blue;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -74,6 +70,11 @@
             line-height: 1;
             letter-spacing: normal;
             color: $black;
+            .asterisque{
+                color: red;
+                font-weight: $light;
+                vertical-align: text-bottom;
+            }
           }
           .input {
             width: 100%;
@@ -83,21 +84,40 @@
             border: solid 1px #191919;
             margin-bottom: 20px;
           }
-          .btnVert {
-            width: 100%;
-            height: 40px;
-            margin: 28px 0 20px;
-            padding: 12px 20px 14px;
-            border-radius: 4px;
-            background-color: $dark-green-2;
-            color: $white;
-            text-transform: uppercase;
-            position: fixed;
-            bottom: 0;
-          }
         }
       }
     }
+  }
+}
+
+.step1 {
+  //   border: 2px solid rgb(255, 0, 183);
+  left: 0%;
+  width: 100%;
+
+  transition: all 0.3s ease-in-out;
+  &.display {
+    left: -100%;
+  }
+  .btnVert {
+    width: 100%;
+    height: 40px;
+    margin: 28px 0 20px;
+    padding: 12px 20px 14px;
+    border-radius: 4px;
+    background-color: $dark-green-2;
+    color: $white;
+    text-transform: uppercase;
+    bottom: 0;
+  }
+}
+.step2 {
+  border: 2px solid rgb(21, 119, 113);
+  left: 100%;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  &.display {
+    left: 0%;
   }
 }
 
