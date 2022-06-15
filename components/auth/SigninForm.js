@@ -13,6 +13,7 @@ import Icon_google from '../../public/assets/img/svgs/icon-rs-google.svg';
 import Icon_instagram from '../../public/assets/img/svgs/icon-rs-insta.svg';
 import Icon_checkboxOff from '../../public/assets/img/svgs/icon-page-checkbox-off.svg';
 import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.svg';
+import Loading from '../Loading';
 //
 const SigninForm = (props) => {
   // console.log('*** PROPS signin : ', props);
@@ -65,16 +66,7 @@ const SigninForm = (props) => {
   return (
     <>
       {isLoading ? (
-        <div className={styles.loading}>
-          <p className={styles.p}>Authentification en cours...</p>
-          <Image
-            src='/logos/logo-green-light-2-.png'
-            alt='image chargement - citron en limonade'
-            width={50}
-            height={50}
-            className={styles.image}
-          />
-        </div>
+        <Loading></Loading>
       ) : (
         <>
           <div className={styles.formContent}>
