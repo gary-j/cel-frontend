@@ -13,7 +13,7 @@ import Icon_google from '../../public/assets/img/svgs/icon-rs-google.svg';
 import Icon_instagram from '../../public/assets/img/svgs/icon-rs-insta.svg';
 import Icon_checkboxOff from '../../public/assets/img/svgs/icon-page-checkbox-off.svg';
 import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.svg';
-import Loading from '../Loading';
+import Loading from '../Loadingg';
 //
 const SigninForm = (props) => {
   console.log('*** PROPS signin : ', props);
