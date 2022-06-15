@@ -7,8 +7,8 @@ import { AuthContext } from '../../context/auth.context';
 function SuccessSignup(props) {
   //
   const { user } = useContext(AuthContext);
-  console.log('*** USER from successSignup *** : ', user);
-  console.log('*** PROPS from successSignup *** : ', props);
+  //   console.log('*** USER from successSignup *** : ', user);
+  //   console.log('*** PROPS from successSignup *** : ', props);
 
   return (
     <>

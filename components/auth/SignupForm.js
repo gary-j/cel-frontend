@@ -357,6 +357,7 @@ const SignupForm = (props) => {
                                   ? `/assets/img/svgs/${theme.svg_title}-selected.svg`
                                   : `/assets/img/svgs/${theme.svg_title}-unselected.svg`
                               }`}
+                              alt={theme.svg_title}
                               height='40px'
                               width='40px'
                               data-target={theme._id}></Image>
