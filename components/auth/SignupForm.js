@@ -13,7 +13,8 @@ import axios from 'axios';
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
 const SignupForm = (props) => {
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser, isLoading, setIsLoading } =
+    useContext(AuthContext);
 
   const [lastname, setLastname] = useState('');
   const [firstname, setFirstname] = useState('');
@@ -24,6 +25,7 @@ const SignupForm = (props) => {
   const [selectedThemes, setSelectedThemes] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [inputError, setInputError] = useState('');
+  const [displayNextFormPart, setDsiplayNextFormPart] = useState(false);
   const router = useRouter();
   const [themesFromDB, setThemesFromDB] = useState([
     {
@@ -42,7 +44,6 @@ const SignupForm = (props) => {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleDateOfBirth = (e) => setDateOfBirth(e.target.value);
-  // const handleSelectedThemes = (e) => setSelectedThemes(e.target.value);
   //
   // useEffect appel BD pour récupérer les thèmes hors staticprops
   useEffect(() => {
@@ -65,17 +66,24 @@ const SignupForm = (props) => {
       password,
       dateOfBirth,
     };
+    //
+    setIsLoading(true);
+    //
     publicRequest.post(`/auth/preSignup`, requestBody).then((response) => {
       console.log('reponse de PRESIGNUP', response);
       if (response.data.isValid === false) {
         console.log('pas bon !');
         setInputError(response.data.error.input);
+        setErrorMessage(response.data.error.message);
         setDsiplayNextFormPart(false);
+        setIsLoading(false);
         return;
       }
       if (response.data.isValid === true) {
         console.log('tout est bon');
         setInputError('');
+        setErrorMessage('');
+        setIsLoading(false);
         setDsiplayNextFormPart(true);
       }
     });
@@ -96,6 +104,7 @@ const SignupForm = (props) => {
       selectedThemes,
     };
 
+    setIsLoading(true);
     // Make an axios request to the API
     // If POST request is successful redirect to login page
     // If the request resolves with an error, set the error message in the state
@@ -107,14 +116,15 @@ const SignupForm = (props) => {
 
         storeToken(response.data.authToken);
         authenticateUser();
-
-        router.push('/');
+        setIsLoading(false);
+        // appel du component SuccessSignup
         // navigate('/');
       })
       .catch((error) => {
         console.log('apel error signup');
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
+        setIsLoading(false);
       });
   };
 
@@ -147,8 +157,6 @@ const SignupForm = (props) => {
       // console.log('*** ADD TO selectedThemes *** : ', selectedThemes);
     }
   };
-
-  const [displayNextFormPart, setDsiplayNextFormPart] = useState(false);
 
   return (
     <>
