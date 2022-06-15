@@ -8,6 +8,11 @@
   border-radius: 8px;
   background-color: #f5f7f8;
   //   overflow-y: scroll;
+  &.successSignup {
+    height: calc(70vh);
+    margin: 0px 28px 168px;
+    margin-top:  28px;
+  }
   .formHeader {
     height: 20%;
     // border: 2px solid purple;
@@ -38,6 +43,7 @@
   }
   .formBody {
     height: 80%;
+
     .form {
       height: 100%;
       width: 100%;
@@ -87,6 +93,11 @@
         }
       }
     }
+  }
+  .successBody{
+    // border: 2px solid red;
+    margin-top: 2em;
+    height: 80%;
   }
 }
 
@@ -143,14 +154,13 @@
         letter-spacing: normal;
         color: $inactive;
       }
-      &.selected{
-      background-color: #fff;
-      border: solid 4px #00565b;
-      border-radius: 12px;
-      box-shadow: 8px 8px 32px 0 rgba(0, 60, 63, 0.12);
-        .text{
-        color: #00565b;
-
+      &.selected {
+        background-color: #fff;
+        border: solid 4px #00565b;
+        border-radius: 12px;
+        box-shadow: 8px 8px 32px 0 rgba(0, 60, 63, 0.12);
+        .text {
+          color: #00565b;
         }
       }
     }

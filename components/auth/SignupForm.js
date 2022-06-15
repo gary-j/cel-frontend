@@ -9,6 +9,8 @@ import Image from 'next/image';
 import styles from './SignupForm.module.scss';
 import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
 import axios from 'axios';
+import Loading from '../Loadingg';
+import SuccessSignup from './SuccessSignup';
 
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
@@ -36,6 +38,7 @@ const SignupForm = (props) => {
       number: '7',
     },
   ]);
+  const [successSignUp, setSuccessSignUp] = useState(false);
 
   //   const navigate = useNavigate();
   const handleLastname = (e) => setLastname(e.target.value);
@@ -59,7 +62,7 @@ const SignupForm = (props) => {
   //
   const handlePreSignUp = (e) => {
     e.preventDefault();
-    console.log('appel presignup ok');
+    // console.log('appel presignup ok');
     const requestBody = {
       username,
       email,
@@ -70,9 +73,9 @@ const SignupForm = (props) => {
     setIsLoading(true);
     //
     publicRequest.post(`/auth/preSignup`, requestBody).then((response) => {
-      console.log('reponse de PRESIGNUP', response);
+      // console.log('reponse de PRESIGNUP', response);
       if (response.data.isValid === false) {
-        console.log('pas bon !');
+        // console.log('pas bon !');
         setInputError(response.data.error.input);
         setErrorMessage(response.data.error.message);
         setDsiplayNextFormPart(false);
@@ -80,7 +83,7 @@ const SignupForm = (props) => {
         return;
       }
       if (response.data.isValid === true) {
-        console.log('tout est bon');
+        // console.log('tout est bon');
         setInputError('');
         setErrorMessage('');
         setIsLoading(false);
@@ -91,7 +94,7 @@ const SignupForm = (props) => {
   //
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    console.log('apel loginsubmit signup');
+    // console.log('apel loginsubmit signup');
 
     // Create an object representing the request body
     const requestBody = {
@@ -112,16 +115,17 @@ const SignupForm = (props) => {
       .post(`/auth/signup`, requestBody)
       .then((response) => {
         // console.log('JWT RETURNED', response.data);
-        console.log(response, 'reponse pour SignupForm.js');
+        // console.log(response, 'reponse pour SignupForm.js');
 
         storeToken(response.data.authToken);
         authenticateUser();
         setIsLoading(false);
         // appel du component SuccessSignup
+        setSuccessSignUp(true);
         // navigate('/');
       })
       .catch((error) => {
-        console.log('apel error signup');
+        // console.log('apel error signup');
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
         setIsLoading(false);
@@ -158,9 +162,14 @@ const SignupForm = (props) => {
     }
   };
 
+  // const test = true;
+
   return (
     <>
-      <div className={styles.formContent}>
+      <div
+        className={`${styles.formContent} ${
+          successSignUp ? styles.successSignup : ''
+        }`}>
         <div className={styles.formHeader}>
           <div className={styles.title}>
             <h3>Inscription</h3>
@@ -177,184 +186,216 @@ const SignupForm = (props) => {
           </div>
           <div className={styles.progressBar}>progressBar</div>
         </div>
-        <div className={styles.formBody}>
-          <form
-            id='signupForm'
-            className={styles.form}
-            onSubmit={(e) => handleLoginSubmit(e)}>
-            <div
-              className={`
+        {(function () {
+          if (!successSignUp) {
+            return (
+              <div className={styles.formBody}>
+                {isLoading ? (
+                  <Loading></Loading>
+                ) : (
+                  <form
+                    id='signupForm'
+                    className={styles.form}
+                    onSubmit={(e) => handleLoginSubmit(e)}>
+                    <div
+                      className={`
                 ${styles.fieldContainer + ' ' + styles.step1} ${
-                displayNextFormPart === true ? styles.display : ''
-              }
+                        displayNextFormPart === true ? styles.display : ''
+                      }
               `}>
-              <fieldset
-                form='signupForm'
-                id='userInfos'
-                className={styles.fieldset}>
-                {/* <div> */}
-                <label className={styles.label} htmlFor='lastname'>
-                  Nom <span className={styles.asterisque}>*</span>
-                </label>
-                <input
-                  className={styles.input}
-                  form='signupForm'
-                  id='lastname'
-                  placeholder='Dupont'
-                  type='text'
-                  name='lastname'
-                  value={lastname}
-                  onChange={handleLastname}
-                  required
-                />
+                      <fieldset
+                        form='signupForm'
+                        id='userInfos'
+                        className={styles.fieldset}>
+                        {/* <div> */}
+                        <label className={styles.label} htmlFor='lastname'>
+                          Nom <span className={styles.asterisque}>*</span>
+                        </label>
+                        <input
+                          className={styles.input}
+                          form='signupForm'
+                          id='lastname'
+                          placeholder='Dupont'
+                          type='text'
+                          name='lastname'
+                          value={lastname}
+                          onChange={handleLastname}
+                          required
+                        />
 
-                <label className={styles.label} htmlFor='firstname'>
-                  Prenom <span className={styles.asterisque}>*</span>
-                </label>
-                <input
-                  className={styles.input}
-                  form='signupForm'
-                  id='firstname'
-                  placeholder='Catherine'
-                  type='text'
-                  name='firstname'
-                  value={firstname}
-                  onChange={handleFirstname}
-                  required
-                />
+                        <label className={styles.label} htmlFor='firstname'>
+                          Prenom <span className={styles.asterisque}>*</span>
+                        </label>
+                        <input
+                          className={styles.input}
+                          form='signupForm'
+                          id='firstname'
+                          placeholder='Catherine'
+                          type='text'
+                          name='firstname'
+                          value={firstname}
+                          onChange={handleFirstname}
+                          required
+                        />
 
-                <label className={styles.label} htmlFor='username'>
-                  Nom d'utilisateur <span className={styles.asterisque}>*</span>
-                </label>
-                <input
-                  className={styles.input}
-                  form='signupForm'
-                  id='username'
-                  placeholder='Cathy_cat'
-                  type='text'
-                  name='username'
-                  value={username}
-                  onChange={handleUsername}
-                  required
-                />
+                        <label className={styles.label} htmlFor='username'>
+                          Nom d'utilisateur{' '}
+                          <span className={styles.asterisque}>*</span>
+                        </label>
+                        <input
+                          className={styles.input}
+                          form='signupForm'
+                          id='username'
+                          placeholder='Cathy_cat'
+                          type='text'
+                          name='username'
+                          value={username}
+                          onChange={handleUsername}
+                          required
+                        />
 
-                <label className={styles.label} htmlFor='email'>
-                  Adresse email <span className={styles.asterisque}>*</span>
-                </label>
-                <input
-                  className={styles.input}
-                  form='signupForm'
-                  placeholder='catherine-dupont@gmail.com'
-                  type='email'
-                  name='email'
-                  value={email}
-                  onChange={handleEmail}
-                  required
-                />
+                        <label className={styles.label} htmlFor='email'>
+                          Adresse email{' '}
+                          <span className={styles.asterisque}>*</span>
+                        </label>
+                        <input
+                          className={styles.input}
+                          form='signupForm'
+                          placeholder='catherine-dupont@gmail.com'
+                          type='email'
+                          name='email'
+                          value={email}
+                          onChange={handleEmail}
+                          required
+                        />
 
-                <label className={styles.label} htmlFor='password'>
-                  Mot de passe <span className={styles.asterisque}>*</span>
-                </label>
-                <input
-                  className={styles.input}
-                  form='signupForm'
-                  placeholder='password'
-                  type='password'
-                  name='password'
-                  value={password}
-                  onChange={handlePassword}
-                  required
-                />
-                <label className={styles.label} htmlFor='dateOfBirth'>
-                  Date de naissance <span className={styles.asterisque}>*</span>
-                </label>
-                <input
-                  className={styles.input}
-                  form='signupForm'
-                  id='dateOfBirth'
-                  type='date'
-                  name='dateOfBirth'
-                  value={dateOfBirth}
-                  onChange={handleDateOfBirth}
-                  required
-                />
-                <div>
-                  <p>
-                    En vous inscrivant, vous acceptez nos Conditions générales.
-                    Découvrez comment nous recueillons, utilisons et partageons
-                    vos données en consultant notre Politique d’utilisation des
-                    données et comment nous utilisons les cookies et autres
-                    technologies similaires en lisant notre Politique
-                    d’utilisation des cookies.
-                  </p>
-                </div>
-                {/* </div> */}
-                <button
-                  className={styles.btnVert}
-                  onClick={(e) => handlePreSignUp(e)}>
-                  Étape suivante
-                </button>
-              </fieldset>
-            </div>
-            <div
-              className={`
+                        <label className={styles.label} htmlFor='password'>
+                          Mot de passe{' '}
+                          <span className={styles.asterisque}>*</span>
+                        </label>
+                        <input
+                          className={styles.input}
+                          form='signupForm'
+                          placeholder='password'
+                          type='password'
+                          name='password'
+                          value={password}
+                          onChange={handlePassword}
+                          required
+                        />
+                        <label className={styles.label} htmlFor='dateOfBirth'>
+                          Date de naissance{' '}
+                          <span className={styles.asterisque}>*</span>
+                        </label>
+                        <input
+                          className={styles.input}
+                          form='signupForm'
+                          id='dateOfBirth'
+                          type='date'
+                          name='dateOfBirth'
+                          value={dateOfBirth}
+                          onChange={handleDateOfBirth}
+                          required
+                        />
+                        <div>
+                          <p>
+                            En vous inscrivant, vous acceptez nos Conditions
+                            générales. Découvrez comment nous recueillons,
+                            utilisons et partageons vos données en consultant
+                            notre Politique d’utilisation des données et comment
+                            nous utilisons les cookies et autres technologies
+                            similaires en lisant notre Politique d’utilisation
+                            des cookies.
+                          </p>
+                        </div>
+                        {/* </div> */}
+                        <button
+                          className={styles.btnVert}
+                          onClick={(e) => handlePreSignUp(e)}>
+                          Étape suivante
+                        </button>
+                      </fieldset>
+                    </div>
+                    <div
+                      className={`
                 ${styles.fieldContainer + ' ' + styles.step2} ${
-                displayNextFormPart === true ? styles.display : ''
-              }
+                        displayNextFormPart === true ? styles.display : ''
+                      }
               `}>
-              <fieldset
-                form='signupForm'
-                id='themesSelection'
-                className={`${styles.fieldset} `}>
-                <div>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setDsiplayNextFormPart(false);
-                    }}>
-                    Precedent
-                  </button>
-                </div>
-                {themesFromDB.map((theme) => (
-                  <div
-                    key={theme._id}
-                    className={` ${styles.themeBtn} ${
-                      selectedThemes.includes(theme._id) ? styles.selected : ''
-                    } `}
-                    id={theme._id}
-                    data-target={theme._id}
-                    onClick={handleToggle}>
-                    <p data-target={theme._id} className={styles.text}>
-                      {theme.name}
-                    </p>
+                      <fieldset
+                        form='signupForm'
+                        id='themesSelection'
+                        className={`${styles.fieldset} `}>
+                        <div>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setDsiplayNextFormPart(false);
+                            }}>
+                            Precedent
+                          </button>
+                        </div>
+                        {themesFromDB.map((theme) => (
+                          <div
+                            key={theme._id}
+                            className={` ${styles.themeBtn} ${
+                              selectedThemes.includes(theme._id)
+                                ? styles.selected
+                                : ''
+                            } `}
+                            id={theme._id}
+                            data-target={theme._id}
+                            onClick={handleToggle}>
+                            <p data-target={theme._id} className={styles.text}>
+                              {theme.name}
+                            </p>
 
-                    <Image
-                      className={`${theme.svg_title} ${styles.svg}`}
-                      src={`${
-                        selectedThemes.includes(theme._id)
-                          ? `/assets/img/svgs/${theme.svg_title}-selected.svg`
-                          : `/assets/img/svgs/${theme.svg_title}-unselected.svg`
-                      }`}
-                      height='40px'
-                      width='40px'
-                      data-target={theme._id}></Image>
-                  </div>
-                ))}
-                <button type='submit' className={styles.btnVert}>
-                  CONFIRMER
-                </button>
-              </fieldset>
-            </div>
+                            <Image
+                              className={`${theme.svg_title} ${styles.svg}`}
+                              src={`${
+                                selectedThemes.includes(theme._id)
+                                  ? `/assets/img/svgs/${theme.svg_title}-selected.svg`
+                                  : `/assets/img/svgs/${theme.svg_title}-unselected.svg`
+                              }`}
+                              alt={theme.svg_title}
+                              height='40px'
+                              width='40px'
+                              data-target={theme._id}></Image>
+                          </div>
+                        ))}
+                        <button type='submit' className={styles.btnVert}>
+                          CONFIRMER
+                        </button>
+                      </fieldset>
+                    </div>
 
-            {errorMessage && <p className='error-message'>{errorMessage}</p>}
-            {/* <Link href='#'>
+                    {errorMessage && (
+                      <p className='error-message'>{errorMessage}</p>
+                    )}
+                    {/* <Link href='#'>
             <a onClick={() => props.props.setSignForm('signin')}>
               Already have an account
             </a>
           </Link> */}
-          </form>
-          {/* Affichage de l'inscription réussi, dans le formBody */}
-        </div>
+                  </form>
+                )}
+              </div>
+            );
+          } else {
+            {
+              /* Affichage de l'inscription réussi, dans le formBody */
+            }
+            return (
+              <div className={styles.successBody}>
+                {isLoading ? (
+                  <Loading></Loading>
+                ) : (
+                  <SuccessSignup props={props.props}></SuccessSignup>
+                )}
+              </div>
+            );
+          }
+        })()}
       </div>
     </>
   );
