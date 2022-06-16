@@ -1,13 +1,18 @@
 import React from 'react';
 import Icon_validate from '../../public/assets/img/svgs/icon-page-validate.svg';
 import styles from './SuccessSignup.module.scss';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../context/auth.context';
 
 function SuccessSignup(props) {
   //
-  const { user } = useContext(AuthContext);
-  //   console.log('*** USER from successSignup *** : ', user);
+  // useEffect(() => {
+  //   authenticateUser();
+  //   console.log('appel USEEFFECT SUCCESS SIGN UP');
+  // }, []);
+  //
+  const { user, authenticateUser } = useContext(AuthContext);
+  console.log('*** USER from successSignup *** : ', user);
   //   console.log('*** PROPS from successSignup *** : ', props);
 
   return (
