@@ -6,10 +6,10 @@ import { AuthContext } from '../../context/auth.context';
 
 function SuccessSignup(props) {
   //
-  // useEffect(() => {
-  //   authenticateUser();
-  //   console.log('appel USEEFFECT SUCCESS SIGN UP');
-  // }, []);
+  useEffect(() => {
+    authenticateUser();
+    console.log('appel USEEFFECT SUCCESS SIGN UP');
+  }, []);
   //
   const { user, authenticateUser } = useContext(AuthContext);
   console.log('*** USER from successSignup *** : ', user);
