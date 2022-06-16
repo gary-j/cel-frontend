@@ -92,44 +92,34 @@ const SignupForm = (props) => {
     });
   };
   //
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    // console.log('apel loginsubmit signup');
+    try {
+      const requestBody = {
+        lastname,
+        firstname,
+        username,
+        email,
+        password,
+        dateOfBirth,
+        selectedThemes,
+      };
+      await setIsLoading(true);
+      const response = await publicRequest.post(`/auth/signup`, requestBody);
 
-    // Create an object representing the request body
-    const requestBody = {
-      lastname,
-      firstname,
-      username,
-      email,
-      password,
-      dateOfBirth,
-      selectedThemes,
-    };
+      console.log(response, 'reponse du B.E. pour SignupForm.js');
 
-    setIsLoading(true);
-    // Make an axios request to the API
-    // If POST request is successful redirect to login page
-    // If the request resolves with an error, set the error message in the state
-    publicRequest
-      .post(`/auth/signup`, requestBody)
-      .then((response) => {
-        // console.log('JWT RETURNED', response.data);
-        // console.log(response, 'reponse pour SignupForm.js');
-
-        storeToken(response.data.authToken);
-        authenticateUser();
-        setIsLoading(false);
-        // appel du component SuccessSignup
-        setSuccessSignUp(true);
-        // navigate('/');
-      })
-      .catch((error) => {
-        // console.log('apel error signup');
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-        setIsLoading(false);
-      });
+      await storeToken(response.data.authToken);
+      await authenticateUser();
+      await setIsLoading(false);
+      // appel du component SuccessSignup
+      setSuccessSignUp(true);
+    } catch (error) {
+      // console.log('apel error signup');
+      const errorDescription = error.response.data.message;
+      setErrorMessage(errorDescription);
+      setIsLoading(false);
+    }
   };
 
   //

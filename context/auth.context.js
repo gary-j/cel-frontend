@@ -30,7 +30,7 @@ function AuthProviderWrapper(props) {
   };
 
   const authenticateUser = useCallback(() => {
-    // console.log('*** AuthContext - authenticateUser ***');
+    console.log('*** AuthContext - authenticateUser ***');
     // Get the stored token from the localStorage
     const storedToken = localStorage.getItem('authToken');
 
@@ -44,10 +44,10 @@ function AuthProviderWrapper(props) {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
-          // console.log(
-          //   '*** Reponse de /auth/verify, authenticateUser() *** : ',
-          //   response
-          // );
+          console.log(
+            '*** Reponse de /auth/verify, authenticateUser() *** : ',
+            response
+          );
 
           // If the server verifies that JWT is valid
           const user = response.data;
@@ -61,7 +61,7 @@ function AuthProviderWrapper(props) {
           setUser(user);
         })
         .catch((error) => {
-          // console.log('*** catch error authenticated *** : ', error);
+          console.log('*** catch error authenticated *** : ', error);
           // If the server sends an error response (invalid token)
           // Update state variables
           setIsLoggedIn(false);
@@ -69,7 +69,7 @@ function AuthProviderWrapper(props) {
           setUser(null);
         });
     } else {
-      // console.log('*** else, token not available *** : ');
+      console.log('*** else, token not available *** : ');
       // If the token is not available (or is removed)
       setIsLoggedIn(false);
       setIsLoading(false);
