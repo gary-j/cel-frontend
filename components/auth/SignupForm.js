@@ -152,8 +152,6 @@ const SignupForm = (props) => {
     }
   };
 
-  // const test = true;
-
   return (
     <>
       <div

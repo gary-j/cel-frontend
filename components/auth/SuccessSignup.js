@@ -9,7 +9,7 @@ function SuccessSignup(props) {
   useEffect(() => {
     authenticateUser();
     console.log('appel USEEFFECT SUCCESS SIGN UP');
-  }, []);
+  }, [user]);
   //
   const { user, authenticateUser } = useContext(AuthContext);
   console.log('*** USER from successSignup *** : ', user);
