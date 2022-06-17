@@ -1,20 +1,9 @@
 import React from 'react';
 import Icon_validate from '../../public/assets/img/svgs/icon-page-validate.svg';
 import styles from './SuccessSignup.module.scss';
-import { useContext, useEffect } from 'react';
-import { AuthContext } from '../../context/auth.context';
 
 function SuccessSignup(props) {
   //
-  // useEffect(() => {
-  //   authenticateUser();
-  //   console.log('appel USEEFFECT SUCCESS SIGN UP');
-  // }, []);
-  //
-  const { user, authenticateUser } = useContext(AuthContext);
-  console.log('*** USER from successSignup *** : ', user);
-  console.log('*** PROPS from successSignup *** : ', props?.user?.email);
-
   return (
     <>
       <div className={styles.container}>
@@ -23,9 +12,6 @@ function SuccessSignup(props) {
         <div>
           <p className={styles.p2}>
             Confirmez votre adresse email via le lien envoyé à
-          </p>
-          <p className={styles.p2 + ' ' + styles.email}>
-            email from context : {user?.email}
           </p>
           <p className={styles.p2 + ' ' + styles.email}>
             email props : {props?.user?.email}

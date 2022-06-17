@@ -9,8 +9,8 @@ import Image from 'next/image';
 import styles from './SignupForm.module.scss';
 import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
 import axios from 'axios';
-import Loading from '../Loadingg';
 import SuccessSignup from './SuccessSignup';
+import Loading from '../Loading';
 
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
