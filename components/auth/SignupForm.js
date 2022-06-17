@@ -15,7 +15,7 @@ import SuccessSignup from './SuccessSignup';
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
 const SignupForm = (props) => {
-  const { storeToken, authenticateUser, isLoading, setIsLoading } =
+  const { storeToken, authenticateUser, isLoading, setIsLoading, user } =
     useContext(AuthContext);
 
   const [lastname, setLastname] = useState('');
@@ -378,7 +378,9 @@ const SignupForm = (props) => {
                 {isLoading ? (
                   <Loading></Loading>
                 ) : (
-                  <SuccessSignup props={props.props}></SuccessSignup>
+                  <SuccessSignup
+                    props={props.props}
+                    user={user}></SuccessSignup>
                 )}
               </div>
             );
