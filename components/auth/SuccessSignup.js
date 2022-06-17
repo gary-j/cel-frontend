@@ -9,11 +9,11 @@ function SuccessSignup(props) {
   useEffect(() => {
     authenticateUser();
     console.log('appel USEEFFECT SUCCESS SIGN UP');
-  }, [user]);
+  }, []);
   //
   const { user, authenticateUser } = useContext(AuthContext);
   console.log('*** USER from successSignup *** : ', user);
-  //   console.log('*** PROPS from successSignup *** : ', props);
+  console.log('*** PROPS from successSignup *** : ', props?.user?.email);
 
   return (
     <>
@@ -24,7 +24,12 @@ function SuccessSignup(props) {
           <p className={styles.p2}>
             Confirmez votre adresse email via le lien envoyé à
           </p>
-          <p className={styles.p2 + ' ' + styles.email}>{user?.email}</p>
+          <p className={styles.p2 + ' ' + styles.email}>
+            email from context : {user?.email}
+          </p>
+          <p className={styles.p2 + ' ' + styles.email}>
+            email props : {props?.user?.email}
+          </p>
           <p className={styles.p2}>Merci et à bientôt !</p>
         </div>
         <button
