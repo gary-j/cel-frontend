@@ -23,6 +23,7 @@ const NavbarSmartphone = () => {
 
   return (
     <>
+      <div className={styles.message}>...Site web en construction...</div>
       <nav className={styles.navbar}>
         <Link href={'/'}>
           <a>
