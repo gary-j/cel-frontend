@@ -1,8 +1,9 @@
 @import '../../styles/tools/colors', '../../styles/tools/fonts';
 
 .container {
-//   border: 2px solid blue;
+  // border: 2px solid blue;
   height: 100%;
+  padding: 1em 0em;
   background-color: $dark-green-2;
   border-radius: 8px;
   display: flex;

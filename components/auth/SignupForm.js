@@ -11,6 +11,7 @@ import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
 import axios from 'axios';
 import SuccessSignup from './SuccessSignup';
 import Loading from '../Loading';
+import Icon_validate from '../../public/assets/img/svgs/icon-page-check.svg';
 
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
@@ -172,7 +173,64 @@ const SignupForm = (props) => {
               !
             </p>
           </div>
-          <div className={styles.progressBar}>progressBar</div>
+          <div className={styles.progressBar}>
+            <div
+              className={
+                styles.trait + ' ' + styles.court + ' ' + styles.active
+              }></div>
+            <div className={styles.rond + ' ' + styles.active}>
+              {displayNextFormPart ? (
+                <Icon_validate className={styles.icon}></Icon_validate>
+              ) : (
+                <p className={styles.numero}>1</p>
+              )}
+            </div>
+            <div
+              className={
+                styles.trait +
+                ' ' +
+                styles.long +
+                ' ' +
+                `${displayNextFormPart ? styles.active : null}`
+              }></div>
+            <div
+              className={
+                styles.rond +
+                ' ' +
+                styles.rond2 +
+                ' ' +
+                `${displayNextFormPart ? styles.active : null}`
+              }>
+              {!displayNextFormPart ? (
+                <p className={styles.numeroX}>2</p>
+              ) : successSignUp ? null : (
+                <p className={styles.numero}>2</p>
+              )}
+
+              {successSignUp ? (
+                <Icon_validate className={styles.icon}></Icon_validate>
+              ) : null}
+            </div>
+            <div
+              className={
+                styles.trait +
+                ' ' +
+                styles.long +
+                ' ' +
+                `${successSignUp ? styles.active : null}`
+              }></div>
+            <div
+              className={
+                styles.rond + ' ' + `${successSignUp ? styles.active : null}`
+              }>
+              {successSignUp ? (
+                <p className={styles.numero}>3</p>
+              ) : (
+                <p className={styles.numeroX}>3</p>
+              )}
+            </div>
+            <div className={styles.trait + ' ' + styles.court}></div>
+          </div>
         </div>
         {(function () {
           if (!successSignUp) {
@@ -316,11 +374,12 @@ const SignupForm = (props) => {
                         className={`${styles.fieldset} `}>
                         <div>
                           <button
+                            className={styles.backButton}
                             onClick={(e) => {
                               e.preventDefault();
                               setDsiplayNextFormPart(false);
                             }}>
-                            Precedent
+                            Revenir en arrière
                           </button>
                         </div>
                         {themesFromDB.map((theme) => (

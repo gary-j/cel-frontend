@@ -1,22 +1,26 @@
 @import '../../styles/tools/colors', '../../styles/tools/fonts';
 
 .formContent {
+  // border: 1px solid red;
   width: calc(100% - 28px);
   height: calc(100vh - 28px);
   margin: auto;
   padding: 20px 16px 32px;
   border-radius: 8px;
   background-color: #f5f7f8;
-  //   overflow-y: scroll;
+    overflow-y: scroll;
   &.successSignup {
     height: calc(70vh);
     margin: 0px 28px 168px;
     margin-top:  28px;
   }
   .formHeader {
-    height: 20%;
+    // height: 20%;
+    width: 100%;
+    margin-bottom: 1em;
     // border: 2px solid purple;
     .title {
+      // height: 25%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -29,7 +33,7 @@
       }
     }
     .description {
-      // height: 60px;
+      margin-bottom: 1em;
       //   border: 1px solid red;
       .p {
         font-weight: $regular;
@@ -37,12 +41,64 @@
       }
     }
     .progressBar {
-      border: 1px solid green;
-      // height: 60px;
+      // border: 1px solid green;
+      height: 4em;
+      margin-bottom: 2em;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      .rond{
+        height: 100%;
+        width: 4em;
+        border: 0.2em solid $dark-green-1-opacity;
+        border-radius: 50%;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.rond2{
+          background-color: $white;
+        }
+        &.active{
+          border-color:$dark-green-1 ;
+          background-color: $dark-green-1;
+
+        }
+        .numero{
+          font-size: $main-text;
+          font-weight: $semi-bold;
+        }
+        .numeroX{
+          font-size: $main-text;
+          font-weight: $semi-bold;
+          color: $dark-green-1-opacity;
+        }
+        .icon{
+          height: 100%;
+          width: 100%;
+        }
+      }
+.trait{
+  height: 0.4em;
+  background-color: $dark-green-1-opacity;
+  &.active{
+    background-color: $dark-green-1;
+  }
+  &.court{
+    width: 10%;
+    // background-color: red;
+  }
+  &.long{
+    // background-color: blue;
+    width: 25%;
+  }
+}
     }
   }
   .formBody {
     height: 80%;
+    // border: 2px solid blue;
 
     .form {
       height: 100%;
@@ -90,14 +146,22 @@
             border: solid 1px #191919;
             margin-bottom: 20px;
           }
+          .backButton{
+            border: 1px solid red;
+            margin-bottom: 1em;
+            background-color: $red;
+            padding: 0.3em;
+            border-radius: 0.3em;
+            color: $white;
+          }
         }
       }
     }
   }
   .successBody{
-    // border: 2px solid red;
+    // border: 2px solid goldenrod;
     margin-top: 2em;
-    height: 80%;
+    height: 70%;
   }
 }
 
