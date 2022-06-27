@@ -1,5 +1,10 @@
 @import '../styles/tools/colors', '../styles/tools/fonts';
-
+.message{
+  height: 2em;
+  border: 1px solid red;
+  color: red;
+  text-align: center;
+}
 .navbar {
   padding: 20px 28px;
   height: 80px;
