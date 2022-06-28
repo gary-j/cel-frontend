@@ -12,6 +12,7 @@ import axios from 'axios';
 import SuccessSignup from './SuccessSignup';
 import Loading from '../Loading';
 import Icon_validate from '../../public/assets/img/svgs/icon-page-check.svg';
+import SignUpHeaderMessage from './SignUpHeaderMessage';
 
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
@@ -152,6 +153,7 @@ const SignupForm = (props) => {
       // console.log('*** ADD TO selectedThemes *** : ', selectedThemes);
     }
   };
+  //
 
   return (
     <>
@@ -168,10 +170,14 @@ const SignupForm = (props) => {
             />
           </div>
           <div className={styles.description}>
-            <p className={styles.p}>
+            <SignUpHeaderMessage
+              displayNextFormPart={displayNextFormPart}
+              successSignUp={successSignUp}
+            />
+            {/* <p className={styles.p}>
               Rejoignez la communauté pour partager les citrons et les limonades
               !
-            </p>
+            </p> */}
           </div>
           <div className={styles.progressBar}>
             <div
