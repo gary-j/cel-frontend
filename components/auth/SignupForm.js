@@ -11,6 +11,7 @@ import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
 import axios from 'axios';
 import SuccessSignup from './SuccessSignup';
 import Loading from '../Loading';
+import LoadingMini from '../LoadingMini';
 import Icon_validate from '../../public/assets/img/svgs/icon-page-check.svg';
 import SignUpHeaderMessage from './SignUpHeaderMessage';
 
@@ -157,6 +158,9 @@ const SignupForm = (props) => {
 
   return (
     <>
+      {/* <div>
+        <Loading instruction='processing'></Loading>
+      </div> */}
       <div
         className={`${styles.formContent} ${
           successSignUp ? styles.successSignup : ''
@@ -243,7 +247,10 @@ const SignupForm = (props) => {
             return (
               <div className={styles.formBody}>
                 {isLoading ? (
-                  <Loading></Loading>
+                  <LoadingMini
+                    displayNextFormPart={displayNextFormPart}
+                    successSignUp={successSignUp}
+                  />
                 ) : (
                   <form
                     id='signupForm'
@@ -440,13 +447,7 @@ const SignupForm = (props) => {
             }
             return (
               <div className={styles.successBody}>
-                {isLoading ? (
-                  <Loading></Loading>
-                ) : (
-                  <SuccessSignup
-                    props={props.props}
-                    user={user}></SuccessSignup>
-                )}
+                <SuccessSignup props={props.props} user={user}></SuccessSignup>
               </div>
             );
           }
