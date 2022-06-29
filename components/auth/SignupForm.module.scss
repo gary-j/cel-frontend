@@ -8,11 +8,11 @@
   padding: 20px 16px 32px;
   border-radius: 8px;
   background-color: #f5f7f8;
-    overflow-y: scroll;
+  overflow-y: scroll;
   &.successSignup {
     height: calc(70vh);
     margin: 0px 28px 168px;
-    margin-top:  28px;
+    margin-top: 28px;
   }
   .formHeader {
     // height: 20%;
@@ -48,7 +48,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      .rond{
+      .rond {
         height: 100%;
         width: 4em;
         border: 0.2em solid $dark-green-1-opacity;
@@ -57,43 +57,40 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        &.rond2{
-          background-color: $white;
-        }
-        &.active{
-          border-color:$dark-green-1 ;
-          background-color: $dark-green-1;
 
+        &.active {
+          border-color: $dark-green-1;
+          background-color: $dark-green-1;
         }
-        .numero{
+        .numero {
           font-size: $main-text;
           font-weight: $semi-bold;
         }
-        .numeroX{
+        .numeroX {
           font-size: $main-text;
           font-weight: $semi-bold;
           color: $dark-green-1-opacity;
         }
-        .icon{
+        .icon {
           height: 100%;
           width: 100%;
         }
       }
-.trait{
-  height: 0.4em;
-  background-color: $dark-green-1-opacity;
-  &.active{
-    background-color: $dark-green-1;
-  }
-  &.court{
-    width: 10%;
-    // background-color: red;
-  }
-  &.long{
-    // background-color: blue;
-    width: 25%;
-  }
-}
+      .trait {
+        height: 0.4em;
+        background-color: $dark-green-1-opacity;
+        &.active {
+          background-color: $dark-green-1;
+        }
+        &.court {
+          width: 10%;
+          // background-color: red;
+        }
+        &.long {
+          // background-color: blue;
+          width: 25%;
+        }
+      }
     }
   }
   .formBody {
@@ -146,7 +143,7 @@
             border: solid 1px #191919;
             margin-bottom: 20px;
           }
-          .backButton{
+          .backButton {
             border: 1px solid red;
             margin-bottom: 1em;
             background-color: $red;
@@ -158,7 +155,7 @@
       }
     }
   }
-  .successBody{
+  .successBody {
     // border: 2px solid goldenrod;
     margin-top: 2em;
     height: 70%;

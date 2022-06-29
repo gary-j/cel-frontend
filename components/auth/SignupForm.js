@@ -178,10 +178,6 @@ const SignupForm = (props) => {
               displayNextFormPart={displayNextFormPart}
               successSignUp={successSignUp}
             />
-            {/* <p className={styles.p}>
-              Rejoignez la communauté pour partager les citrons et les limonades
-              !
-            </p> */}
           </div>
           <div className={styles.progressBar}>
             <div
@@ -206,8 +202,6 @@ const SignupForm = (props) => {
             <div
               className={
                 styles.rond +
-                ' ' +
-                styles.rond2 +
                 ' ' +
                 `${displayNextFormPart ? styles.active : null}`
               }>
