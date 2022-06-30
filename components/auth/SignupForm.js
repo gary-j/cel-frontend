@@ -67,6 +67,8 @@ const SignupForm = (props) => {
     e.preventDefault();
     // console.log('appel presignup ok');
     const requestBody = {
+      lastname,
+      firstname,
       username,
       email,
       password,
@@ -75,24 +77,26 @@ const SignupForm = (props) => {
     //
     setIsLoading(true);
     //
-    publicRequest.post(`/auth/preSignup`, requestBody).then((response) => {
-      // console.log('reponse de PRESIGNUP', response);
-      if (response.data.isValid === false) {
-        // console.log('pas bon !');
-        setInputError(response.data.error.input);
-        setErrorMessage(response.data.error.message);
+    publicRequest
+      .post(`/auth/preSignup`, requestBody)
+      .then((response) => {
+        console.log('reponse de PRESIGNUP', response);
+
+        if (response.data.isValid === true) {
+          console.log('tout est bon');
+          setInputError('');
+          setErrorMessage('');
+          setIsLoading(false);
+          setDsiplayNextFormPart(true);
+        }
+      })
+      .catch((error) => {
+        console.error('la réponse error du backend *** : ', error);
+        setInputError(error.response.data.error.input);
+        setErrorMessage(error.response.data.error.message);
         setDsiplayNextFormPart(false);
         setIsLoading(false);
-        return;
-      }
-      if (response.data.isValid === true) {
-        // console.log('tout est bon');
-        setInputError('');
-        setErrorMessage('');
-        setIsLoading(false);
-        setDsiplayNextFormPart(true);
-      }
-    });
+      });
   };
   //
   const handleLoginSubmit = async (e) => {
@@ -112,15 +116,18 @@ const SignupForm = (props) => {
 
       console.log(response, 'reponse du B.E. pour SignupForm.js');
 
-      await storeToken(response.data.authToken);
+      setErrorMessage(''),
+        setInputError(''),
+        await storeToken(response.data.authToken);
       await authenticateUser();
       await setIsLoading(false);
       // appel du component SuccessSignup
       setSuccessSignUp(true);
     } catch (error) {
-      // console.log('apel error signup');
+      console.log('apel error signup *** :', error);
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
+      setInputError(error.response.data.input);
       setIsLoading(false);
     }
   };
@@ -265,7 +272,9 @@ const SignupForm = (props) => {
                           Nom <span className={styles.asterisque}>*</span>
                         </label>
                         <input
-                          className={styles.input}
+                          className={`${styles.input} ${
+                            inputError === 'lastname' ? styles.invalid : null
+                          }`}
                           form='signupForm'
                           id='lastname'
                           placeholder='Dupont'
@@ -275,12 +284,19 @@ const SignupForm = (props) => {
                           onChange={handleLastname}
                           required
                         />
+                        {inputError === 'lastname' && (
+                          <span className={styles.inputError}>
+                            Merci de renseigner votre Nom.
+                          </span>
+                        )}
 
                         <label className={styles.label} htmlFor='firstname'>
                           Prenom <span className={styles.asterisque}>*</span>
                         </label>
                         <input
-                          className={styles.input}
+                          className={`${styles.input} ${
+                            inputError === 'firstname' ? styles.invalid : null
+                          }`}
                           form='signupForm'
                           id='firstname'
                           placeholder='Catherine'
@@ -290,13 +306,20 @@ const SignupForm = (props) => {
                           onChange={handleFirstname}
                           required
                         />
+                        {inputError === 'firstname' && (
+                          <span className={styles.inputError}>
+                            Merci de renseigner votre Prénom.
+                          </span>
+                        )}
 
                         <label className={styles.label} htmlFor='username'>
                           Nom d'utilisateur{' '}
                           <span className={styles.asterisque}>*</span>
                         </label>
                         <input
-                          className={styles.input}
+                          className={`${styles.input} ${
+                            inputError === 'username' ? styles.invalid : null
+                          }`}
                           form='signupForm'
                           id='username'
                           placeholder='Cathy_cat'
@@ -306,13 +329,20 @@ const SignupForm = (props) => {
                           onChange={handleUsername}
                           required
                         />
+                        {inputError === 'username' && (
+                          <span className={styles.inputError}>
+                            {errorMessage}
+                          </span>
+                        )}
 
                         <label className={styles.label} htmlFor='email'>
                           Adresse email{' '}
                           <span className={styles.asterisque}>*</span>
                         </label>
                         <input
-                          className={styles.input}
+                          className={`${styles.input} ${
+                            inputError === 'email' ? styles.invalid : null
+                          }`}
                           form='signupForm'
                           placeholder='catherine-dupont@gmail.com'
                           type='email'
@@ -321,13 +351,20 @@ const SignupForm = (props) => {
                           onChange={handleEmail}
                           required
                         />
+                        {inputError === 'email' && (
+                          <span className={styles.inputError}>
+                            {errorMessage}
+                          </span>
+                        )}
 
                         <label className={styles.label} htmlFor='password'>
                           Mot de passe{' '}
                           <span className={styles.asterisque}>*</span>
                         </label>
                         <input
-                          className={styles.input}
+                          className={`${styles.input} ${
+                            inputError === 'password' ? styles.invalid : null
+                          }`}
                           form='signupForm'
                           placeholder='password'
                           type='password'
@@ -336,12 +373,20 @@ const SignupForm = (props) => {
                           onChange={handlePassword}
                           required
                         />
+                        {inputError === 'password' && (
+                          <span className={styles.inputError}>
+                            {errorMessage}
+                          </span>
+                        )}
+
                         <label className={styles.label} htmlFor='dateOfBirth'>
                           Date de naissance{' '}
                           <span className={styles.asterisque}>*</span>
                         </label>
                         <input
-                          className={styles.input}
+                          className={`${styles.input} ${
+                            inputError === 'dateOfBirth' ? styles.invalid : null
+                          }`}
                           form='signupForm'
                           id='dateOfBirth'
                           type='date'
@@ -350,6 +395,12 @@ const SignupForm = (props) => {
                           onChange={handleDateOfBirth}
                           required
                         />
+                        {inputError === 'dateOfBirth' && (
+                          <span className={styles.inputError}>
+                            Merci de renseigner votre Date de Naissance.
+                          </span>
+                        )}
+
                         <div>
                           <p>
                             En vous inscrivant, vous acceptez nos Conditions
@@ -389,6 +440,11 @@ const SignupForm = (props) => {
                             Revenir en arrière
                           </button>
                         </div>
+                        {inputError === 'themes' && (
+                          <span className={styles.themeError}>
+                            {errorMessage}
+                          </span>
+                        )}
                         {themesFromDB.map((theme) => (
                           <div
                             key={theme._id}
@@ -422,10 +478,10 @@ const SignupForm = (props) => {
                         </button>
                       </fieldset>
                     </div>
-
+                    {/* 
                     {errorMessage && (
                       <p className='error-message'>{errorMessage}</p>
-                    )}
+                    )} */}
                     {/* <Link href='#'>
             <a onClick={() => props.props.setSignForm('signin')}>
               Already have an account

@@ -142,6 +142,14 @@
             border-radius: 4px;
             border: solid 1px #191919;
             margin-bottom: 20px;
+            &.invalid {
+              border: solid 1px $red;
+              margin-bottom: 6px;
+            }
+          }
+          .inputError {
+            color: $red;
+            margin-bottom: 20px;
           }
           .backButton {
             border: 1px solid red;
@@ -193,6 +201,12 @@
   }
   .fieldset {
     width: 100%;
+    .themeError{
+      color: $red;
+      font-weight: $bold;
+      font-size: 1.3em;
+      margin-bottom: 0.3em;
+    }
     .themeBtn {
       display: flex;
       align-items: center;
