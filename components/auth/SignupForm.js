@@ -13,6 +13,7 @@ import SuccessSignup from './SuccessSignup';
 import Loading from '../Loading';
 import LoadingMini from '../LoadingMini';
 import Icon_validate from '../../public/assets/img/svgs/icon-page-check.svg';
+import Icon_view from '../../public/assets/img/svgs/icon-page-view.svg';
 import SignUpHeaderMessage from './SignUpHeaderMessage';
 
 //
@@ -162,6 +163,12 @@ const SignupForm = (props) => {
     }
   };
   //
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+  //
 
   return (
     <>
@@ -275,6 +282,7 @@ const SignupForm = (props) => {
                           className={`${styles.input} ${
                             inputError === 'lastname' ? styles.invalid : null
                           }`}
+                          autoFocus={inputError === 'lastname' ? true : false}
                           form='signupForm'
                           id='lastname'
                           placeholder='Dupont'
@@ -297,6 +305,7 @@ const SignupForm = (props) => {
                           className={`${styles.input} ${
                             inputError === 'firstname' ? styles.invalid : null
                           }`}
+                          autoFocus={inputError === 'firstname' ? true : false}
                           form='signupForm'
                           id='firstname'
                           placeholder='Catherine'
@@ -320,6 +329,7 @@ const SignupForm = (props) => {
                           className={`${styles.input} ${
                             inputError === 'username' ? styles.invalid : null
                           }`}
+                          autoFocus={inputError === 'username' ? true : false}
                           form='signupForm'
                           id='username'
                           placeholder='Cathy_cat'
@@ -343,6 +353,7 @@ const SignupForm = (props) => {
                           className={`${styles.input} ${
                             inputError === 'email' ? styles.invalid : null
                           }`}
+                          autoFocus={inputError === 'email' ? true : false}
                           form='signupForm'
                           placeholder='catherine-dupont@gmail.com'
                           type='email'
@@ -356,23 +367,30 @@ const SignupForm = (props) => {
                             {errorMessage}
                           </span>
                         )}
-
                         <label className={styles.label} htmlFor='password'>
                           Mot de passe{' '}
                           <span className={styles.asterisque}>*</span>
                         </label>
-                        <input
-                          className={`${styles.input} ${
-                            inputError === 'password' ? styles.invalid : null
-                          }`}
-                          form='signupForm'
-                          placeholder='password'
-                          type='password'
-                          name='password'
-                          value={password}
-                          onChange={handlePassword}
-                          required
-                        />
+                        <div className={styles.password}>
+                          <input
+                            className={`${styles.input} ${
+                              inputError === 'password' ? styles.invalid : null
+                            }`}
+                            autoFocus={inputError === 'password' ? true : false}
+                            form='signupForm'
+                            placeholder='password'
+                            type={passwordShown ? 'text' : 'password'}
+                            name='password'
+                            value={password}
+                            onChange={handlePassword}
+                            required
+                          />
+                          <Icon_view
+                            className={styles.showPassword}
+                            onClick={() => togglePassword()}
+                          />
+                        </div>
+
                         {inputError === 'password' && (
                           <span className={styles.inputError}>
                             {errorMessage}
@@ -387,6 +405,9 @@ const SignupForm = (props) => {
                           className={`${styles.input} ${
                             inputError === 'dateOfBirth' ? styles.invalid : null
                           }`}
+                          autoFocus={
+                            inputError === 'dateOfBirth' ? true : false
+                          }
                           form='signupForm'
                           id='dateOfBirth'
                           type='date'
