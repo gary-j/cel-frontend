@@ -159,6 +159,17 @@
             border-radius: 0.3em;
             color: $white;
           }
+          .password {
+            display: flex;
+            align-items: center;
+            .showPassword {
+              width: 2em;
+              height: 2em;
+              margin-left: -3.5em;
+              margin-top: -20px;
+              cursor: pointer;
+            }
+          }
         }
       }
     }
@@ -201,7 +212,7 @@
   }
   .fieldset {
     width: 100%;
-    .themeError{
+    .themeError {
       color: $red;
       font-weight: $bold;
       font-size: 1.3em;
