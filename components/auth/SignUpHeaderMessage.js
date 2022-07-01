@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './SignupForm.module.scss';
 
 const SignUpHeaderMessage = (props) => {
-  console.log('*** SignUpHeaderMessage PROPS : *** :', props);
+  // console.log('*** SignUpHeaderMessage PROPS : *** :', props);
 
   let { displayNextFormPart, successSignUp } = props;
 

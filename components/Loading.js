@@ -3,7 +3,7 @@ import styles from './Loading.module.scss';
 import Image from 'next/image';
 
 const Loading = (props) => {
-  console.log('*** Loading.js PROPS *** : ', props);
+  // console.log('*** Loading.js PROPS *** : ', props);
   let instruction = props.instruction;
   const message = () => {};
   return (

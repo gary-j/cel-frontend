@@ -3,7 +3,7 @@ import styles from './LoadingMini.module.scss';
 import Image from 'next/image';
 
 const Loading = (props) => {
-  console.log('*** LoadingMini.js PROPS *** : ', props);
+  //   console.log('*** LoadingMini.js PROPS *** : ', props);
   let { displayNextFormPart, successSignUp } = props;
 
   const message = () => {

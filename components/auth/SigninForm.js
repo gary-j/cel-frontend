@@ -17,7 +17,7 @@ import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.
 import Loading from '../Loading';
 //
 const SigninForm = (props) => {
-  console.log('*** PROPS signin : ', props);
+  // console.log('*** PROPS signin : ', props);
 
   const { storeToken, authenticateUser, isLoading, setIsLoading } =
     useContext(AuthContext);

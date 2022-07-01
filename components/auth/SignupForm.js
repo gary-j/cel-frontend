@@ -81,10 +81,10 @@ const SignupForm = (props) => {
     publicRequest
       .post(`/auth/preSignup`, requestBody)
       .then((response) => {
-        console.log('reponse de PRESIGNUP', response);
+        // console.log('reponse de PRESIGNUP', response);
 
         if (response.data.isValid === true) {
-          console.log('tout est bon');
+          // console.log('tout est bon');
           setInputError('');
           setErrorMessage('');
           setIsLoading(false);
@@ -92,7 +92,7 @@ const SignupForm = (props) => {
         }
       })
       .catch((error) => {
-        console.error('la réponse error du backend *** : ', error);
+        // console.error('la réponse error du backend *** : ', error);
         setInputError(error.response.data.error.input);
         setErrorMessage(error.response.data.error.message);
         setDsiplayNextFormPart(false);
@@ -115,7 +115,7 @@ const SignupForm = (props) => {
       await setIsLoading(true);
       const response = await publicRequest.post(`/auth/signup`, requestBody);
 
-      console.log(response, 'reponse du B.E. pour SignupForm.js');
+      // console.log(response, 'reponse du B.E. pour SignupForm.js');
 
       setErrorMessage(''),
         setInputError(''),
@@ -125,7 +125,7 @@ const SignupForm = (props) => {
       // appel du component SuccessSignup
       setSuccessSignUp(true);
     } catch (error) {
-      console.log('apel error signup *** :', error);
+      // console.log('apel error signup *** :', error);
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
       setInputError(error.response.data.input);
