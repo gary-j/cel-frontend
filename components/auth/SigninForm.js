@@ -12,6 +12,7 @@ import Icon_facebook from '../../public/assets/img/svgs/icon-rs-facebook.svg';
 import Icon_google from '../../public/assets/img/svgs/icon-rs-google.svg';
 import Icon_instagram from '../../public/assets/img/svgs/icon-rs-insta.svg';
 import Icon_checkboxOff from '../../public/assets/img/svgs/icon-page-checkbox-off.svg';
+import Icon_view from '../../public/assets/img/svgs/icon-page-view.svg';
 import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.svg';
 import Loading from '../Loading';
 //
@@ -25,6 +26,7 @@ const SigninForm = (props) => {
   const [password, setPassword] = useState('');
   const [stayConnected, setStayConnected] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [inputError, setInputError] = useState('');
   const router = useRouter();
 
   //   const navigate = useNavigate();
@@ -50,6 +52,8 @@ const SigninForm = (props) => {
 
         storeToken(response.data.authToken);
         authenticateUser();
+        setInputError('');
+        setErrorMessage('');
         setIsLoading(false);
 
         props.props.closeForm(false);
@@ -59,9 +63,17 @@ const SigninForm = (props) => {
       .catch((error) => {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
+        setInputError(error.response.data.input);
         setIsLoading(false);
       });
   };
+  //
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+  //
 
   return (
     <>
@@ -97,19 +109,38 @@ const SigninForm = (props) => {
                 name='email'
                 value={email}
                 onChange={handleEmail}
-                className={styles.input}
+                className={`${styles.input} ${
+                  inputError === 'email' ? styles.invalid : null
+                }`}
+                autoFocus={inputError === 'email' ? true : false}
               />
+              {inputError === 'email' && (
+                <span className={styles.inputError}>{errorMessage}</span>
+              )}
               <label className={styles.label} htmlFor='password'>
                 Mot de passe
               </label>
-              <input
-                placeholder='password'
-                type='password'
-                name='password'
-                value={password}
-                onChange={handlePassword}
-                className={styles.input}
-              />
+              <div
+                className={`${styles.password} ${
+                  inputError === 'wrong' ? styles.invalid : null
+                }`}>
+                <input
+                  placeholder='password'
+                  type={passwordShown ? 'text' : 'password'}
+                  name='password'
+                  value={password}
+                  onChange={handlePassword}
+                  className={styles.input}
+                />
+                <Icon_view
+                  className={styles.showPassword}
+                  onClick={() => togglePassword()}
+                />
+              </div>
+              {inputError === 'wrong' && (
+                <span className={styles.inputError}>{errorMessage}</span>
+              )}
+
               <div
                 className={styles.connected}
                 onClick={() => {
@@ -128,7 +159,7 @@ const SigninForm = (props) => {
                 )}
                 <label className={styles.checkboxLabel}>Rester connecté</label>
               </div>
-              {errorMessage && <p className='error-message'>{errorMessage}</p>}
+
               <button className={styles.btnRose} type='submit'>
                 Se connecter
               </button>
