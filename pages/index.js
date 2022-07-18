@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
-import { API_URL } from '../utils/consts';
-import { getServerSideProps } from '../utils/axiosRequest';
-import { publicRequest } from '../utils/axiosRequest';
+import { BACKEND_URL } from '../utils/consts';
+import axios from 'axios';
 
 export default function Home({ posts }) {
   console.log('PROPS :', posts);
@@ -31,12 +30,8 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  // const res = await publicRequest.get(`/story/`);
-  const res = await fetch(
-    `https://citron-en-limonade.herokuapp.com/api/story/`
-  );
-  console.log('RES : ', res);
-  const posts = await res;
+  const res = await axios.get(`${BACKEND_URL}/story/`);
+  const posts = await res.data;
   return {
     props: {
       posts,
