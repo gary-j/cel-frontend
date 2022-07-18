@@ -1,19 +1,10 @@
 import Head from 'next/head';
-import SignupForm from '../components/auth/SignupForm';
 import styles from '../styles/Home.module.scss';
 import { getServerSideProps } from '../utils/axiosRequest';
-//
-export async function getStaticProps() {
-  const res = await getServerSideProps.get(`/theme/all`);
-  const themes = await res.data;
-  return {
-    props: {
-      themes: themes || [],
-    },
-  };
-}
+import { publicRequest } from '../utils/axiosRequest';
 
-export default function Home({ themes }) {
+export default function Home({ posts }) {
+  console.log('PROPS :', posts);
   return (
     <>
       <Head>
@@ -25,12 +16,30 @@ export default function Home({ themes }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className={styles.main}>
-        {/* <HomepageMenu></HomepageMenu> */}
-        {/* <SigninForm></SigninForm> */}
-        <hr />
-        {/* <SignupForm themes={themes}></SignupForm> */}
-      </main>
+      <div className={styles.main}>
+        <div className='searchContainer'> Recherche et filtre </div>
+        <h3>LES STORIES</h3>
+        <ul>
+          {posts.map((post) => (
+            <li key={post._id}>{post.title}</li>
+          ))}
+        </ul>
+      </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const res = await publicRequest.get(`/story/`);
+  console.log('RES : ', res.data);
+  const posts = await res.data;
+  return {
+    props: {
+      posts,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 120 seconds
+    revalidate: 120, // In seconds
+  };
 }
