@@ -8,3 +8,7 @@ export const publicRequest = axios.create({
 export const getServerSideProps = axios.create({
   baseURL: 'https://citron-en-limonade.herokuapp.com/api',
 });
+
+export const getStaticProps = axios.create({
+  baseURL: 'https://citron-en-limonade.herokuapp.com/api',
+});
