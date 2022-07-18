@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
+import { API_URL } from '../utils/consts';
 import { getServerSideProps } from '../utils/axiosRequest';
 import { publicRequest } from '../utils/axiosRequest';
 
@@ -30,9 +31,12 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await publicRequest.get(`/story/`);
-  console.log('RES : ', res.data);
-  const posts = await res.data;
+  // const res = await publicRequest.get(`/story/`);
+  const res = await fetch(
+    `https://citron-en-limonade.herokuapp.com/api/story/`
+  );
+  console.log('RES : ', res);
+  const posts = await res;
   return {
     props: {
       posts,
@@ -40,6 +44,6 @@ export async function getStaticProps() {
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 120 seconds
-    revalidate: 120, // In seconds
+    revalidate: 10, // In seconds
   };
 }
