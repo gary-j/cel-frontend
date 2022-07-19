@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
 import { BACKEND_URL } from '../utils/consts';
 import axios from 'axios';
+import { format, parseISO } from 'date-fns';
 
 export default function Home({ posts }) {
   console.log('PROPS :', posts);
@@ -19,11 +20,39 @@ export default function Home({ posts }) {
       <div className={styles.main}>
         <div className='searchContainer'> Recherche et filtre </div>
         <h3>LES STORIES</h3>
-        <ul>
+        <section className={styles.stories}>
           {posts.map((post) => (
-            <li key={post._id}>{post.title}</li>
+            <>
+              {/* <li key={post._id}>{post.title}</li> */}
+              <div key={post._id} className={styles.storyContainer}>
+                <article className={styles.storyCard}>
+                  <h3>{post.theme.name}</h3>
+                  <h4>
+                    Par {post.writter.username}, le{' '}
+                    {format(parseISO(post.createdAt), 'dd/mm/yyyy')} à{' '}
+                    {format(parseISO(post.createdAt), 'hh:mm')}
+                  </h4>
+                  <h2></h2>
+                  <p></p>
+                  <p></p>
+                  <div className={styles.storyAction}>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </article>
+                <div className={styles.storyReaction}>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            </>
           ))}
-        </ul>
+        </section>
       </div>
     </>
   );
