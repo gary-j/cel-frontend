@@ -13,5 +13,19 @@ $black : 900;
 
 $main-text : 16px;
 $secondary-text : 14px;
+$third-text : 12px;
 $icon24 : 24px;
 $big : 18px;
+
+// story card 
+@mixin basics {
+    font-family: $font;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+}
+
+//
+$story-title:20px;

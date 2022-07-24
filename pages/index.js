@@ -2,10 +2,10 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
 import { BACKEND_URL } from '../utils/consts';
 import axios from 'axios';
-import { format, parseISO } from 'date-fns';
+import DisplayStories from '../components/stories/DisplayStories';
 
 export default function Home({ posts }) {
-  console.log('PROPS :', posts);
+  // console.log('PROPS :', posts);
   return (
     <>
       <Head>
@@ -18,42 +18,9 @@ export default function Home({ posts }) {
       </Head>
 
       <div className={styles.main}>
-        <div className='searchContainer'> Recherche et filtre </div>
-        <h3>LES STORIES</h3>
-        <section className={styles.stories}>
-          {posts.map((post) => (
-            <>
-              {/* <li key={post._id}>{post.title}</li> */}
-              <div key={post._id} className={styles.storyContainer}>
-                <article className={styles.storyCard}>
-                  <h3>{post.theme.name}</h3>
-                  <h4>
-                    Par {post.writter.username}, le{' '}
-                    {format(parseISO(post.createdAt), 'dd/mm/yyyy')} à{' '}
-                    {format(parseISO(post.createdAt), 'hh:mm')}
-                  </h4>
-                  <h2></h2>
-                  <p></p>
-                  <p></p>
-                  <div className={styles.storyAction}>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-                </article>
-                <div className={styles.storyReaction}>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </div>
-            </>
-          ))}
-        </section>
+        {/* <div className='searchContainer'> Recherche et filtre </div> */}
       </div>
+      <DisplayStories stories={posts}></DisplayStories>
     </>
   );
 }
