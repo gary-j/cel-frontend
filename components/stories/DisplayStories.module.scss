@@ -4,12 +4,19 @@
   width: inherit;
   margin: 0 2em;
   // border: 1px solid blue;
+  .separation{
+    height: 2px;
+    background-color: #f5f7f8;
+    margin-bottom: 24px;
+  }
   .storyContainer {
     width: 100%;
-    border: 1px solid pink;
+    border: 1px solid #f5f7f8;
+    padding: 20px 16px 39px;
     .storyCard {
       .theme {
         @include basics;
+        font-size: $secondary-text;
         letter-spacing: 0.6px;
         color: $dark-green-2;
         text-transform: uppercase;
@@ -17,9 +24,10 @@
       }
       .writter {
         @include basics;
+        font-size: $third-text;
         color: $black;
         opacity: 0.72;
-        margin-bottom: 46px;
+        margin-bottom: 20px;
       }
       .title {
             @include basics;
@@ -29,7 +37,27 @@
       }
       .content{
         @include basics;
+        font-size: $secondary-text;
         line-height: 2;
+        color: $black;
+        opacity: 0.72;
+        margin-bottom: 24px;
+        .readMore{
+          color: $dark-green-2;
+        }
+      }
+      .professional{
+        @include basics;
+        font-size: $third-text;
+        color: $black;
+        opacity: 0.72;
+        margin-bottom: 20px;
+        .proName{
+          @include basics;
+        color: $black;
+        font-weight: $semi-bold;
+        text-decoration: underline;
+        }
       }
     }
   }

@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './DisplayStories.module.scss';
 import { format, parseISO } from 'date-fns';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import ReactReadMoreReadLess from 'react-read-more-read-less';
 
 const DisplayStories = ({ stories }) => {
   // console.log('*** props de Display stories*** : ', stories);
@@ -23,12 +24,28 @@ const DisplayStories = ({ stories }) => {
                 {format(parseISO(story.createdAt), 'dd/mm/yyyy')} à{' '}
                 {format(parseISO(story.createdAt), 'hh:mm')}
               </h4>
+              <div className={styles.separation}></div>
               <h2 className={styles.title}>{story.title}</h2>
-              <p className={styles.content}>
+              {/* <p className={styles.content}>
                 {story.content.slice(0, 44)}... Lire la suite
+              </p> */}
+              <p className={styles.content}>
+                <ReactReadMoreReadLess
+                  charLimit={166}
+                  ellipsis={'...'}
+                  readMoreText={' Lire la suite'}
+                  readLessText={'Replier ▲'}
+                  readMoreClassName={styles.readMore}
+                  readLessClassName={styles.readMore}>
+                  {story.content}
+                </ReactReadMoreReadLess>
               </p>
+              <div className={styles.separation}></div>
               <p className={styles.professional}>
-                Professionnel: {story.professionalConsulted.name}
+                Professionnel:{' '}
+                <span className={styles.proName}>
+                  {story.professionalConsulted.name}
+                </span>
               </p>
               <div className={styles.storyAction}>
                 <div></div>
