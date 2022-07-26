@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { useState, useContext } from 'react';
-import styles from '../NavbarSmartphone.module.scss';
+import { useContext } from 'react';
+import styles from './Menu.module.scss';
 //
 import { AuthContext } from '../../context/auth.context';
 //
@@ -19,7 +19,7 @@ function Menu({ isOpen, toggleMenu, displayForm, setDisplayForm }) {
   return (
     <>
       <div
-        className={`${styles.sideMenuContainer + ' ' + styles.svg} ${
+        className={`${styles.sideMenuContainer} ${
           isOpen === true ? styles.active : ''
         }`}>
         {isLoggedIn ? (

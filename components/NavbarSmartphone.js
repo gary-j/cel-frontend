@@ -23,7 +23,7 @@ const NavbarSmartphone = () => {
 
   return (
     <>
-      <div className={styles.message}>...Site web en construction...</div>
+      {/* <div className={styles.message}>...Site web en construction...</div> */}
       <nav className={styles.navbar}>
         <Link href={'/'}>
           <a>
@@ -54,68 +54,6 @@ const NavbarSmartphone = () => {
         toggleMenu={toggleMenu}
         displayForm={displayForm}
         setDisplayForm={setDisplayForm}></Menu>
-      {/* <div
-        className={`${styles.sideMenuContainer + ' ' + styles.svg} ${
-          isOpen === true ? styles.active : ''
-        }`}>
-        {isLoggedIn ? (
-          <div className={styles.menuItemContainer}>
-            <div className={styles.item}>
-              <Image
-                src={`https://avatars.dicebear.com/api/adventurer/${user.username}.svg`}
-                alt=''
-                width={40}
-                height={40}
-              />
-              <p className={styles.p}>{user.username}</p>
-            </div>
-          </div>
-        ) : (
-          <div
-            className={styles.menuLogin}
-            onClick={() => setDisplayForm(!displayForm)}>
-            <Icon_connect className={styles.icon} />
-            <p className={styles.p}>Connexion/Inscription</p>
-          </div>
-        )}
-        <div className={styles.buttonContainer}>
-          <button className={styles.btnRose}>SOUMETTRE</button>
-          <button className={styles.btnTransparent}>MODÉRER</button>
-        </div>
-        <div className={styles.menuItemContainer}>
-          <div className={styles.item}>
-            <Icon_home className={styles.icon} />
-            <p className={styles.p}>Accueil</p>
-          </div>
-        </div>
-        <div className={styles.menuItemContainer}>
-          <div className={styles.item}>
-            <Icon_theme className={styles.icon} />
-            <p className={styles.p}>Thèmes</p>
-          </div>
-        </div>
-        <div className={styles.menuItemContainer}>
-          <div className={styles.item}>
-            <Icon_abos className={styles.icon} />
-            <p className={styles.p}>Mes abonnements</p>
-          </div>
-        </div>
-        <div className={styles.menuItemContainer}>
-          <div className={styles.item}>
-            <Icon_aLaUne className={styles.icon} />
-            <p className={styles.p}>A la une</p>
-          </div>
-        </div>
-        {isLoggedIn ? (
-          <div className={styles.menuItemContainer} onClick={logOutUser}>
-            <div className={styles.item}>
-              <Icon_close className={styles.icon} />
-              <p className={styles.p}>Se déconnecter</p>
-            </div>
-          </div>
-        ) : null}
-      </div>
-      {displayForm && <SignFormContainer closeForm={setDisplayForm} />} */}
     </>
   );
 };

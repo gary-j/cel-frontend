@@ -16,6 +16,8 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
+          {/* <div className={null}>...Site web en construction...</div> */}
+
           <Main />
           <NextScript />
         </body>
