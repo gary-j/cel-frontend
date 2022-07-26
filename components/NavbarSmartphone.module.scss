@@ -8,7 +8,7 @@
 .navbar {
   // border: 1px solid red;
   position: fixed;
-  z-index: 99;
+  z-index: 20;
   margin: 0, 28px;
   padding: 20px 28px;
   height: 80px;
@@ -17,5 +17,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .iconToggleMenu{
+    font-size: 4em;
+    fill: $white;
+  }
 }
 
