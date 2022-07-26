@@ -2,7 +2,18 @@ import React from 'react';
 import styles from './DisplayStories.module.scss';
 import { format, parseISO } from 'date-fns';
 import { useState } from 'react';
+import Image from 'next/image';
 import ReactReadMoreReadLess from 'react-read-more-read-less';
+//
+import Icon_story_comments from '../../public/assets/img/svgs/icon-story-comments.svg';
+import Icon_story_favorite from '../../public/assets/img/svgs/icon-story-favorite.svg';
+import Icon_story_report from '../../public/assets/img/svgs/icon-story-report.svg';
+import Icon_story_share from '../../public/assets/img/svgs/icon-story-share.svg';
+import Icon_reaction_heart from '../../public/assets/img/svgs/icon-reaction-heart.svg';
+import Icon_reaction_party from '../../public/assets/img/svgs/icon-reaction-party.svg';
+import Icon_reaction_plume from '../../public/assets/img/svgs/icon-reaction-plume.svg';
+import Icon_reaction_smile from '../../public/assets/img/svgs/icon-reaction-smile.svg';
+import Icon_reaction_thumb from '../../public/assets/img/svgs/icon-reaction-thumb.svg';
 
 const DisplayStories = ({ stories }) => {
   // console.log('*** props de Display stories*** : ', stories);
@@ -26,9 +37,6 @@ const DisplayStories = ({ stories }) => {
               </h4>
               <div className={styles.separation}></div>
               <h2 className={styles.title}>{story.title}</h2>
-              {/* <p className={styles.content}>
-                {story.content.slice(0, 44)}... Lire la suite
-              </p> */}
               <p className={styles.content}>
                 <ReactReadMoreReadLess
                   charLimit={166}
@@ -48,18 +56,44 @@ const DisplayStories = ({ stories }) => {
                 </span>
               </p>
               <div className={styles.storyAction}>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <Icon_story_favorite className={styles.iconAction} />
+                <div className={styles.comments}>
+                  <Icon_story_comments className={styles.iconAction} />
+                  {story?.comments ? <p>{story.comments.length}</p> : null}
+                </div>
+                <Icon_story_share className={styles.iconAction} />
+                <Icon_story_report className={styles.iconAction} />
               </div>
             </article>
             <div className={styles.storyReaction}>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+              {/* <Icon_reaction_plume /> */}
+
+              <div className={styles.reactionBox}>
+                <Icon_reaction_thumb className={styles.iconReaction} />
+                <p className={styles.numberReaction}>2</p>
+              </div>
+              <div className={styles.reactionBox}>
+                <Icon_reaction_smile className={styles.iconReaction} />
+                <p className={styles.numberReaction}>2</p>
+              </div>
+              <div className={styles.reactionBox}>
+                <Icon_reaction_party className={styles.iconReaction} />
+                <p className={styles.numberReaction}>2</p>
+              </div>
+              <div className={styles.reactionBox}>
+                <Icon_reaction_heart className={styles.iconReaction} />
+                <p className={styles.numberReaction}>2</p>
+              </div>
+              <div className={styles.reactionBox}>
+                {' '}
+                <Image
+                  src={`/assets/img/pngs/icon-r-action-20-plume@3x.png`}
+                  alt=''
+                  width={27}
+                  height={27}
+                />
+                <p className={styles.numberReaction}>2</p>
+              </div>
             </div>
           </div>
         ))}

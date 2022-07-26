@@ -17,9 +17,7 @@ export default function Home({ posts }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className={styles.main}>
-        {/* <div className='searchContainer'> Recherche et filtre </div> */}
-      </div>
+      {/* <div className='searchContainer'> Recherche et filtre </div> */}
       <DisplayStories stories={posts}></DisplayStories>
     </>
   );
