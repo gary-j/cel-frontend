@@ -14,6 +14,7 @@ import Icon_reaction_party from '../../public/assets/img/svgs/icon-reaction-part
 import Icon_reaction_plume from '../../public/assets/img/svgs/icon-reaction-plume.svg';
 import Icon_reaction_smile from '../../public/assets/img/svgs/icon-reaction-smile.svg';
 import Icon_reaction_thumb from '../../public/assets/img/svgs/icon-reaction-thumb.svg';
+import Icon_plume_gary from '../../public/assets/img/svgs/icon-plume-gary.svg';
 
 const DisplayStories = ({ stories }) => {
   // console.log('*** props de Display stories*** : ', stories);
@@ -31,8 +32,11 @@ const DisplayStories = ({ stories }) => {
             <article className={styles.storyCard}>
               <h3 className={styles.theme}>{story.theme.name}</h3>
               <h4 className={styles.writter}>
-                Par {story.writter.username}, le{' '}
-                {format(parseISO(story.createdAt), 'dd/mm/yyyy')} à{' '}
+                Par{' '}
+                {story.isAnonym
+                  ? story.writter.username[0] + '****'
+                  : story.writter.username}
+                , le {format(parseISO(story.createdAt), 'dd/mm/yyyy')} à{' '}
                 {format(parseISO(story.createdAt), 'hh:mm')}
               </h4>
               <div className={styles.separation}></div>
@@ -70,29 +74,40 @@ const DisplayStories = ({ stories }) => {
 
               <div className={styles.reactionBox}>
                 <Icon_reaction_thumb className={styles.iconReaction} />
-                <p className={styles.numberReaction}>2</p>
+                <div>
+                  <p className={styles.numberReaction}> &nbsp; 22 &nbsp;</p>
+                </div>
               </div>
               <div className={styles.reactionBox}>
                 <Icon_reaction_smile className={styles.iconReaction} />
-                <p className={styles.numberReaction}>2</p>
+                <div>
+                  <p className={styles.numberReaction}> &nbsp; 22 &nbsp;</p>
+                </div>
               </div>
               <div className={styles.reactionBox}>
                 <Icon_reaction_party className={styles.iconReaction} />
-                <p className={styles.numberReaction}>2</p>
+                <div>
+                  <p className={styles.numberReaction}> &nbsp; 22 &nbsp;</p>
+                </div>
               </div>
-              <div className={styles.reactionBox}>
+              <div className={styles.reactionBox + ' ' + styles.selected}>
                 <Icon_reaction_heart className={styles.iconReaction} />
-                <p className={styles.numberReaction}>2</p>
+                <div>
+                  <p className={styles.numberReaction}> &nbsp; 1.5k &nbsp;</p>
+                </div>
               </div>
               <div className={styles.reactionBox}>
-                {' '}
+                <Icon_plume_gary className={styles.iconReaction} />
+                {/* {' '}
                 <Image
                   src={`/assets/img/pngs/icon-r-action-20-plume@3x.png`}
                   alt=''
                   width={27}
                   height={27}
-                />
-                <p className={styles.numberReaction}>2</p>
+                /> */}
+                <div>
+                  <p className={styles.numberReaction}> &nbsp; 22 &nbsp;</p>
+                </div>
               </div>
             </div>
           </div>

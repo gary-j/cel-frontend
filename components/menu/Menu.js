@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import styles from './Menu.module.scss';
 //
 import { AuthContext } from '../../context/auth.context';
@@ -14,8 +14,10 @@ import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
 //
 import SignFormContainer from '../auth/SignFormContainer';
 
-function Menu({ isOpen, toggleMenu, displayForm, setDisplayForm }) {
+function Menu({ isOpen, toggleMenu }) {
   const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
+  const [displayForm, setDisplayForm] = useState(false);
+
   return (
     <>
       <div

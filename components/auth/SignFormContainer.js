@@ -1,12 +1,12 @@
 import React from 'react';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import SigninForm from './SigninForm';
 import SignupForm from './SignupForm';
 import styles from './SignFormContainer.module.scss';
 
 const SignFormContainer = (props) => {
   const [signForm, setSignForm] = useState('signin');
-  // console.log('*** PROPS : ', props);
+  console.log('*** PROPS SigngormContainer: ', props);
   let newprops = {
     closeForm: props.closeForm,
     setSignForm: setSignForm,
