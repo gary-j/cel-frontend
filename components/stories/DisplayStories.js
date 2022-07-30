@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './DisplayStories.module.scss';
-import { format, parseISO } from 'date-fns';
+import { parseISO } from 'date-fns';
+import { formatInTimeZone, utcToZonedTime, format } from 'date-fns-tz';
 import { useState } from 'react';
 import Image from 'next/image';
 import ReactReadMoreReadLess from 'react-read-more-read-less';
@@ -18,9 +19,8 @@ import Icon_plume_gary from '../../public/assets/img/svgs/icon-plume-gary.svg';
 
 const DisplayStories = ({ stories }) => {
   // console.log('*** props de Display stories*** : ', stories);
-  const [storie, setStories] = useState([]);
-  const [visible, setVisible] = useState(5);
 
+  const [visible, setVisible] = useState(5);
   const showMoreStories = () => {
     setVisible((prevValue) => prevValue + 3);
   };
@@ -36,8 +36,8 @@ const DisplayStories = ({ stories }) => {
                 {story.isAnonym
                   ? story.writter.username[0] + '****'
                   : story.writter.username}
-                , le {format(parseISO(story.createdAt), 'dd/mm/yyyy')} à{' '}
-                {format(parseISO(story.createdAt), 'hh:mm')}
+                , le {format(utcToZonedTime(story.createdAt), 'dd/MM/yyyy')} à{' '}
+                {format(utcToZonedTime(story.createdAt), "HH'h':mm")}
               </h4>
               <div className={styles.separation}></div>
               <h2 className={styles.title}>{story.title}</h2>
