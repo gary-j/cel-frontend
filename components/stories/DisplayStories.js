@@ -42,7 +42,7 @@ const DisplayStories = ({ stories }) => {
                     : story.writter.username}
                   , le{' '}
                   {formatInTimeZone(story.createdAt, timeZone, 'dd/MM/yyyy')} à{' '}
-                  {formatInTimeZone(story.createdAt, timeZone, "HH'h':mm")}
+                  {formatInTimeZone(story.createdAt, timeZone, "HH'h'mm")}
                 </h4>
                 <div className={styles.separation}></div>
                 <h2 className={styles.title}>{story.title}</h2>
@@ -76,7 +76,6 @@ const DisplayStories = ({ stories }) => {
               </article>
               <div className={styles.storyReaction}>
                 {/* <Icon_reaction_plume /> */}
-
                 <div className={styles.reactionBox}>
                   <Icon_reaction_thumb className={styles.iconReaction} />
                   <div>
