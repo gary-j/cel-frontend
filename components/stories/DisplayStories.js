@@ -16,6 +16,7 @@ import Icon_reaction_plume from '../../public/assets/img/svgs/icon-reaction-plum
 import Icon_reaction_smile from '../../public/assets/img/svgs/icon-reaction-smile.svg';
 import Icon_reaction_thumb from '../../public/assets/img/svgs/icon-reaction-thumb.svg';
 import Icon_plume_gary from '../../public/assets/img/svgs/icon-plume-gary.svg';
+import StoryReactions from './StoryReactions';
 
 const DisplayStories = ({ stories }) => {
   // console.log('*** props de Display stories*** : ', stories);
@@ -74,46 +75,7 @@ const DisplayStories = ({ stories }) => {
                   <Icon_story_report className={styles.iconAction} />
                 </div>
               </article>
-              <div className={styles.storyReaction}>
-                {/* <Icon_reaction_plume /> */}
-                <div className={styles.reactionBox}>
-                  <Icon_reaction_thumb className={styles.iconReaction} />
-                  <div>
-                    <p className={styles.numberReaction}> &nbsp; 22 &nbsp;</p>
-                  </div>
-                </div>
-                <div className={styles.reactionBox}>
-                  <Icon_reaction_smile className={styles.iconReaction} />
-                  <div>
-                    <p className={styles.numberReaction}> &nbsp; 22 &nbsp;</p>
-                  </div>
-                </div>
-                <div className={styles.reactionBox}>
-                  <Icon_reaction_party className={styles.iconReaction} />
-                  <div>
-                    <p className={styles.numberReaction}> &nbsp; 22 &nbsp;</p>
-                  </div>
-                </div>
-                <div className={styles.reactionBox + ' ' + styles.selected}>
-                  <Icon_reaction_heart className={styles.iconReaction} />
-                  <div>
-                    <p className={styles.numberReaction}> &nbsp; 1.5k &nbsp;</p>
-                  </div>
-                </div>
-                <div className={styles.reactionBox}>
-                  <Icon_plume_gary className={styles.iconReaction} />
-                  {/* {' '}
-                <Image
-                  src={`/assets/img/pngs/icon-r-action-20-plume@3x.png`}
-                  alt=''
-                  width={27}
-                  height={27}
-                /> */}
-                  <div>
-                    <p className={styles.numberReaction}> &nbsp; 22 &nbsp;</p>
-                  </div>
-                </div>
-              </div>
+              <StoryReactions storyID={story._id} />
             </div>
           );
         })}
