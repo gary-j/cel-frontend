@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.scss';
 import { BACKEND_URL } from '../utils/consts';
 import axios from 'axios';
 import DisplayStories from '../components/stories/DisplayStories';
-
+import ScrollBarPosition from '../components/scrollbar/ScrollBarPosition';
 export default function Home({ posts }) {
   // console.log('PROPS :', posts);
   return (
@@ -16,7 +16,7 @@ export default function Home({ posts }) {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
+      {/* <ScrollBarPosition /> */}
       {/* <div className='searchContainer'> Recherche et filtre </div> */}
       <DisplayStories stories={posts}></DisplayStories>
     </>
