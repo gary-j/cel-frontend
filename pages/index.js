@@ -4,8 +4,24 @@ import { BACKEND_URL } from '../utils/consts';
 import axios from 'axios';
 import DisplayStories from '../components/stories/DisplayStories';
 import ScrollBarPosition from '../components/scrollbar/ScrollBarPosition';
+import { useState, useEffect } from 'react';
+//
+import breakPointObserver from '../components/shared/BreakpointObserver';
+const breakPoints = {
+  mobile: '(max-width:659px)',
+  tablet: '(min-width:660px) and (max-width:768px)',
+  laptop: '(min-width:769px) and (max-width:1023px)',
+  desktop: '(min-width:1024px)',
+};
+//
 export default function Home({ posts }) {
   // console.log('PROPS :', posts);
+  const [breakPoint, setBreakPoint] = useState();
+  useEffect(() => {
+    breakPointObserver(breakPoints, setBreakPoint);
+    console.log('le breakpoint est : ', breakPoint);
+  }, [breakPoint]);
+  //
   return (
     <>
       <Head>
