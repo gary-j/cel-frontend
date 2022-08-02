@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import styles from './Menu.module.scss';
 //
 import { AuthContext } from '../../context/auth.context';
+import { BreakPointContext } from '../../context/breakPoints.context';
 //
 import Icon_connect from '../../public/assets/img/svgs/icon-page-connect.svg';
 import Icon_home from '../../public/assets/img/svgs/icon-menu-home.svg';
@@ -17,13 +18,20 @@ import SignFormContainer from '../auth/SignFormContainer';
 function Menu({ isOpen, toggleMenu }) {
   const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
   const [displayForm, setDisplayForm] = useState(false);
-
+  //
+  const { breakPoint } = useContext(BreakPointContext);
+  // let cssbreak = breakPoint;
+  // console.log('cssbreak : ', cssbreak);
   return (
     <>
       <div
-        className={`${styles.sideMenuContainer} ${
-          isOpen === true ? styles.active : ''
-        }`}>
+        className={`
+          ${styles.sideMenuContainer} ${isOpen === true ? styles.active : ''} ${
+          breakPoint === 'desktop' || breakPoint === 'laptop'
+            ? styles.desktop
+            : ''
+        }
+          `}>
         {isLoggedIn ? (
           <div className={styles.menuItemContainer}>
             <div className={styles.item}>

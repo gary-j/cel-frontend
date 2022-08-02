@@ -6,6 +6,7 @@ import DisplayStories from '../components/stories/DisplayStories';
 import ScrollBarPosition from '../components/scrollbar/ScrollBarPosition';
 import { useContext } from 'react';
 import { BreakPointContext } from '../context/breakPoints.context';
+import Menu from '../components/menu/Menu';
 //
 
 export default function Home({ posts }) {
@@ -23,9 +24,13 @@ export default function Home({ posts }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       {/* <ScrollBarPosition /> */}
+      {/* <h3>Breakpoint is : ' {breakPoint}'</h3> */}
       {/* <div className='searchContainer'> Recherche et filtre </div> */}
-      <DisplayStories stories={posts}></DisplayStories>
-      <h3>Breakpoint is : ' {breakPoint}'</h3>
+      <div className='index'>
+        {(breakPoint === 'laptop' || breakPoint === 'desktop') && <Menu></Menu>}
+        <DisplayStories stories={posts}></DisplayStories>
+        {breakPoint === 'desktop' && <div className='coteDroit'></div>}
+      </div>
     </>
   );
 }

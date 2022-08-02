@@ -1,5 +1,7 @@
 import Layout from '../components/Layout';
 import '../styles/globals.scss';
+import '../styles/test.scss';
+
 import { AuthProviderWrapper } from '../context/auth.context';
 import { BreakPointProviderWrapper } from '../context/breakPoints.context';
 //
