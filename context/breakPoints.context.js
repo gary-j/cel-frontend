@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect, useCallback, createContext } from 'react';
 import breakPointObserver from '../components/shared/BreakpointObserver';
 
 const BreakPointContext = createContext();
@@ -11,13 +11,15 @@ const breakPoints = {
 
 //
 function BreakPointProviderWrapper(props) {
+  console.log('*** BreakPointContext - breakpointObserver ***');
+
   const [breakPoint, setBreakPoint] = useState();
   useEffect(() => {
     breakPointObserver(breakPoints, setBreakPoint);
   }, [breakPoint]);
   //
   return (
-    <BreakPointContext.Provider value={''}>
+    <BreakPointContext.Provider value={{ breakPoint }}>
       {props.children}
     </BreakPointContext.Provider>
   );

@@ -4,23 +4,13 @@ import { BACKEND_URL } from '../utils/consts';
 import axios from 'axios';
 import DisplayStories from '../components/stories/DisplayStories';
 import ScrollBarPosition from '../components/scrollbar/ScrollBarPosition';
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { BreakPointContext } from '../context/breakPoints.context';
 //
-import breakPointObserver from '../components/shared/BreakpointObserver';
-const breakPoints = {
-  mobile: '(max-width:659px)',
-  tablet: '(min-width:660px) and (max-width:768px)',
-  laptop: '(min-width:769px) and (max-width:1023px)',
-  desktop: '(min-width:1024px)',
-};
-//
+
 export default function Home({ posts }) {
   // console.log('PROPS :', posts);
-  const [breakPoint, setBreakPoint] = useState();
-  useEffect(() => {
-    breakPointObserver(breakPoints, setBreakPoint);
-    console.log('le breakpoint est : ', breakPoint);
-  }, [breakPoint]);
+  const { breakPoint } = useContext(BreakPointContext);
   //
   return (
     <>
@@ -35,6 +25,7 @@ export default function Home({ posts }) {
       {/* <ScrollBarPosition /> */}
       {/* <div className='searchContainer'> Recherche et filtre </div> */}
       <DisplayStories stories={posts}></DisplayStories>
+      {/* <h3>Breakpoint is : ' {breakPoint}'</h3> */}
     </>
   );
 }
