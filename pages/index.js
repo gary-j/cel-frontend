@@ -25,7 +25,7 @@ export default function Home({ posts }) {
       {/* <ScrollBarPosition /> */}
       {/* <div className='searchContainer'> Recherche et filtre </div> */}
       <DisplayStories stories={posts}></DisplayStories>
-      {/* <h3>Breakpoint is : ' {breakPoint}'</h3> */}
+      <h3>Breakpoint is : ' {breakPoint}'</h3>
     </>
   );
 }

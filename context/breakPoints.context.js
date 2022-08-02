@@ -11,8 +11,6 @@ const breakPoints = {
 
 //
 function BreakPointProviderWrapper(props) {
-  console.log('*** BreakPointContext - breakpointObserver ***');
-
   const [breakPoint, setBreakPoint] = useState();
   useEffect(() => {
     breakPointObserver(breakPoints, setBreakPoint);
