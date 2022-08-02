@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './DisplayStories.module.scss';
 // import { parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import ReactReadMoreReadLess from 'react-read-more-read-less';
 //
 import Icon_story_comments from '../../public/assets/img/svgs/icon-story-comments.svg';
@@ -10,18 +10,33 @@ import Icon_story_favorite from '../../public/assets/img/svgs/icon-story-favorit
 import Icon_story_report from '../../public/assets/img/svgs/icon-story-report.svg';
 import Icon_story_share from '../../public/assets/img/svgs/icon-story-share.svg';
 import StoryReactions from './StoryReactions';
-
+//
+import { BreakPointContext } from '../../context/breakPoints.context';
+//
 const DisplayStories = ({ stories }) => {
   // console.log('*** props de Display stories*** : ', stories);
 
   const [visible, setVisible] = useState(5);
   const showMoreStories = () => {
     setVisible((prevValue) => prevValue + 3);
-    //
   };
+  //
+  const { breakPoint } = useContext(BreakPointContext);
+  let cssbreak = breakPoint;
+  console.log('cssbreakStories : ', cssbreak);
+  //
   return (
     <>
-      <section className={styles.storiesSection}>
+      <section
+        className={
+          styles.storiesSection +
+          ' ' +
+          `${
+            breakPoint === 'desktop' || breakPoint === 'laptop'
+              ? styles.desktop
+              : ''
+          }`
+        }>
         {stories.slice(0, visible).map((story) => {
           const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 

@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, createContext } from 'react';
-import breakPointObserver from '../components/shared/BreakpointObserver';
+import { useState, useEffect, createContext } from 'react';
+import breakPointObserver from '../components/shared/breakPointObserver';
 
 const BreakPointContext = createContext();
 const breakPoints = {
