@@ -4,8 +4,14 @@ import { BACKEND_URL } from '../utils/consts';
 import axios from 'axios';
 import DisplayStories from '../components/stories/DisplayStories';
 import ScrollBarPosition from '../components/scrollbar/ScrollBarPosition';
+import { useContext } from 'react';
+import { BreakPointContext } from '../context/breakPoints.context';
+//
+
 export default function Home({ posts }) {
   // console.log('PROPS :', posts);
+  const { breakPoint } = useContext(BreakPointContext);
+  //
   return (
     <>
       <Head>
@@ -19,6 +25,7 @@ export default function Home({ posts }) {
       {/* <ScrollBarPosition /> */}
       {/* <div className='searchContainer'> Recherche et filtre </div> */}
       <DisplayStories stories={posts}></DisplayStories>
+      <h3>Breakpoint is : ' {breakPoint}'</h3>
     </>
   );
 }
