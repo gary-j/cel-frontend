@@ -11,19 +11,20 @@ import Icon_story_report from '../../public/assets/img/svgs/icon-story-report.sv
 import Icon_story_share from '../../public/assets/img/svgs/icon-story-share.svg';
 import StoryReactions from './StoryReactions';
 //
-import { BreakPointContext } from '../../context/breakPoints.context';
 //
-const DisplayStories = ({ stories }) => {
-  // console.log('*** props de Display stories*** : ', stories);
+const DisplayStories = ({ stories, cssBreakPoint }) => {
+  // console.log(
+  //   '*** props de DisplayStories.js *** : ',
+  //   stories,
+  //   ' et le breakpoint : ',
+  //   cssBreakPoint
+  // );
 
   const [visible, setVisible] = useState(5);
   const showMoreStories = () => {
     setVisible((prevValue) => prevValue + 3);
   };
-  //
-  const { breakPoint } = useContext(BreakPointContext);
-  let cssbreak = breakPoint;
-  console.log('cssbreakStories : ', cssbreak);
+
   //
   return (
     <>
@@ -32,7 +33,7 @@ const DisplayStories = ({ stories }) => {
           styles.storiesSection +
           ' ' +
           `${
-            breakPoint === 'desktop' || breakPoint === 'laptop'
+            cssBreakPoint === 'desktop' || cssBreakPoint === 'laptop'
               ? styles.desktop
               : ''
           }`
@@ -83,7 +84,10 @@ const DisplayStories = ({ stories }) => {
                   <Icon_story_report className={styles.iconAction} />
                 </div>
               </article>
-              <StoryReactions storyID={story._id} />
+              <StoryReactions
+                storyID={story._id}
+                cssBreakPoint={cssBreakPoint}
+              />
             </div>
           );
         })}

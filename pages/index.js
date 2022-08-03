@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.scss';
 import { BACKEND_URL } from '../utils/consts';
 import axios from 'axios';
 import DisplayStories from '../components/stories/DisplayStories';
@@ -8,10 +7,12 @@ import { useContext } from 'react';
 import { BreakPointContext } from '../context/breakPoints.context';
 import Menu from '../components/menu/Menu';
 //
+import styles from '../styles/desktop-Index.module.scss';
 
 export default function Home({ posts }) {
   // console.log('PROPS :', posts);
   const { breakPoint } = useContext(BreakPointContext);
+  console.log('BREAKPOINT IS : ', breakPoint);
   //
   return (
     <>
@@ -26,10 +27,20 @@ export default function Home({ posts }) {
       {/* <ScrollBarPosition /> */}
       {/* <h3>Breakpoint is : ' {breakPoint}'</h3> */}
       {/* <div className='searchContainer'> Recherche et filtre </div> */}
-      <div className='index'>
+      <div
+        className={
+          (breakPoint === 'laptop' || breakPoint === 'desktop') &&
+          styles.desktop
+        }>
         {(breakPoint === 'laptop' || breakPoint === 'desktop') && <Menu></Menu>}
-        <DisplayStories stories={posts}></DisplayStories>
-        {breakPoint === 'desktop' && <div className='coteDroit'></div>}
+        <DisplayStories
+          stories={posts}
+          cssBreakPoint={breakPoint}></DisplayStories>
+        {(breakPoint === 'laptop' || breakPoint === 'desktop') && (
+          <div className='coteDroit'>
+            <p>Right side</p>
+          </div>
+        )}
       </div>
     </>
   );

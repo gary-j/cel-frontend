@@ -93,13 +93,16 @@
       }
     }
   }
+  //Affichage Desktop
+  // .sideMenuContainter
   &.desktop {
     transform: translateX(0%);
     position: unset;
-    width: 300px;
+    width: auto;
     height: 740px;
     margin: 0;
     padding: 32px 32px 55px;
+    border-radius: 8px;
   }
 
 }
