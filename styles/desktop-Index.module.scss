@@ -1,0 +1,12 @@
+.desktop{
+    padding: 48px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+    .coteDroit{
+        height: 740px;
+        width: auto;
+        background-color: rgb(220, 18, 18);
+    }
+}
