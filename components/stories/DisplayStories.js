@@ -44,21 +44,23 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
           return (
             <div key={story._id} className={styles.storyContainer}>
               <article className={styles.storyCard}>
-                <h3 className={styles.theme}>{story.theme.name}</h3>
-                <h4 className={styles.writter}>
-                  Par{' '}
-                  {story.isAnonym
-                    ? story.writter.username[0] + '****'
-                    : story.writter.username}
-                  , le{' '}
-                  {formatInTimeZone(story.createdAt, timeZone, 'dd/MM/yyyy')} à{' '}
-                  {formatInTimeZone(story.createdAt, timeZone, "HH'h'mm")}
-                </h4>
+                <div className={styles.header}>
+                  <h3 className={styles.theme}>{story.theme.name}</h3>
+                  <h4 className={styles.writter}>
+                    Par{' '}
+                    {story.isAnonym
+                      ? story.writter.username[0] + '****'
+                      : story.writter.username}
+                    , {cssBreakPoint === 'desktop' && <br></br>}le{' '}
+                    {formatInTimeZone(story.createdAt, timeZone, 'dd/MM/yyyy')}{' '}
+                    à {formatInTimeZone(story.createdAt, timeZone, "HH'h'mm")}
+                  </h4>
+                </div>
                 <div className={styles.separation}></div>
                 <h2 className={styles.title}>{story.title}</h2>
                 <p className={styles.content}>
                   <ReactReadMoreReadLess
-                    charLimit={166}
+                    charLimit={cssBreakPoint === 'desktop' ? 145 : 166}
                     ellipsis={'...'}
                     readMoreText={' Lire la suite'}
                     readLessText={'Replier ▲'}
@@ -68,20 +70,22 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
                   </ReactReadMoreReadLess>
                 </p>
                 <div className={styles.separation}></div>
-                <p className={styles.professional}>
-                  Professionnel:{' '}
-                  <span className={styles.proName}>
-                    {story.professionalConsulted.name}
-                  </span>
-                </p>
-                <div className={styles.storyAction}>
-                  <Icon_story_favorite className={styles.iconAction} />
-                  <div className={styles.comments}>
-                    <Icon_story_comments className={styles.iconAction} />
-                    {story?.comments ? <p>{story.comments.length}</p> : null}
+                <div className={styles.footer}>
+                  <p className={styles.professional}>
+                    Professionnel:{' '}
+                    <span className={styles.proName}>
+                      {story.professionalConsulted.name}
+                    </span>
+                  </p>
+                  <div className={styles.storyAction}>
+                    <Icon_story_favorite className={styles.iconAction} />
+                    <div className={styles.comments}>
+                      <Icon_story_comments className={styles.iconAction} />
+                      {story?.comments ? <p>{story.comments.length}</p> : null}
+                    </div>
+                    <Icon_story_share className={styles.iconAction} />
+                    <Icon_story_report className={styles.iconAction} />
                   </div>
-                  <Icon_story_share className={styles.iconAction} />
-                  <Icon_story_report className={styles.iconAction} />
                 </div>
               </article>
               <StoryReactions

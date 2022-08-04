@@ -109,7 +109,7 @@
         padding-top: 0.2em;
         // border: 1px solid blue;
         &.selected {
-        border-radius: 12px;
+          border-radius: 12px;
 
           box-shadow: inset 0 0 8px 0 rgba(25, 25, 25, 0.16);
           background-color: rgba(213, 213, 213, 0.72);
@@ -142,8 +142,52 @@
     color: $white;
     text-transform: uppercase;
   }
-  &.desktop{
+  // Affichage Desktop
+  // .storySection
+  &.desktop {
+    // border: 2px solid red;
+    margin: 48px 4em 0 38.8em; // ou 388px;
     width: auto;
     padding-top: 0;
+    .separation {
+      display: none;
+    }
+    .storyContainer {
+      // border: 2px solid blue;
+
+      padding: 0 0 39px 0;
+      .header {
+        display: flex;
+        justify-content: space-between;
+        .writter {
+          text-align: end;
+          line-height: 1.5;
+          font-size: 14px;
+        }
+      }
+      .storyCard {
+        padding-bottom: 26px;
+        .title {
+          font-size: $story-title-desktop;
+        }
+        .content {
+          .readMore {
+            // float: right;
+          }
+        }
+        .footer {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          align-items: center;
+          .storyAction {
+            width: 36% !important;
+            .iconAction {
+              font-size: $icon-story-action-desktop;
+            }
+          }
+        }
+      }
+    }
   }
 }

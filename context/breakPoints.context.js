@@ -5,8 +5,9 @@ const BreakPointContext = createContext();
 const breakPoints = {
   mobile: '(max-width:659px)',
   tablet: '(min-width:660px) and (max-width:768px)',
-  laptop: '(min-width:769px) and (max-width:1023px)',
-  desktop: '(min-width:1024px)',
+  laptop: '(min-width:769px) and (max-width:1439px)',
+  //large-laptop: '(min-width:1024px) and (max-width:1439px)',
+  desktop: '(min-width:1440px)',
 };
 
 //

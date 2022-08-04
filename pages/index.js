@@ -36,10 +36,8 @@ export default function Home({ posts }) {
         <DisplayStories
           stories={posts}
           cssBreakPoint={breakPoint}></DisplayStories>
-        {(breakPoint === 'laptop' || breakPoint === 'desktop') && (
-          <div className='coteDroit'>
-            <p>Right side</p>
-          </div>
+        {breakPoint === 'desktop' && (
+          <div className={styles.coteDroit}>{/* <p>Right side</p> */}</div>
         )}
       </div>
     </>
