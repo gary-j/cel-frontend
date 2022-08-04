@@ -1,12 +1,16 @@
+@import '../styles/tools/colors', '../styles/tools/fonts';
 .desktop{
-    padding: 48px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     
     .coteDroit{
         height: 740px;
-        width: auto;
-        background-color: rgb(220, 18, 18);
+        width: 300px;
+        border: 2px solid $dark-green-2;
+        border-radius: 24px;
+        flex-shrink: 0;
+        margin-right: 48px;
+        // background-color: rgb(220, 18, 18);
     }
 }
