@@ -32,7 +32,7 @@ export default function Home({ posts }) {
           (breakPoint === 'laptop' || breakPoint === 'desktop') &&
           styles.desktop
         }>
-        {(breakPoint === 'laptop' || breakPoint === 'desktop') && <Menu></Menu>}
+        {/* {(breakPoint === 'laptop' || breakPoint === 'desktop') && <Menu></Menu>} */}
         <DisplayStories
           stories={posts}
           cssBreakPoint={breakPoint}></DisplayStories>

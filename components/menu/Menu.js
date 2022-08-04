@@ -24,7 +24,7 @@ function Menu({ isOpen, toggleMenu }) {
   // console.log('cssbreak : ', cssbreak);
   return (
     <>
-      <div
+      <nav
         className={`
           ${styles.sideMenuContainer} ${isOpen === true ? styles.active : ''} ${
           breakPoint === 'desktop' || breakPoint === 'laptop'
@@ -88,7 +88,7 @@ function Menu({ isOpen, toggleMenu }) {
             </div>
           </div>
         ) : null}
-      </div>
+      </nav>
       {displayForm && <SignFormContainer closeForm={setDisplayForm} />}
     </>
   );
