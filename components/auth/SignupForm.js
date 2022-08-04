@@ -1,5 +1,4 @@
-import React from 'react';
-import { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import { publicRequest } from '../../utils/axiosRequest';
 import { AuthContext } from '../../context/auth.context';
@@ -31,7 +30,7 @@ const SignupForm = (props) => {
   const [selectedThemes, setSelectedThemes] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [inputError, setInputError] = useState('');
-  const [displayNextFormPart, setDsiplayNextFormPart] = useState(false);
+  const [displayNextFormPart, setDsiplayNextFormPart] = useState(true);
   const router = useRouter();
   const [themesFromDB, setThemesFromDB] = useState([
     {
@@ -169,6 +168,7 @@ const SignupForm = (props) => {
     setPasswordShown(!passwordShown);
   };
   //
+  console.log('*** props signup FORM: ', props);
 
   return (
     <>
@@ -178,7 +178,7 @@ const SignupForm = (props) => {
       <div
         className={`${styles.formContent} ${
           successSignUp ? styles.successSignup : ''
-        }`}>
+        } ${props.cssBreakPoint === 'desktop' ? styles.desktop : null}`}>
         <div className={styles.formHeader}>
           <div className={styles.title}>
             <h3>Inscription</h3>
@@ -275,153 +275,169 @@ const SignupForm = (props) => {
                         id='userInfos'
                         className={styles.fieldset}>
                         {/* <div> */}
-                        <label className={styles.label} htmlFor='lastname'>
-                          Nom <span className={styles.asterisque}>*</span>
-                        </label>
-                        <input
-                          className={`${styles.input} ${
-                            inputError === 'lastname' ? styles.invalid : null
-                          }`}
-                          autoFocus={inputError === 'lastname' ? true : false}
-                          form='signupForm'
-                          id='lastname'
-                          placeholder='Dupont'
-                          type='text'
-                          name='lastname'
-                          value={lastname}
-                          onChange={handleLastname}
-                          required
-                        />
-                        {inputError === 'lastname' && (
-                          <span className={styles.inputError}>
-                            Merci de renseigner votre Nom.
-                          </span>
-                        )}
-
-                        <label className={styles.label} htmlFor='firstname'>
-                          Prenom <span className={styles.asterisque}>*</span>
-                        </label>
-                        <input
-                          className={`${styles.input} ${
-                            inputError === 'firstname' ? styles.invalid : null
-                          }`}
-                          autoFocus={inputError === 'firstname' ? true : false}
-                          form='signupForm'
-                          id='firstname'
-                          placeholder='Catherine'
-                          type='text'
-                          name='firstname'
-                          value={firstname}
-                          onChange={handleFirstname}
-                          required
-                        />
-                        {inputError === 'firstname' && (
-                          <span className={styles.inputError}>
-                            Merci de renseigner votre Prénom.
-                          </span>
-                        )}
-
-                        <label className={styles.label} htmlFor='username'>
-                          Nom d'utilisateur{' '}
-                          <span className={styles.asterisque}>*</span>
-                        </label>
-                        <input
-                          className={`${styles.input} ${
-                            inputError === 'username' ? styles.invalid : null
-                          }`}
-                          autoFocus={inputError === 'username' ? true : false}
-                          form='signupForm'
-                          id='username'
-                          placeholder='Cathy_cat'
-                          type='text'
-                          name='username'
-                          value={username}
-                          onChange={handleUsername}
-                          required
-                        />
-                        {inputError === 'username' && (
-                          <span className={styles.inputError}>
-                            {errorMessage}
-                          </span>
-                        )}
-
-                        <label className={styles.label} htmlFor='email'>
-                          Adresse email{' '}
-                          <span className={styles.asterisque}>*</span>
-                        </label>
-                        <input
-                          className={`${styles.input} ${
-                            inputError === 'email' ? styles.invalid : null
-                          }`}
-                          autoFocus={inputError === 'email' ? true : false}
-                          form='signupForm'
-                          placeholder='catherine-dupont@gmail.com'
-                          type='email'
-                          name='email'
-                          value={email}
-                          onChange={handleEmail}
-                          required
-                        />
-                        {inputError === 'email' && (
-                          <span className={styles.inputError}>
-                            {errorMessage}
-                          </span>
-                        )}
-                        <label className={styles.label} htmlFor='password'>
-                          Mot de passe{' '}
-                          <span className={styles.asterisque}>*</span>
-                        </label>
-                        <div className={styles.password}>
+                        <div className={styles.inputBox}>
+                          <label className={styles.label} htmlFor='lastname'>
+                            Nom <span className={styles.asterisque}>*</span>
+                          </label>
                           <input
                             className={`${styles.input} ${
-                              inputError === 'password' ? styles.invalid : null
+                              inputError === 'lastname' ? styles.invalid : null
                             }`}
-                            autoFocus={inputError === 'password' ? true : false}
+                            autoFocus={inputError === 'lastname' ? true : false}
                             form='signupForm'
-                            placeholder='password'
-                            type={passwordShown ? 'text' : 'password'}
-                            name='password'
-                            value={password}
-                            onChange={handlePassword}
+                            id='lastname'
+                            placeholder='Dupont'
+                            type='text'
+                            name='lastname'
+                            value={lastname}
+                            onChange={handleLastname}
                             required
                           />
-                          <Icon_view
-                            className={styles.showPassword}
-                            onClick={() => togglePassword()}
-                          />
+                          {inputError === 'lastname' && (
+                            <span className={styles.inputError}>
+                              Merci de renseigner votre Nom.
+                            </span>
+                          )}
                         </div>
 
-                        {inputError === 'password' && (
-                          <span className={styles.inputError}>
-                            {errorMessage}
-                          </span>
-                        )}
+                        <div className={styles.inputBox}>
+                          <label className={styles.label} htmlFor='firstname'>
+                            Prenom <span className={styles.asterisque}>*</span>
+                          </label>
+                          <input
+                            className={`${styles.input} ${
+                              inputError === 'firstname' ? styles.invalid : null
+                            }`}
+                            autoFocus={
+                              inputError === 'firstname' ? true : false
+                            }
+                            form='signupForm'
+                            id='firstname'
+                            placeholder='Catherine'
+                            type='text'
+                            name='firstname'
+                            value={firstname}
+                            onChange={handleFirstname}
+                            required
+                          />
+                          {inputError === 'firstname' && (
+                            <span className={styles.inputError}>
+                              Merci de renseigner votre Prénom.
+                            </span>
+                          )}
+                        </div>
+                        <div className={styles.inputBox}>
+                          <label className={styles.label} htmlFor='username'>
+                            Nom d'utilisateur{' '}
+                            <span className={styles.asterisque}>*</span>
+                          </label>
+                          <input
+                            className={`${styles.input} ${
+                              inputError === 'username' ? styles.invalid : null
+                            }`}
+                            autoFocus={inputError === 'username' ? true : false}
+                            form='signupForm'
+                            id='username'
+                            placeholder='Cathy_cat'
+                            type='text'
+                            name='username'
+                            value={username}
+                            onChange={handleUsername}
+                            required
+                          />
+                          {inputError === 'username' && (
+                            <span className={styles.inputError}>
+                              {errorMessage}
+                            </span>
+                          )}
+                        </div>
+                        <div className={styles.inputBox}>
+                          <label className={styles.label} htmlFor='email'>
+                            Adresse email{' '}
+                            <span className={styles.asterisque}>*</span>
+                          </label>
+                          <input
+                            className={`${styles.input} ${
+                              inputError === 'email' ? styles.invalid : null
+                            }`}
+                            autoFocus={inputError === 'email' ? true : false}
+                            form='signupForm'
+                            placeholder='catherine-dupont@gmail.com'
+                            type='email'
+                            name='email'
+                            value={email}
+                            onChange={handleEmail}
+                            required
+                          />
+                          {inputError === 'email' && (
+                            <span className={styles.inputError}>
+                              {errorMessage}
+                            </span>
+                          )}
+                        </div>
+                        <div className={styles.inputBox}>
+                          <label className={styles.label} htmlFor='password'>
+                            Mot de passe{' '}
+                            <span className={styles.asterisque}>*</span>
+                          </label>
+                          <div className={styles.password}>
+                            <input
+                              className={`${styles.input} ${
+                                inputError === 'password'
+                                  ? styles.invalid
+                                  : null
+                              }`}
+                              autoFocus={
+                                inputError === 'password' ? true : false
+                              }
+                              form='signupForm'
+                              placeholder='password'
+                              type={passwordShown ? 'text' : 'password'}
+                              name='password'
+                              value={password}
+                              onChange={handlePassword}
+                              required
+                            />
+                            <Icon_view
+                              className={styles.showPassword}
+                              onClick={() => togglePassword()}
+                            />
+                          </div>
 
-                        <label className={styles.label} htmlFor='dateOfBirth'>
-                          Date de naissance{' '}
-                          <span className={styles.asterisque}>*</span>
-                        </label>
-                        <input
-                          className={`${styles.input} ${
-                            inputError === 'dateOfBirth' ? styles.invalid : null
-                          }`}
-                          autoFocus={
-                            inputError === 'dateOfBirth' ? true : false
-                          }
-                          form='signupForm'
-                          id='dateOfBirth'
-                          type='date'
-                          name='dateOfBirth'
-                          value={dateOfBirth}
-                          onChange={handleDateOfBirth}
-                          required
-                        />
-                        {inputError === 'dateOfBirth' && (
-                          <span className={styles.inputError}>
-                            Merci de renseigner votre Date de Naissance.
-                          </span>
-                        )}
-
+                          {inputError === 'password' && (
+                            <span className={styles.inputError}>
+                              {errorMessage}
+                            </span>
+                          )}
+                        </div>
+                        <div className={styles.inputBox}>
+                          <label className={styles.label} htmlFor='dateOfBirth'>
+                            Date de naissance{' '}
+                            <span className={styles.asterisque}>*</span>
+                          </label>
+                          <input
+                            className={`${styles.input} ${
+                              inputError === 'dateOfBirth'
+                                ? styles.invalid
+                                : null
+                            }`}
+                            autoFocus={
+                              inputError === 'dateOfBirth' ? true : false
+                            }
+                            form='signupForm'
+                            id='dateOfBirth'
+                            type='date'
+                            name='dateOfBirth'
+                            value={dateOfBirth}
+                            onChange={handleDateOfBirth}
+                            required
+                          />
+                          {inputError === 'dateOfBirth' && (
+                            <span className={styles.inputError}>
+                              Merci de renseigner votre Date de Naissance.
+                            </span>
+                          )}
+                        </div>
                         <div>
                           <p>
                             En vous inscrivant, vous acceptez nos Conditions

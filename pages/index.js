@@ -5,7 +5,6 @@ import DisplayStories from '../components/stories/DisplayStories';
 import ScrollBarPosition from '../components/scrollbar/ScrollBarPosition';
 import { useContext } from 'react';
 import { BreakPointContext } from '../context/breakPoints.context';
-import Menu from '../components/menu/Menu';
 //
 import styles from '../styles/desktop-Index.module.scss';
 
@@ -32,7 +31,6 @@ export default function Home({ posts }) {
           (breakPoint === 'laptop' || breakPoint === 'desktop') &&
           styles.desktop
         }>
-        {/* {(breakPoint === 'laptop' || breakPoint === 'desktop') && <Menu></Menu>} */}
         <DisplayStories
           stories={posts}
           cssBreakPoint={breakPoint}></DisplayStories>

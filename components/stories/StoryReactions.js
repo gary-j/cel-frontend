@@ -72,6 +72,7 @@ const StoryReactions = ({ storyID, cssBreakPoint }) => {
             {/* 🖊️ */}
             {String.fromCodePoint(0x1fab6)}
             {/* {String.fromCharCode(0x1f58a)} */}
+            {/* &#x1FAB6; */}
           </p>
         </div>
         <div>
