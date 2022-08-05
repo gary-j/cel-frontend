@@ -14,6 +14,7 @@ import LoadingMini from '../LoadingMini';
 import Icon_validate from '../../public/assets/img/svgs/icon-page-check.svg';
 import Icon_view from '../../public/assets/img/svgs/icon-page-view.svg';
 import SignUpHeaderMessage from './SignUpHeaderMessage';
+import { BreakPointContext } from '../../context/breakPoints.context';
 
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
@@ -30,7 +31,7 @@ const SignupForm = (props) => {
   const [selectedThemes, setSelectedThemes] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [inputError, setInputError] = useState('');
-  const [displayNextFormPart, setDsiplayNextFormPart] = useState(false);
+  const [displayNextFormPart, setDsiplayNextFormPart] = useState(true);
   const router = useRouter();
   const [themesFromDB, setThemesFromDB] = useState([
     {
@@ -50,6 +51,8 @@ const SignupForm = (props) => {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleDateOfBirth = (e) => setDateOfBirth(e.target.value);
+  //
+  const { breakPoint } = useContext(BreakPointContext);
   //
   // useEffect appel BD pour récupérer les thèmes hors staticprops
   useEffect(() => {
@@ -177,9 +180,13 @@ const SignupForm = (props) => {
       <div
         className={`${styles.formContent} ${
           successSignUp ? styles.successSignup : ''
-        } ${props.cssBreakPoint === 'desktop' ? styles.desktop : null} ${
-          displayNextFormPart ? styles.secondPart : null
-        } ${successSignUp ? styles.thirdPart : null}`}>
+        } ${
+          breakPoint === 'desktop' || breakPoint === 'laptop'
+            ? styles.desktop
+            : null
+        } ${displayNextFormPart ? styles.secondPart : null} ${
+          successSignUp ? styles.thirdPart : null
+        }`}>
         <div className={styles.formHeader}>
           <div className={styles.title}>
             <h3>Inscription</h3>
@@ -251,7 +258,7 @@ const SignupForm = (props) => {
             </div>
             <div className={styles.trait + ' ' + styles.court}></div>
           </div>
-          {props.cssBreakPoint === 'desktop' && (
+          {(breakPoint === 'laptop' || breakPoint === 'desktop') && (
             <div className={styles.textProgressBar}>
               <div className={styles.text1}>
                 <p>Formulaire d'inscription</p>
@@ -537,7 +544,7 @@ const SignupForm = (props) => {
                         </button>
                         {/* </div> */}
                         <button type='submit' className={styles.btnVert}>
-                          CONFIRMER
+                          Étape suivante
                         </button>
                       </fieldset>
                     </div>

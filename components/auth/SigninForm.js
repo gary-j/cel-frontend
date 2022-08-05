@@ -16,9 +16,11 @@ import Icon_view from '../../public/assets/img/svgs/icon-page-view.svg';
 import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.svg';
 import Loading from '../Loading';
 //
+import { BreakPointContext } from '../../context/breakPoints.context';
+//
 const SigninForm = (props) => {
   // console.log('*** PROPS signin : ', props);
-
+  const { breakPoint } = useContext(BreakPointContext);
   const { storeToken, authenticateUser, isLoading, setIsLoading } =
     useContext(AuthContext);
 
@@ -83,7 +85,9 @@ const SigninForm = (props) => {
         <>
           <div
             className={`${styles.formContent} ${
-              props.cssBreakPoint === 'desktop' ? styles.desktop : null
+              breakPoint === 'desktop' || breakPoint === 'laptop'
+                ? styles.desktop
+                : null
             }
             `}>
             <div className={styles.title}>
