@@ -30,7 +30,7 @@ const SignupForm = (props) => {
   const [selectedThemes, setSelectedThemes] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [inputError, setInputError] = useState('');
-  const [displayNextFormPart, setDsiplayNextFormPart] = useState(true);
+  const [displayNextFormPart, setDsiplayNextFormPart] = useState(false);
   const router = useRouter();
   const [themesFromDB, setThemesFromDB] = useState([
     {
@@ -168,7 +168,6 @@ const SignupForm = (props) => {
     setPasswordShown(!passwordShown);
   };
   //
-  console.log('*** props signup FORM: ', props);
 
   return (
     <>
@@ -178,7 +177,9 @@ const SignupForm = (props) => {
       <div
         className={`${styles.formContent} ${
           successSignUp ? styles.successSignup : ''
-        } ${props.cssBreakPoint === 'desktop' ? styles.desktop : null}`}>
+        } ${props.cssBreakPoint === 'desktop' ? styles.desktop : null} ${
+          displayNextFormPart ? styles.secondPart : null
+        } ${successSignUp ? styles.thirdPart : null}`}>
         <div className={styles.formHeader}>
           <div className={styles.title}>
             <h3>Inscription</h3>
@@ -193,6 +194,7 @@ const SignupForm = (props) => {
               successSignUp={successSignUp}
             />
           </div>
+          {/* ProgessBar */}
           <div className={styles.progressBar}>
             <div
               className={
@@ -249,7 +251,27 @@ const SignupForm = (props) => {
             </div>
             <div className={styles.trait + ' ' + styles.court}></div>
           </div>
+          {props.cssBreakPoint === 'desktop' && (
+            <div className={styles.textProgressBar}>
+              <div className={styles.text1}>
+                <p>Formulaire d'inscription</p>
+              </div>
+              <div
+                className={`${styles.text2} ${
+                  displayNextFormPart ? styles.selected : null
+                }`}>
+                <p>Thèmes Favoris</p>
+              </div>
+              <div
+                className={`${styles.text3} ${
+                  successSignUp ? styles.selected : null
+                }`}>
+                <p>Validation</p>
+              </div>
+            </div>
+          )}
         </div>
+        {/* END ProgessBar */}
         {(function () {
           if (!successSignUp) {
             return (
@@ -467,49 +489,53 @@ const SignupForm = (props) => {
                         form='signupForm'
                         id='themesSelection'
                         className={`${styles.fieldset} `}>
-                        <div>
-                          <button
-                            className={styles.backButton}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setDsiplayNextFormPart(false);
-                            }}>
-                            Revenir en arrière
-                          </button>
-                        </div>
                         {inputError === 'themes' && (
                           <span className={styles.themeError}>
                             {errorMessage}
                           </span>
                         )}
-                        {themesFromDB.map((theme) => (
-                          <div
-                            key={theme._id}
-                            className={` ${styles.themeBtn} ${
-                              selectedThemes.includes(theme._id)
-                                ? styles.selected
-                                : ''
-                            } `}
-                            id={theme._id}
-                            data-target={theme._id}
-                            onClick={handleToggle}>
-                            <p data-target={theme._id} className={styles.text}>
-                              {theme.name}
-                            </p>
-
-                            <Image
-                              className={`${theme.svg_title} ${styles.svg}`}
-                              src={`${
+                        <div className={styles.themesContainer}>
+                          {themesFromDB.map((theme) => (
+                            <div
+                              key={theme._id}
+                              className={` ${styles.themeBtn} ${
                                 selectedThemes.includes(theme._id)
-                                  ? `/assets/img/svgs/${theme.svg_title}-selected.svg`
-                                  : `/assets/img/svgs/${theme.svg_title}-unselected.svg`
-                              }`}
-                              alt={theme.svg_title}
-                              height='40px'
-                              width='40px'
-                              data-target={theme._id}></Image>
-                          </div>
-                        ))}
+                                  ? styles.selected
+                                  : ''
+                              } `}
+                              id={theme._id}
+                              data-target={theme._id}
+                              onClick={handleToggle}>
+                              <p
+                                data-target={theme._id}
+                                className={styles.text}>
+                                {theme.name}
+                              </p>
+
+                              <Image
+                                className={`${theme.svg_title} ${styles.svg}`}
+                                src={`${
+                                  selectedThemes.includes(theme._id)
+                                    ? `/assets/img/svgs/${theme.svg_title}-selected.svg`
+                                    : `/assets/img/svgs/${theme.svg_title}-unselected.svg`
+                                }`}
+                                alt={theme.svg_title}
+                                height='40px'
+                                width='40px'
+                                data-target={theme._id}></Image>
+                            </div>
+                          ))}
+                        </div>
+                        {/* <div> */}
+                        <button
+                          className={styles.backButton}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setDsiplayNextFormPart(false);
+                          }}>
+                          Revenir en arrière
+                        </button>
+                        {/* </div> */}
                         <button type='submit' className={styles.btnVert}>
                           CONFIRMER
                         </button>

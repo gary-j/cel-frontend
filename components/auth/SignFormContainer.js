@@ -7,7 +7,7 @@ import { BreakPointContext } from '../../context/breakPoints.context';
 
 const SignFormContainer = (props) => {
   const [signForm, setSignForm] = useState('signin');
-  console.log('*** PROPS SigngormContainer: ', props);
+  // console.log('*** PROPS SigngormContainer: ', props);
   let newprops = {
     closeForm: props.closeForm,
     setSignForm: setSignForm,
