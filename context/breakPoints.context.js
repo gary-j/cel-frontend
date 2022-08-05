@@ -12,7 +12,7 @@ const breakPoints = {
 
 //
 function BreakPointProviderWrapper(props) {
-  const [breakPoint, setBreakPoint] = useState();
+  const [breakPoint, setBreakPoint] = useState('(min-width:1440px)');
   useEffect(() => {
     breakPointObserver(breakPoints, setBreakPoint);
   }, [breakPoint]);
