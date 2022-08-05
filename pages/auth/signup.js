@@ -1,10 +1,10 @@
-import SignupForm from '../../components/auth/SignupForm';
-const signup = () => {
-  return (
-    <>
-      <SignupForm />
-    </>
-  );
-};
+// import SignupForm from '../../components/auth/SignupForm';
+// const signup = () => {
+//   return (
+//     <>
+//       <SignupForm />
+//     </>
+//   );
+// };
 
-export default signup;
+// export default signup;
