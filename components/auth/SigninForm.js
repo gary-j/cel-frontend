@@ -81,7 +81,11 @@ const SigninForm = (props) => {
         <Loading></Loading>
       ) : (
         <>
-          <div className={styles.formContent}>
+          <div
+            className={`${styles.formContent} ${
+              props.cssBreakPoint === 'desktop' ? styles.desktop : null
+            }
+            `}>
             <div className={styles.title}>
               <h3>Connexion</h3>
               <Icon_close

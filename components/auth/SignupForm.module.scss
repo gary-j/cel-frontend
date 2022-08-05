@@ -179,6 +179,107 @@
     margin-top: 2em;
     height: 70%;
   }
+  // Affichage Desktop
+  // .formContent
+  &.desktop {
+    width: 648px;
+    height: 650px !important;
+    margin: auto !important;
+    // border: 1px solid gold;
+
+    &.secondPart {
+      height: 740px !important;
+    }
+    &.thirdPart{
+      height: 620px !important ;
+    }
+    .successBody{
+      height: 69%;
+    }
+    .formHeader {
+      .progressBar {
+        .trait {
+          &.court {
+            width: 15% !important;
+          }
+        }
+
+      }
+      .textProgressBar {
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        // justify-content: space-around;
+        @include basics;
+        font-size: 12px;
+        color: $inactive;
+        .text1{
+          margin-left: 4em;
+          color: $dark-green-1;
+        }
+        .text2{
+          margin-left:6em;
+          &.selected{
+            color: $dark-green-1;
+          }
+        }
+        .text3{
+          margin-left:10em;
+          &.selected{
+            color: $dark-green-1;
+          }
+        }
+        margin-bottom: 51px;
+      }
+    }
+    .step1 {
+      height: 387px !important;
+
+      .fieldset {
+        height: 386px !important;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .inputBox {
+          // border: 1px solid gold;
+          width: calc(50% - 24px); //24px gap au mileu
+        }
+      }
+      .btnVert {
+        width: 151px;
+        margin: 32px auto;
+      }
+    }
+
+    .step2 {
+      // border: 2px solid rgb(199, 0, 80) !important;
+      padding-bottom: 0 !important;
+      .fieldset {
+        .themesContainer {
+          display: grid !important  ;
+          grid-template-columns: repeat(3, 1fr);
+          .themeBtn {
+            width: 184px;
+            height: 156px;
+            display: flex !important;
+            flex-direction: column-reverse;
+            justify-content: space-evenly;
+            text-align: center;
+          }
+        }
+        .backButton {
+          width: 110px;
+          margin: auto;
+          font-size: 1em;
+        }
+        .btnVert {
+          position: unset;
+          width: 151px;
+          margin: auto;
+        }
+      }
+    }
+  }
 }
 
 .step1 {
@@ -230,6 +331,7 @@
       border-radius: 12px;
       box-shadow: 8px 8px 32px 0 rgba(0, 60, 63, 0.12);
       background-color: #fff;
+      cursor: pointer;
       .text {
         font-family: $font;
         font-size: $secondary-text;
@@ -265,16 +367,6 @@
   }
 }
 
-.themeBtn:hover p {
-  color: blue;
+.themeBtn:hover {
   background-color: rgb(182, 182, 192);
 }
-
-// div.selected {
-//   border: 2px solid green;
-//   background-color: rgb(23, 175, 114);
-// }
-
-// .selected {
-//   color: purple;
-// }

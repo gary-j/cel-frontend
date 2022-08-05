@@ -30,7 +30,7 @@ function AuthProviderWrapper(props) {
   };
 
   const authenticateUser = useCallback(() => {
-    console.log('*** AuthContext - authenticateUser ***');
+    // console.log('*** AuthContext - authenticateUser ***');
     // Get the stored token from the localStorage
     const storedToken = localStorage.getItem('authToken');
 
