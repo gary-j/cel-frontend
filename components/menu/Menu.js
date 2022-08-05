@@ -5,6 +5,7 @@ import styles from './Menu.module.scss';
 //
 import { AuthContext } from '../../context/auth.context';
 import { BreakPointContext } from '../../context/breakPoints.context';
+import { HideThisComponentContext } from '../../context/hideThisComponent.context';
 //
 import Icon_connect from '../../public/assets/img/svgs/icon-page-connect.svg';
 import Icon_home from '../../public/assets/img/svgs/icon-menu-home.svg';
@@ -20,8 +21,7 @@ function Menu({ isOpen, toggleMenu }) {
   const [displayForm, setDisplayForm] = useState(false);
   //
   const { breakPoint } = useContext(BreakPointContext);
-  // let cssbreak = breakPoint;
-  // console.log('cssbreak : ', cssbreak);
+  const { isHidden, setIsHidden } = useContext(HideThisComponentContext);
   return (
     <>
       <nav
@@ -47,7 +47,10 @@ function Menu({ isOpen, toggleMenu }) {
         ) : (
           <div
             className={styles.menuLogin}
-            onClick={() => setDisplayForm(!displayForm)}>
+            onClick={() => {
+              setDisplayForm(true);
+              setIsHidden(true);
+            }}>
             <Icon_connect className={styles.icon} />
             <p className={styles.p}>Connexion/Inscription</p>
           </div>

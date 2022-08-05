@@ -1,6 +1,9 @@
 @import '../../styles/tools/colors', '../../styles/tools/fonts';
 
 .storiesSection {
+  &.hidden{
+    display: none;
+  }
   width: inherit;
   margin: 0 2em;
   padding-top: 80px;

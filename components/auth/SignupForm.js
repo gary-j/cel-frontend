@@ -17,10 +17,10 @@ import SignUpHeaderMessage from './SignUpHeaderMessage';
 
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
-const SignupForm = (props) => {
+const SignupForm = ({ props }) => {
   const { storeToken, authenticateUser, isLoading, setIsLoading, user } =
     useContext(AuthContext);
-
+  //
   const [lastname, setLastname] = useState('');
   const [firstname, setFirstname] = useState('');
   const [username, setUsername] = useState('');
@@ -185,7 +185,10 @@ const SignupForm = (props) => {
             <h3>Inscription</h3>
             <Icon_close
               className={styles.close}
-              onClick={() => props.props.closeForm(false)}
+              onClick={() => {
+                props.closeForm(false);
+                props.setIsHidden(false);
+              }}
             />
           </div>
           <div className={styles.description}>
@@ -560,7 +563,7 @@ const SignupForm = (props) => {
             }
             return (
               <div className={styles.successBody}>
-                <SuccessSignup props={props.props} user={user}></SuccessSignup>
+                <SuccessSignup props={props} user={user}></SuccessSignup>
               </div>
             );
           }

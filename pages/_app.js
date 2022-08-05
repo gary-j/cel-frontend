@@ -4,14 +4,17 @@ import '../styles/globals.scss';
 
 import { AuthProviderWrapper } from '../context/auth.context';
 import { BreakPointProviderWrapper } from '../context/breakPoints.context';
+import { HideThisComponentProviderWrapper } from '../context/hideThisComponent.context';
 //
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProviderWrapper>
       <BreakPointProviderWrapper>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <HideThisComponentProviderWrapper>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </HideThisComponentProviderWrapper>
       </BreakPointProviderWrapper>
     </AuthProviderWrapper>
   );

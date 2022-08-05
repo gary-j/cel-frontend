@@ -16,7 +16,7 @@ import Icon_view from '../../public/assets/img/svgs/icon-page-view.svg';
 import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.svg';
 import Loading from '../Loading';
 //
-const SigninForm = (props) => {
+const SigninForm = ({ props }) => {
   // console.log('*** PROPS signin : ', props);
 
   const { storeToken, authenticateUser, isLoading, setIsLoading } =
@@ -56,7 +56,7 @@ const SigninForm = (props) => {
         setErrorMessage('');
         setIsLoading(false);
 
-        props.props.closeForm(false);
+        props.closeForm(false);
         // router.push('/');
         // navigate('/');
       })
@@ -90,7 +90,10 @@ const SigninForm = (props) => {
               <h3>Connexion</h3>
               <Icon_close
                 className={styles.close}
-                onClick={() => props.props.closeForm(false)}
+                onClick={() => {
+                  props.closeForm(false);
+                  props.setIsHidden(false);
+                }}
               />
             </div>
             <div className={styles.socials}>
@@ -171,7 +174,7 @@ const SigninForm = (props) => {
               <Link href='#'>
                 <a
                   className={styles.link}
-                  onClick={() => props.props.setSignForm('signup')}>
+                  onClick={() => props.setSignForm('signup')}>
                   Créer mon compte
                 </a>
                 {/* on clique afficher le formulaire de création de compte*/}

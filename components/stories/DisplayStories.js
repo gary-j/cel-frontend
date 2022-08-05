@@ -11,6 +11,7 @@ import Icon_story_report from '../../public/assets/img/svgs/icon-story-report.sv
 import Icon_story_share from '../../public/assets/img/svgs/icon-story-share.svg';
 import StoryReactions from './StoryReactions';
 //
+import { HideThisComponentContext } from '../../context/hideThisComponent.context';
 //
 const DisplayStories = ({ stories, cssBreakPoint }) => {
   // console.log(
@@ -19,7 +20,7 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
   //   ' et le breakpoint : ',
   //   cssBreakPoint
   // );
-
+  const { isHidden, setIsHidden } = useContext(HideThisComponentContext);
   const [visible, setVisible] = useState(5);
   const showMoreStories = () => {
     setVisible((prevValue) => prevValue + 3);
@@ -36,7 +37,7 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
             cssBreakPoint === 'desktop' || cssBreakPoint === 'laptop'
               ? styles.desktop
               : ''
-          }`
+          } ${isHidden ? styles.hidden : null}`
         }>
         {stories.slice(0, visible).map((story) => {
           const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
