@@ -158,7 +158,9 @@
           }
           .backButton {
             border: 1px solid red;
-            margin-bottom: 1em;
+            width: 200px;
+            margin: auto;
+            margin-bottom: 0.5em;
             background-color: $red;
             padding: 0.3em;
             border-radius: 0.3em;
@@ -370,15 +372,15 @@
     }
     .btnVert {
       height: 40px;
-      margin: 28px 0 20px;
+      margin: 28px auto 20px;
       padding: 12px 20px 14px;
       border-radius: 4px;
       background-color: $dark-green-2;
       color: $white;
       text-transform: uppercase;
-      position: fixed;
-      width: calc(100% - 60px);
-      bottom: 28px;
+      // position: fixed;
+      width: 100%;
+      // bottom: 28px;
     }
   }
 }
