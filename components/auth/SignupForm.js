@@ -31,7 +31,7 @@ const SignupForm = (props) => {
   const [selectedThemes, setSelectedThemes] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [inputError, setInputError] = useState('');
-  const [displayNextFormPart, setDsiplayNextFormPart] = useState(true);
+  const [displayNextFormPart, setDsiplayNextFormPart] = useState(false);
   const router = useRouter();
   const [themesFromDB, setThemesFromDB] = useState([
     {
