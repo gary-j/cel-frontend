@@ -8,7 +8,8 @@
   padding: 20px 16px 32px;
   border-radius: 8px;
   background-color: #f5f7f8;
-  overflow-y: scroll;
+  // overflow-y: scroll;
+  overflow: hidden;
   &.successSignup {
     height: calc(70vh);
     margin: 0px 28px 168px;
@@ -102,17 +103,21 @@
       width: 100%;
       position: relative;
       overflow-x: hidden;
-      overflow-y: scroll;
+      // overflow-y: scroll;
+      .fieldContainer::-webkit-scrollbar {
+        display: none;
+      }
       .fieldContainer {
         height: 100%;
         padding-bottom: 48px;
         // border: 2px solid orangered;
         position: absolute;
         overflow-y: scroll;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
 
         .fieldset {
           height: max-content;
-          overflow-y: scroll;
           border: none;
           // border: 2px solid blue;
           width: 100%;
@@ -184,16 +189,17 @@
   &.desktop {
     width: 648px;
     height: 650px !important;
-    margin: auto !important;
+    margin-top: 122px !important;
     // border: 1px solid gold;
 
     &.secondPart {
       height: 740px !important;
     }
-    &.thirdPart{
+    &.thirdPart {
       height: 620px !important ;
+      margin: auto;
     }
-    .successBody{
+    .successBody {
       height: 69%;
     }
     .formHeader {
@@ -203,7 +209,6 @@
             width: 15% !important;
           }
         }
-
       }
       .textProgressBar {
         text-align: center;
@@ -213,69 +218,80 @@
         @include basics;
         font-size: 12px;
         color: $inactive;
-        .text1{
+        .text1 {
           margin-left: 4em;
           color: $dark-green-1;
         }
-        .text2{
-          margin-left:6em;
-          &.selected{
+        .text2 {
+          margin-left: 6em;
+          &.selected {
             color: $dark-green-1;
           }
         }
-        .text3{
-          margin-left:10em;
-          &.selected{
+        .text3 {
+          margin-left: 10em;
+          &.selected {
             color: $dark-green-1;
           }
         }
         margin-bottom: 51px;
       }
     }
-    .step1 {
-      height: 387px !important;
 
-      .fieldset {
-        height: 386px !important;
-        flex-direction: row !important;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        .inputBox {
-          // border: 1px solid gold;
-          width: calc(50% - 24px); //24px gap au mileu
-        }
-      }
-      .btnVert {
-        width: 151px;
-        margin: 32px auto;
-      }
-    }
+    .formBody {
+      height: 530px !important;
+      // margin-top: -2em;
+      .form {
+        // border: 1px solid rgb(0, 111, 230);
 
-    .step2 {
-      // border: 2px solid rgb(199, 0, 80) !important;
-      padding-bottom: 0 !important;
-      .fieldset {
-        .themesContainer {
-          display: grid !important  ;
-          grid-template-columns: repeat(3, 1fr);
-          .themeBtn {
-            width: 184px;
-            height: 156px;
-            display: flex !important;
-            flex-direction: column-reverse;
-            justify-content: space-evenly;
-            text-align: center;
+        .step1 {
+          height: 387px !important;
+
+          .fieldset {
+            height: 386px !important;
+            flex-direction: row !important;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            .inputBox {
+              // border: 1px solid gold;
+              width: calc(50% - 24px); //24px gap au mileu
+            }
+          }
+          .btnVert {
+            width: 151px;
+            margin: 32px auto;
           }
         }
-        .backButton {
-          width: 110px;
-          margin: auto;
-          font-size: 1em;
-        }
-        .btnVert {
-          position: unset;
-          width: 151px;
-          margin: auto;
+
+        .step2 {
+          // border: 2px solid rgb(199, 0, 80) !important;
+          padding-bottom: 5em;
+
+          .fieldset {
+            .themesContainer {
+              display: grid !important  ;
+              grid-template-columns: repeat(3, 1fr);
+              .themeBtn {
+                width: 184px;
+                height: 156px;
+                display: flex !important;
+                flex-direction: column-reverse;
+                justify-content: space-evenly;
+                text-align: center;
+              }
+            }
+            .backButton {
+              width: 110px;
+              margin: auto;
+              font-size: 1em;
+            }
+            .btnVert {
+              position: unset;
+              width: 151px;
+              margin: 0.8em auto 0;
+            }
+          }
         }
       }
     }
