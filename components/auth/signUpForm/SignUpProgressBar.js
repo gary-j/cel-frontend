@@ -30,13 +30,11 @@ const SignUpProgressBar = ({ props }) => {
               ' ' +
               styles.long +
               ' ' +
-              `${displayNextFormPart ? styles.active : null}`
+              `${displayNextFormPart ? styles.active : ''}`
             }></div>
           <div
             className={
-              styles.rond +
-              ' ' +
-              `${displayNextFormPart ? styles.active : null}`
+              styles.rond + ' ' + `${displayNextFormPart ? styles.active : ''}`
             }>
             {!displayNextFormPart ? (
               <p className={styles.numeroX}>2</p>
@@ -54,11 +52,11 @@ const SignUpProgressBar = ({ props }) => {
               ' ' +
               styles.long +
               ' ' +
-              `${successSignUp ? styles.active : null}`
+              `${successSignUp ? styles.active : ''}`
             }></div>
           <div
             className={
-              styles.rond + ' ' + `${successSignUp ? styles.active : null}`
+              styles.rond + ' ' + `${successSignUp ? styles.active : ''}`
             }>
             {successSignUp ? (
               <p className={styles.numero}>3</p>
@@ -77,13 +75,13 @@ const SignUpProgressBar = ({ props }) => {
             </div>
             <div
               className={`${styles.text2} ${
-                displayNextFormPart ? styles.selected : null
+                displayNextFormPart ? styles.selected : ''
               }`}>
               <p>Thèmes Favoris</p>
             </div>
             <div
               className={`${styles.text3} ${
-                successSignUp ? styles.selected : null
+                successSignUp ? styles.selected : ''
               }`}>
               <p>Validation</p>
             </div>

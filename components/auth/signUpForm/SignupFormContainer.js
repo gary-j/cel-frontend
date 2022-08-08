@@ -5,7 +5,7 @@ import { AuthContext } from '../../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from './SignupForm.module.scss';
+import styles from './SignupFormContainer.module.scss';
 import axios from 'axios';
 import SuccessSignup from './SuccessSignup';
 import Loading from '../../Loading';
