@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
-import SigninForm from './SigninForm';
-import SignupForm from './SignupForm';
+import SigninForm from '../auth/SigninForm';
+import SignupForm from '../auth/signUpForm/SignupForm';
 import styles from './SignFormContainer.module.scss';
 import { BreakPointContext } from '../../context/breakPoints.context';
 
@@ -10,9 +10,11 @@ const SignFormContainer = (props) => {
   const { breakPoint } = useContext(BreakPointContext);
   //
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollMax, setScrollMax] = useState(false);
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
+    setScrollMax(position > 200 ? true : false);
     console.log('signformContainer scroll Y position : ', position);
   };
   //
@@ -29,11 +31,12 @@ const SignFormContainer = (props) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrollPosition > 200]);
+  }, [scrollMax]);
   //
-  // console.log('*** PROPS SigngormContainer: ', props);
+  // console.log('*** PROPS SignFormContainer: ', props);
+  let closeForm = props.closeForm;
   let newprops = {
-    closeForm: props.closeForm,
+    closeForm: closeForm,
     setSignForm: setSignForm,
   };
 

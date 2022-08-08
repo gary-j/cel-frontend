@@ -1,24 +1,22 @@
 import React, { useContext, useState, useEffect } from 'react';
 
-import { publicRequest } from '../../utils/axiosRequest';
-import { AuthContext } from '../../context/auth.context';
+import { publicRequest } from '../../../utils/axiosRequest';
+import { AuthContext } from '../../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './SignupForm.module.scss';
-import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
 import axios from 'axios';
 import SuccessSignup from './SuccessSignup';
-import Loading from '../Loading';
-import LoadingMini from '../LoadingMini';
-import Icon_validate from '../../public/assets/img/svgs/icon-page-check.svg';
-import Icon_view from '../../public/assets/img/svgs/icon-page-view.svg';
-import SignUpHeaderMessage from './SignUpHeaderMessage';
-import { BreakPointContext } from '../../context/breakPoints.context';
+import Loading from '../../Loading';
+import LoadingMini from '../../LoadingMini';
+import Icon_view from '../../../public/assets/img/svgs/icon-page-view.svg';
+import SignUpFormHeader from './SignUpFormHeader';
 
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
 const SignupForm = (props) => {
+  const { closeForm, cssBreakPoint, setSignForm } = props;
   const { storeToken, authenticateUser, isLoading, setIsLoading, user } =
     useContext(AuthContext);
 
@@ -31,7 +29,10 @@ const SignupForm = (props) => {
   const [selectedThemes, setSelectedThemes] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [inputError, setInputError] = useState('');
+  //
   const [displayNextFormPart, setDsiplayNextFormPart] = useState(false);
+  const [successSignUp, setSuccessSignUp] = useState(false);
+  //
   const router = useRouter();
   const [themesFromDB, setThemesFromDB] = useState([
     {
@@ -42,7 +43,6 @@ const SignupForm = (props) => {
       number: '7',
     },
   ]);
-  const [successSignUp, setSuccessSignUp] = useState(false);
 
   //   const navigate = useNavigate();
   const handleLastname = (e) => setLastname(e.target.value);
@@ -52,7 +52,7 @@ const SignupForm = (props) => {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleDateOfBirth = (e) => setDateOfBirth(e.target.value);
   //
-  const { breakPoint } = useContext(BreakPointContext);
+
   //
   // useEffect appel BD pour récupérer les thèmes hors staticprops
   useEffect(() => {
@@ -171,115 +171,29 @@ const SignupForm = (props) => {
     setPasswordShown(!passwordShown);
   };
   //
-
+  let newProps = {
+    cssBreakPoint: props.cssBreakPoint,
+    closeForm: props.props.closeForm,
+    setSignForm: props.props.setSignForm,
+    displayNextFormPart: displayNextFormPart,
+    successSignUp: successSignUp,
+  };
+  // console.log('props signupForm : ', props);
   return (
     <>
-      {/* <div>
-        <Loading instruction='processing'></Loading>
-      </div> */}
       <div
         className={`${styles.formContent} ${
           successSignUp ? styles.successSignup : ''
         } ${
-          breakPoint === 'desktop' || breakPoint === 'laptop'
+          cssBreakPoint === 'desktop' || cssBreakPoint === 'laptop'
             ? styles.desktop
             : null
         } ${displayNextFormPart ? styles.secondPart : null} ${
           successSignUp ? styles.thirdPart : null
         }`}>
-        <div className={styles.formHeader}>
-          <div className={styles.title}>
-            <h3>Inscription</h3>
-            <Icon_close
-              className={styles.close}
-              onClick={() => props.props.closeForm(false)}
-            />
-          </div>
-          <div className={styles.description}>
-            <SignUpHeaderMessage
-              displayNextFormPart={displayNextFormPart}
-              successSignUp={successSignUp}
-            />
-          </div>
-          {/* ProgessBar */}
-          <div className={styles.progressBar}>
-            <div
-              className={
-                styles.trait + ' ' + styles.court + ' ' + styles.active
-              }></div>
-            <div className={styles.rond + ' ' + styles.active}>
-              {displayNextFormPart ? (
-                <Icon_validate className={styles.icon}></Icon_validate>
-              ) : (
-                <p className={styles.numero}>1</p>
-              )}
-            </div>
-            <div
-              className={
-                styles.trait +
-                ' ' +
-                styles.long +
-                ' ' +
-                `${displayNextFormPart ? styles.active : null}`
-              }></div>
-            <div
-              className={
-                styles.rond +
-                ' ' +
-                `${displayNextFormPart ? styles.active : null}`
-              }>
-              {!displayNextFormPart ? (
-                <p className={styles.numeroX}>2</p>
-              ) : successSignUp ? null : (
-                <p className={styles.numero}>2</p>
-              )}
-
-              {successSignUp ? (
-                <Icon_validate className={styles.icon}></Icon_validate>
-              ) : null}
-            </div>
-            <div
-              className={
-                styles.trait +
-                ' ' +
-                styles.long +
-                ' ' +
-                `${successSignUp ? styles.active : null}`
-              }></div>
-            <div
-              className={
-                styles.rond + ' ' + `${successSignUp ? styles.active : null}`
-              }>
-              {successSignUp ? (
-                <p className={styles.numero}>3</p>
-              ) : (
-                <p className={styles.numeroX}>3</p>
-              )}
-            </div>
-            <div className={styles.trait + ' ' + styles.court}></div>
-          </div>
-          {(breakPoint === 'laptop' || breakPoint === 'desktop') && (
-            <div className={styles.textProgressBar}>
-              <div className={styles.text1}>
-                <p>Formulaire d'inscription</p>
-              </div>
-              <div
-                className={`${styles.text2} ${
-                  displayNextFormPart ? styles.selected : null
-                }`}>
-                <p>Thèmes Favoris</p>
-              </div>
-              <div
-                className={`${styles.text3} ${
-                  successSignUp ? styles.selected : null
-                }`}>
-                <p>Validation</p>
-              </div>
-            </div>
-          )}
-          {/* fin formHeader  */}
-        </div>
-        {/* END ProgessBar */}
+        <></>
+        <SignUpFormHeader props={newProps}></SignUpFormHeader>
+        <></>
         {(function () {
           if (!successSignUp) {
             return (

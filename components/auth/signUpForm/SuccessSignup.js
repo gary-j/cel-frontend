@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon_validate from '../../public/assets/img/svgs/icon-page-validate.svg';
+import Icon_validate from '../../../public/assets/img/svgs/icon-page-validate.svg';
 import styles from './SuccessSignup.module.scss';
 
 function SuccessSignup(props) {

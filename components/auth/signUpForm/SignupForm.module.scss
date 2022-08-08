@@ -1,4 +1,4 @@
-@import '../../styles/tools/colors', '../../styles/tools/fonts';
+@import '../../../styles/tools/colors', '../../../styles/tools/fonts';
 
 .formContent {
   // border: 1px solid red;
@@ -15,85 +15,7 @@
     margin: 0px 28px 168px;
     margin-top: 28px;
   }
-  .formHeader {
-    // height: 20%;
-    width: 100%;
-    margin-bottom: 1em;
-    // border: 2px solid purple;
-    .title {
-      // height: 25%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: $big;
-      font-weight: $semi-bold;
-      margin-bottom: 0.5em;
-      //   border: 1px solid red;
-      .close {
-        font-size: 20px;
-      }
-    }
-    .description {
-      margin-bottom: 1em;
-      //   border: 1px solid red;
-      .p {
-        font-weight: $regular;
-        font-size: $secondary-text;
-      }
-    }
-    .progressBar {
-      // border: 1px solid green;
-      height: 4em;
-      margin-bottom: 2em;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      .rond {
-        height: 100%;
-        width: 4em;
-        border: 0.2em solid $dark-green-1-opacity;
-        border-radius: 50%;
-        color: $white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
 
-        &.active {
-          border-color: $dark-green-1;
-          background-color: $dark-green-1;
-        }
-        .numero {
-          font-size: $main-text;
-          font-weight: $semi-bold;
-        }
-        .numeroX {
-          font-size: $main-text;
-          font-weight: $semi-bold;
-          color: $dark-green-1-opacity;
-        }
-        .icon {
-          height: 100%;
-          width: 100%;
-        }
-      }
-      .trait {
-        height: 0.4em;
-        background-color: $dark-green-1-opacity;
-        &.active {
-          background-color: $dark-green-1;
-        }
-        &.court {
-          width: 10%;
-          // background-color: red;
-        }
-        &.long {
-          // background-color: blue;
-          width: 25%;
-        }
-      }
-    }
-  }
   .formBody {
     height: 80%;
     // border: 2px solid blue;
@@ -294,41 +216,6 @@
   }
   .successBody {
     height: 69%;
-  }
-  .formHeader {
-    .progressBar {
-      .trait {
-        &.court {
-          width: 15% !important;
-        }
-      }
-    }
-    .textProgressBar {
-      text-align: center;
-      display: flex;
-      flex-direction: row;
-      // justify-content: space-around;
-      @include basics;
-      font-size: 12px;
-      color: $inactive;
-      .text1 {
-        margin-left: 4em;
-        color: $dark-green-1;
-      }
-      .text2 {
-        margin-left: 6em;
-        &.selected {
-          color: $dark-green-1;
-        }
-      }
-      .text3 {
-        margin-left: 10em;
-        &.selected {
-          color: $dark-green-1;
-        }
-      }
-      margin-bottom: 51px;
-    }
   }
 
   .formBody {
