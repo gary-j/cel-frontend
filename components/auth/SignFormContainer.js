@@ -10,9 +10,11 @@ const SignFormContainer = (props) => {
   const { breakPoint } = useContext(BreakPointContext);
   //
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollMax, setScrollMax] = useState(false);
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
+    setScrollMax(position > 200 ? true : false);
     console.log('signformContainer scroll Y position : ', position);
   };
   //
@@ -29,7 +31,7 @@ const SignFormContainer = (props) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrollPosition > 200]);
+  }, [scrollMax]);
   //
   // console.log('*** PROPS SignFormContainer: ', props);
   let closeForm = props.closeForm;
