@@ -277,6 +277,7 @@ const SignupForm = (props) => {
               </div>
             </div>
           )}
+          {/* fin formHeader  */}
         </div>
         {/* END ProgessBar */}
         {(function () {
