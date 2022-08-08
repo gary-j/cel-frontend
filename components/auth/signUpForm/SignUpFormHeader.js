@@ -15,10 +15,7 @@ const SignUpFormHeader = ({ props }) => {
             onClick={() => closeForm(false)}
           />
         </div>
-        <SignUpHeaderMessage
-          displayNextFormPart={displayNextFormPart}
-          successSignUp={successSignUp}
-        />
+        <SignUpHeaderMessage props={props} />
         <SignUpProgressBar props={props} />
       </div>
     </>

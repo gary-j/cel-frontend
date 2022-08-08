@@ -10,13 +10,8 @@ import axios from 'axios';
 import SuccessSignup from './SuccessSignup';
 import Loading from '../../Loading';
 import LoadingMini from '../../LoadingMini';
-import Icon_close from '../../../public/assets/img/svgs/icon-page-close.svg';
-import Icon_validate from '../../../public/assets/img/svgs/icon-page-check.svg';
 import Icon_view from '../../../public/assets/img/svgs/icon-page-view.svg';
-import SignUpHeaderMessage from './SignUpHeaderMessage';
 import SignUpFormHeader from './SignUpFormHeader';
-import { BreakPointContext } from '../../../context/breakPoints.context';
-import SignUpProgressBar from './SignUpProgressBar';
 
 //
 // plus de themes en props provenant getStaticProps, useEffect à la place
@@ -24,7 +19,6 @@ const SignupForm = (props) => {
   const { closeForm, cssBreakPoint, setSignForm } = props;
   const { storeToken, authenticateUser, isLoading, setIsLoading, user } =
     useContext(AuthContext);
-  // const { breakPoint } = useContext(BreakPointContext);
 
   const [lastname, setLastname] = useState('');
   const [firstname, setFirstname] = useState('');
@@ -187,9 +181,6 @@ const SignupForm = (props) => {
   // console.log('props signupForm : ', props);
   return (
     <>
-      {/* <div>
-        <Loading instruction='processing'></Loading>
-      </div> */}
       <div
         className={`${styles.formContent} ${
           successSignUp ? styles.successSignup : ''
