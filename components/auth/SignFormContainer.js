@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
-import SigninForm from './SigninForm';
-import SignupForm from './SignupForm';
+import SigninForm from '../auth/SigninForm';
+import SignupForm from '../auth/signUpForm/SignupForm';
 import styles from './SignFormContainer.module.scss';
 import { BreakPointContext } from '../../context/breakPoints.context';
 
@@ -31,9 +31,10 @@ const SignFormContainer = (props) => {
     };
   }, [scrollPosition > 200]);
   //
-  // console.log('*** PROPS SigngormContainer: ', props);
+  // console.log('*** PROPS SignFormContainer: ', props);
+  let closeForm = props.closeForm;
   let newprops = {
-    closeForm: props.closeForm,
+    closeForm: closeForm,
     setSignForm: setSignForm,
   };
 

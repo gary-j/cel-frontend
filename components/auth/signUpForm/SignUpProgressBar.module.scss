@@ -1,0 +1,90 @@
+@import '../../../styles/tools/colors', '../../../styles/tools/fonts';
+
+.progressBar {
+    // border: 1px solid green;
+    height: 4em;
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .rond {
+      height: 100%;
+      width: 4em;
+      border: 0.2em solid $dark-green-1-opacity;
+      border-radius: 50%;
+      color: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.active {
+        border-color: $dark-green-1;
+        background-color: $dark-green-1;
+      }
+      .numero {
+        font-size: $main-text;
+        font-weight: $semi-bold;
+      }
+      .numeroX {
+        font-size: $main-text;
+        font-weight: $semi-bold;
+        color: $dark-green-1-opacity;
+      }
+      .icon {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .trait {
+      height: 0.4em;
+      background-color: $dark-green-1-opacity;
+      &.active {
+        background-color: $dark-green-1;
+      }
+      &.court {
+        width: 10%;
+        // background-color: red;
+      }
+      &.long {
+        // background-color: blue;
+        width: 25%;
+      }
+    }
+  }
+
+  // Affichage desktop
+  // .progressBar
+.desktop{
+    .trait {
+        &.court {
+          width: 15% !important;
+        }
+      }
+    }
+    .textProgressBar {
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      // justify-content: space-around;
+      @include basics;
+      font-size: 12px;
+      color: $inactive;
+      .text1 {
+        margin-left: 4em;
+        color: $dark-green-1;
+      }
+      .text2 {
+        margin-left: 6em;
+        &.selected {
+          color: $dark-green-1;
+        }
+      }
+      .text3 {
+        margin-left: 10em;
+        &.selected {
+          color: $dark-green-1;
+        }
+      }
+      margin-bottom: 48px;
+    }
