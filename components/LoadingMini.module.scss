@@ -35,3 +35,9 @@
       transform: rotate(359deg);
     }
   }
+
+  // Affichage desktop
+  .desktop{
+    width:calc(648px - 4em);
+    top: 40%;
+  }
