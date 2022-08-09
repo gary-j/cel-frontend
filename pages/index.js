@@ -11,7 +11,7 @@ import styles from '../styles/desktop-Index.module.scss';
 export default function Home({ posts }) {
   // console.log('PROPS :', posts);
   const { breakPoint } = useContext(BreakPointContext);
-  console.log('BREAKPOINT IS : ', breakPoint);
+  // console.log('BREAKPOINT IS : ', breakPoint);
   //
   return (
     <>
@@ -26,6 +26,9 @@ export default function Home({ posts }) {
       {/* <ScrollBarPosition /> */}
       {/* <h3>Breakpoint is : ' {breakPoint}'</h3> */}
       {/* <div className='searchContainer'> Recherche et filtre </div> */}
+      <div className='annonce'>
+        <p>Site web en construction...</p>
+      </div>
       <div
         className={
           (breakPoint === 'laptop' || breakPoint === 'desktop') &&
