@@ -1,15 +1,5 @@
 @import '../../styles/tools/colors', '../../styles/tools/fonts';
 
-// .formContainer {
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   width: 100%;
-//   // border: 2px solid purple;
-//   background-color: #00565bb4;
-//   display: flex;
-//   align-items: center;
-
 .formContent {
   width: calc(100% - 56px);
   margin: auto;
@@ -180,7 +170,7 @@
     margin-top: 122px !important;
   }
 }
-// }
+
 
 @keyframes rotation {
   from {

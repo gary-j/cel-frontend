@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SignUpFormHeader.module.scss';
-import Icon_close from '../../../public/assets/img/svgs/icon-page-close.svg';
+import Icon_close from '../../../../public/assets/img/svgs/icon-page-close.svg';
 import SignUpHeaderMessage from './SignUpHeaderMessage';
 import SignUpProgressBar from './SignUpProgressBar';
 const SignUpFormHeader = ({ props }) => {

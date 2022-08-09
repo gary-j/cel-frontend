@@ -16,6 +16,13 @@ body{
     fill: white;
   }
 }
+.annonce{
+  @include basics;
+  font-size: $story-title-desktop;
+  color:  $red;
+  width: 100%;
+  text-align: center;
+}
 // main{
 //   background-color: black;
 // }

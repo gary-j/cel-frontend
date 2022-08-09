@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import SigninForm from '../auth/SigninForm';
-import SignupForm from '../auth/signUpForm/SignupForm';
+import SignupFormContainer from './signUpForm/SignupFormContainer';
 import styles from './SignFormContainer.module.scss';
 import { BreakPointContext } from '../../context/breakPoints.context';
 
@@ -15,7 +15,7 @@ const SignFormContainer = (props) => {
     const position = window.pageYOffset;
     setScrollPosition(position);
     setScrollMax(position > 200 ? true : false);
-    console.log('signformContainer scroll Y position : ', position);
+    // console.log('signformContainer scroll Y position : ', position);
   };
   //
   useEffect(() => {
@@ -45,7 +45,7 @@ const SignFormContainer = (props) => {
       {signForm === 'signin' ? (
         <SigninForm props={newprops} cssBreakPoint={breakPoint} />
       ) : (
-        <SignupForm props={newprops} cssBreakPoint={breakPoint} />
+        <SignupFormContainer props={newprops} cssBreakPoint={breakPoint} />
       )}
     </div>
   );
