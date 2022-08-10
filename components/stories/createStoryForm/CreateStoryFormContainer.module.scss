@@ -1,0 +1,8 @@
+@import '../../../styles/tools/colors', '../../../styles/tools/fonts', '../../../styles/tools/form';
+
+.formContainer {
+@include formContainer;
+}
+.formContent{
+    @include formContent;
+}

@@ -1,0 +1,46 @@
+@import './colors', './fonts';
+
+@mixin formContainer {
+    z-index: 30;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: $dark-green-1;
+    display: flex;
+    align-items: center;
+  }
+  
+  @mixin formContent{
+    width: calc(100% - 28px);
+    height: calc(100vh - 28px);
+    margin: auto;
+    padding: 20px 16px 32px;
+    border-radius: 8px;
+    background-color: $background;
+    overflow: hidden;
+  }
+
+  @mixin formHeader{
+        width: 100%;
+        margin-bottom: 1em;
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: $big;
+            font-weight: $semi-bold;
+            margin-bottom: 0.5em;
+            .close {
+              font-size: $story-title;
+            }
+          }
+          .description {
+            margin-bottom: 1em;
+            //   border: 1px solid red;
+            .p {
+              font-weight: $regular;
+              font-size: $secondary-text;
+            }
+          }
+  }
