@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './StoryReactions.module.scss';
-import Icon_reaction_heart from '../../public/assets/img/svgs/icon-reaction-heart.svg';
-import Icon_reaction_party from '../../public/assets/img/svgs/icon-reaction-party.svg';
-import Icon_reaction_plume from '../../public/assets/img/svgs/icon-reaction-plume.svg';
-import Icon_reaction_smile from '../../public/assets/img/svgs/icon-reaction-smile.svg';
-import Icon_reaction_thumb from '../../public/assets/img/svgs/icon-reaction-thumb.svg';
-import Icon_plume_gary from '../../public/assets/img/svgs/icon-plume-gary.svg';
+import Icon_reaction_heart from '../../../public/assets/img/svgs/icon-reaction-heart.svg';
+import Icon_reaction_party from '../../../public/assets/img/svgs/icon-reaction-party.svg';
+import Icon_reaction_plume from '../../../public/assets/img/svgs/icon-reaction-plume.svg';
+import Icon_reaction_smile from '../../../public/assets/img/svgs/icon-reaction-smile.svg';
+import Icon_reaction_thumb from '../../../public/assets/img/svgs/icon-reaction-thumb.svg';
+import Icon_plume_gary from '../../../public/assets/img/svgs/icon-plume-gary.svg';
 
 const StoryReactions = ({ storyID, cssBreakPoint }) => {
   // console.log(

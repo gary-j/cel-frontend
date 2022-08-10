@@ -2,10 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavbarSmartphone.module.scss';
 import { useState, useContext } from 'react';
-import { AuthContext } from '../context/auth.context';
-import Menu from './menu/Menu';
-import Icon_menu_burger from '../public/assets/img/svgs/icon-menu-burger.svg';
-import Icon_close from '../public/assets/img/svgs/icon-page-close.svg';
+import { AuthContext } from '../../context/auth.context';
+import Menu from '../menu/Menu';
+import Icon_menu_burger from '../../public/assets/img/svgs/icon-menu-burger.svg';
+import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
 //
 const NavbarSmartphone = () => {
   const [isOpen, toggleMenu] = useState(false);

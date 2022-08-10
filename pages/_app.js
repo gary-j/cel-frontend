@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import Layout from '../components/commons/Layout';
 import '../styles/globals.scss';
 // import '../styles/test.scss';
 
