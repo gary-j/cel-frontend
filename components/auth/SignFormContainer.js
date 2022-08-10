@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import SigninForm from '../auth/SigninForm';
+import SigninForm from '../auth/signInForm/SigninForm';
 import SignupFormContainer from './signUpForm/SignupFormContainer';
 import styles from './SignFormContainer.module.scss';
 import { BreakPointContext } from '../../context/breakPoints.context';

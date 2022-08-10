@@ -1,5 +1,11 @@
-@import '../styles/tools/colors', '../styles/tools/fonts';
-// 
+@import '../../styles/tools/colors', '../../styles/tools/fonts';
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(8, 101, 127, 0.8);
+  width: 100vw;
+  z-index: 99;
   .loading {
     border: 2px solid $dark-green-2;
     border-radius: 0.5em;
@@ -35,9 +41,4 @@
       transform: rotate(359deg);
     }
   }
-
-  // Affichage desktop
-  .desktop{
-    width:calc(648px - 4em);
-    top: 40%;
-  }
+}

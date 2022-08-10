@@ -1,22 +1,22 @@
 import React from 'react';
 import { useContext, useState } from 'react';
 
-import { publicRequest } from '../../utils/axiosRequest';
-import { AuthContext } from '../../context/auth.context';
+import { publicRequest } from '../../../utils/axiosRequest';
+import { AuthContext } from '../../../context/auth.context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from './SigninForm.module.scss';
 import Image from 'next/image';
-import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
-import Icon_facebook from '../../public/assets/img/svgs/icon-rs-facebook.svg';
-import Icon_google from '../../public/assets/img/svgs/icon-rs-google.svg';
-import Icon_instagram from '../../public/assets/img/svgs/icon-rs-insta.svg';
-import Icon_checkboxOff from '../../public/assets/img/svgs/icon-page-checkbox-off.svg';
-import Icon_view from '../../public/assets/img/svgs/icon-page-view.svg';
-import Icon_checkboxOn from '../../public/assets/img/svgs/icon-page-checkbox-on.svg';
-import Loading from '../Loading';
+import Icon_close from '../../../public/assets/img/svgs/icon-page-close.svg';
+import Icon_facebook from '../../../public/assets/img/svgs/icon-rs-facebook.svg';
+import Icon_google from '../../../public/assets/img/svgs/icon-rs-google.svg';
+import Icon_instagram from '../../../public/assets/img/svgs/icon-rs-insta.svg';
+import Icon_checkboxOff from '../../../public/assets/img/svgs/icon-page-checkbox-off.svg';
+import Icon_view from '../../../public/assets/img/svgs/icon-page-view.svg';
+import Icon_checkboxOn from '../../../public/assets/img/svgs/icon-page-checkbox-on.svg';
+import Loading from '../../commons/Loading';
 //
-import { BreakPointContext } from '../../context/breakPoints.context';
+import { BreakPointContext } from '../../../context/breakPoints.context';
 //
 const SigninForm = (props) => {
   // console.log('*** PROPS signin : ', props);

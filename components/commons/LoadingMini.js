@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styles from './LoadingMini.module.scss';
 import Image from 'next/image';
 //
-import { BreakPointContext } from '../context/breakPoints.context';
+import { BreakPointContext } from '../../context/breakPoints.context';
 
 const Loading = (props) => {
   //   console.log('*** LoadingMini.js PROPS *** : ', props);

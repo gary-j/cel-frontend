@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { publicRequest } from '../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../context/auth.context';
 import styles from '../SignupFormContainer.module.scss';
 import Icon_view from '../../../../public/assets/img/svgs/icon-page-view.svg';
-import LoadingMini from '../../../LoadingMini';
+import LoadingMini from '../../../commons/LoadingMini';
 import Link from 'next/link';
 //
 function SignUpFormStep1({ props, fieldStateProps }) {
@@ -245,11 +245,13 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               similaires en lisant notre Politique d’utilisation des cookies.
             </p>
           </div>
-          <button
-            className={styles.btnVert}
-            onClick={(e) => handlePreSignUp(e)}>
-            Étape suivante
-          </button>
+          <div className={styles.btnBox}>
+            <button
+              className={styles.btnVert}
+              onClick={(e) => handlePreSignUp(e)}>
+              Étape suivante
+            </button>
+          </div>
           <div className={styles.haveAccount}>
             <Link href='#'>
               <a onClick={() => setSignForm('signin')}>

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { BACKEND_URL } from '../utils/consts';
 import axios from 'axios';
-import DisplayStories from '../components/stories/DisplayStories';
+import DisplayStories from '../components/stories/displayStories/DisplayStories';
 import ScrollBarPosition from '../components/scrollbar/ScrollBarPosition';
 import { useContext } from 'react';
 import { BreakPointContext } from '../context/breakPoints.context';
