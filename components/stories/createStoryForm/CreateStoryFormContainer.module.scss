@@ -5,4 +5,11 @@
 }
 .formContent{
     @include formContent;
+    overflow: scroll;
+    // hide scrollBar but still functional
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.formContent::-webkit-scrollbar{
+    display: none;
 }

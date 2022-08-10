@@ -1,0 +1,17 @@
+@import '../../../../styles/tools/colors', '../../../../styles/tools/fonts', '../../../../styles/tools/form';
+
+.fieldset{
+border: none;
+
+.fieldsetHeader{
+    @include fieldsetHeader;
+  display: flex;
+  .titleBox{
+    margin-right: 2em;
+  }
+  .separation{
+    width: 100%;
+  }
+    }
+    
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useContext, useState } from 'react';
+import Link from 'next/link';
 import styles from './Menu.module.scss';
 //
 import { AuthContext } from '../../context/auth.context';
@@ -53,7 +54,9 @@ function Menu({ isOpen, toggleMenu }) {
           </div>
         )}
         <div className={styles.buttonContainer}>
-          <button className={styles.btnRose}>SOUMETTRE</button>
+          <Link href='/story/create'>
+            <button className={styles.btnRose}>SOUMETTRE</button>
+          </Link>
           <button className={styles.btnTransparent}>MODÉRER</button>
         </div>
         <div className={styles.menuItemContainer}>

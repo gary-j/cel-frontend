@@ -1,0 +1,6 @@
+@import '../../../../styles/tools/colors', '../../../../styles/tools/fonts', '../../../../styles/tools/form';
+
+.formBody{
+    @include formBody;
+    
+}

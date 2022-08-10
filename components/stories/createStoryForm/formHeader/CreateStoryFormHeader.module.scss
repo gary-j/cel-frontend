@@ -2,7 +2,6 @@
 
 .formHeader{
     @include formHeader;
-    // border: 1px solid red;
     margin-bottom: 24px;
     .description{
         @include basics;
