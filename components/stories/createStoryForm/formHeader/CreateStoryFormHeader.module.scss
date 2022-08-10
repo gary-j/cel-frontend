@@ -1,0 +1,14 @@
+@import '../../../../styles/tools/form','../../../../styles/tools/colors', '../../../../styles/tools/fonts';
+
+.formHeader{
+    @include formHeader;
+    // border: 1px solid red;
+    margin-bottom: 24px;
+    .description{
+        @include basics;
+        line-height: 1.67;
+        opacity: 0.72;
+        font-size: $third-text;
+        margin-bottom: unset;
+    }
+}
