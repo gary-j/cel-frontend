@@ -1,17 +1,64 @@
-@import '../../../../styles/tools/colors', '../../../../styles/tools/fonts', '../../../../styles/tools/form';
+@import '../../../../styles/tools/colors', '../../../../styles/tools/fonts',
+  '../../../../styles/tools/form';
 
-.fieldset{
-border: none;
+.fieldset {
+  border: none;
 
-.fieldsetHeader{
+  .fieldsetHeader {
     @include fieldsetHeader;
-  display: flex;
-  .titleBox{
-    margin-right: 2em;
-  }
-  .separation{
-    width: 100%;
-  }
+    display: flex;
+    .titleBox {
+      margin-right: 2em;
+      .title {
+        text-transform: uppercase;
+      }
     }
-    
+    .separation {
+      width: 100%;
+    }
+  }
+  .inputBox {
+    margin-top: 16px;
+    .label {
+      @include label;
+      font-size: $third-text;
+      display: block;
+      width: 100% !important;
+      margin: 16px 0 4px;
+      .asterisque {
+        @include asterisque;
+      }
+    }
+    .input {
+      @include input;
+      background-color: $background;
+      margin-bottom: unset;
+    }
+    .select {
+      border: 1px solid red;
+      padding: 0 16px;
+      .option{
+        font-size: 12px;
+      }
+    }
+    .textarea {
+      height: 120px;
+    }
+    .textarea::placeholder {
+      @include placeholder;
+    }
+    &.content {
+      position: relative;
+      .caracteresLimite {
+        position: absolute;
+        right: calc(1.12em);
+        bottom: 0.7em;
+        .p {
+          color: $inactive;
+          font-size: 1em; // 10px
+          font-style: italic;
+        }
+      }
+    }
+  }
 }
