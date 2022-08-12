@@ -43,6 +43,7 @@
     }
     .textarea {
       height: 120px;
+      padding-bottom: 1em;
     }
     .textarea::placeholder {
       @include placeholder;

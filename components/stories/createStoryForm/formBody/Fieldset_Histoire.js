@@ -5,7 +5,9 @@ import UpStyles from './CreateStoryFormBody.module.scss';
 
 function Fieldset_Histoire() {
   const [themes, setThemes] = useState([]);
-  console.log(themes);
+  const caracteresLimit = 1200;
+  const [message, setMessage] = useState('');
+  // console.log(themes);
   // useEffect appel BD pour récupérer les thèmes
   useEffect(() => {
     async function getThemesFromDB() {
@@ -15,6 +17,11 @@ function Fieldset_Histoire() {
     }
     getThemesFromDB();
   }, []);
+  //
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
+    console.log(event.target.value);
+  };
   //
   return (
     <>
@@ -56,10 +63,17 @@ function Fieldset_Histoire() {
           <textarea
             id='content'
             name='content'
+            maxLength={caracteresLimit}
+            value={message}
             placeholder='Ça a commencé par...'
-            className={styles.input + ' ' + styles.textarea}></textarea>
+            className={styles.input + ' ' + styles.textarea}
+            onChange={handleMessageChange}></textarea>
           <div className={styles.caracteresLimite}>
-            <p className={styles.p}>1200 caractères restants.</p>
+            <p className={styles.p}>
+              {caracteresLimit - message.length > 1
+                ? `${caracteresLimit - message.length} caractères restants.`
+                : `${caracteresLimit - message.length} caractère restant.`}
+            </p>
           </div>
 
           {/* errors will return when field validation fails  */}
