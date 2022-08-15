@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { publicRequest } from '../../../../utils/axiosRequest';
 import styles from './Fieldset_Histoire.module.scss';
-import UpStyles from './CreateStoryFormBody.module.scss';
 
 function Fieldset_Histoire() {
   const [themes, setThemes] = useState([]);
