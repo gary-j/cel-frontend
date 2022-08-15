@@ -20,7 +20,7 @@ function Fieldset_Professionel() {
       //
       const tempArray = [];
       professionalsArray.forEach((element) => {
-        tempArray.push({ label: `${element.name}`, value: `${element.name}` });
+        tempArray.push({ label: `${element.name}`, value: `${element._id}` });
       });
       setProNames(tempArray);
     }

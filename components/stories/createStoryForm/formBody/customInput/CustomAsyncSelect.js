@@ -5,7 +5,6 @@ import { publicRequest } from '../../../../../utils/axiosRequest';
 function CustomAsyncSelect({ proNames }) {
   //
   const [userInputValue, setUserInputValue] = useState('');
-  console.log('userInput value : ', userInputValue);
   const customStyles = {
     container: (provided, state) => ({
       ...provided,
@@ -77,9 +76,6 @@ function CustomAsyncSelect({ proNames }) {
   };
   return (
     <>
-      <pre>inputValue: "{userInputValue}"</pre>
-      <br></br>
-
       <AsyncCreatableSelect
         styles={customStyles}
         placeholder='Dr. Professionel'
@@ -91,6 +87,7 @@ function CustomAsyncSelect({ proNames }) {
         defaultOptions={proNames}
         loadOptions={getProsFromDB}
         onInputChange={handleInputChange}
+        // value={selectedOption}
       />
     </>
   );
