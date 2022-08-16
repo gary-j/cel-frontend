@@ -1,5 +1,12 @@
 @import './tools/reset', './tools/fonts', './tools/colors';
 
+@font-face {
+  font-family: 'Menlo Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Menlo Regular'), url('/assets/fonts/Menlo-Regular.woff') format('woff');
+  }
+
 *{
   font-family: $font;
 }
@@ -23,9 +30,30 @@ body{
   width: 100%;
   text-align: center;
 }
-// main{
-//   background-color: black;
-// }
+// CreateStoryForm indication fieldset1
+.pourEtrePublie{
+font-family: $font2 !important;
+// color: red;
+}
+
+div[id$="listbox"]{
+  border: 1px solid $dark-green-2;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  div[class$="-MenuList"]{
+
+    div[class$="-option"]{
+      &:hover{
+        color: white;
+        background-color: $dark-green-2;
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   /* tablettes et ordinateurs */
   }

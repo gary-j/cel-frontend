@@ -1,15 +1,16 @@
-@import '../../../styles/tools/colors', '../../../styles/tools/fonts', '../../../styles/tools/form';
+@import '../../../styles/tools/colors', '../../../styles/tools/fonts',
+  '../../../styles/tools/form';
 
 .formContainer {
-@include formContainer;
+  @include formContainer;
 }
-.formContent{
-    @include formContent;
-    overflow: scroll;
-    // hide scrollBar but still functional
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+.formContent {
+  @include formContent;
+  overflow: scroll;
+  // hide scrollBar but still functional
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-.formContent::-webkit-scrollbar{
-    display: none;
+.formContent::-webkit-scrollbar {
+  display: none;
 }

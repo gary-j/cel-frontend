@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { publicRequest } from '../../../../utils/axiosRequest';
 import styles from './Fieldset_Histoire.module.scss';
-import UpStyles from './CreateStoryFormBody.module.scss';
 
 function Fieldset_Histoire() {
   const [themes, setThemes] = useState([]);
@@ -78,6 +77,14 @@ function Fieldset_Histoire() {
 
           {/* errors will return when field validation fails  */}
           {/* {errors.exampleRequired && <span>This field is required</span>} */}
+        </div>
+        <div className={styles.annonce}>
+          <p className={styles.p + ' ' + 'pourEtrePublie'}>Pour être publié:</p>
+          <ul>
+            <li>• Choisissez le thème le plus approprié</li>
+            <li>• Publicité, spam, hors-sujet : Non merci !</li>
+            <li>• Clarté, concision, respect et bienveillance : À volonté !</li>
+          </ul>
         </div>
       </fieldset>
     </>

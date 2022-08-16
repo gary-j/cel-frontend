@@ -19,7 +19,8 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-hook-form": "^7.34.0",
-    "react-read-more-read-less": "^1.0.7"
+    "react-read-more-read-less": "^1.0.7",
+    "react-select": "^5.4.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.2.1",

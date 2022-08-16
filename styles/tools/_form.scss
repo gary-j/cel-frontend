@@ -46,7 +46,7 @@
 }
 
 @mixin formBody {
-  //   border: 1px solid red;
+  height: auto;
   .form {
     height: 100%;
     width: 100%;
@@ -148,4 +148,23 @@
   color: $inactive;
   font-size: $third-text;
   font-style: italic;
+}
+
+@mixin annonce{
+  background-color: black;
+  color: $white;
+  padding: 12px 16px 16px;
+  font-size: $third-text;
+  line-height: 2;
+  margin-top: 16px;
+  border-radius: 8px;
+  p{
+    font-weight: $semi-bold;
+    // $font2 dans globals.scss
+  }
+ 
+}
+
+@mixin listbox{
+  border: 2px solid red;
 }
