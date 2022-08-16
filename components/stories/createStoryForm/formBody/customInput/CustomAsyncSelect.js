@@ -1,42 +1,45 @@
 import React, { useState } from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { publicRequest } from '../../../../../utils/axiosRequest';
-
+import styles from '../Fieldset_Professionel.module.scss';
+import { cssContainer, cssControl } from './stylesCustomSelect';
 function CustomAsyncSelect({ proNames }) {
   //
   const [userInputValue, setUserInputValue] = useState('');
   const customStyles = {
-    container: (provided, state) => ({
-      ...provided,
-      width: '100%',
+    container: (_, state) => ({
+      // ...provided,
+      ...cssContainer,
+      borderColor: state.isFocused ? '#01989F' : '',
     }),
     control: () => ({
       // none of react-select's styles are passed to <Control />
-      display: 'flex',
-      width: '100%',
+      ...cssControl,
     }),
     dropdownIndicator: (provided, state) => ({
       ...provided,
-      color: 'blue',
+      color: state.isHover ? 'red' : '#00565b',
     }),
     option: (provided, state) => ({
       ...provided,
-      borderBottom: '1px dotted pink',
-      color: state.isSelected ? 'red' : 'blue',
-      padding: 20,
+      borderBottom: '1px dotted black',
+      color: state.isSelected ? '#01989F' : 'black',
+      backgroundColor: state.isSelected ? 'white' : '',
+      // backgroundColor: state.isFocused ? '#01989F' : 'white',
+      padding: '1.3em',
+      fontSize: '1.3em',
     }),
     placeholder: (provided, state) => ({
       ...provided,
-      fontSize: '13px',
+      fontSize: '14px',
       fontFamily: 'Poppins',
       fontWeight: '300',
-      letterSpacing: '0.6px',
+      letterSpacing: '0.1px',
     }),
 
     singleValue: (provided, state) => {
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = 'opacity 300ms';
-
       return { ...provided, opacity, transition };
     },
   };
@@ -77,8 +80,9 @@ function CustomAsyncSelect({ proNames }) {
   return (
     <>
       <AsyncCreatableSelect
+        className={styles.gary}
         styles={customStyles}
-        placeholder='Dr. Professionel'
+        placeholder='Mr Professionnel...'
         form='createStoryForm'
         name='search-professional'
         allowCreateWhileLoading={false}

@@ -44,21 +44,7 @@ function Fieldset_Professionel() {
           <label className={styles.label} htmlFor='professional-select'>
             Mentionnez le professionnel consulté
           </label>
-          <div className={styles.searchPro}>
-            <input
-              className={styles.input}
-              form='createStoryForm'
-              placeholder='Mr Professionnel'
-              name='search-professional'
-              type='search'
-              // value={professionalConsulted}
-              // onChange={handleProfessional}
-            />
-            <Icon_search
-              className={styles.searchIcon}
-              // onClick={() => togglePassword()}
-            />
-          </div>
+
           {/* <pre>inputValue: "{inputValue}"</pre> */}
           <div className={styles.searchPro}>
             <CustomAsyncSelect proNames={proNames} />
@@ -67,6 +53,16 @@ function Fieldset_Professionel() {
           {/* errors will return when field validation fails  */}
           {/* {errors.exampleRequired && <span>This field is required</span>} */}
         </div>
+        <div className={styles.inputBox}>
+          <label className={styles.label} htmlFor='pro-city-select'>
+            Ville
+          </label>
+
+          <div className={styles.searchPro}>
+            {/* <CustomAsyncSelect proNames={proNames} /> */}
+            <input className={styles.input}></input>
+          </div>
+        </div>{' '}
       </fieldset>
     </>
   );

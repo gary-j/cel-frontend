@@ -46,7 +46,7 @@
 }
 
 @mixin formBody {
-  //   border: 1px solid red;
+  height: auto;
   .form {
     height: 100%;
     width: 100%;
@@ -163,4 +163,8 @@
     // $font2 dans globals.scss
   }
  
+}
+
+@mixin listbox{
+  border: 2px solid red;
 }

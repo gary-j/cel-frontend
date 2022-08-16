@@ -35,10 +35,13 @@
       background-color: $background;
       margin-bottom: unset;
     }
+    .input:focus {
+      border-color: $dark-green-2;
+    }
     .select {
-      border: 1px solid red;
+      // border: 1px solid red;
       padding: 0 16px;
-      .option{
+      .option {
         font-size: 12px;
       }
     }
@@ -63,8 +66,7 @@
       }
     }
   }
-  .annonce{
-   @include annonce;
-
+  .annonce {
+    @include annonce;
   }
 }

@@ -1,54 +1,52 @@
 @import '../../../../styles/tools/colors', '../../../../styles/tools/fonts',
   '../../../../styles/tools/form';
-  .fieldset {
-    border: none;
-  
-    .fieldsetHeader {
-      @include fieldsetHeader;
-      display: flex;
-      .titleBox {
-        margin-right: 2em;
-        .title {
-          text-transform: uppercase;
-        }
-      }
-      .separation {
-        width: 100%;
+.fieldset {
+  border: none;
+
+  .fieldsetHeader {
+    @include fieldsetHeader;
+    display: flex;
+    .titleBox {
+      margin-right: 2em;
+      .title {
+        text-transform: uppercase;
       }
     }
-    .inputBox {
-      margin-top: 16px;
-      .label {
-        @include label;
-        font-size: $third-text;
-        display: block;
-        width: 100% !important;
-        margin: 16px 0 4px;
-      }
-      .input {
-        @include input;
-        background-color: $background;
-        margin-top: 0.3em !important;
-        margin-bottom: unset;
-      }
-      .select {
-        padding: 0 16px;
-        .option{
-          font-size: 12px;
-        }
+    .separation {
+      width: 100%;
+    }
+  }
+  .inputBox {
+    margin-top: 16px;
+    .label {
+      @include label;
+      font-size: $third-text;
+      display: block;
+      width: 100% !important;
+      margin: 16px 0 4px;
+    }
+    .input {
+      @include input;
+      background-color: $background;
+      margin-top: 0.3em !important;
+      margin-bottom: unset;
+    }
+    .select {
+      padding: 0 16px;
+      .option {
+        font-size: 12px;
       }
     }
-    .searchPro{
-      display: flex;
+  }
+  .searchPro {
+    display: flex;
     //   flex-direction: row;
     align-items: center;
     .searchIcon {
-        width: 2em;
-        height: 2em;
-        margin-left: -3.5em;
-        cursor: pointer;
-      }
+      width: 2em;
+      height: 2em;
+      margin-left: -3.5em;
+      cursor: pointer;
     }
-  
   }
-  
+}
