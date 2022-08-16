@@ -6,27 +6,38 @@ import Icon_search from '../../../../public/assets/img/svgs/icon-page-search.svg
 import CustomAsyncSelect from './customInput/CustomAsyncSelect';
 
 function Fieldset_Professionel() {
-  const [professionalsDB, setProfessionalsDB] = useState([]);
-  const [proNames, setProNames] = useState([]);
+  const [proNamesProps, setProNamesProps] = useState([]);
   const [professionalConsulted, setProfessionalConsulted] = useState({});
-  const [inputValue, setInputValue] = useState('');
-  // console.log('professionalsDb *** : ', professionalsDB);
+  //
+  let newProps = {
+    proNamesProps: proNamesProps,
+    professionalConsulted: professionalConsulted,
+    setProfessionalConsulted: setProfessionalConsulted,
+  };
   // useEffect appel BD pour récupérer les professionels
   useEffect(() => {
     async function getProfessionalsFromDB() {
       const res = await publicRequest.get(`/professional/`);
       const professionalsArray = await res.data;
-      setProfessionalsDB(professionalsArray);
       //
       const tempArray = [];
       professionalsArray.forEach((element) => {
-        tempArray.push({ label: `${element.name}`, value: `${element._id}` });
+        tempArray.push({
+          label: `${
+            element.titre + ' ' + element.name + ' ' + element.firstname
+          }`,
+          value: `${element._id}`,
+          adress: {
+            city: element.city,
+            zipcode: element.zipcode,
+            country: element.country,
+          },
+        });
       });
-      setProNames(tempArray);
+      setProNamesProps(tempArray);
     }
     getProfessionalsFromDB();
-    console.log('appel useeffct fetch professionals');
-  }, [inputValue]);
+  }, []);
   //
   return (
     <>
@@ -47,7 +58,7 @@ function Fieldset_Professionel() {
 
           {/* <pre>inputValue: "{inputValue}"</pre> */}
           <div className={styles.searchPro}>
-            <CustomAsyncSelect proNames={proNames} />
+            <CustomAsyncSelect props={newProps} />
           </div>
 
           {/* errors will return when field validation fails  */}
@@ -59,10 +70,20 @@ function Fieldset_Professionel() {
           </label>
 
           <div className={styles.searchPro}>
-            {/* <CustomAsyncSelect proNames={proNames} /> */}
+            {/* <CustomAsyncSelect proNames={proNamesProps} /> */}
             <input className={styles.input}></input>
           </div>
         </div>{' '}
+        <div className={styles.inputBox}>
+          <label className={styles.label} htmlFor='pro-city-select'>
+            Domaine
+          </label>
+
+          <div className={styles.searchPro}>
+            {/* <CustomAsyncSelect proNames={proNamesProps} /> */}
+            <input className={styles.input}></input>
+          </div>
+        </div>
       </fieldset>
     </>
   );

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import styles from '../Fieldset_Professionel.module.scss';
 import { cssContainer, cssControl } from './stylesCustomSelect';
-function CustomAsyncSelect({ proNames }) {
+function CustomAsyncSelect({ props }) {
+  const { proNamesProps, professionalConsulted, setProfessionalConsulted } =
+    props;
   //
-  const [userInputValue, setUserInputValue] = useState('');
+  const [filteredProNames, setFilteredProNames] = useState([]);
+  //
   const customStyles = {
     container: (_, state) => ({
       // ...provided,
@@ -44,39 +47,35 @@ function CustomAsyncSelect({ proNames }) {
     },
   };
   //
-  const filterPros = (inputvalue) => {
-    console.log(
-      'filtered pro names : ',
-      proNames.filter((i) =>
-        i.label.toLowerCase().includes(inputvalue.toLowerCase())
-      )
-    );
-    return proNames.filter((i) =>
-      i.label.toLowerCase().includes(inputvalue.toLowerCase())
-    );
-  };
-
-  //
-  const getProsFromDB = async (inputValue, callback) => {
-    try {
-      //   const res = await publicRequest.get(`/professional/`);
-      //   const professionalsArray = await res.data;
-      //   //   setProfessionalsDB(professionalsArray);
-      //   //
-      //   const tempArray = [];
-      //   professionalsArray.forEach((element) => {
-      //     tempArray.push({ label: `${element.name}`, value: `${element._id}` });
-      //   });
-      //   setProNames(...[], tempArray);
-      callback(filterPros(inputValue));
-    } catch (error) {
-      console.log('catch th hoop : ', error);
-    }
+  const getProsFromDB = (inputValue, callback) => {
+    setTimeout(async () => {
+      try {
+        const res = await publicRequest.get(`/professional/${inputValue}`);
+        const professionalsArray = await res.data;
+        //
+        const tempArray = [];
+        await professionalsArray.forEach((element) => {
+          tempArray.push({
+            label: `${
+              element.titre + ' ' + element.name + ' ' + element.firstname
+            }`,
+            value: `${element._id}`,
+            adress: {
+              city: element.city,
+              zipcode: element.zipcode,
+              country: element.country,
+            },
+          });
+        });
+        setFilteredProNames(tempArray);
+        callback(tempArray);
+      } catch (error) {
+        console.log('catch th hoop : ', error);
+      }
+    }, 800);
   };
   //
-  const handleInputChange = (newValue) => {
-    setUserInputValue(newValue.replace(/\W/g, ''));
-  };
+  const handleChange = (value) => setProfessionalConsulted(value);
   return (
     <>
       <AsyncCreatableSelect
@@ -88,10 +87,16 @@ function CustomAsyncSelect({ proNames }) {
         allowCreateWhileLoading={false}
         formatCreateLabel={(userInputValue) => `Créer : " ${userInputValue} "`}
         cacheOptions
-        defaultOptions={proNames}
+        defaultOptions={proNamesProps}
         loadOptions={getProsFromDB}
-        onInputChange={handleInputChange}
-        // value={selectedOption}
+        // onInputChange={() => {
+        //   handleInputChange;
+        // }}
+        onChange={(e) => {
+          handleChange(e);
+          // setProfeshConsulted(e);
+        }}
+        value={professionalConsulted}
       />
     </>
   );
