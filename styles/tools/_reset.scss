@@ -60,3 +60,13 @@
       background-color: $dark-green-2;
     }
   }
+
+  input[type="radio"] {
+    @include brad(1rem);
+    border: .2rem solid $dark-green-2;
+    height: 1.5rem;
+    width: 1.5rem;
+    &:checked {
+      background-color: $dark-green-2;
+    }
+  }

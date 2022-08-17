@@ -3,13 +3,15 @@ import { publicRequest } from '../../../../utils/axiosRequest';
 
 import styles from './Fieldset_Professionel.module.scss';
 import Icon_search from '../../../../public/assets/img/svgs/icon-page-search.svg';
-import CustomAsyncSelect from './customInput/CustomAsyncSelect';
+import ProNamesAsyncSelect from './customInput/ProNamesAsyncSelect';
+import { renderInputProInfos } from './customInput/renderInputProInfos';
 
 function Fieldset_Professionel() {
   const [proNamesProps, setProNamesProps] = useState([]);
-  const [professionalConsulted, setProfessionalConsulted] = useState({});
+  const [professionalConsulted, setProfessionalConsulted] = useState();
+  // console.log('pro consulté : ', professionalConsulted);
   //
-  let newProps = {
+  const newProps = {
     proNamesProps: proNamesProps,
     professionalConsulted: professionalConsulted,
     setProfessionalConsulted: setProfessionalConsulted,
@@ -27,11 +29,12 @@ function Fieldset_Professionel() {
             element.titre + ' ' + element.name + ' ' + element.firstname
           }`,
           value: `${element._id}`,
-          adress: {
+          address: {
             city: element.city,
             zipcode: element.zipcode,
             country: element.country,
           },
+          domain: element.domain,
         });
       });
       setProNamesProps(tempArray);
@@ -58,32 +61,13 @@ function Fieldset_Professionel() {
 
           {/* <pre>inputValue: "{inputValue}"</pre> */}
           <div className={styles.searchPro}>
-            <CustomAsyncSelect props={newProps} />
+            <ProNamesAsyncSelect props={newProps} />
           </div>
 
           {/* errors will return when field validation fails  */}
           {/* {errors.exampleRequired && <span>This field is required</span>} */}
         </div>
-        <div className={styles.inputBox}>
-          <label className={styles.label} htmlFor='pro-city-select'>
-            Ville
-          </label>
-
-          <div className={styles.searchPro}>
-            {/* <CustomAsyncSelect proNames={proNamesProps} /> */}
-            <input className={styles.input}></input>
-          </div>
-        </div>{' '}
-        <div className={styles.inputBox}>
-          <label className={styles.label} htmlFor='pro-city-select'>
-            Domaine
-          </label>
-
-          <div className={styles.searchPro}>
-            {/* <CustomAsyncSelect proNames={proNamesProps} /> */}
-            <input className={styles.input}></input>
-          </div>
-        </div>
+        {professionalConsulted && renderInputProInfos(professionalConsulted)}
       </fieldset>
     </>
   );
