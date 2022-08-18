@@ -1,51 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useId } from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import styles from '../Fieldset_Professionel.module.scss';
-import { cssContainer, cssControl } from './stylesCustomSelect';
-function CustomAsyncSelect({ props }) {
+import { ProNamesStyles } from './stylesCustomSelect';
+function ProNamesAsyncSelect({ props }) {
   const { proNamesProps, professionalConsulted, setProfessionalConsulted } =
     props;
   //
   const [filteredProNames, setFilteredProNames] = useState([]);
   //
-  const customStyles = {
-    container: (_, state) => ({
-      // ...provided,
-      ...cssContainer,
-      borderColor: state.isFocused ? '#01989F' : '',
-    }),
-    control: () => ({
-      // none of react-select's styles are passed to <Control />
-      ...cssControl,
-    }),
-    dropdownIndicator: (provided, state) => ({
-      ...provided,
-      color: state.isHover ? 'red' : '#00565b',
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      borderBottom: '1px dotted black',
-      color: state.isSelected ? '#01989F' : 'black',
-      backgroundColor: state.isSelected ? 'white' : '',
-      // backgroundColor: state.isFocused ? '#01989F' : 'white',
-      padding: '1.3em',
-      fontSize: '1.3em',
-    }),
-    placeholder: (provided, state) => ({
-      ...provided,
-      fontSize: '14px',
-      fontFamily: 'Poppins',
-      fontWeight: '300',
-      letterSpacing: '0.1px',
-    }),
-
-    singleValue: (provided, state) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-      return { ...provided, opacity, transition };
-    },
-  };
   //
   const getProsFromDB = (inputValue, callback) => {
     setTimeout(async () => {
@@ -60,11 +23,12 @@ function CustomAsyncSelect({ props }) {
               element.titre + ' ' + element.name + ' ' + element.firstname
             }`,
             value: `${element._id}`,
-            adress: {
+            address: {
               city: element.city,
               zipcode: element.zipcode,
               country: element.country,
             },
+            domain: element.domain,
           });
         });
         setFilteredProNames(tempArray);
@@ -79,8 +43,11 @@ function CustomAsyncSelect({ props }) {
   return (
     <>
       <AsyncCreatableSelect
+        id='selectProNameBox'
+        // instanceId='selectProNameBox'
+        instanceId={useId()}
         className={styles.gary}
-        styles={customStyles}
+        styles={ProNamesStyles}
         placeholder='Mr Professionnel...'
         form='createStoryForm'
         name='search-professional'
@@ -94,12 +61,10 @@ function CustomAsyncSelect({ props }) {
         // }}
         onChange={(e) => {
           handleChange(e);
-          // setProfeshConsulted(e);
         }}
-        value={professionalConsulted}
       />
     </>
   );
 }
 
-export default CustomAsyncSelect;
+export default ProNamesAsyncSelect;

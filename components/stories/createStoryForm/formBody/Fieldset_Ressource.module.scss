@@ -1,0 +1,71 @@
+@import '../../../../styles/tools/colors', '../../../../styles/tools/fonts',
+  '../../../../styles/tools/form';
+
+.fieldset {
+  border: none;
+  margin-bottom: 3em;
+
+  .fieldsetHeader {
+    @include fieldsetHeader;
+    display: flex;
+    .titleBox {
+      margin-right: 2em;
+      .title {
+        text-transform: uppercase;
+      }
+    }
+    .separation {
+      width: 100%;
+    }
+  }
+  .inputBox {
+    margin-top: 16px;
+    .label {
+      @include label;
+      font-size: $third-text;
+      display: block;
+      width: 100% !important;
+      margin: 16px 0 4px;
+    }
+    // .input {
+    //   @include input;
+    //   background-color: $background;
+    //   margin-top: 0.3em !important;
+    //   margin-bottom: unset;
+    // }
+    // .select {
+    //   padding: 0 16px;
+    //   .option {
+    //     font-size: 12px;
+    //   }
+    // }
+  }
+  .selectRessource {
+    // border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    .button {
+      width: max-content;
+      height: 32px;
+      padding: 8px 12px 10px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border-radius: 16px;
+      border: solid 1.5px #d5d5d5;
+      cursor: pointer;
+      .text{
+        @include basics;
+        color:$txt-inactive-btn;
+        text-align: center;
+      }
+      &.selected{
+        background-color: $dark-green-1;
+        border-color: $dark-green-1;
+        .text{
+          color:$white;
+        }
+      }
+    }
+  }
+}

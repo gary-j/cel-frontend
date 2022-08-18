@@ -2,7 +2,7 @@
   '../../../../styles/tools/form';
 .fieldset {
   border: none;
-
+  margin-bottom: 3em;
   .fieldsetHeader {
     @include fieldsetHeader;
     display: flex;
@@ -49,4 +49,11 @@
       cursor: pointer;
     }
   }
+}
+
+.proTitleBox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2em;
 }
