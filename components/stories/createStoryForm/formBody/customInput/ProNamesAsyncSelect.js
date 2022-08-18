@@ -23,12 +23,7 @@ function ProNamesAsyncSelect({ props }) {
               element.titre + ' ' + element.name + ' ' + element.firstname
             }`,
             value: `${element._id}`,
-            address: {
-              city: element.city,
-              zipcode: element.zipcode,
-              country: element.country,
-            },
-            domain: element.domain,
+            ...element,
           });
         });
         setFilteredProNames(tempArray);
@@ -39,7 +34,26 @@ function ProNamesAsyncSelect({ props }) {
     }, 800);
   };
   //
-  const handleChange = (value) => setProfessionalConsulted(value);
+  const handleChange = (value) => {
+    if (value.name) {
+      setProfessionalConsulted(value);
+      return;
+    } else {
+      let pro = {
+        ...value,
+        titre: '',
+        name: '',
+        firstname: '',
+        address: '',
+        zipcode: '',
+        city: '',
+        country: '',
+        domain: '',
+      };
+      setProfessionalConsulted(pro);
+      return;
+    }
+  };
   return (
     <>
       <AsyncCreatableSelect

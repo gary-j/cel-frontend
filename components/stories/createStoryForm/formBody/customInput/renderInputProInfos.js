@@ -1,42 +1,136 @@
+import { useState } from 'react';
 import styles from '../Fieldset_Professionel.module.scss';
 
-export function renderInputProInfos(professionalConsulted) {
+export function renderInputProInfos(
+  professionalConsulted,
+  setProfessionalConsulted,
+  inputError
+) {
+  const dataAbr = ['Dr.', 'Pr.', 'Me.', 'Aud.', 'Coach', ''];
+  const titreForInputId = [
+    'docteur',
+    'professeur',
+    'maitre',
+    'auditeur',
+    'coach',
+    'autre',
+  ];
+  const dataApp = [
+    'Docteur',
+    'Professeur',
+    'Maître',
+    'Auditeur de justice',
+    'Coach',
+    'autre...',
+  ];
+  const proFields = [
+    'name',
+    'firstname',
+    'address',
+    'zipcode',
+    'city',
+    'country',
+    'domain',
+  ];
+  const labels = [
+    'Nom',
+    'Prénom',
+    'Adresse',
+    'Code postale',
+    'Ville',
+    'Pays',
+    'Domaine',
+  ];
+
+  const handleProInfos = (e) => {
+    // console.log('e.target : ', e.target);
+    setProfessionalConsulted({
+      ...professionalConsulted,
+      [e.target.name]: e.target.value,
+    });
+  };
+  //
+  const getPlaceholder = (field, label) => {
+    switch (field) {
+      case 'name':
+        return professionalConsulted.value;
+      // break;
+      case 'domain':
+        return 'Cardiologue...';
+      // break;
+      case 'address':
+        return '8, rue de...';
+      case 'zipcode':
+        return '01000';
+      default:
+        return label + '...';
+      // break;
+    }
+  };
+  //
+
   if (professionalConsulted.__isNew__) {
     return (
       <>
         <div className={styles.inputBox}>
-          <label className={styles.label} htmlFor='pro-title-select'>
+          <label className={styles.label} htmlFor='titre'>
             Titre
           </label>
           <div className={styles.proTitleBox}>
-            <div className={styles.searchPro}>
-              <input type='radio' id='doctor' name='title' value='Dr.' />
-              <label htmlFor='doctor'>&nbsp; Docteur (Dr.)</label>
-            </div>
-            <div className={styles.searchPro}>
-              <input type='radio' id='professor' name='title' value='Pr.' />
-              <label htmlFor='professor'>&nbsp; Professeur (Pr.)</label>
-            </div>
-            <div className={styles.searchPro}>
-              <input type='radio' id='maitre' name='title' value='Me.' />
-              <label htmlFor='maitre'>&nbsp; Maître (Me.)</label>
-            </div>
-            <div className={styles.searchPro}>
-              <input type='radio' id='auditeur' name='title' value='Aud.' />
-              <label htmlFor='auditeur'>
-                &nbsp; Auditeur de justice (Aud.)
-              </label>
-            </div>
-            <div className={styles.searchPro}>
-              <input type='radio' id='coach' name='title' value='Coach' />
-              <label htmlFor='coach'>&nbsp; Coach</label>
-            </div>
-            <div className={styles.searchPro}>
-              <input type='radio' id='autre' name='title' value='autre' />
-              <label htmlFor='autre'>&nbsp; autre</label>
-            </div>
+            {dataAbr.map((elem, i) => {
+              return (
+                <div key={elem} className={styles.selectPro}>
+                  <input
+                    type='radio'
+                    id={titreForInputId[i]}
+                    name='titre'
+                    value={elem}
+                    onClick={(e) => handleProInfos(e)}
+                  />
+                  <label htmlFor={titreForInputId[i]}>
+                    &nbsp;
+                    {`${dataApp[i]} ${
+                      i >= dataApp.length - 2 ? '' : `(${dataAbr[i]})`
+                    }`}
+                  </label>
+                </div>
+              );
+            })}
           </div>
         </div>
+        {/* Pro Fields */}
+        {proFields.map((field, i) => {
+          return (
+            <div key={field} className={styles.inputBox}>
+              <label className={styles.label} htmlFor={`pro-${field}`}>
+                {labels[i]}{' '}
+                <span className={styles.petit}>du professionnel </span>{' '}
+                {(field === 'name' || field === 'domain') && (
+                  <span className={styles.asterisque}>*</span>
+                )}
+              </label>
+              <input
+                className={`${styles.input} ${
+                  inputError === field ? styles.invalid : null
+                }`}
+                autoFocus={inputError === field ? true : false}
+                form='createStoryForm'
+                id={`pro-${field}`}
+                placeholder={getPlaceholder(field, labels[i])}
+                type='text'
+                name={field}
+                value={professionalConsulted?.[field]}
+                onChange={(e) => handleProInfos(e)}
+                required={field === 'name' || field === 'domain' ? true : false}
+              />
+              {inputError === field && (
+                <span className={styles.inputError}>
+                  Merci de renseigner {labels[i]} du professionnel.
+                </span>
+              )}
+            </div>
+          );
+        })}
       </>
     );
   } else {
@@ -50,9 +144,9 @@ export function renderInputProInfos(professionalConsulted) {
           <div className={styles.searchPro}>
             <input
               className={styles.input}
-              value={`${professionalConsulted.address.city}, ${
-                professionalConsulted.address.zipcode
-              } - ${professionalConsulted.address.country.toUpperCase()}`}
+              value={`${professionalConsulted.city}, ${
+                professionalConsulted.zipcode
+              } - ${professionalConsulted.country?.toUpperCase()}`}
               readOnly
             />
           </div>
