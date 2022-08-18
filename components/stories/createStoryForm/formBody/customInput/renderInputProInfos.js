@@ -11,29 +11,29 @@ export function renderInputProInfos(professionalConsulted) {
           <div className={styles.proTitleBox}>
             <div className={styles.searchPro}>
               <input type='radio' id='doctor' name='title' value='Dr.' />
-              <label HtmlFor='doctor'>&nbsp; Docteur (Dr.)</label>
+              <label htmlFor='doctor'>&nbsp; Docteur (Dr.)</label>
             </div>
             <div className={styles.searchPro}>
               <input type='radio' id='professor' name='title' value='Pr.' />
-              <label HtmlFor='professor'>&nbsp; Professeur (Pr.)</label>
+              <label htmlFor='professor'>&nbsp; Professeur (Pr.)</label>
             </div>
             <div className={styles.searchPro}>
               <input type='radio' id='maitre' name='title' value='Me.' />
-              <label HtmlFor='maitre'>&nbsp; Maître (Me.)</label>
+              <label htmlFor='maitre'>&nbsp; Maître (Me.)</label>
             </div>
             <div className={styles.searchPro}>
               <input type='radio' id='auditeur' name='title' value='Aud.' />
-              <label HtmlFor='auditeur'>
+              <label htmlFor='auditeur'>
                 &nbsp; Auditeur de justice (Aud.)
               </label>
             </div>
             <div className={styles.searchPro}>
               <input type='radio' id='coach' name='title' value='Coach' />
-              <label HtmlFor='coach'>&nbsp; Coach</label>
+              <label htmlFor='coach'>&nbsp; Coach</label>
             </div>
             <div className={styles.searchPro}>
               <input type='radio' id='autre' name='title' value='autre' />
-              <label HtmlFor='autre'>&nbsp; autre</label>
+              <label htmlFor='autre'>&nbsp; autre</label>
             </div>
           </div>
         </div>

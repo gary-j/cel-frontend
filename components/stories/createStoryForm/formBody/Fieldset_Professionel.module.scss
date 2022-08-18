@@ -2,7 +2,7 @@
   '../../../../styles/tools/form';
 .fieldset {
   border: none;
-
+  margin-bottom: 3em;
   .fieldsetHeader {
     @include fieldsetHeader;
     display: flex;

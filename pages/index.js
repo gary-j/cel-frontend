@@ -31,8 +31,9 @@ export default function Home({ posts }) {
       </div>
       <div
         className={
-          (breakPoint === 'laptop' || breakPoint === 'desktop') &&
-          styles.desktop
+          breakPoint === 'laptop' || breakPoint === 'desktop'
+            ? styles.desktop
+            : ''
         }>
         <DisplayStories
           stories={posts}
