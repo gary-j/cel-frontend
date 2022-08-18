@@ -11,7 +11,7 @@ function Fieldset_Professionel() {
   const [professionalConsulted, setProfessionalConsulted] = useState();
   const [inputError, setInputError] = useState();
 
-  console.log('pro consulté : ', professionalConsulted);
+  // console.log('pro consulté : ', professionalConsulted);
   //
   const newProps = {
     proNamesProps: proNamesProps,
