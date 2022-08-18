@@ -24,6 +24,16 @@
       display: block;
       width: 100% !important;
       margin: 16px 0 4px;
+      .petit{
+        font-weight: 300;
+        font-style: italic;
+        font-size: 10px;
+      }
+      .asterisque {
+        color: red;
+        font-weight: $light;
+        vertical-align: text-bottom;
+      }
     }
     .input {
       @include input;

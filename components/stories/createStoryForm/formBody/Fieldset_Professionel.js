@@ -9,7 +9,9 @@ import { renderInputProInfos } from './customInput/renderInputProInfos';
 function Fieldset_Professionel() {
   const [proNamesProps, setProNamesProps] = useState([]);
   const [professionalConsulted, setProfessionalConsulted] = useState();
-  // console.log('pro consulté : ', professionalConsulted);
+  const [inputError, setInputError] = useState();
+
+  console.log('pro consulté : ', professionalConsulted);
   //
   const newProps = {
     proNamesProps: proNamesProps,
@@ -29,12 +31,7 @@ function Fieldset_Professionel() {
             element.titre + ' ' + element.name + ' ' + element.firstname
           }`,
           value: `${element._id}`,
-          address: {
-            city: element.city,
-            zipcode: element.zipcode,
-            country: element.country,
-          },
-          domain: element.domain,
+          ...element,
         });
       });
       setProNamesProps(tempArray);
@@ -67,7 +64,12 @@ function Fieldset_Professionel() {
           {/* errors will return when field validation fails  */}
           {/* {errors.exampleRequired && <span>This field is required</span>} */}
         </div>
-        {professionalConsulted && renderInputProInfos(professionalConsulted)}
+        {professionalConsulted &&
+          renderInputProInfos(
+            professionalConsulted,
+            setProfessionalConsulted,
+            inputError
+          )}
       </fieldset>
     </>
   );
