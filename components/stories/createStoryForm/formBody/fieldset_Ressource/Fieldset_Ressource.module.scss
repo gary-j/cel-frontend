@@ -1,5 +1,5 @@
-@import '../../../../styles/tools/colors', '../../../../styles/tools/fonts',
-  '../../../../styles/tools/form';
+@import '../../../../../styles/tools/colors', '../../../../../styles/tools/fonts',
+  '../../../../../styles/tools/form';
 
 .fieldset {
   border: none;
@@ -26,19 +26,34 @@
       display: block;
       width: 100% !important;
       margin: 16px 0 4px;
+      .asterisque {
+        color: red;
+        font-weight: $light;
+        vertical-align: text-bottom;
+      }
     }
-    // .input {
-    //   @include input;
-    //   background-color: $background;
-    //   margin-top: 0.3em !important;
-    //   margin-bottom: unset;
-    // }
-    // .select {
-    //   padding: 0 16px;
-    //   .option {
-    //     font-size: 12px;
-    //   }
-    // }
+    .input {
+      @include input;
+      background-color: $background;
+      margin-top: 0.3em !important;
+      margin-bottom: unset;
+    }
+    .input::placeholder{
+      font-style: italic;
+    }
+    .select {
+      padding: 0 16px;
+      .option {
+        font-size: 12px;
+      }
+    }
+    .textarea {
+      height: 80px;
+      padding-bottom: 1em;
+    }
+    .textarea::placeholder {
+      @include placeholder;
+    }
   }
   .selectRessource {
     // border: 1px solid red;
@@ -67,5 +82,8 @@
         }
       }
     }
+  }
+  .inputInfos{
+    border: 2px solid gold;
   }
 }

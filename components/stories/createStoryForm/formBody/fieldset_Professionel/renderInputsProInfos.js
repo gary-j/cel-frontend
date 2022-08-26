@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import styles from '../Fieldset_Professionel.module.scss';
+import styles from './Fieldset_Professionel.module.scss';
 
-export function renderInputProInfos(
+export function renderInputsProInfos(
   professionalConsulted,
   setProfessionalConsulted,
   inputError

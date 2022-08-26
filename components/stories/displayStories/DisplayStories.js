@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './DisplayStories.module.scss';
+import Image from 'next/image';
 // import { parseISO } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import { useState } from 'react';

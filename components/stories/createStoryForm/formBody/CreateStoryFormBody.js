@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './CreateStoryFormBody.module.scss';
-import Fieldset_Histoire from './Fieldset_Histoire';
-import Fieldset_Professionel from './Fieldset_Professionel';
-import Fieldset_Ressource from './Fieldset_Ressource';
+import Fieldset_Histoire from './fieldset_Histoire/Fieldset_Histoire';
+import Fieldset_Professionel from './fieldset_Professionel/Fieldset_Professionel';
+import Fieldset_Ressource from './fieldset_Ressource/Fieldset_Ressource';
 
 function CreateStoryFormBody() {
   return (
