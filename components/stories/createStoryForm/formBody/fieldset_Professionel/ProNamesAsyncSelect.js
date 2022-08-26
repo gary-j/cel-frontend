@@ -1,7 +1,7 @@
 import React, { useState, useId } from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { publicRequest } from '../../../../../utils/axiosRequest';
-import styles from '../Fieldset_Professionel.module.scss';
+import styles from './Fieldset_Professionel.module.scss';
 import { ProNamesStyles } from './stylesCustomSelect';
 function ProNamesAsyncSelect({ props }) {
   const { proNamesProps, professionalConsulted, setProfessionalConsulted } =

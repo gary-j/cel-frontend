@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
+import renderInputsRessource from './renderInputsRessource';
 
 function Fieldset_Ressource() {
   const data = [
@@ -10,6 +11,7 @@ function Fieldset_Ressource() {
     'musique',
     'podcast',
     'serie',
+    'video',
   ];
   const [selected, setSelected] = useState(null);
   const [ressource, setRessource] = useState([]);
@@ -62,6 +64,8 @@ function Fieldset_Ressource() {
           );
         })}
       </div>
+      {selected !== null &&
+        renderInputsRessource(selected, ressource, setRessource)}
     </fieldset>
   );
 }

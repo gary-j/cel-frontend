@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { publicRequest } from '../../../../utils/axiosRequest';
+import { publicRequest } from '../../../../../utils/axiosRequest';
 
 import styles from './Fieldset_Professionel.module.scss';
-import Icon_search from '../../../../public/assets/img/svgs/icon-page-search.svg';
-import ProNamesAsyncSelect from './customInput/ProNamesAsyncSelect';
-import { renderInputProInfos } from './customInput/renderInputProInfos';
+import Icon_search from '../../../../../public/assets/img/svgs/icon-page-search.svg';
+import ProNamesAsyncSelect from './ProNamesAsyncSelect';
+import { renderInputsProInfos } from './renderInputsProInfos';
 
 function Fieldset_Professionel() {
   const [proNamesProps, setProNamesProps] = useState([]);
@@ -65,7 +65,7 @@ function Fieldset_Professionel() {
           {/* {errors.exampleRequired && <span>This field is required</span>} */}
         </div>
         {professionalConsulted &&
-          renderInputProInfos(
+          renderInputsProInfos(
             professionalConsulted,
             setProfessionalConsulted,
             inputError

@@ -1,10 +1,8 @@
-@import '../../../../styles/tools/colors', '../../../../styles/tools/fonts',
-  '../../../../styles/tools/form';
-
+@import '../../../../../styles/tools/colors', '../../../../../styles/tools/fonts',
+  '../../../../../styles/tools/form';
 .fieldset {
   border: none;
   margin-bottom: 3em;
-
   .fieldsetHeader {
     @include fieldsetHeader;
     display: flex;
@@ -26,47 +24,46 @@
       display: block;
       width: 100% !important;
       margin: 16px 0 4px;
+      .petit{
+        font-weight: 300;
+        font-style: italic;
+        font-size: 10px;
+      }
       .asterisque {
-        @include asterisque;
+        color: red;
+        font-weight: $light;
+        vertical-align: text-bottom;
       }
     }
     .input {
       @include input;
       background-color: $background;
+      margin-top: 0.3em !important;
       margin-bottom: unset;
     }
-    .input:focus {
-      border-color: $dark-green-2;
-    }
     .select {
-      // border: 1px solid red;
       padding: 0 16px;
       .option {
         font-size: 12px;
       }
     }
-    .textarea {
-      height: 120px;
-      padding-bottom: 1em;
-    }
-    .textarea::placeholder {
-      @include placeholder;
-    }
-    &.content {
-      position: relative;
-      .caracteresLimite {
-        position: absolute;
-        right: calc(1.12em);
-        bottom: 0.7em;
-        .p {
-          color: $inactive;
-          font-size: 1em; // 10px
-          font-style: italic;
-        }
-      }
+  }
+  .searchPro {
+    display: flex;
+    //   flex-direction: row;
+    align-items: center;
+    .searchIcon {
+      width: 2em;
+      height: 2em;
+      margin-left: -3.5em;
+      cursor: pointer;
     }
   }
-  .annonce {
-    @include annonce;
-  }
+}
+
+.proTitleBox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2em;
 }
