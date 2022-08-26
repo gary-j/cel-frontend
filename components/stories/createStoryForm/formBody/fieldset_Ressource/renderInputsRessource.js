@@ -1,9 +1,8 @@
 import React, { useId } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
-import styles2 from '../fieldset_Professionel/Fieldset_Professionel.module.scss';
 
 function renderInputsRessource(selected, ressource, setRessource, inputError) {
-  const ressourcesArr = {
+  const data = {
     citation: {
       ['-textarea- Citation']:
         'Si la vie te donne un citron, fait une limonade.',
@@ -52,27 +51,50 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
       ['Site de la vidéo']: 'url de la vidéo',
     },
   };
-
-  function setInput(selected) {
-    let laRessource = ressourcesArr[selected];
-    let entries = Object.entries(laRessource);
+  console.log('data[2] : ', Object.keys(data)[2]);
+  //
+  const ressourcesModel = {
+    citation: {},
+    film: {},
+    influenceur: {},
+    livre: {},
+    musique: {},
+    podcast: {},
+    serie: {},
+    video: {},
+  };
+  //
+  const handleRessourceInfos = (e) => {
+    // console.log('e.target : ', e.target);
+    setProfessionalConsulted({
+      ...setRessource,
+      [e.target.name]: e.target.value,
+    });
+  };
+  //
+  function renderInputs(selected) {
+    let labelsAndInputs = Object.entries(data[selected]);
     return (
       <>
-        {entries.map((item) => {
+        {labelsAndInputs.map((item) => {
           let key;
+          let keySlug;
           if (
             item[0].startsWith('-required-') ||
             item[0].startsWith('-textarea-')
           ) {
             key = item[0].slice(11);
+            keySlug = key.replace(/\W+/g, '-').toLowerCase();
+            // remplace tout ce qui n'est pas alphanumérique par '-'
           } else {
             key = item[0];
+            keySlug = key.replace(/\W+/g, '-').toLowerCase();
           }
 
           return (
             <>
               <div key={useId} className={styles.inputBox}>
-                <label className={styles.label}>
+                <label className={styles.label} htmlFor={keySlug}>
                   {key}
                   {item[0].startsWith('-required-') && (
                     <span className={styles.asterisque}> *</span>
@@ -80,18 +102,23 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
                 </label>
                 {item[0].startsWith('-textarea-') ? (
                   <textarea
+                    form='createStoryForm'
+                    id={keySlug}
+                    name={keySlug}
                     placeholder={item[1]}
                     className={styles.input + ' ' + styles.textarea}></textarea>
                 ) : (
                   <input
+                    form='createStoryForm'
+                    id={keySlug}
+                    name={keySlug}
                     className={`${styles.input} ${
                       item[0].startsWith('-textarea-') ? styles.textarea : ''
                     }`}
                     placeholder={item[1] + ' ...'}
                     type='text'
-                    required={
-                      item[0].startsWith('-required-') ? true : false
-                    }></input>
+                    required={item[0].startsWith('-required-') ? true : false}
+                    onChange={(e) => handleRessourceInfos(e)}></input>
                 )}
               </div>
             </>
@@ -101,7 +128,7 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
     );
   }
 
-  return <>{setInput(selected)}</>;
+  return <>{renderInputs(selected)}</>;
 }
 
 export default renderInputsRessource;
