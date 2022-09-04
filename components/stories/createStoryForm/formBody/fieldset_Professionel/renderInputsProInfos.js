@@ -87,7 +87,9 @@ export function renderInputsProInfos(
                     value={elem}
                     onClick={(e) => handleProInfos(e)}
                   />
-                  <label htmlFor={titreForInputId[i]}>
+                  <label
+                    htmlFor={titreForInputId[i]}
+                    className={styles.labelPro}>
                     &nbsp;
                     {`${dataApp[i]} ${
                       i >= dataApp.length - 2 ? '' : `(${dataAbr[i]})`

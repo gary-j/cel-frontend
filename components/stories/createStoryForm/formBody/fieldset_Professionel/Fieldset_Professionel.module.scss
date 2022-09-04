@@ -3,6 +3,8 @@
 .fieldset {
   border: none;
   margin-bottom: 3em;
+  margin-left: 16px;
+  margin-right: 16px;
   .fieldsetHeader {
     @include fieldsetHeader;
     display: flex;
@@ -66,4 +68,12 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 2em;
+  .selectPro{
+    display: flex;
+    align-items: center;
+    .labelPro{
+      font-weight: $regular;
+      font-size: $third-text;
+    }
+  }
 }

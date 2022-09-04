@@ -15,7 +15,9 @@
   width: calc(100% - 28px);
   height: calc(100vh - 28px);
   margin: auto;
-  padding: 20px 16px 32px;
+  // padding: 20px 16px 32px;
+  padding: 20px 0px 32px;
+
   border-radius: 8px;
   background-color: $background;
   overflow: hidden;
@@ -47,6 +49,7 @@
 
 @mixin formBody {
   height: auto;
+  
   .form {
     height: 100%;
     width: 100%;
@@ -56,6 +59,11 @@
     .fieldset {
       border: none;
       background-color: #191919;
+      height: max-content;
+      // border: 2px solid blue;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
       .label {
         // border: 2px solid red;
         margin: 0 13.1px 6px 0;
@@ -72,7 +80,7 @@
           vertical-align: text-bottom;
         }
       }
-      .input {
+      .input{
         width: 100%;
         height: 40px;
         padding: 12px 16px 16px;
@@ -92,7 +100,7 @@
   }
 }
 
-@mixin fieldsetHeader {
+@mixin fieldsetHeader{
   width: 100%;
   .title {
     font-family: $font;
@@ -111,7 +119,7 @@
   }
 }
 
-@mixin label {
+@mixin label{
   // border: 2px solid red;
   margin: 0 13.1px 6px 0;
   font-size: $main-text;
@@ -122,12 +130,12 @@
   letter-spacing: normal;
   color: $black;
 }
-@mixin asterisque {
+@mixin asterisque{
   color: red;
   font-weight: $light;
   vertical-align: text-bottom;
 }
-@mixin input {
+@mixin input{
   width: 100%;
   height: 40px;
   padding: 12px 16px 16px;
@@ -139,7 +147,7 @@
     margin-bottom: 6px;
   }
 }
-@mixin inputError {
+@mixin inputError{
   color: $red;
   margin-bottom: 20px;
 }
@@ -158,11 +166,10 @@
   line-height: 2;
   margin-top: 16px;
   border-radius: 8px;
-  p{
+  p {
     font-weight: $semi-bold;
     // $font2 dans globals.scss
   }
- 
 }
 
 @mixin listbox{

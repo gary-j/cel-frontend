@@ -1,13 +1,17 @@
-@import '../../../../styles/tools/form','../../../../styles/tools/colors', '../../../../styles/tools/fonts';
+@import '../../../../styles/tools/form', '../../../../styles/tools/colors',
+  '../../../../styles/tools/fonts';
 
-.formHeader{
-    @include formHeader;
-    margin-bottom: 24px;
-    .description{
-        @include basics;
-        line-height: 1.67;
-        opacity: 0.72;
-        font-size: $third-text;
-        margin-bottom: unset;
-    }
+.formHeader {
+  @include formHeader;
+  width: unset;
+  margin-bottom: 24px;
+  margin-left: 16px;
+  margin-right: 16px;
+  .description {
+    @include basics;
+    line-height: 1.67;
+    opacity: 0.72;
+    font-size: $third-text;
+    margin-bottom: unset;
+  }
 }
