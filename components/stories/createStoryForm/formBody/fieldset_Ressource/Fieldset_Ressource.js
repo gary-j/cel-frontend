@@ -14,7 +14,7 @@ function Fieldset_Ressource() {
     'video',
   ];
   const [selected, setSelected] = useState(null);
-  const [ressource, setRessource] = useState([]);
+  const [ressource, setRessource] = useState({});
   //   console.log(
   //     selected
   //       ? `Ressource sélectionnée : ${selected}`
@@ -25,8 +25,10 @@ function Fieldset_Ressource() {
     let id = e.target.closest('div').dataset.target;
     // console.log('*** appui sur : ', id);
     if (selected === id) {
+      setRessource({});
       setSelected(null);
     } else {
+      setRessource({});
       setSelected(id);
     }
   };

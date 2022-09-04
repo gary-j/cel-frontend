@@ -39,7 +39,7 @@
       margin-bottom: unset;
     }
     .input::placeholder{
-      font-style: italic;
+      @include placeholder;
     }
     .select {
       padding: 0 16px;
