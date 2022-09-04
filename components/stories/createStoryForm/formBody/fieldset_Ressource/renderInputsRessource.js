@@ -51,25 +51,13 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
       ['Site de la vidéo']: 'url de la vidéo',
     },
   };
-  console.log('data[2] : ', Object.keys(data)[2]);
-  //
-  const ressourcesModel = {
-    citation: {},
-    film: {},
-    influenceur: {},
-    livre: {},
-    musique: {},
-    podcast: {},
-    serie: {},
-    video: {},
-  };
+  // console.log('data[2] : ', Object.keys(data)[2]);
+  console.log('Ressource... : ', ressource);
+
   //
   const handleRessourceInfos = (e) => {
-    // console.log('e.target : ', e.target);
-    setProfessionalConsulted({
-      ...setRessource,
-      [e.target.name]: e.target.value,
-    });
+    console.log('e.target : ', e.target);
+    setRessource({ ...ressource, [e.target.name]: e.target.value });
   };
   //
   function renderInputs(selected) {
@@ -106,7 +94,8 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
                     id={keySlug}
                     name={keySlug}
                     placeholder={item[1]}
-                    className={styles.input + ' ' + styles.textarea}></textarea>
+                    className={styles.input + ' ' + styles.textarea}
+                    onChange={(e) => handleRessourceInfos(e)}></textarea>
                 ) : (
                   <input
                     form='createStoryForm'
