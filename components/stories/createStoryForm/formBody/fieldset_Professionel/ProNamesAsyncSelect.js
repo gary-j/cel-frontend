@@ -66,7 +66,9 @@ function ProNamesAsyncSelect({ props }) {
         form='createStoryForm'
         name='search-professional'
         allowCreateWhileLoading={false}
-        formatCreateLabel={(userInputValue) => `Créer : " ${userInputValue} "`}
+        formatCreateLabel={(userInputValue) =>
+          `Ajouter un professionel : " ${userInputValue} "`
+        }
         cacheOptions
         defaultOptions={proNamesProps}
         loadOptions={getProsFromDB}

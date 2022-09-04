@@ -91,6 +91,7 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
                 {item[0].startsWith('-textarea-') ? (
                   <textarea
                     form='createStoryForm'
+                    key={key}
                     id={keySlug}
                     name={keySlug}
                     placeholder={item[1]}
@@ -99,6 +100,7 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
                 ) : (
                   <input
                     form='createStoryForm'
+                    key={key}
                     id={keySlug}
                     name={keySlug}
                     className={`${styles.input} ${

@@ -4,6 +4,8 @@
 .fieldset {
   border: none;
   margin-bottom: 3em;
+  margin-left: 16px;
+  margin-right: 16px;
 
   .fieldsetHeader {
     @include fieldsetHeader;
