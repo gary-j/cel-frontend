@@ -12,10 +12,11 @@ function renderTransformationPart(ressource, setRessource) {
           form='createStoryForm'
           name='bodyPart'
           id='bodyPart'
+          defaultValue={'Gary'}
           required
           className={styles.input}>
           <option>Oreille</option>
-          <option selected>Visage</option>
+          <option>Visage</option>
           <option>Nez</option>
         </select>
       </div>
