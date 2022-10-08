@@ -3,8 +3,8 @@
 .storyReaction {
   min-width: 80%;
   max-width: 90%;
-  padding: 0.5em 2em;
   border-radius: 36px;
+  padding: 4px;
   border: solid 2px rgba(25, 25, 25, 0.12);
   background-color: #f6f6f6;
   //
@@ -19,10 +19,11 @@
     flex-direction: column;
     border-radius: 24px;
     align-items: center;
+    padding-top: 1em;
     // border: 1px solid blue;
     &.selected {
       border-radius: 24px;
-      padding: 0em 0.3em;
+      // padding: 0em 0.3em;
       box-shadow: inset 0 0 8px 0 rgba(25, 25, 25, 0.16);
       background-color: rgba(213, 213, 213, 0.72);
     }
