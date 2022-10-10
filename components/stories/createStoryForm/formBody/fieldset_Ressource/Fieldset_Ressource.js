@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
 import renderInputsRessource from './renderInputsRessource';
 import renderTransformationPart from './transformation/renderTransformationPart';
-
+import { publicRequest } from '../../../../../utils/axiosRequest';
 function Fieldset_Ressource() {
   const data = [
     'citation',
@@ -37,6 +37,34 @@ function Fieldset_Ressource() {
       setSelected(id);
     }
   };
+  //
+  const [bodyparts, setBodyPartsFromDB] = useState([]);
+  //
+  //Fetch bodyparts from DB
+  useLayoutEffect(() => {
+    let controller = new AbortController();
+    let signal = controller.signal;
+    //
+    async function getBodyPartsFromDB() {
+      try {
+        const res = await publicRequest.get('/bodypart', {
+          // connect the controller with the axios request
+          signal: signal,
+        });
+        const bodyparts = await res.data;
+        setBodyPartsFromDB(bodyparts);
+        controller = null;
+        //aborts the request when the component umounts
+        return () => controller?.abort();
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          return 'Request Aborted ';
+        }
+        return error;
+      }
+    }
+    getBodyPartsFromDB();
+  }, []);
   //
   return (
     <fieldset
@@ -87,7 +115,8 @@ function Fieldset_Ressource() {
             Transformation physique / Chirurgie esthétique
           </label>
         </div>
-        {isChecked && renderTransformationPart(ressource, setRessource)}
+        {isChecked &&
+          renderTransformationPart(ressource, setRessource, bodyparts)}
       </div>
     </fieldset>
   );
