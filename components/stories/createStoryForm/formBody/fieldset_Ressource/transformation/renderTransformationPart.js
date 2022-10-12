@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import styles from './renderTransformationPart.module.scss';
+import axios from 'axios';
+import { BACKEND_URL } from '../../../../../../utils/consts';
 
-function renderTransformationPart(ressource, setRessource) {
+//
+
+function renderTransformationPart(ressource, setRessource, bodyparts) {
   return (
     <div className={styles.part2}>
       <div className={styles.inputBox}>
@@ -12,12 +16,20 @@ function renderTransformationPart(ressource, setRessource) {
           form='createStoryForm'
           name='bodyPart'
           id='bodyPart'
-          defaultValue={'Gary'}
+          defaultValue={'Gary'} // doit renvoyer l'Id de la partie du corps
           required
           className={styles.input}>
-          <option>Oreille</option>
+          {bodyparts.map((bodyPart) => {
+            let i = bodyPart.name;
+            return (
+              <option key={bodyparts.slug}>
+                {i.charAt(0).toUpperCase() + i.slice(1)}
+              </option>
+            );
+          })}
+          {/* <option>Oreille</option>
           <option>Visage</option>
-          <option>Nez</option>
+          <option>Nez</option> */}
         </select>
       </div>
       <div className={styles.inputBox}>
