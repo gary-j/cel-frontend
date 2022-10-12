@@ -21,7 +21,11 @@ function renderTransformationPart(ressource, setRessource, bodyparts) {
           className={styles.input}>
           {bodyparts.map((bodyPart) => {
             let i = bodyPart.name;
-            return <option>{i.charAt(0).toUpperCase() + i.slice(1)}</option>;
+            return (
+              <option key={bodyparts.slug}>
+                {i.charAt(0).toUpperCase() + i.slice(1)}
+              </option>
+            );
           })}
           {/* <option>Oreille</option>
           <option>Visage</option>

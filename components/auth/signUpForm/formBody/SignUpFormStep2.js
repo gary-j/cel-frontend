@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { publicRequest } from '../../../../utils/axiosRequest';
 import styles from '../SignupFormContainer.module.scss';
 import Image from 'next/image';
@@ -15,7 +15,7 @@ const SignUpFormStep2 = ({ props, fieldStateProps }) => {
     setThemesFromDB,
   } = fieldStateProps;
   // useEffect appel BD pour récupérer les thèmes hors staticprops
-  useEffect(() => {
+  useLayoutEffect(() => {
     async function getThemesFromDB() {
       // const res = await axios.get('http://localhost:5005/api/theme/all');
       const res = await publicRequest.get(`/theme/all`);
@@ -23,7 +23,7 @@ const SignUpFormStep2 = ({ props, fieldStateProps }) => {
       setThemesFromDB(themes);
     }
     getThemesFromDB();
-  }, []);
+  });
   // Functions
   const handleToggle = (e) => {
     {
