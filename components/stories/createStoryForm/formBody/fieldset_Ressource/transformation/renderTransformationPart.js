@@ -1,8 +1,5 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './renderTransformationPart.module.scss';
-import axios from 'axios';
-import { BACKEND_URL } from '../../../../../../utils/consts';
-
 //
 
 function renderTransformationPart(ressource, setRessource, bodyparts) {
@@ -27,9 +24,6 @@ function renderTransformationPart(ressource, setRessource, bodyparts) {
               </option>
             );
           })}
-          {/* <option>Oreille</option>
-          <option>Visage</option>
-          <option>Nez</option> */}
         </select>
       </div>
       <div className={styles.inputBox}>

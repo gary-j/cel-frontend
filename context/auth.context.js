@@ -8,6 +8,7 @@ function AuthProviderWrapper(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(true);
   const [user, setUser] = useState(null);
+  const [storedToken, setStoredToken] = useState(null);
   // const [user, setUser] = useState({
   //   authenticated: true,
   //   email: 'gary@test.com',
@@ -53,6 +54,7 @@ function AuthProviderWrapper(props) {
           const user = response.data;
           // Update state variables
           setIsLoggedIn(true);
+          setStoredToken(storedToken);
           // console.log('user de reponse.data : ', user);
           if (user?.isAdmin === true) {
             setIsAdmin(true);
@@ -67,6 +69,7 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(false);
           setIsLoading(false);
           setUser(null);
+          setStoredToken(null);
         });
     } else {
       // console.log('*** else, token not available *** : ');
@@ -98,6 +101,7 @@ function AuthProviderWrapper(props) {
         isAdmin,
         user,
         storeToken,
+        storedToken,
         authenticateUser,
         logOutUser,
       }}>
