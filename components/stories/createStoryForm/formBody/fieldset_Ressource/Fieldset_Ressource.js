@@ -1,8 +1,10 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect, useContext } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
 import renderInputsRessource from './renderInputsRessource';
 import renderTransformationPart from './transformation/renderTransformationPart';
 import { publicRequest } from '../../../../../utils/axiosRequest';
+import { AuthContext } from '../../../../../context/auth.context';
+//
 function Fieldset_Ressource() {
   const data = [
     'citation',
@@ -17,6 +19,8 @@ function Fieldset_Ressource() {
   const [selected, setSelected] = useState(null);
   const [ressource, setRessource] = useState({});
   const [isChecked, setIsChecked] = useState(false);
+  const { storedToken } = useContext(AuthContext);
+
   const handleCheckbox = () => {
     setIsChecked(!isChecked);
   };
@@ -64,6 +68,13 @@ function Fieldset_Ressource() {
       }
     }
     getBodyPartsFromDB();
+  }, []);
+  //
+  useEffect(() => {
+    const imagekitAuth = publicRequest.get('/auth/imagekit', {
+      headers: { Authorization: `Bearer ${storedToken}` },
+    });
+    console.log('la reponse du backend imagekit auth : ', imagekitAuth);
   }, []);
   //
   return (
