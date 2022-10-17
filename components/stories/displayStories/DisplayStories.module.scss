@@ -52,9 +52,24 @@
         line-height: 2;
         color: $black;
         opacity: 0.72;
-        margin-bottom: 24px;
+        margin-bottom: 1em;
         .readMore {
           color: $dark-green-2;
+        }
+      }
+      .ressource {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .text{
+          @include basics;
+          font-size: $third-text;
+          color: $black;
+          opacity: 0.72;
+          cursor: pointer;
+        }
+        .image {
+          cursor: pointer;
         }
       }
       .professional {

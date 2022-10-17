@@ -90,8 +90,8 @@ ${styles.fieldContainer + ' ' + styles.step2} ${
                     : `/assets/img/svgs/${theme.svg_title}-unselected.svg`
                 }`}
                 alt={theme.svg_title}
-                height='40px'
-                width='40px'
+                height='2.4em'
+                width='2.4em'
                 data-target={theme._id}></Image>
             </div>
           ))}
