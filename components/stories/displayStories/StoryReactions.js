@@ -73,6 +73,9 @@ const StoryReactions = ({ storyID, cssBreakPoint }) => {
           </div>
         </div>
         <div className={styles.reactionBox}>
+          <div>
+            <p className={styles.numberReaction}>100k</p>
+          </div>
           <FontAwesomeIcon
             icon={faCaretRight}
             className={styles.fontawesome}

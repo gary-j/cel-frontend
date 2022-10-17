@@ -10,6 +10,11 @@
     background-color: #f5f7f8;
     margin-bottom: 24px;
   }
+  .separation2 {
+    height: 2px;
+    background-color: #f5f7f8;
+    margin-bottom: 10px;
+  }
   .storyContainer {
     width: 100%;
     // border: 1px solid pink;
@@ -57,33 +62,38 @@
           color: $dark-green-2;
         }
       }
-      .ressource {
+      .about {
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        .text{
+        flex-direction: column;
+        align-items: end;
+        .ressource {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          .text {
+            @include basics;
+            font-size: $third-text;
+            color: $black;
+            opacity: 0.72;
+            cursor: pointer;
+          }
+          .image {
+            cursor: pointer;
+          }
+        }
+        .professional {
           @include basics;
           font-size: $third-text;
           color: $black;
           opacity: 0.72;
-          cursor: pointer;
-        }
-        .image {
-          cursor: pointer;
-        }
-      }
-      .professional {
-        @include basics;
-        font-size: $third-text;
-        color: $black;
-        opacity: 0.72;
-        margin-bottom: 26px;
-        .proName {
-          @include basics;
-          color: $black;
-          font-weight: $semi-bold;
-          text-decoration: underline;
-          cursor: pointer;
+          margin-bottom: 26px;
+          .proName {
+            @include basics;
+            color: $black;
+            font-weight: $semi-bold;
+            text-decoration: underline;
+            cursor: pointer;
+          }
         }
       }
       .storyAction {
