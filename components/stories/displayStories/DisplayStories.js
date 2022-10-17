@@ -70,29 +70,33 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
                     {story.content}
                   </ReactReadMoreReadLess>
                 </p>
-                {story.ressource && (
-                  <div className={styles.ressource}>
-                    <div>
-                      <p className={styles.text}>Ressource : </p>
+                <div className={styles.separation2}></div>
+                <div className={styles.about}>
+                  {story.ressource && (
+                    <div className={styles.ressource}>
+                      <div>
+                        <p className={styles.text}>Ressource : </p>
+                      </div>
+                      <div>
+                        <Image
+                          className={styles.image}
+                          src={`/assets/img/svgs/ressources-icons/${story.ressource.mediaType}.svg`}
+                          alt={`icon ${story.ressource.mediaType}`}
+                          height='40px'
+                          width='40px'></Image>
+                      </div>
                     </div>
-                    <div>
-                      <Image
-                        className={styles.image}
-                        src={`/assets/img/svgs/ressources-icons/${story.ressource.mediaType}.svg`}
-                        alt={`icon ${story.ressource.mediaType}`}
-                        height='40px'
-                        width='40px'></Image>
-                    </div>
+                  )}
+                  <div className={styles.pro}>
+                    <p className={styles.professional}>
+                      Professionnel :{' '}
+                      <span className={styles.proName}>
+                        {story.professionalConsulted.name}
+                      </span>
+                    </p>
                   </div>
-                )}
-                <div className={styles.separation}></div>
+                </div>
                 <div className={styles.footer}>
-                  <p className={styles.professional}>
-                    Professionnel :{' '}
-                    <span className={styles.proName}>
-                      {story.professionalConsulted.name}
-                    </span>
-                  </p>
                   <div className={styles.storyAction}>
                     <Icon_story_favorite className={styles.iconAction} />
                     <div className={styles.comments}>
