@@ -11,6 +11,7 @@ import Icon_story_favorite from '../../../public/assets/img/svgs/icon-story-favo
 import Icon_story_report from '../../../public/assets/img/svgs/icon-story-report.svg';
 import Icon_story_share from '../../../public/assets/img/svgs/icon-story-share.svg';
 import StoryReactions from './StoryReactions';
+import Camera from '../../../public/assets/img/svgs/ressources-icons/photo-camera-svgrepo-com.svg';
 //
 //
 const DisplayStories = ({ stories, cssBreakPoint }) => {
@@ -33,11 +34,7 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
         className={
           styles.storiesSection +
           ' ' +
-          `${
-            cssBreakPoint === 'desktop' || cssBreakPoint === 'laptop'
-              ? styles.desktop
-              : ''
-          }`
+          `${cssBreakPoint === 'desktop' ? styles.desktop : ''}`
         }>
         {stories.slice(0, visible).map((story) => {
           const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -72,18 +69,39 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
                 </p>
                 <div className={styles.separation2}></div>
                 <div className={styles.about}>
-                  {story.ressource && (
+                  {story.ressource !== null && (
                     <div className={styles.ressource}>
-                      <div>
-                        <p className={styles.text}>Ressource : </p>
+                      <div className={styles.block}>
+                        <div>
+                          <p className={styles.text}>Ressource : </p>
+                        </div>
+                        <div>
+                          <Image
+                            className={styles.image}
+                            src={`/assets/img/svgs/ressources-icons/${story.ressource.mediaType}.svg`}
+                            alt={`icon ${story.ressource.mediaType}`}
+                            height='40px'
+                            width='40px'></Image>
+                        </div>
                       </div>
-                      <div>
-                        <Image
-                          className={styles.image}
-                          src={`/assets/img/svgs/ressources-icons/${story.ressource.mediaType}.svg`}
-                          alt={`icon ${story.ressource.mediaType}`}
-                          height='40px'
-                          width='40px'></Image>
+                      <div className={styles.block}>
+                        <div>
+                          <p className={styles.text}>Avant/Après : </p>
+                        </div>
+                        <div>
+                          {/* <Image
+                            className={styles.image}
+                            src={`/assets/img/svgs/ressources-icons/photo-camera-svgrepo-com.svg`}
+                            alt={`icon before then after`}
+                            height='40px'
+                            width='40px'></Image> */}
+                          <Camera
+                            className={styles.image}
+                            alt={`icon before then after`}
+                            height='36px'
+                            width='36px'
+                            fill='#F95D5F'></Camera>
+                        </div>
                       </div>
                     </div>
                   )}

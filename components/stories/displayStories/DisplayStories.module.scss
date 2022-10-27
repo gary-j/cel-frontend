@@ -65,20 +65,29 @@
       .about {
         display: flex;
         flex-direction: column;
-        align-items: end;
+        align-items: flex-end;
         .ressource {
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           align-items: center;
-          .text {
-            @include basics;
-            font-size: $third-text;
-            color: $black;
-            opacity: 0.72;
-            cursor: pointer;
-          }
-          .image {
-            cursor: pointer;
+          margin-bottom: 1em;
+          .block{
+            display: flex;
+            flex-direction: row;
+            align-items:center;
+            width: 100%;
+            justify-content: space-between;
+            gap: 6px;
+            .text {
+              @include basics;
+              font-size: $third-text;
+              color: $black;
+              opacity: 0.72;
+              cursor: pointer;
+            }
+            .image {
+              cursor: pointer;
+            }
           }
         }
         .professional {
@@ -201,11 +210,9 @@
           }
         }
         .footer {
-          display: flex;
-          flex-direction: row-reverse;
-          justify-content: space-between;
-          align-items: center;
+          background-color: rgba(157, 78, 78, 0.64);
           .storyAction {
+            display: flex;
             width: 36% !important;
             .iconAction {
               font-size: $icon-story-action-desktop;
