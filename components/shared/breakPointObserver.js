@@ -1,5 +1,5 @@
 function matchMediaQuery(breakPoints, setBreakPoint) {
-  //   console.log('test1: ', Object.keys(breakPoints));
+  // console.log('test1: ', Object.keys(breakPoints));
 
   for (let key of Object.keys(breakPoints)) {
     // console.log(key, '==>', breakPoints[key]);

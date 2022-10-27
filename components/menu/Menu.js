@@ -28,8 +28,9 @@ function Menu({ isOpen, toggleMenu }) {
       <nav
         className={`
           ${styles.sideMenuContainer} ${isOpen ? styles.active : ''} ${
-          breakPoint === 'desktop' || breakPoint === 'laptop'
-            ? styles.desktop
+          breakPoint === 'desktop'
+            ? // || breakPoint === 'laptop'
+              styles.desktop
             : ''
         }
           `}>
