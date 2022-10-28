@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { publicRequest } from '../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../context/auth.context';
 import styles from '../SignupFormContainer.module.scss';
-import Icon_view from '../../../../public/assets/img/svgs/icon-page-view.svg';
+import Icon_view from '../../../../public/assets/img/svgs/page-icons/icon-page-view.svg';
 import LoadingMini from '../../../commons/LoadingMini';
 import Link from 'next/link';
 //

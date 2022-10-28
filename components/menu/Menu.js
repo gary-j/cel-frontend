@@ -7,12 +7,12 @@ import styles from './Menu.module.scss';
 import { AuthContext } from '../../context/auth.context';
 import { BreakPointContext } from '../../context/breakPoints.context';
 //
-import Icon_connect from '../../public/assets/img/svgs/icon-page-connect.svg';
-import Icon_home from '../../public/assets/img/svgs/icon-menu-home.svg';
-import Icon_theme from '../../public/assets/img/svgs/icon-menu-themes.svg';
-import Icon_abos from '../../public/assets/img/svgs/icon-menu-abonnements.svg';
-import Icon_aLaUne from '../../public/assets/img/svgs/icon-menu-une.svg';
-import Icon_close from '../../public/assets/img/svgs/icon-page-close.svg';
+import Icon_connect from '../../public/assets/img/svgs/page-icons/icon-page-connect.svg';
+import Icon_home from '../../public/assets/img/svgs/menu-icons/icon-menu-home.svg';
+import Icon_theme from '../../public/assets/img/svgs/menu-icons/icon-menu-themes.svg';
+import Icon_abos from '../../public/assets/img/svgs/menu-icons/icon-menu-abonnements.svg';
+import Icon_aLaUne from '../../public/assets/img/svgs/menu-icons/icon-menu-une.svg';
+import Icon_close from '../../public/assets/img/svgs/page-icons/icon-page-close.svg';
 //
 import SignFormContainer from '../auth/SignFormContainer';
 

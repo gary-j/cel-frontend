@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import styles from './CreateStoryFormHeader.module.scss';
-import Icon_close from '../../../../public/assets/img/svgs/icon-page-close.svg';
+import Icon_close from '../../../../public/assets/img/svgs/page-icons/icon-page-close.svg';
 function CreateStoryFormHeader() {
   const router = useRouter();
   return (
