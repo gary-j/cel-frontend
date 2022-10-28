@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SignUpProgressBar.module.scss';
-import Icon_validate from '../../../../public/assets/img/svgs/icon-page-check.svg';
+import Icon_validate from '../../../../public/assets/img/svgs/page-icons/icon-page-check.svg';
 
 const SignUpProgressBar = ({ props }) => {
   const { cssBreakPoint, displayNextFormPart, successSignUp } = props;

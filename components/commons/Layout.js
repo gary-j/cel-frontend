@@ -7,11 +7,7 @@ const Layout = ({ children }) => {
   const { breakPoint } = useContext(BreakPointContext);
   return (
     <>
-      {breakPoint === 'mobile' || breakPoint === 'tablet' ? (
-        <NavbarSmartphone />
-      ) : (
-        <Menu></Menu>
-      )}
+      {breakPoint !== 'desktop' ? <NavbarSmartphone /> : <Menu></Menu>}
 
       <main>{children}</main>
       {/* <Footer /> */}

@@ -86,8 +86,8 @@ ${styles.fieldContainer + ' ' + styles.step2} ${
                 className={`${theme.svg_title} ${styles.svg}`}
                 src={`${
                   selectedThemes.includes(theme._id)
-                    ? `/assets/img/svgs/${theme.svg_title}-selected.svg`
-                    : `/assets/img/svgs/${theme.svg_title}-unselected.svg`
+                    ? `/assets/img/svgs/themes-icons/${theme.svg_title}-selected.svg`
+                    : `/assets/img/svgs/themes-icons/${theme.svg_title}-unselected.svg`
                 }`}
                 alt={theme.svg_title}
                 height='2.4em'

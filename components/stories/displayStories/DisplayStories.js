@@ -6,12 +6,12 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { useState } from 'react';
 import ReactReadMoreReadLess from 'react-read-more-read-less';
 //
-import Icon_story_comments from '../../../public/assets/img/svgs/icon-story-comments.svg';
-import Icon_story_favorite from '../../../public/assets/img/svgs/icon-story-favorite.svg';
-import Icon_story_report from '../../../public/assets/img/svgs/icon-story-report.svg';
-import Icon_story_share from '../../../public/assets/img/svgs/icon-story-share.svg';
+import Icon_story_comments from '../../../public/assets/img/svgs/story-actions-icons/icon-story-comments.svg';
+import Icon_story_favorite from '../../../public/assets/img/svgs/story-actions-icons/icon-story-favorite.svg';
+import Icon_story_report from '../../../public/assets/img/svgs/story-actions-icons/icon-story-report.svg';
+import Icon_story_share from '../../../public/assets/img/svgs/story-actions-icons/icon-story-share.svg';
+import Icon_camera_trans from '../../../public/assets/img/svgs/page-icons/icon-page-transformation-physique.svg';
 import StoryReactions from './StoryReactions';
-import Camera from '../../../public/assets/img/svgs/ressources-icons/photo-camera-svgrepo-com.svg';
 //
 //
 const DisplayStories = ({ stories, cssBreakPoint }) => {
@@ -21,7 +21,6 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
   //   ' et le breakpoint : ',
   //   cssBreakPoint
   // );
-
   const [visible, setVisible] = useState(5);
   const showMoreStories = () => {
     setVisible((prevValue) => prevValue + 3);
@@ -38,6 +37,10 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
         }>
         {stories.slice(0, visible).map((story) => {
           const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          // ajout d'une clé à l'objet story pour une variante d'affichage css
+          story.proIsAlone =
+            story.ressource === null &&
+            story.physicalTransformation.isSelected === false;
 
           return (
             <div key={story._id} className={styles.storyContainer}>
@@ -69,11 +72,33 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
                 </p>
                 <div className={styles.separation2}></div>
                 <div className={styles.about}>
-                  {story.ressource !== null && (
-                    <div className={styles.ressource}>
-                      <div className={styles.block}>
+                  <div
+                    className={`${styles.block} ${
+                      story.proIsAlone ? styles.alone : ''
+                    }`}>
+                    <div
+                      className={`${styles.pro} ${styles.part} ${
+                        story.proIsAlone ? styles.alone : ''
+                      }`}>
+                      <div>
+                        {story.proIsAlone ? (
+                          <p className={styles.professional}>
+                            Professionnel :&nbsp;
+                          </p>
+                        ) : (
+                          <p className={styles.professional}>Professionnel </p>
+                        )}
+                      </div>
+                      <div className={styles.proNameBlock}>
+                        <p className={styles.proName}>
+                          {story.professionalConsulted.name}
+                        </p>
+                      </div>
+                    </div>
+                    {story.ressource !== null && (
+                      <div className={styles.ressource + ' ' + styles.part}>
                         <div>
-                          <p className={styles.text}>Ressource : </p>
+                          <p className={styles.text}>Ressource </p>
                         </div>
                         <div>
                           <Image
@@ -84,36 +109,28 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
                             width='40px'></Image>
                         </div>
                       </div>
-                      <div className={styles.block}>
+                    )}
+
+                    {story.physicalTransformation.isSelected && (
+                      <div
+                        className={styles.transformation + ' ' + styles.part}>
                         <div>
-                          <p className={styles.text}>Avant/Après : </p>
+                          <p className={styles.text}>Avant/Après </p>
                         </div>
                         <div>
-                          {/* <Image
-                            className={styles.image}
-                            src={`/assets/img/svgs/ressources-icons/photo-camera-svgrepo-com.svg`}
-                            alt={`icon before then after`}
-                            height='40px'
-                            width='40px'></Image> */}
-                          <Camera
+                          <Icon_camera_trans
                             className={styles.image}
                             alt={`icon before then after`}
                             height='36px'
                             width='36px'
-                            fill='#F95D5F'></Camera>
+                            fill='#F95D5F'></Icon_camera_trans>
                         </div>
                       </div>
-                    </div>
-                  )}
-                  <div className={styles.pro}>
-                    <p className={styles.professional}>
-                      Professionnel :{' '}
-                      <span className={styles.proName}>
-                        {story.professionalConsulted.name}
-                      </span>
-                    </p>
+                    )}
                   </div>
                 </div>
+                <div className={styles.separation2}></div>
+
                 <div className={styles.footer}>
                   <div className={styles.storyAction}>
                     <Icon_story_favorite className={styles.iconAction} />
