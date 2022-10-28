@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 
 import styles from './Fieldset_Professionel.module.scss';
-import Icon_search from '../../../../../public/assets/img/svgs/icon-page-search.svg';
+import Icon_search from '../../../../../public/assets/img/svgs/page-icons/icon-page-search.svg';
 import ProNamesAsyncSelect from './ProNamesAsyncSelect';
 import { renderInputsProInfos } from './renderInputsProInfos';
 
