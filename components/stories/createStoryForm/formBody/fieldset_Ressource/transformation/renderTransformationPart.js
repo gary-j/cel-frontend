@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './renderTransformationPart.module.scss';
+import styles from './RenderTransformationPart.module.scss';
 //
 import { IKContext, IKImage, IKUpload } from 'imagekitio-react';
 import {
@@ -15,7 +15,7 @@ const onSuccess = (res) => {
   console.log('Succes', res);
 };
 
-function renderTransformationPart(ressource, setRessource, bodyparts, user) {
+function RenderTransformationPart(ressource, setRessource, bodyparts, user) {
   // console.log('user render transf part : ', user);
   //
   return (
@@ -80,4 +80,4 @@ function renderTransformationPart(ressource, setRessource, bodyparts, user) {
   );
 }
 
-export default renderTransformationPart;
+export default RenderTransformationPart;

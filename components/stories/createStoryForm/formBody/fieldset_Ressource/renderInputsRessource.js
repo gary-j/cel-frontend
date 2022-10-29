@@ -1,7 +1,7 @@
 import React, { useId } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
 
-function renderInputsRessource(selected, ressource, setRessource, inputError) {
+function RenderInputsRessource(selected, ressource, setRessource, inputError) {
   const data = {
     citation: {
       ['-textarea- Citation']:
@@ -60,7 +60,7 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
     setRessource({ ...ressource, [e.target.name]: e.target.value });
   };
   //
-  function renderInputs(selected) {
+  function RenderInputs(selected) {
     let labelsAndInputs = Object.entries(data[selected]);
     return (
       <>
@@ -119,7 +119,7 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
     );
   }
 
-  return <>{renderInputs(selected)}</>;
+  return <>{RenderInputs(selected)}</>;
 }
 
-export default renderInputsRessource;
+export default RenderInputsRessource;

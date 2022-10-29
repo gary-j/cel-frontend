@@ -3,7 +3,7 @@ import styles from './create.module.scss';
 import CreateStoryFormContainer from '../../components/stories/createStoryForm/CreateStoryFormContainer';
 import { AuthContext } from '../../context/auth.context';
 
-function create() {
+function Create() {
   const { user } = useContext(AuthContext);
   return (
     <>
@@ -13,4 +13,4 @@ function create() {
   );
 }
 
-export default create;
+export default Create;
