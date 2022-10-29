@@ -4,7 +4,7 @@ import Fieldset_Histoire from './fieldset_Histoire/Fieldset_Histoire';
 import Fieldset_Professionel from './fieldset_Professionel/Fieldset_Professionel';
 import Fieldset_Ressource from './fieldset_Ressource/Fieldset_Ressource';
 
-function CreateStoryFormBody() {
+function CreateStoryFormBody({ user }) {
   return (
     <div className={styles.formBody}>
       <form
@@ -14,7 +14,7 @@ function CreateStoryFormBody() {
       >
         <Fieldset_Histoire></Fieldset_Histoire>
         <Fieldset_Professionel></Fieldset_Professionel>
-        <Fieldset_Ressource></Fieldset_Ressource>
+        <Fieldset_Ressource user={user}></Fieldset_Ressource>
       </form>
     </div>
   );

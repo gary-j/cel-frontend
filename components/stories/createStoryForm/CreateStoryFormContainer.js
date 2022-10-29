@@ -3,13 +3,13 @@ import styles from './CreateStoryFormContainer.module.scss';
 import CreateStoryFormBody from './formBody/CreateStoryFormBody';
 import CreateStoryFormHeader from './formHeader/CreateStoryFormHeader';
 
-const CreateStoryFormContainer = () => {
+const CreateStoryFormContainer = ({ user }) => {
   return (
     <>
       <div className={styles.formContainer}>
         <div className={styles.formContent}>
           <CreateStoryFormHeader></CreateStoryFormHeader>
-          <CreateStoryFormBody></CreateStoryFormBody>
+          <CreateStoryFormBody user={user}></CreateStoryFormBody>
         </div>
       </div>
     </>
