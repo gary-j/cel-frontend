@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './RenderTransformationPart.module.scss';
+import styles from './renderTransformationPart.module.scss';
 //
 import { IKContext, IKImage, IKUpload } from 'imagekitio-react';
 import {
