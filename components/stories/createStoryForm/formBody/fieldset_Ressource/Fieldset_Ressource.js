@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect, useContext } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
-import RenderInputsRessource from './RenderInputsRessource';
-import RenderTransformationPart from './transformation/RenderTransformationPart';
+import renderInputsRessource from './renderInputsRessource';
+import renderTransformationPart from './transformation/renderTransformationPart';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../../context/auth.context';
 //
@@ -114,7 +114,7 @@ function Fieldset_Ressource({ user }) {
           })}
         </div>
         {selected !== null &&
-          RenderInputsRessource(selected, ressource, setRessource)}
+          renderInputsRessource(selected, ressource, setRessource)}
       </div>
 
       <div className={styles.transformation}>
@@ -129,7 +129,7 @@ function Fieldset_Ressource({ user }) {
           </label>
         </div>
         {isChecked &&
-          RenderTransformationPart(ressource, setRessource, bodyparts, user)}
+          renderTransformationPart(ressource, setRessource, bodyparts, user)}
       </div>
     </fieldset>
   );

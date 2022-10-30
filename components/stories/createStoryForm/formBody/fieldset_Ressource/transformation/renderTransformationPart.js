@@ -15,7 +15,7 @@ const onSuccess = (res) => {
   console.log('Succes', res);
 };
 
-function RenderTransformationPart(ressource, setRessource, bodyparts, user) {
+function renderTransformationPart(ressource, setRessource, bodyparts, user) {
   // console.log('user render transf part : ', user);
   //
   return (
@@ -80,4 +80,4 @@ function RenderTransformationPart(ressource, setRessource, bodyparts, user) {
   );
 }
 
-export default RenderTransformationPart;
+export default renderTransformationPart;
