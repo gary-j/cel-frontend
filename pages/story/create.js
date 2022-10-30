@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './create.module.scss';
 import CreateStoryFormContainer from '../../components/stories/createStoryForm/CreateStoryFormContainer';
+import { AuthContext } from '../../context/auth.context';
 
-function create() {
+function Create() {
+  const { user } = useContext(AuthContext);
   return (
     <>
       {/* <div className={styles.create}>create</div>; */}
-      <CreateStoryFormContainer></CreateStoryFormContainer>
+      <CreateStoryFormContainer user={user}></CreateStoryFormContainer>
     </>
   );
 }
 
-export default create;
+export default Create;

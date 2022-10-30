@@ -1,11 +1,11 @@
-import React, { useState, useLayoutEffect, useEffect, useContext } from 'react';
+import React, { useState, useLayoutEffect, useContext } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
 import renderInputsRessource from './renderInputsRessource';
 import renderTransformationPart from './transformation/renderTransformationPart';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../../context/auth.context';
 //
-function Fieldset_Ressource() {
+function Fieldset_Ressource({ user }) {
   const data = [
     'citation',
     'film',
@@ -70,13 +70,13 @@ function Fieldset_Ressource() {
     getBodyPartsFromDB();
   }, []);
   //
-  useEffect(() => {
-    const imagekitAuth = publicRequest.get('/auth/imagekit', {
-      headers: { Authorization: `Bearer ${storedToken}` },
-    });
-    console.log('la reponse du backend imagekit auth : ', imagekitAuth);
-  }, []);
-  //
+  // useEffect(() => {
+  //   const imagekitAuth = publicRequest.get('/auth/imagekit', {
+  //     headers: { Authorization: `Bearer ${storedToken}` },
+  //   });
+  //   console.log('la reponse du backend imagekit auth : ', imagekitAuth);
+  // }, []);
+  // //
   return (
     <fieldset
       className={styles.fieldset}
@@ -95,17 +95,19 @@ function Fieldset_Ressource() {
           </label>
         </div>
         <div className={styles.selectRessource}>
-          {data.map((i) => {
+          {data.map((ressource, i) => {
             return (
               <div
-                key={i}
-                data-target={i}
+                key={ressource}
+                data-target={ressource}
                 className={` 
-                ${styles.button} ${selected === i ? styles.selected : ''} 
+                ${styles.button} ${
+                  selected === ressource ? styles.selected : ''
+                } 
               `}
                 onClick={handleSelect}>
-                <p data-target={i} className={styles.text}>
-                  {i.charAt(0).toUpperCase() + i.slice(1)}
+                <p data-target={ressource} className={styles.text}>
+                  {ressource.charAt(0).toUpperCase() + ressource.slice(1)}
                 </p>
               </div>
             );
@@ -127,7 +129,7 @@ function Fieldset_Ressource() {
           </label>
         </div>
         {isChecked &&
-          renderTransformationPart(ressource, setRessource, bodyparts)}
+          renderTransformationPart(ressource, setRessource, bodyparts, user)}
       </div>
     </fieldset>
   );

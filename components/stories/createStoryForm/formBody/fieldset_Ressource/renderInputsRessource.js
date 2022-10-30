@@ -81,7 +81,7 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
 
           return (
             <>
-              <div key={useId} className={styles.inputBox}>
+              <div key={keySlug} className={styles.inputBox}>
                 <label className={styles.label} htmlFor={keySlug}>
                   {key}
                   {item[0].startsWith('-required-') && (

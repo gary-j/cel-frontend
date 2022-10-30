@@ -1,8 +1,23 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import styles from './renderTransformationPart.module.scss';
 //
+import { IKContext, IKImage, IKUpload } from 'imagekitio-react';
+import {
+  IMAGEKIT_URL_ENDPOINT,
+  IMAGEKIT_AUTH_ENDPOINT,
+  IMAGEKIT_PUBLIC_KEY,
+} from '../../../../../../utils/consts.js';
+//
+const onError = (err) => {
+  console.log('Error', err);
+};
+const onSuccess = (res) => {
+  console.log('Succes', res);
+};
 
-function renderTransformationPart(ressource, setRessource, bodyparts) {
+function renderTransformationPart(ressource, setRessource, bodyparts, user) {
+  // console.log('user render transf part : ', user);
+  //
   return (
     <div className={styles.part2}>
       <div className={styles.inputBox}>
@@ -48,6 +63,19 @@ function renderTransformationPart(ressource, setRessource, bodyparts) {
           id='photoAvant'
           name='beforeUrl'></input>
       </div>
+      <IKContext
+        urlEndpoint={IMAGEKIT_URL_ENDPOINT}
+        publicKey={IMAGEKIT_PUBLIC_KEY}
+        authenticationEndpoint={IMAGEKIT_AUTH_ENDPOINT}>
+        <p>Upload an image</p>
+        <IKUpload
+          fileName={'test-upload-gary.png'}
+          folder={`citron-en-limonade/transformation-physique`}
+          responseFields='customMetadata'
+          customMetadata={{ userId: `${user.id}` }}
+          onError={onError}
+          onSuccess={onSuccess}></IKUpload>
+      </IKContext>
     </div>
   );
 }
