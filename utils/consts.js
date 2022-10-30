@@ -7,6 +7,4 @@ export const IMAGEKIT_URL_ENDPOINT =
 export const IMAGEKIT_PUBLIC_KEY =
   process.env.IMAGEKIT_PUBLIC_KEY || 'public_gP+EV0f27L4KxadJE2kJoWaZgZI=';
 
-export const IMAGEKIT_AUTH_ENDPOINT =
-  process.env.IMAGEKIT_AUTH_ENDPOINT ||
-  'http://localhost:5005/api/auth/imagekit';
+export const IMAGEKIT_AUTH_ENDPOINT = process.env.IMAGEKIT_AUTH_ENDPOINT;
