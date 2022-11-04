@@ -17,6 +17,17 @@
       padding-top: unset;
       padding-bottom: unset;
       background-color: rgba(0, 0, 0, 0.05);
+
+      &.invalid {
+        margin-bottom: -1.5em;
+      }
     }
   }
 }
+.customInput {
+ @include customInput;
+ .placeholder{
+  @include placeholder;
+ }
+}
+

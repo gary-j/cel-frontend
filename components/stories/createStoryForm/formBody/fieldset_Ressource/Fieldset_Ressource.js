@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useContext } from 'react';
+import React, { useState, useLayoutEffect, useContext, useRef } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
 import renderInputsRessource from './renderInputsRessource';
 import renderTransformationPart from './transformation/renderTransformationPart';
@@ -43,6 +43,9 @@ function Fieldset_Ressource({ user }) {
   };
   //
   const [bodyparts, setBodyPartsFromDB] = useState([]);
+  const inputRefIK_Before = useRef(null);
+  const inputRefIK_After = useRef(null);
+  const ikUploadRef = useRef(null);
   //
   //Fetch bodyparts from DB
   useLayoutEffect(() => {
@@ -129,7 +132,15 @@ function Fieldset_Ressource({ user }) {
           </label>
         </div>
         {isChecked &&
-          renderTransformationPart(ressource, setRessource, bodyparts, user)}
+          renderTransformationPart(
+            ressource,
+            setRessource,
+            bodyparts,
+            user,
+            inputRefIK_Before,
+            inputRefIK_After,
+            ikUploadRef
+          )}
       </div>
     </fieldset>
   );
