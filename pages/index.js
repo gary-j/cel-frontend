@@ -21,7 +21,7 @@ export default function Home({ posts }) {
           name='Un espace de discussion autour de 14 thèmes de la vie courante'
           content='Citron en Limonade'
         />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/favicon-citron-en-limonade.png' />
       </Head>
       {/* <ScrollBarPosition /> */}
       {/* <h3>Breakpoint is : ' {breakPoint}'</h3> */}

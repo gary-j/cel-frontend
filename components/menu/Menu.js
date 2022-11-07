@@ -13,6 +13,7 @@ import Icon_theme from '../../public/assets/img/svgs/menu-icons/icon-menu-themes
 import Icon_abos from '../../public/assets/img/svgs/menu-icons/icon-menu-abonnements.svg';
 import Icon_aLaUne from '../../public/assets/img/svgs/menu-icons/icon-menu-une.svg';
 import Icon_close from '../../public/assets/img/svgs/page-icons/icon-page-close.svg';
+import Icon_writeMess from '../../public/assets/img/svgs/page-icons/icon-page-message-write.svg';
 //
 import SignFormContainer from '../auth/SignFormContainer';
 
@@ -35,7 +36,7 @@ function Menu({ isOpen, toggleMenu }) {
         }
           `}>
         {isLoggedIn ? (
-          <div className={styles.menuItemContainer}>
+          <div className={`${styles.menuItemContainer} ${styles.first}`}>
             <div className={styles.item}>
               <Image
                 src={`https://avatars.dicebear.com/api/adventurer/${user.username}.svg`}
@@ -56,9 +57,9 @@ function Menu({ isOpen, toggleMenu }) {
         )}
         <div className={styles.buttonContainer}>
           <Link href='/story/create'>
-            <button className={styles.btnRose}>SOUMETTRE</button>
+            <button className={styles.btnRose}>PUBLIER</button>
           </Link>
-          <button className={styles.btnTransparent}>MODÉRER</button>
+          {/* <button className={styles.btnTransparent}>MODÉRER</button> */}
         </div>
         <div className={styles.menuItemContainer}>
           <div className={styles.item}>
@@ -83,6 +84,36 @@ function Menu({ isOpen, toggleMenu }) {
             <Icon_aLaUne className={styles.icon} />
             <p className={styles.p}>A la une</p>
           </div>
+        </div>
+        <Link href=''>
+          <div className={`${styles.buttonContainer} ${styles.messagerie} `}>
+            <div className={styles.gauche}>
+              <Icon_writeMess className={styles.icon} />
+            </div>
+            <div className={styles.droite}>
+              <div className={styles.message}>
+                <p>Messagerie</p>
+              </div>
+              <div className={styles.nombre}>
+                <p>2</p>
+              </div>
+            </div>
+          </div>
+        </Link>
+        <Link href=''>
+          <div className={styles.bigButtonInMenu}>
+            <p>TROUVER UN PROFESSIONNEL</p>
+            <p>ou une association</p>
+          </div>
+        </Link>
+        <Link href=''>
+          <div className={`${styles.bigButtonInMenu} ${styles.espacePro}`}>
+            <p>ESPACE PRO</p>
+            <p>(médecins, psychologue, avocats...)</p>
+          </div>
+        </Link>
+        <div>
+          <p>AUTRES RESSOURCES</p>
         </div>
         {isLoggedIn ? (
           <div className={styles.menuItemContainer} onClick={logOutUser}>

@@ -10,7 +10,12 @@ const nextConfig = withPwa({
     disable: process.env.NODE_ENV === 'development',
   },
   images: {
-    domains: ['avatars.dicebear.com'],
+    domains: [
+      'avatars.dicebear.com',
+      'unsplash.com',
+      'picsum.photos',
+      'i.picsum.photos',
+    ],
   },
   webpack(config) {
     config.module.rules.push({
