@@ -1,0 +1,35 @@
+@import './colors', './fonts';
+@mixin bigButtonInMenu{
+        // border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 68px;
+        margin-bottom:24px;
+        padding: 10px 0;
+        border-radius: 4px;
+        background-color: $red;
+        p:first-of-type{
+          font-family: $font;
+          font-size: $main-text;
+          font-weight: $medium;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.5;
+          letter-spacing: normal;
+          text-align: center;
+          color: $white;
+        }
+        p:nth-of-type(2){
+          font-family: Poppins;
+          font-size: $secondary-text;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.71;
+          letter-spacing: normal;
+          text-align: center;
+          color: $white;
+        }
+}

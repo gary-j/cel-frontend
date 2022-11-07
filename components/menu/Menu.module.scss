@@ -1,4 +1,5 @@
-@import '../../styles/tools/colors', '../../styles/tools/fonts';
+@import '../../styles/tools/colors', '../../styles/tools/fonts',
+  '../../styles/tools/buttons';
 
 .sideMenuContainer {
   // border: 2px solid red;
@@ -7,7 +8,7 @@
   height: calc(100vh - 80px);
   width: 100vw;
   background-color: $dark-green-1;
-  padding: 24px 28px 0px 28px;
+  padding: 0px 28px 0px 28px;
   position: fixed;
   transform: translateX(100vw);
   transition: all 0.5s ease-in-out;
@@ -48,7 +49,8 @@
     .btnRose {
       width: 100%;
       height: 40px;
-      margin: 28px 0 20px;
+      margin-bottom: 44px;
+      // margin: 28px 0 20px;
       // padding: 12px 20px 14px;
       border-radius: 4px;
       background-color: $red;
@@ -63,9 +65,64 @@
       border: solid 2px $white;
       color: $white;
     }
+
+    &.messagerie {
+      flex-direction: row;
+      align-items: center;
+      height: 44px;
+      padding: 10px 12px;
+      margin: 40px 0px;
+      border-radius: 8px;
+      background-color: $dark-green-2;
+      color: white;
+      width: 100%;
+      .gauche {
+        .icon {
+          fill: white;
+          font-size: $icon24;
+          display: block;
+          margin-right: 12px;
+        }
+      }
+      .droite {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 24px;
+
+        .message {
+          display: flex;
+          p {
+            text-transform: uppercase;
+          }
+        }
+        .nombre {
+          background-color: $red;
+          height: 24px;
+          width: 24px;
+          border-radius: 50px;
+          display: flex;
+          p {
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+  .bigButtonInMenu {
+    @include bigButtonInMenu;
+    &.espacePro {
+      background-color: transparent;
+      border: 2px solid $white;
+    }
   }
   .menuItemContainer {
-    margin-top: 3em;
+    margin-bottom: 3em;
+    &.first {
+      margin-top: 1em;
+    }
     .item {
       display: flex;
       align-items: center;
@@ -106,7 +163,6 @@
     flex-shrink: 0;
     overflow-x: hidden;
   }
-
 }
 .test {
   font-size: 4em;

@@ -8,7 +8,7 @@ function CreateStoryFormHeader() {
     <>
       <div className={styles.formHeader}>
         <div className={styles.title}>
-          <h3>Soumettre une histoire</h3>
+          <h3>Publier une histoire</h3>
           <Icon_close className={styles.close} onClick={() => router.back()} />
         </div>
         <div className={styles.description}>
