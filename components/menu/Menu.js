@@ -112,11 +112,15 @@ function Menu({ isOpen, toggleMenu }) {
             <p>(médecins, psychologue, avocats...)</p>
           </div>
         </Link>
-        <div>
-          <p>AUTRES RESSOURCES</p>
-        </div>
+        <Link href=''>
+          <div className={`${styles.bigButtonInMenu} ${styles.ressources}`}>
+            <p>AUTRES RESSOURCES</p>
+          </div>
+        </Link>
         {isLoggedIn ? (
-          <div className={styles.menuItemContainer} onClick={logOutUser}>
+          <div
+            className={`${styles.menuItemContainer} ${styles.logout}`}
+            onClick={logOutUser}>
             <div className={styles.item}>
               <Icon_close className={styles.icon} />
               <p className={styles.p}>Se déconnecter</p>
