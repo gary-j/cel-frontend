@@ -1,14 +1,18 @@
-@import '../../../styles/tools/colors', '../../../styles/tools/fonts';
+@import '../../../styles/tools/colors', '../../../styles/tools/fonts',
+  '../../../styles/tools/form';
 
 .formContent {
   // border: 1px solid red;
-  width: calc(100% - 28px);
-  height: calc(100vh - 28px);
-  margin: auto;
-  padding: 20px 16px 32px;
-  border-radius: 8px;
-  background-color: #f5f7f8;
-  overflow: hidden;
+  // width: calc(100% - 28px);
+  // height: calc(100vh - 28px);
+  // margin: auto;
+  // padding: 20px 16px 32px;
+  // border-radius: 8px;
+  // background-color: #f5f7f8;
+  // overflow: hidden;
+  @include formContent;
+  padding: 20px 16px 16px;
+  //
   // overflow-y: scroll;
   &.successSignup {
     height: calc(70vh);
@@ -78,16 +82,7 @@
             color: $red;
             margin-bottom: 20px;
           }
-          .backButton {
-            border: 1px solid red;
-            width: 200px;
-            margin: auto;
-            margin-bottom: 0.5em;
-            background-color: $red;
-            padding: 0.3em;
-            border-radius: 0.3em;
-            color: $white;
-          }
+
           .password {
             display: flex;
             align-items: center;
@@ -135,8 +130,8 @@
     .btnVert {
       width: 100%;
       height: 40px;
-      margin: 28px 0 20px;
-      margin: auto;
+      margin-top: 28px;
+      // margin: auto;
       padding: 12px 20px 14px;
       border-radius: 4px;
       background-color: $dark-green-2;
@@ -166,11 +161,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
-      height: 72px;
+      width: calc(100% - 8px); // because outline 4px when selected
+      height: calc(72px - 8px);
       margin: auto;
       margin-bottom: 16px;
-      padding: 0 16px;
+      padding: 16px;
       border-radius: 12px;
       box-shadow: 8px 8px 32px 0 rgba(0, 60, 63, 0.12);
       background-color: #fff;
@@ -185,9 +180,18 @@
         letter-spacing: normal;
         color: $inactive;
       }
+      .svgBox {
+        // border: 1px solid red;
+        height: 100%;
+        width: 7.2em;
+        display: flex;
+        .svg {
+          display: block;
+        }
+      }
       &.selected {
         background-color: #fff;
-        border: solid 4px #00565b;
+        outline: solid 4px #00565b;
         border-radius: 12px;
         box-shadow: 8px 8px 32px 0 rgba(0, 60, 63, 0.12);
         .text {
@@ -206,6 +210,18 @@
       // position: fixed;
       width: 100%;
       // bottom: 28px;
+      &.nextStep {
+        margin: unset;
+        padding: unset;
+      }
+      &.backButton {
+        border: 4px solid $dark-green-2;
+        padding: unset;
+        background-color: $white;
+        color: $dark-green-2;
+        margin-top: 16px;
+        margin-bottom: unset;
+      }
     }
   }
 }

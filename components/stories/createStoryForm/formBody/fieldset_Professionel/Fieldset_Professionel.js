@@ -47,7 +47,10 @@ function Fieldset_Professionel() {
         name='professionnel'>
         <div className={styles.fieldsetHeader}>
           <div className={styles.titleBox}>
-            <h3 className={styles.title}>Professionnel</h3>
+            <h3 className={styles.title}>
+              Professionnel{' '}
+              <span className={styles.facultatif}>(facultatif)</span>
+            </h3>
           </div>
           <div className={styles.separation}></div>
         </div>

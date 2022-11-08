@@ -252,13 +252,13 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               Étape suivante
             </button>
           </div>
-          <div className={styles.haveAccount}>
+          {/* <div className={styles.haveAccount}>
             <Link href='#'>
               <a onClick={() => setSignForm('signin')}>
                 Already have an account
               </a>
             </Link>
-          </div>
+          </div> */}
         </fieldset>
       </div>
       {isLoading && (

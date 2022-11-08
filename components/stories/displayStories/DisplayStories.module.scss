@@ -8,12 +8,12 @@
   .separation {
     height: 2px;
     background-color: #f5f7f8;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   .separation2 {
     height: 2px;
     background-color: #f5f7f8;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   .storyContainer {
     width: 100%;
@@ -57,7 +57,7 @@
         line-height: 2;
         color: $black;
         opacity: 0.72;
-        margin-bottom: 1em;
+        margin-bottom: 20px;
         .readMore {
           color: $dark-green-2;
         }
@@ -137,6 +137,7 @@
         }
       }
       .storyAction {
+        height: 2em;
         width: 70%;
         display: flex;
         flex-direction: row;
@@ -145,6 +146,8 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          height: 100%;
+          padding-top: 1px; // car icone illusion trop haute
         }
         .iconAction {
           font-size: $icon-story-action;

@@ -36,7 +36,7 @@ function Fieldset_Histoire() {
         </div>
         <div className={styles.inputBox}>
           <label className={styles.label} htmlFor='theme-select'>
-            Choix du thème <span className={styles.asterisque}>*</span>
+            Choix du thème <span className={styles.asterisque}>&nbsp;*</span>
           </label>
           <select
             id='theme-select'
@@ -57,7 +57,8 @@ function Fieldset_Histoire() {
         <div className={styles.inputBox + ' ' + styles.content}>
           <label className={styles.label} htmlFor='content'>
             {' '}
-            Racontez votre histoire <span className={styles.asterisque}>*</span>
+            Racontez votre histoire{' '}
+            <span className={styles.asterisque}>&nbsp;*</span>
           </label>
           <textarea
             id='content'
@@ -78,14 +79,14 @@ function Fieldset_Histoire() {
           {/* errors will return when field validation fails  */}
           {/* {errors.exampleRequired && <span>This field is required</span>} */}
         </div>
-        <div className={styles.annonce}>
+        {/* <div className={styles.annonce}>
           <p className={styles.p + ' ' + 'pourEtrePublie'}>Pour être publié:</p>
           <ul>
             <li>• Choisissez le thème le plus approprié</li>
             <li>• Publicité, spam, hors-sujet : Non merci !</li>
             <li>• Clarté, concision, respect et bienveillance : À volonté !</li>
           </ul>
-        </div>
+        </div> */}
       </fieldset>
     </>
   );

@@ -29,8 +29,8 @@ overflow-y: scroll;
     display: flex;
     align-items: center;
     gap: 12px;
+    cursor: pointer;
     &:hover {
-      cursor: pointer;
       // padding-left: 1em;
       .p {
         color: $red;
@@ -144,6 +144,7 @@ overflow-y: scroll;
       display: flex;
       align-items: center;
       gap: 12px;
+      cursor: pointer;
       .p {
         font-size: 1.6em;
         color: $white;
@@ -181,6 +182,7 @@ overflow-y: scroll;
       }
     }
   }
+}
   //Affichage Desktop
   // .sideMenuContainter
   &.desktop {
@@ -193,10 +195,14 @@ overflow-y: scroll;
     border-radius: 8px;
     flex-shrink: 0;
     overflow-x: hidden;
+    .scrollContainer{
+      height: 100%;
+      overflow-y: scroll;
+    }
   }
 }
 
-}
+
 .test {
   font-size: 4em;
   color: red;

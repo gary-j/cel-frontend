@@ -32,7 +32,7 @@ function renderTransformationPart(
     <div className={styles.part2}>
       <div className={styles.inputBox}>
         <label className={styles.label} htmlFor='bodyPart'>
-          Partie du corps <span className={styles.asterisque}>*</span>
+          Partie du corps <span className={styles.asterisque}>&nbsp;*</span>
         </label>
         <select
           form='createStoryForm'
@@ -54,7 +54,7 @@ function renderTransformationPart(
       <div className={styles.inputBox}>
         <label className={styles.label} htmlFor='treatment'>
           Traitement / Opération / Programme{' '}
-          <span className={styles.asterisque}>*</span>
+          <span className={styles.asterisque}>&nbsp;*</span>
         </label>
         <input
           form='createStoryForm'

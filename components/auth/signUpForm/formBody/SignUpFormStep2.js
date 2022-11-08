@@ -23,17 +23,17 @@ const SignUpFormStep2 = ({ props, fieldStateProps }) => {
       setThemesFromDB(themes);
     }
     getThemesFromDB();
-  });
+  }, []);
   // Functions
   const handleToggle = (e) => {
     {
-      /*console.log('*** selectedThemes *** : ', selectedThemes); */
+      console.log('*** selectedThemes *** : ', selectedThemes);
     }
 
     let themeID = e.target.closest('div').dataset.target;
-    //  console.log("*** handleToggle, voici l'id : ", themeID);
+    console.log("*** handleToggle, voici l'id : ", themeID);
     let themeGroup = document.querySelectorAll(`[data-target='${themeID}']`);
-    // console.log('*** handleToggle, themeGroup: ', themeGroup);
+    console.log('*** handleToggle, themeGroup: ', themeGroup);
     //
     if (selectedThemes.includes(themeID)) {
       // Removing already selected theme
@@ -81,18 +81,20 @@ ${styles.fieldContainer + ' ' + styles.step2} ${
               <p data-target={theme._id} className={styles.text}>
                 {theme.name}
               </p>
-
-              <Image
-                className={`${theme.svg_title} ${styles.svg}`}
-                src={`${
-                  selectedThemes.includes(theme._id)
-                    ? `/assets/img/svgs/themes-icons/${theme.svg_title}-selected.svg`
-                    : `/assets/img/svgs/themes-icons/${theme.svg_title}-unselected.svg`
-                }`}
-                alt={theme.svg_title}
-                height='2.4em'
-                width='2.4em'
-                data-target={theme._id}></Image>
+              <div className={styles.svgBox}>
+                <Image
+                  className={`${theme.svg_title} ${styles.svg}`}
+                  src={`${
+                    selectedThemes.includes(theme._id)
+                      ? `/assets/img/svgs/themes-icons/${theme.svg_title}-selected.svg`
+                      : `/assets/img/svgs/themes-icons/${theme.svg_title}-unselected.svg`
+                  }`}
+                  // src='https://picsum.photos/50/50'
+                  alt={theme.svg_title}
+                  height='100%'
+                  width='100%'
+                  data-target={theme._id}></Image>
+              </div>
             </div>
           ))}
         </div>
@@ -100,17 +102,19 @@ ${styles.fieldContainer + ' ' + styles.step2} ${
           <span className={styles.themeError}>{errorMessage}</span>
         )}
         {/* <div> */}
+        {/* </div> */}
         <button
-          className={styles.backButton}
+          type='submit'
+          className={`${styles.btnVert} ${styles.nextStep}`}>
+          Étape suivante
+        </button>
+        <button
+          className={`${styles.btnVert} ${styles.backButton}`}
           onClick={(e) => {
             e.preventDefault();
             setDsiplayNextFormPart(false);
           }}>
-          Revenir en arrière
-        </button>
-        {/* </div> */}
-        <button type='submit' className={styles.btnVert}>
-          Étape suivante
+          Retour
         </button>
       </fieldset>
     </div>

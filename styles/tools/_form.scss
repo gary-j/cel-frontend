@@ -5,19 +5,20 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  padding: 28px;
   background-color: $dark-green-1;
   display: flex;
   align-items: center;
 }
 
 @mixin formContent {
-  width: calc(100% - 28px);
-  height: calc(100vh - 28px);
+  width: calc(100%);
+  height: calc(100%);
   margin: auto;
   // padding: 20px 16px 32px;
   padding: 20px 0px 32px;
-
   border-radius: 8px;
   background-color: $background;
   overflow: hidden;
@@ -111,9 +112,15 @@
     line-height: 1;
     letter-spacing: normal;
     color: $dark-green-2;
+    .facultatif{
+      font-weight: $light;
+      text-transform: lowercase;
+      font-style: normal;
+    }
   }
   .separation {
     height: 10px;
+    flex: 1;
     //   background-color: red;
     border-bottom: 2px solid $dark-green-2;
   }
