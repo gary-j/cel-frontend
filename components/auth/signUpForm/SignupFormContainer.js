@@ -13,7 +13,7 @@ const SignupForm = (props) => {
   const { storeToken, authenticateUser, isLoading, setIsLoading, user } =
     useContext(AuthContext);
 
-  const [displayNextFormPart, setDsiplayNextFormPart] = useState(true);
+  const [displayNextFormPart, setDsiplayNextFormPart] = useState(false);
   const [successSignUp, setSuccessSignUp] = useState(false);
   //
   const router = useRouter();
