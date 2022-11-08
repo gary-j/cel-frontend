@@ -35,98 +35,100 @@ function Menu({ isOpen, toggleMenu }) {
             : ''
         }
           `}>
-        {isLoggedIn ? (
-          <div className={`${styles.menuItemContainer} ${styles.first}`}>
+        <div className={styles.scrollContainer}>
+          {isLoggedIn ? (
+            <div className={`${styles.menuItemContainer} ${styles.first}`}>
+              <div className={styles.item}>
+                <Image
+                  src={`https://avatars.dicebear.com/api/adventurer/${user.username}.svg`}
+                  alt=''
+                  width={40}
+                  height={40}
+                />
+                <p className={styles.p}>{user.username}</p>
+              </div>
+            </div>
+          ) : (
+            <div
+              className={styles.menuLogin}
+              onClick={() => setDisplayForm(!displayForm)}>
+              <Icon_connect className={styles.icon} />
+              <p className={styles.p}>Connexion/Inscription</p>
+            </div>
+          )}
+          <div className={styles.buttonContainer}>
+            <Link href='/story/create'>
+              <button className={styles.btnRose}>PUBLIER</button>
+            </Link>
+            {/* <button className={styles.btnTransparent}>MODÉRER</button> */}
+          </div>
+          <div className={styles.menuItemContainer}>
             <div className={styles.item}>
-              <Image
-                src={`https://avatars.dicebear.com/api/adventurer/${user.username}.svg`}
-                alt=''
-                width={40}
-                height={40}
-              />
-              <p className={styles.p}>{user.username}</p>
+              <Icon_home className={styles.icon} />
+              <p className={styles.p}>Accueil</p>
             </div>
           </div>
-        ) : (
-          <div
-            className={styles.menuLogin}
-            onClick={() => setDisplayForm(!displayForm)}>
-            <Icon_connect className={styles.icon} />
-            <p className={styles.p}>Connexion/Inscription</p>
+          <div className={styles.menuItemContainer}>
+            <div className={styles.item}>
+              <Icon_theme className={styles.icon} />
+              <p className={styles.p}>Thèmes</p>
+            </div>
           </div>
-        )}
-        <div className={styles.buttonContainer}>
-          <Link href='/story/create'>
-            <button className={styles.btnRose}>PUBLIER</button>
+          <div className={styles.menuItemContainer}>
+            <div className={styles.item}>
+              <Icon_abos className={styles.icon} />
+              <p className={styles.p}>Mes abonnements</p>
+            </div>
+          </div>
+          <div className={styles.menuItemContainer}>
+            <div className={styles.item}>
+              <Icon_aLaUne className={styles.icon} />
+              <p className={styles.p}>A la une</p>
+            </div>
+          </div>
+          <Link href=''>
+            <div className={`${styles.buttonContainer} ${styles.messagerie} `}>
+              <div className={styles.gauche}>
+                <Icon_writeMess className={styles.icon} />
+              </div>
+              <div className={styles.droite}>
+                <div className={styles.message}>
+                  <p>Messagerie</p>
+                </div>
+                <div className={styles.nombre}>
+                  <p>2</p>
+                </div>
+              </div>
+            </div>
           </Link>
-          {/* <button className={styles.btnTransparent}>MODÉRER</button> */}
-        </div>
-        <div className={styles.menuItemContainer}>
-          <div className={styles.item}>
-            <Icon_home className={styles.icon} />
-            <p className={styles.p}>Accueil</p>
-          </div>
-        </div>
-        <div className={styles.menuItemContainer}>
-          <div className={styles.item}>
-            <Icon_theme className={styles.icon} />
-            <p className={styles.p}>Thèmes</p>
-          </div>
-        </div>
-        <div className={styles.menuItemContainer}>
-          <div className={styles.item}>
-            <Icon_abos className={styles.icon} />
-            <p className={styles.p}>Mes abonnements</p>
-          </div>
-        </div>
-        <div className={styles.menuItemContainer}>
-          <div className={styles.item}>
-            <Icon_aLaUne className={styles.icon} />
-            <p className={styles.p}>A la une</p>
-          </div>
-        </div>
-        <Link href=''>
-          <div className={`${styles.buttonContainer} ${styles.messagerie} `}>
-            <div className={styles.gauche}>
-              <Icon_writeMess className={styles.icon} />
+          <Link href=''>
+            <div className={styles.bigButtonInMenu}>
+              <p>TROUVER UN PROFESSIONNEL</p>
+              <p>ou une association</p>
             </div>
-            <div className={styles.droite}>
-              <div className={styles.message}>
-                <p>Messagerie</p>
-              </div>
-              <div className={styles.nombre}>
-                <p>2</p>
+          </Link>
+          <Link href=''>
+            <div className={`${styles.bigButtonInMenu} ${styles.espacePro}`}>
+              <p>ESPACE PRO</p>
+              <p>(médecins, psychologue, avocats...)</p>
+            </div>
+          </Link>
+          <Link href=''>
+            <div className={`${styles.bigButtonInMenu} ${styles.ressources}`}>
+              <p>AUTRES RESSOURCES</p>
+            </div>
+          </Link>
+          {isLoggedIn ? (
+            <div
+              className={`${styles.menuItemContainer} ${styles.logout}`}
+              onClick={logOutUser}>
+              <div className={styles.item}>
+                <Icon_close className={styles.icon} />
+                <p className={styles.p}>Se déconnecter</p>
               </div>
             </div>
-          </div>
-        </Link>
-        <Link href=''>
-          <div className={styles.bigButtonInMenu}>
-            <p>TROUVER UN PROFESSIONNEL</p>
-            <p>ou une association</p>
-          </div>
-        </Link>
-        <Link href=''>
-          <div className={`${styles.bigButtonInMenu} ${styles.espacePro}`}>
-            <p>ESPACE PRO</p>
-            <p>(médecins, psychologue, avocats...)</p>
-          </div>
-        </Link>
-        <Link href=''>
-          <div className={`${styles.bigButtonInMenu} ${styles.ressources}`}>
-            <p>AUTRES RESSOURCES</p>
-          </div>
-        </Link>
-        {isLoggedIn ? (
-          <div
-            className={`${styles.menuItemContainer} ${styles.logout}`}
-            onClick={logOutUser}>
-            <div className={styles.item}>
-              <Icon_close className={styles.icon} />
-              <p className={styles.p}>Se déconnecter</p>
-            </div>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </nav>
       {displayForm && <SignFormContainer closeForm={setDisplayForm} />}
     </>
