@@ -88,7 +88,9 @@ function Fieldset_Ressource({ user }) {
       <div className={styles.part1}>
         <div className={styles.fieldsetHeader}>
           <div className={styles.titleBox}>
-            <h3 className={styles.title}>Ressources</h3>
+            <h3 className={styles.title}>
+              Ressources <span className={styles.facultatif}>(facultatif)</span>
+            </h3>
           </div>
           <div className={styles.separation}></div>
         </div>

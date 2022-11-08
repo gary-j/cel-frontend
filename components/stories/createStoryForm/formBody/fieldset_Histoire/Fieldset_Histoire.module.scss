@@ -11,7 +11,7 @@
     @include fieldsetHeader;
     display: flex;
     .titleBox {
-      margin-right: 2em;
+      margin-right: 1em;
       .title {
         text-transform: uppercase;
       }
@@ -30,6 +30,7 @@
       margin: 16px 0 4px;
       .asterisque {
         @include asterisque;
+        color: $red
       }
     }
     .input {

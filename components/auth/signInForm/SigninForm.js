@@ -149,7 +149,7 @@ const SigninForm = (props) => {
                 <span className={styles.inputError}>{errorMessage}</span>
               )}
 
-              <div
+              {/* <div
                 className={styles.connected}
                 onClick={() => {
                   // console.log('value is : ', stayConnected);
@@ -159,14 +159,14 @@ const SigninForm = (props) => {
                   type='hidden'
                   name='stayConnected'
                   value={stayConnected}></input>
-                {/**/}
+            
                 {stayConnected ? (
                   <Icon_checkboxOn className={styles.checkbox} />
                 ) : (
                   <Icon_checkboxOff className={styles.checkbox} />
                 )}
                 <label className={styles.checkboxLabel}>Rester connecté</label>
-              </div>
+              </div> */}
 
               <button className={styles.btnRose} type='submit'>
                 Se connecter

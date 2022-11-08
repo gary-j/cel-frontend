@@ -11,6 +11,7 @@
     }
     .asterisque {
       @include asterisque;
+      color: $red
     }
     .input {
       @include input;

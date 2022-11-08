@@ -72,7 +72,7 @@ const StoryReactions = ({ storyID, cssBreakPoint }) => {
             {/* <p className={styles.numberReaction}> &nbsp; 10 &nbsp;</p> */}
           </div>
         </div>
-        <div className={styles.reactionBox}>
+        <div className={`${styles.reactionBox} ${styles.number}`}>
           <div>
             <p className={styles.numberReaction}>100k</p>
           </div>

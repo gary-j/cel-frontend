@@ -13,8 +13,9 @@ function CreateStoryFormHeader() {
         </div>
         <div className={styles.description}>
           <p className={styles.p}>
-            Racontez ce citron qui acidifie votre vie… Ou racontez comment vous
-            avez transformé le plus acide des citrons en bonne limonade, ça
+            Racontez ce citron qui acidifie votre vie… <br />
+            Ou racontez comment vous avez transformé le plus acide des{' '}
+            <strong>citrons</strong> en <strong>bonne limonade</strong>, ça
             pourrait aider !
           </p>
         </div>
