@@ -4,19 +4,21 @@ import styles from './Fieldset_Ressource.module.scss';
 function renderInputsRessource(selected, ressource, setRessource, inputError) {
   const data = {
     citation: {
-      ['-textarea- Citation']:
-        'Si la vie te donne un citron, fait une limonade.',
-      ['Auteur de la citation']: 'La Vie',
+      ['-required- Citation']:
+        'Quand la vie te donne un citron, fais-en une limonade',
+      ['Auteur de la citation']: 'Inconnu',
     },
     film: {
       ['-required- Titre du film']: 'titre du film',
+      ['Réalisateur']: 'Coogler',
       ['Acteur principal']: 'Acteur 1',
       ['Acteur 2']: 'Acteur 2',
       ['-textarea- Pourquoi cette ressource ?']:
         'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
     influenceur: {
-      ['Nom du compte Youtube ou Instagram']: '@Citron_en_limonade',
+      ['-required- Nom du compte Youtube / Instagram / TikTok']:
+        '@citronenlimonade',
       ['-textarea- Pourquoi cette ressource ?']:
         'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
@@ -38,16 +40,16 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
       ['-textarea- Pourquoi cette ressource ?']:
         'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
-    serie: {
+    série: {
       ['-required- Titre de la série']: 'titre de la série',
       ['Acteur principal']: 'Acteur 1',
-      ['Acteur principal']: 'Acteur 2',
+      ['Acteur 2']: 'Acteur 2',
       ['-textarea- Pourquoi cette ressource ?']:
         'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
-    video: {
+    vidéo: {
       ['-required- Titre de la vidéo']: 'titre de la vidéo',
-      ['-required- Auteur de la vidéo']: 'auteur de la vidéo',
+      ['Auteur de la vidéo']: 'auteur de la vidéo',
       ['Site de la vidéo']: 'url de la vidéo',
     },
   };

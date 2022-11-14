@@ -13,8 +13,8 @@ function Fieldset_Ressource({ user }) {
     'livre',
     'musique',
     'podcast',
-    'serie',
-    'video',
+    'série',
+    'vidéo',
   ];
   const [selected, setSelected] = useState(null);
   const [ressource, setRessource] = useState({});
@@ -24,15 +24,15 @@ function Fieldset_Ressource({ user }) {
   const handleCheckbox = () => {
     setIsChecked(!isChecked);
   };
-  //   console.log(
-  //     selected
-  //       ? `Ressource sélectionnée : ${selected}`
-  //       : 'aucune ressource selectionnée !'
-  //   );
+  // console.log(
+  //   selected
+  //     ? `Ressource sélectionnée : ${selected}`
+  //     : 'aucune ressource selectionnée !'
+  // );
   //
   const handleSelect = (e) => {
     let id = e.target.closest('div').dataset.target;
-    // console.log('*** appui sur : ', id);
+    console.log('*** appui sur : ', id);
     if (selected === id) {
       setRessource({});
       setSelected(null);
@@ -47,6 +47,15 @@ function Fieldset_Ressource({ user }) {
   const inputRefIK_After = useRef(null);
   const ikUploadRef = useRef(null);
   //
+  let newProps = {
+    ressource: ressource,
+    setRessource: setRessource,
+    bodyparts: bodyparts,
+    user: user,
+    inputRefIK_Before: inputRefIK_Before,
+    inputRefIK_After: inputRefIK_After,
+    ikUploadRef: ikUploadRef,
+  };
   //Fetch bodyparts from DB
   useLayoutEffect(() => {
     let controller = new AbortController();
@@ -133,16 +142,7 @@ function Fieldset_Ressource({ user }) {
             Transformation physique / Chirurgie esthétique
           </label>
         </div>
-        {isChecked &&
-          renderTransformationPart(
-            ressource,
-            setRessource,
-            bodyparts,
-            user,
-            inputRefIK_Before,
-            inputRefIK_After,
-            ikUploadRef
-          )}
+        {isChecked && renderTransformationPart(newProps)}
       </div>
     </fieldset>
   );

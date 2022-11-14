@@ -8,24 +8,28 @@ import {
   IMAGEKIT_AUTH_ENDPOINT,
   IMAGEKIT_PUBLIC_KEY,
 } from '../../../../../../utils/consts.js';
-//
-const onError = (err) => {
-  console.log('Error', err);
-};
-const onSuccess = (res) => {
-  console.log('Succes', res);
-};
 
-function renderTransformationPart(
-  ressource,
-  setRessource,
-  bodyparts,
-  user,
-  inputRefIK_Before,
-  inputRefIK_After,
-  ikUploadRef
-) {
+function renderTransformationPart(newProps) {
+  console.log('ressource', ressource);
   // console.log('user render transf part : ', user);
+  //
+  const {
+    ressource,
+    setRessource,
+    bodyparts,
+    user,
+    inputRefIK_Before,
+    inputRefIK_After,
+    ikUploadRef,
+  } = newProps;
+  //
+  const onError = (err) => {
+    console.log('Error', err);
+  };
+  const onSuccess = (res) => {
+    console.log('Succes', res);
+    setRessource({ ...ressource, ['namePhotoAvant']: res.name });
+  };
 
   //
   return (
@@ -80,10 +84,14 @@ function renderTransformationPart(
           <IKUpload
             id='photoAvant'
             name='beforeUrl'
-            fileName={'test-upload-gary.png'}
+            fileName={
+              ressource?.namePhotoAvant
+                ? ressource.namePhotoAvant
+                : 'test-fichier'
+            }
             folder={`citron-en-limonade/transformation-physique`}
             responseFields='customMetadata'
-            customMetadata={{ userId: `${user.id}`, photo: 'before' }}
+            customMetadata={{ userId: `${user?.id}`, photo: 'before' }}
             validateFile={(file) => file.size < 5000000}
             useUniqueFileName={true}
             inputRef={inputRefIK_Before}
@@ -96,7 +104,11 @@ function renderTransformationPart(
               className={`${styles.customInput} ${styles.photo}`}
               onClick={() => inputRefIK_Before.current.click()}>
               <div className={styles.div}>
-                <p className={styles.placeholder}>Ajouter un fichier...</p>
+                <p className={styles.placeholder}>
+                  {ressource?.namePhotoAvant
+                    ? ressource.namePhotoAvant
+                    : 'Ajouter un fichier...'}
+                </p>
               </div>
               <div className={styles.div}>
                 <Icon_upload className={styles.icon} />
