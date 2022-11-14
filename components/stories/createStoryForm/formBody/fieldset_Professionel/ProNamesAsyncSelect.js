@@ -62,7 +62,7 @@ function ProNamesAsyncSelect({ props }) {
         instanceId={useId()}
         className={styles.gary}
         styles={ProNamesStyles}
-        placeholder='Mr Professionnel...'
+        placeholder='M. Professionnel...'
         form='createStoryForm'
         name='search-professional'
         allowCreateWhileLoading={false}
