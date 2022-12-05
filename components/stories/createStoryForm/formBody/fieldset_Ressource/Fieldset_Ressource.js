@@ -5,7 +5,7 @@ import renderTransformationPart from './transformation/renderTransformationPart'
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../../context/auth.context';
 //
-function Fieldset_Ressource({ user }) {
+function Fieldset_Ressource({ user, story, setStory }) {
   const data = [
     'citation',
     'film',

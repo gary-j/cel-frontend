@@ -110,7 +110,7 @@ function Menu({ isOpen, toggleMenu }) {
           <Link href=''>
             <div className={`${styles.bigButtonInMenu} ${styles.espacePro}`}>
               <p>ESPACE PRO</p>
-              <p>(médecins, psychologue, avocats...)</p>
+              <p>(médecin, psychologue, avocat...)</p>
             </div>
           </Link>
           <Link href=''>

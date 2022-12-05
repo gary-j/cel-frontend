@@ -64,6 +64,9 @@ overflow-y: scroll;
       border-radius: 4px;
       background-color: $red;
       color: $white;
+      font-family: $font;
+      font-size: $main-text;
+      font-weight: $medium;
     }
     .btnTransparent {
       width: 100%;
