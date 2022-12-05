@@ -7,10 +7,10 @@ export const publicRequest = axios.create({
 
 export const getServerSideProps = axios.create({
   // baseURL: 'https://citron-en-limonade.herokuapp.com/api',
-  baseURL: 'https://cel-backend.vercel.app/',
+  baseURL: 'https://cel-backend.vercel.app/api',
 });
 
 export const getStaticProps = axios.create({
   // baseURL: 'https://citron-en-limonade.herokuapp.com/api',
-  baseURL: 'https://cel-backend.vercel.app/',
+  baseURL: 'https://cel-backend.vercel.app/api',
 });
