@@ -74,6 +74,11 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
             item[0].startsWith('-textarea-')
           ) {
             key = item[0].slice(11);
+            key.includes('série') ? (key = 'Titre de la serie') : null;
+            key.includes('vidéo') ? (key = 'Titre de la video') : null;
+            key.includes('Pourquoi cette ressource ?')
+              ? (key = 'Pourquoi cette ressource')
+              : null;
             keySlug = key.replace(/\W+/g, '-').toLowerCase();
             // remplace tout ce qui n'est pas alphanumérique par '-'
           } else {
