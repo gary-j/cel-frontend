@@ -10,8 +10,6 @@ import {
 } from '../../../../../../utils/consts.js';
 
 function renderTransformationPart(newProps) {
-  console.log('ressource', ressource);
-  // console.log('user render transf part : ', user);
   //
   const {
     ressource,
@@ -23,12 +21,33 @@ function renderTransformationPart(newProps) {
     ikUploadRef,
   } = newProps;
   //
+  console.log('ressource transformation part', ressource);
+  // console.log('user render transf part : ', user);
+  //
+  const handleTransformation = (e) => {
+    console.log('appel ok e : ', e.target.name);
+  };
+  //
   const onError = (err) => {
     console.log('Error', err);
   };
-  const onSuccess = (res) => {
-    console.log('Succes', res);
-    setRessource({ ...ressource, ['namePhotoAvant']: res.name });
+  //
+  const onSuccessBefore = (res) => {
+    console.log('SuccesBefore', res);
+    setRessource({
+      ...ressource,
+      ['beforePhotoName']: res.name,
+      beforeUrl: res.url,
+    });
+  };
+  //
+  const onSuccessAfter = (res) => {
+    console.log('SuccesAfter', res);
+    setRessource({
+      ...ressource,
+      ['afterPhotoName']: res.name,
+      afterUrl: res.url,
+    });
   };
 
   //
@@ -44,11 +63,15 @@ function renderTransformationPart(newProps) {
           id='bodyPart'
           defaultValue={'Gary'} // doit renvoyer l'Id de la partie du corps
           required
-          className={styles.input}>
+          className={styles.input}
+          onChange={(e) => handleTransformation(e)}>
           {bodyparts.map((bodyPart) => {
             let i = bodyPart.name;
             return (
-              <option key={bodyparts.slug}>
+              <option
+                key={bodyPart.slug}
+                value={bodyPart._id}
+                title={bodyPart.name}>
                 {i.charAt(0).toUpperCase() + i.slice(1)}
               </option>
             );
@@ -63,9 +86,11 @@ function renderTransformationPart(newProps) {
         <input
           form='createStoryForm'
           type='text'
+          name='treatment'
           required
           placeholder='lifting...'
-          className={styles.input}></input>
+          className={styles.input}
+          onChange={(e) => handleTransformation(e)}></input>
       </div>
       <div className={styles.inputBox}>
         <label htmlFor='photoAvant' className={styles.label}>
@@ -84,29 +109,25 @@ function renderTransformationPart(newProps) {
           <IKUpload
             id='photoAvant'
             name='beforeUrl'
-            fileName={
-              ressource?.namePhotoAvant
-                ? ressource.namePhotoAvant
-                : 'test-fichier'
-            }
+            // fileName={`${user.id}/before`}
             folder={`citron-en-limonade/transformation-physique`}
             responseFields='customMetadata'
             customMetadata={{ userId: `${user?.id}`, photo: 'before' }}
             validateFile={(file) => file.size < 5000000}
-            useUniqueFileName={true}
+            // useUniqueFileName={true}
             inputRef={inputRefIK_Before}
             ref={ikUploadRef}
             style={{ display: 'none' }} // hide the default input and use the custom upload button
             onError={onError}
-            onSuccess={onSuccess}></IKUpload>
+            onSuccess={onSuccessBefore}></IKUpload>
           {inputRefIK_Before && (
             <div
               className={`${styles.customInput} ${styles.photo}`}
               onClick={() => inputRefIK_Before.current.click()}>
               <div className={styles.div}>
                 <p className={styles.placeholder}>
-                  {ressource?.namePhotoAvant
-                    ? ressource.namePhotoAvant
+                  {ressource?.beforePhotoName
+                    ? ressource.beforePhotoName
                     : 'Ajouter un fichier...'}
                 </p>
               </div>
@@ -139,7 +160,7 @@ function renderTransformationPart(newProps) {
           <IKUpload
             id='photoApres'
             name='AfterUrl'
-            fileName={'test-upload-gary.png'}
+            // fileName={'test-upload-gary.png'}
             folder={`citron-en-limonade/transformation-physique`}
             responseFields='customMetadata'
             customMetadata={{ userId: `${user.id}`, photo: 'after' }}
@@ -148,7 +169,7 @@ function renderTransformationPart(newProps) {
             inputRef={inputRefIK_After}
             ref={ikUploadRef}
             onError={onError}
-            onSuccess={onSuccess}
+            onSuccess={onSuccessAfter}
             style={{ display: 'none' }} // hide the default input and use the custom upload button
           ></IKUpload>
           {inputRefIK_After && (
@@ -156,7 +177,11 @@ function renderTransformationPart(newProps) {
               className={`${styles.customInput} ${styles.photo}`}
               onClick={() => inputRefIK_After.current.click()}>
               <div className={styles.div}>
-                <p className={styles.placeholder}>Ajouter un fichier...</p>
+                <p className={styles.placeholder}>
+                  {ressource?.afterPhotoName
+                    ? ressource.afterPhotoName
+                    : 'Ajouter un fichier...'}
+                </p>
               </div>
               <div className={styles.div}>
                 <Icon_upload className={styles.icon} />

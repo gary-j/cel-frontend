@@ -11,7 +11,7 @@ function CreateStoryFormBody({ user }) {
     title: '',
     content: '',
     professionalConsulted: '',
-    ressource: { mediaType: '' },
+    ressource: {},
     physicalTransformation: {
       isSelected: false,
       bodyPart: '',
@@ -22,6 +22,7 @@ function CreateStoryFormBody({ user }) {
     },
     isAnonym: false,
   });
+  const [ressource, setRessource] = useState({});
   console.log('story : ', story);
   return (
     <div className={styles.formBody}>
@@ -39,7 +40,9 @@ function CreateStoryFormBody({ user }) {
         <Fieldset_Ressource
           user={user}
           story={story}
-          setStory={setStory}></Fieldset_Ressource>
+          setStory={setStory}
+          ressource={ressource}
+          setRessource={setRessource}></Fieldset_Ressource>
       </form>
     </div>
   );

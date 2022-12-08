@@ -5,7 +5,13 @@ import renderTransformationPart from './transformation/renderTransformationPart'
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../../context/auth.context';
 //
-function Fieldset_Ressource({ user, story, setStory }) {
+function Fieldset_Ressource({
+  user,
+  story,
+  setStory,
+  ressource,
+  setRessource,
+}) {
   const data = [
     'citation',
     'film',
@@ -17,7 +23,6 @@ function Fieldset_Ressource({ user, story, setStory }) {
     'vidéo',
   ];
   const [selected, setSelected] = useState(null);
-  const [ressource, setRessource] = useState({});
   const [isChecked, setIsChecked] = useState(false);
   const { storedToken } = useContext(AuthContext);
 
@@ -128,7 +133,13 @@ function Fieldset_Ressource({ user, story, setStory }) {
           })}
         </div>
         {selected !== null &&
-          renderInputsRessource(selected, ressource, setRessource)}
+          renderInputsRessource(
+            selected,
+            ressource,
+            setRessource,
+            story,
+            setStory
+          )}
       </div>
 
       <div className={styles.transformation}>
