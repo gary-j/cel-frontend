@@ -4,8 +4,13 @@ import { publicRequest } from '../../../../../utils/axiosRequest';
 import styles from './Fieldset_Professionel.module.scss';
 import { ProNamesStyles } from './stylesCustomSelect';
 function ProNamesAsyncSelect({ props }) {
-  const { proNamesProps, professionalConsulted, setProfessionalConsulted } =
-    props;
+  const {
+    story,
+    setStory,
+    proNamesProps,
+    professionalConsulted,
+    setProfessionalConsulted,
+  } = props;
   //
   const [filteredProNames, setFilteredProNames] = useState([]);
   //
@@ -37,6 +42,7 @@ function ProNamesAsyncSelect({ props }) {
   const handleChange = (value) => {
     if (value.name) {
       setProfessionalConsulted(value);
+      // story.professionalConsulted = value._id;
       return;
     } else {
       let pro = {
@@ -51,9 +57,16 @@ function ProNamesAsyncSelect({ props }) {
         domain: '',
       };
       setProfessionalConsulted(pro);
+      // story.professionalConsulted = '';
+      setStory({
+        ...story,
+        // professionalConsulted: '',
+        professionalToCreate: pro,
+      });
       return;
     }
   };
+  //
   return (
     <>
       <AsyncCreatableSelect

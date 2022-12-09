@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import styles from './Fieldset_Histoire.module.scss';
 
-function Fieldset_Histoire() {
+function Fieldset_Histoire({ story, setStory }) {
   const [themes, setThemes] = useState([]);
   const caracteresLimit = 1200;
   const [message, setMessage] = useState('');
@@ -17,9 +17,13 @@ function Fieldset_Histoire() {
     getThemesFromDB();
   }, []);
   //
+  const handleSelectTheme = (e) => {
+    setStory({ ...story, theme: e.target.value });
+  };
+  //
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
-    // console.log(event.target.value);
+    setStory({ ...story, content: event.target.value });
   };
   //
   return (
@@ -42,6 +46,7 @@ function Fieldset_Histoire() {
             id='theme-select'
             form='createStoryForm'
             name='themes'
+            onChange={(e) => handleSelectTheme(e)}
             className={styles.input + ' ' + styles.select}>
             {themes.map((theme) => (
               <option

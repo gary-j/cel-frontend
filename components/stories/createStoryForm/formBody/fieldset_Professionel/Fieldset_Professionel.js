@@ -6,7 +6,7 @@ import Icon_search from '../../../../../public/assets/img/svgs/page-icons/icon-p
 import ProNamesAsyncSelect from './ProNamesAsyncSelect';
 import { renderInputsProInfos } from './renderInputsProInfos';
 
-function Fieldset_Professionel() {
+function Fieldset_Professionel({ story, setStory }) {
   const [proNamesProps, setProNamesProps] = useState([]);
   const [professionalConsulted, setProfessionalConsulted] = useState();
   const [inputError, setInputError] = useState();
@@ -14,6 +14,8 @@ function Fieldset_Professionel() {
   // console.log('pro consulté : ', professionalConsulted);
   //
   const newProps = {
+    story: story,
+    setStory: setStory,
     proNamesProps: proNamesProps,
     professionalConsulted: professionalConsulted,
     setProfessionalConsulted: setProfessionalConsulted,
@@ -71,7 +73,9 @@ function Fieldset_Professionel() {
           renderInputsProInfos(
             professionalConsulted,
             setProfessionalConsulted,
-            inputError
+            inputError,
+            story,
+            setStory
           )}
       </fieldset>
     </>

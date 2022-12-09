@@ -23,7 +23,8 @@ function CreateStoryFormBody({ user }) {
     isAnonym: false,
   });
   const [ressource, setRessource] = useState({});
-  console.log('story : ', story);
+  //
+  // console.log('update la story : ', story);
   return (
     <div className={styles.formBody}>
       <form
