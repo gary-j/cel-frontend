@@ -5,8 +5,8 @@ import '../styles/globals.scss'
 import { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { AuthProviderWrapper } from '../context/auth.context'
-import { BreakPointProviderWrapper } from '../context/breakPoints.context'
+import { AuthProviderWrapper } from '../../context/auth.context'
+import { BreakPointProviderWrapper } from '../../context/breakPoints.context'
 
 const queryClient = new QueryClient()
 
