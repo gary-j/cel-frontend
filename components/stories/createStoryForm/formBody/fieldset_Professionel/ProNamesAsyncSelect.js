@@ -42,7 +42,7 @@ function ProNamesAsyncSelect({ props }) {
   const handleChange = (value) => {
     if (value.name) {
       setProfessionalConsulted(value);
-      // story.professionalConsulted = value._id;
+      setStory({ ...story, professionalConsulted: value._id });
       return;
     } else {
       let pro = {

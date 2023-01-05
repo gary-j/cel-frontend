@@ -77,8 +77,6 @@ export function renderInputsProInfos(
     }
   };
   //
-  console.log('la story depuis renderInputs: ', story);
-
   if (professionalConsulted.__isNew__) {
     return (
       <>

@@ -1,7 +1,14 @@
 import React, { useId } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
 
-function renderInputsRessource(selected, ressource, setRessource, inputError) {
+function renderInputsRessource(
+  selected,
+  ressource,
+  setRessource,
+  // inputError,
+  story,
+  setStory
+) {
   const data = {
     citation: {
       ['-required- Citation']:
@@ -60,68 +67,73 @@ function renderInputsRessource(selected, ressource, setRessource, inputError) {
   const handleRessourceInfos = (e) => {
     console.log('e.target : ', e.target);
     setRessource({ ...ressource, [e.target.name]: e.target.value });
+    setStory({ ...story, test: { [e.target.name]: e.target.value } });
   };
   //
   function renderInputs(selected) {
     let labelsAndInputs = Object.entries(data[selected]);
     return (
       <>
-        {labelsAndInputs.map((item) => {
-          let key;
-          let keySlug;
-          if (
-            item[0].startsWith('-required-') ||
-            item[0].startsWith('-textarea-')
-          ) {
-            key = item[0].slice(11);
-            key.includes('série') ? (key = 'Titre de la serie') : null;
-            key.includes('vidéo') ? (key = 'Titre de la video') : null;
-            key.includes('Pourquoi cette ressource ?')
-              ? (key = 'Pourquoi cette ressource')
-              : null;
-            keySlug = key.replace(/\W+/g, '-').toLowerCase();
-            // remplace tout ce qui n'est pas alphanumérique par '-'
-          } else {
-            key = item[0];
-            keySlug = key.replace(/\W+/g, '-').toLowerCase();
-          }
+        <div key={selected}>
+          {labelsAndInputs.map((item, i) => {
+            let key;
+            let keySlug;
+            if (
+              item[0].startsWith('-required-') ||
+              item[0].startsWith('-textarea-')
+            ) {
+              key = item[0].slice(11);
+              key.includes('série') ? (key = 'Titre de la serie') : null;
+              key.includes('vidéo') ? (key = 'Titre de la video') : null;
+              key.includes('Pourquoi cette ressource ?')
+                ? (key = 'Pourquoi cette ressource')
+                : null;
+              key.includes('Réalisateur') ? (key = 'realisateur') : null;
+              keySlug = key.replace(/\W+/g, '-').toLowerCase();
+              // remplace tout ce qui n'est pas alphanumérique par '-'
+            } else {
+              key = item[0];
+              key.includes('Réalisateur') ? (key = 'realisateur') : null;
+              keySlug = key.replace(/\W+/g, '-').toLowerCase();
+            }
 
-          return (
-            <>
-              <div key={keySlug} className={styles.inputBox}>
-                <label className={styles.label} htmlFor={keySlug}>
-                  {key}
-                  {item[0].startsWith('-required-') && (
-                    <span className={styles.asterisque}> *</span>
+            return (
+              <>
+                <div key={keySlug} className={styles.inputBox}>
+                  <label className={styles.label} htmlFor={keySlug}>
+                    {key}
+                    {item[0].startsWith('-required-') && (
+                      <span className={styles.asterisque}> *</span>
+                    )}
+                  </label>
+                  {item[0].startsWith('-textarea-') ? (
+                    <textarea
+                      form='createStoryForm'
+                      key={keySlug}
+                      id={keySlug}
+                      name={keySlug}
+                      placeholder={item[1]}
+                      className={styles.input + ' ' + styles.textarea}
+                      onChange={(e) => handleRessourceInfos(e)}></textarea>
+                  ) : (
+                    <input
+                      form='createStoryForm'
+                      key={key}
+                      id={keySlug}
+                      name={keySlug}
+                      className={`${styles.input} ${
+                        item[0].startsWith('-textarea-') ? styles.textarea : ''
+                      }`}
+                      placeholder={item[1] + ' ...'}
+                      type='text'
+                      required={item[0].startsWith('-required-') ? true : false}
+                      onChange={(e) => handleRessourceInfos(e)}></input>
                   )}
-                </label>
-                {item[0].startsWith('-textarea-') ? (
-                  <textarea
-                    form='createStoryForm'
-                    key={key}
-                    id={keySlug}
-                    name={keySlug}
-                    placeholder={item[1]}
-                    className={styles.input + ' ' + styles.textarea}
-                    onChange={(e) => handleRessourceInfos(e)}></textarea>
-                ) : (
-                  <input
-                    form='createStoryForm'
-                    key={key}
-                    id={keySlug}
-                    name={keySlug}
-                    className={`${styles.input} ${
-                      item[0].startsWith('-textarea-') ? styles.textarea : ''
-                    }`}
-                    placeholder={item[1] + ' ...'}
-                    type='text'
-                    required={item[0].startsWith('-required-') ? true : false}
-                    onChange={(e) => handleRessourceInfos(e)}></input>
-                )}
-              </div>
-            </>
-          );
-        })}
+                </div>
+              </>
+            );
+          })}
+        </div>
       </>
     );
   }

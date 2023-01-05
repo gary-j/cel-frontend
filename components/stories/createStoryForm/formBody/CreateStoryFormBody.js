@@ -10,8 +10,10 @@ function CreateStoryFormBody({ user }) {
     theme: '',
     title: '',
     content: '',
-    professionalConsulted: '',
-    ressource: {},
+    professionalConsulted: '', // ObjectId
+    professionalToCreate: {},
+    ressource: '', // ObjectID
+    ressourceToCreate: {},
     physicalTransformation: {
       isSelected: false,
       bodyPart: '',
@@ -24,7 +26,7 @@ function CreateStoryFormBody({ user }) {
   });
   const [ressource, setRessource] = useState({});
   //
-  // console.log('update la story : ', story);
+  console.log('la ressource: ', ressource);
   return (
     <div className={styles.formBody}>
       <form
