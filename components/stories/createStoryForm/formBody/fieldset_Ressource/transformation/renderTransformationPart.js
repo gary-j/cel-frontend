@@ -34,14 +34,16 @@ function renderTransformationPart(newProps) {
           ...ressource,
           physicalTransformation: {
             ...ressource.physicalTransformation,
-            bodyPart: e.target.options[e.target.selectedIndex].dataset.bodypart,
+            bodyPart: e.target.value,
+            bodyPartName:
+              e.target.options[e.target.selectedIndex].dataset.bodypart,
           },
         });
         setStory({
           ...story,
           physicalTransformation: {
             ...story.physicalTransformation,
-            bodyPart: e.target.options[e.target.selectedIndex].dataset.bodypart,
+            bodyPart: e.target.value,
           },
         });
         break;

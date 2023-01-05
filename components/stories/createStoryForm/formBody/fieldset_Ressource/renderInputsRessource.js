@@ -67,7 +67,19 @@ function renderInputsRessource(
   const handleRessourceInfos = (e) => {
     console.log('e.target : ', e.target);
     setRessource({ ...ressource, [e.target.name]: e.target.value });
-    setStory({ ...story, test: { [e.target.name]: e.target.value } });
+    setStory({
+      ...story,
+      ressourceToCreate: {
+        ...story.ressourceToCreate,
+        complete: {
+          ...story.ressourceToCreate.complete,
+          [selected]: {
+            ...story.ressourceToCreate.complete[selected],
+            [e.target.name]: e.target.value,
+          },
+        },
+      },
+    });
   };
   //
   function renderInputs(selected) {
@@ -76,32 +88,32 @@ function renderInputsRessource(
       <>
         <div key={selected}>
           {labelsAndInputs.map((item, i) => {
-            let key;
-            let keySlug;
+            let label;
+            let labelSlug;
             if (
               item[0].startsWith('-required-') ||
               item[0].startsWith('-textarea-')
             ) {
-              key = item[0].slice(11);
-              key.includes('série') ? (key = 'Titre de la serie') : null;
-              key.includes('vidéo') ? (key = 'Titre de la video') : null;
-              key.includes('Pourquoi cette ressource ?')
-                ? (key = 'Pourquoi cette ressource')
+              label = item[0].slice(11);
+              label.includes('série') ? (label = 'Titre de la serie') : null;
+              label.includes('vidéo') ? (label = 'Titre de la video') : null;
+              label.includes('Pourquoi cette ressource ?')
+                ? (label = 'Pourquoi cette ressource')
                 : null;
-              key.includes('Réalisateur') ? (key = 'realisateur') : null;
-              keySlug = key.replace(/\W+/g, '-').toLowerCase();
+              label.includes('Réalisateur') ? (label = 'realisateur') : null;
+              labelSlug = label.replace(/\W+/g, '-').toLowerCase();
               // remplace tout ce qui n'est pas alphanumérique par '-'
             } else {
-              key = item[0];
-              key.includes('Réalisateur') ? (key = 'realisateur') : null;
-              keySlug = key.replace(/\W+/g, '-').toLowerCase();
+              label = item[0];
+              label.includes('Réalisateur') ? (label = 'realisateur') : null;
+              labelSlug = label.replace(/\W+/g, '-').toLowerCase();
             }
 
             return (
               <>
-                <div key={keySlug} className={styles.inputBox}>
-                  <label className={styles.label} htmlFor={keySlug}>
-                    {key}
+                <div key={labelSlug + i} className={styles.inputBox}>
+                  <label className={styles.label} htmlFor={labelSlug}>
+                    {label}
                     {item[0].startsWith('-required-') && (
                       <span className={styles.asterisque}> *</span>
                     )}
@@ -109,18 +121,18 @@ function renderInputsRessource(
                   {item[0].startsWith('-textarea-') ? (
                     <textarea
                       form='createStoryForm'
-                      key={keySlug}
-                      id={keySlug}
-                      name={keySlug}
+                      key={labelSlug}
+                      id={labelSlug}
+                      name={labelSlug}
                       placeholder={item[1]}
                       className={styles.input + ' ' + styles.textarea}
                       onChange={(e) => handleRessourceInfos(e)}></textarea>
                   ) : (
                     <input
                       form='createStoryForm'
-                      key={key}
-                      id={keySlug}
-                      name={keySlug}
+                      key={label}
+                      id={labelSlug}
+                      name={labelSlug}
                       className={`${styles.input} ${
                         item[0].startsWith('-textarea-') ? styles.textarea : ''
                       }`}
