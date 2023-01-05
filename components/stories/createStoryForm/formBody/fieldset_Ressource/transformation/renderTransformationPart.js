@@ -12,6 +12,8 @@ import {
 function renderTransformationPart(newProps) {
   //
   const {
+    story,
+    setStory,
     ressource,
     setRessource,
     bodyparts,
@@ -25,7 +27,41 @@ function renderTransformationPart(newProps) {
   // console.log('user render transf part : ', user);
   //
   const handleTransformation = (e) => {
-    console.log('appel ok e : ', e.target.name);
+    console.log('e target name: ', e.target.name);
+    switch (e.target.name) {
+      case 'bodyPart':
+        setRessource({
+          ...ressource,
+          physicalTransformation: {
+            ...ressource.physicalTransformation,
+            bodyPart: e.target.options[e.target.selectedIndex].dataset.bodypart,
+          },
+        });
+        setStory({
+          ...story,
+          physicalTransformation: {
+            ...story.physicalTransformation,
+            bodyPart: e.target.options[e.target.selectedIndex].dataset.bodypart,
+          },
+        });
+        break;
+      case 'treatment':
+        setRessource({
+          ...ressource,
+          physicalTransformation: {
+            ...ressource.physicalTransformation,
+            treatment: e.target.value,
+          },
+        });
+        setStory({
+          ...story,
+          physicalTransformation: {
+            ...story.physicalTransformation,
+            treatment: e.target.value,
+          },
+        });
+        break;
+    }
   };
   //
   const onError = (err) => {
@@ -39,6 +75,13 @@ function renderTransformationPart(newProps) {
       ['beforePhotoName']: res.name,
       beforeUrl: res.url,
     });
+    setStory({
+      ...story,
+      physicalTransformation: {
+        ...story.physicalTransformation,
+        beforePictureUrl: res.url,
+      },
+    });
   };
   //
   const onSuccessAfter = (res) => {
@@ -47,6 +90,13 @@ function renderTransformationPart(newProps) {
       ...ressource,
       ['afterPhotoName']: res.name,
       afterUrl: res.url,
+    });
+    setStory({
+      ...story,
+      physicalTransformation: {
+        ...story.physicalTransformation,
+        afterPictureUrl: res.url,
+      },
     });
   };
 
@@ -61,7 +111,8 @@ function renderTransformationPart(newProps) {
           form='createStoryForm'
           name='bodyPart'
           id='bodyPart'
-          defaultValue={'Gary'} // doit renvoyer l'Id de la partie du corps
+          // defaultValue={''}
+          // doit renvoyer l'Id de la partie du corps
           required
           className={styles.input}
           onChange={(e) => handleTransformation(e)}>
@@ -71,7 +122,8 @@ function renderTransformationPart(newProps) {
               <option
                 key={bodyPart.slug}
                 value={bodyPart._id}
-                title={bodyPart.name}>
+                title={bodyPart.name}
+                data-bodypart={bodyPart.slug}>
                 {i.charAt(0).toUpperCase() + i.slice(1)}
               </option>
             );
@@ -163,7 +215,7 @@ function renderTransformationPart(newProps) {
             // fileName={'test-upload-gary.png'}
             folder={`citron-en-limonade/transformation-physique`}
             responseFields='customMetadata'
-            customMetadata={{ userId: `${user.id}`, photo: 'after' }}
+            // customMetadata={{ userId: `${user.id}`, photo: 'after' }}
             validateFile={(file) => file.size < 5000000}
             useUniqueFileName={true}
             inputRef={inputRefIK_After}
@@ -193,6 +245,13 @@ function renderTransformationPart(newProps) {
             <button onClick={() => ikUploadRef.current.abort()}>Annuler</button>
           )} */}
         </IKContext>
+      </div>
+      <div className={styles.inputBox}>
+        <label htmlFor='isSatified' className={styles.label}>
+          {' '}
+          Êtes-vous satistait(e) ?
+        </label>
+        <input type='checkbox'></input>
       </div>
     </div>
   );

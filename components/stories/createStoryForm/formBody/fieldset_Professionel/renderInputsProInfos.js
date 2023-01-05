@@ -4,7 +4,9 @@ import styles from './Fieldset_Professionel.module.scss';
 export function renderInputsProInfos(
   professionalConsulted,
   setProfessionalConsulted,
-  inputError
+  inputError,
+  story,
+  setStory
 ) {
   const dataAbr = ['Dr.', 'Pr.', 'Me.', 'Aud.', 'Coach', ''];
   const titreForInputId = [
@@ -43,10 +45,17 @@ export function renderInputsProInfos(
   ];
 
   const handleProInfos = (e) => {
-    // console.log('e.target : ', e.target);
+    console.log('e.target : ', e.target);
     setProfessionalConsulted({
       ...professionalConsulted,
       [e.target.name]: e.target.value,
+    });
+    setStory({
+      ...story,
+      professionalToCreate: {
+        ...story.professionalToCreate,
+        [e.target.name]: e.target.value,
+      },
     });
   };
   //
@@ -68,7 +77,6 @@ export function renderInputsProInfos(
     }
   };
   //
-
   if (professionalConsulted.__isNew__) {
     return (
       <>

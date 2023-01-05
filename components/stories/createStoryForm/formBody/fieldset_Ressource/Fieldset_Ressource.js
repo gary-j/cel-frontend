@@ -28,6 +28,13 @@ function Fieldset_Ressource({
 
   const handleCheckbox = () => {
     setIsChecked(!isChecked);
+    setStory({
+      ...story,
+      physicalTransformation: {
+        ...story.physicalTransformation,
+        isSelected: !isChecked,
+      },
+    });
   };
   // console.log(
   //   selected
@@ -37,13 +44,23 @@ function Fieldset_Ressource({
   //
   const handleSelect = (e) => {
     let id = e.target.closest('div').dataset.target;
-    console.log('*** appui sur : ', id);
+    // console.log('*** appui sur : ', id);
     if (selected === id) {
       setRessource({});
       setSelected(null);
+      setStory({ ...story, ressourceToCreate: {} });
     } else {
       setRessource({});
       setSelected(id);
+      setStory({
+        ...story,
+        ressourceToCreate: {
+          ...story.ressourceToCreate,
+          theme: story.theme,
+          mediaType: id,
+          complete: { [id]: {} },
+        },
+      });
     }
   };
   //
@@ -53,6 +70,8 @@ function Fieldset_Ressource({
   const ikUploadRef = useRef(null);
   //
   let newProps = {
+    story,
+    setStory,
     ressource: ressource,
     setRessource: setRessource,
     bodyparts: bodyparts,
@@ -93,7 +112,10 @@ function Fieldset_Ressource({
   //   });
   //   console.log('la reponse du backend imagekit auth : ', imagekitAuth);
   // }, []);
-  // //
+  //
+  console.log('story depuis ressource', story);
+
+  //
   return (
     <fieldset
       className={styles.fieldset}

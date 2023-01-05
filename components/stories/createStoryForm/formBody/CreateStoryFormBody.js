@@ -10,8 +10,10 @@ function CreateStoryFormBody({ user }) {
     theme: '',
     title: '',
     content: '',
-    professionalConsulted: '',
-    ressource: {},
+    professionalConsulted: '', // ObjectId
+    professionalToCreate: {},
+    ressource: '', // ObjectID
+    ressourceToCreate: {},
     physicalTransformation: {
       isSelected: false,
       bodyPart: '',
@@ -23,7 +25,8 @@ function CreateStoryFormBody({ user }) {
     isAnonym: false,
   });
   const [ressource, setRessource] = useState({});
-  console.log('story : ', story);
+  //
+  console.log('la ressource: ', ressource);
   return (
     <div className={styles.formBody}>
       <form
