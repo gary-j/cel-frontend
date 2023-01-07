@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect, useContext, useRef } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
-import renderInputsRessource from './renderInputsRessource';
+import { renderInputsRessource } from './renderInputsRessource';
 import renderTransformationPart from './transformation/renderTransformationPart';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../../context/auth.context';
@@ -113,7 +113,7 @@ function Fieldset_Ressource({
   //   console.log('la reponse du backend imagekit auth : ', imagekitAuth);
   // }, []);
   //
-  console.log('story depuis ressource', story);
+  // console.log('story depuis ressource', story);
 
   //
   return (

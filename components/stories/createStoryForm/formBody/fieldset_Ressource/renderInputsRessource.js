@@ -1,13 +1,14 @@
 import React, { useId } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
+var slugify = require('slugify');
 
-function renderInputsRessource(
+export function renderInputsRessource(
   selected,
   ressource,
   setRessource,
-  // inputError,
   story,
   setStory
+  // inputError,
 ) {
   const data = {
     citation: {
@@ -61,11 +62,11 @@ function renderInputsRessource(
     },
   };
   // console.log('data[2] : ', Object.keys(data)[2]);
-  console.log('Ressource... : ', ressource);
+  // console.log('Ressource... : ', ressource);
 
   //
   const handleRessourceInfos = (e) => {
-    console.log('e.target : ', e.target);
+    // console.log('e.target : ', e.target);
     setRessource({ ...ressource, [e.target.name]: e.target.value });
     setStory({
       ...story,
@@ -82,75 +83,54 @@ function renderInputsRessource(
     });
   };
   //
-  function renderInputs(selected) {
-    let labelsAndInputs = Object.entries(data[selected]);
-    return (
-      <>
-        <div key={selected}>
-          {labelsAndInputs.map((item, i) => {
-            let label;
-            let labelSlug;
-            if (
-              item[0].startsWith('-required-') ||
-              item[0].startsWith('-textarea-')
-            ) {
-              label = item[0].slice(11);
-              label.includes('série') ? (label = 'Titre de la serie') : null;
-              label.includes('vidéo') ? (label = 'Titre de la video') : null;
-              label.includes('Pourquoi cette ressource ?')
-                ? (label = 'Pourquoi cette ressource')
-                : null;
-              label.includes('Réalisateur') ? (label = 'realisateur') : null;
-              labelSlug = label.replace(/\W+/g, '-').toLowerCase();
-              // remplace tout ce qui n'est pas alphanumérique par '-'
-            } else {
-              label = item[0];
-              label.includes('Réalisateur') ? (label = 'realisateur') : null;
-              labelSlug = label.replace(/\W+/g, '-').toLowerCase();
-            }
 
-            return (
-              <>
-                <div key={labelSlug + i} className={styles.inputBox}>
-                  <label className={styles.label} htmlFor={labelSlug}>
-                    {label}
-                    {item[0].startsWith('-required-') && (
-                      <span className={styles.asterisque}> *</span>
-                    )}
-                  </label>
-                  {item[0].startsWith('-textarea-') ? (
-                    <textarea
-                      form='createStoryForm'
-                      key={labelSlug}
-                      id={labelSlug}
-                      name={labelSlug}
-                      placeholder={item[1]}
-                      className={styles.input + ' ' + styles.textarea}
-                      onChange={(e) => handleRessourceInfos(e)}></textarea>
-                  ) : (
-                    <input
-                      form='createStoryForm'
-                      key={label}
-                      id={labelSlug}
-                      name={labelSlug}
-                      className={`${styles.input} ${
-                        item[0].startsWith('-textarea-') ? styles.textarea : ''
-                      }`}
-                      placeholder={item[1] + ' ...'}
-                      type='text'
-                      required={item[0].startsWith('-required-') ? true : false}
-                      onChange={(e) => handleRessourceInfos(e)}></input>
-                  )}
-                </div>
-              </>
-            );
-          })}
-        </div>
-      </>
-    );
-  }
+  let labelsAndInputs = Object.entries(data[selected]);
+  // console.log('labelsandinpupts : ', labelsAndInputs);
+  return (
+    <>
+      {labelsAndInputs.map((item) => {
+        {
+          /* console.log('item[0] : ', item[0]); */
+        }
+        let label = item[0].replace(/(-required-)|(-textarea-)/, '');
+        let labelSlug = slugify(label, {
+          lower: true,
+        });
+
+        return (
+          <div key={labelSlug} className={styles.inputBox}>
+            <label className={styles.label} htmlFor={labelSlug}>
+              {label}
+              {item[0].startsWith('-required-') && (
+                <span className={styles.asterisque}> *</span>
+              )}
+            </label>
+            {item[0].startsWith('-textarea-') ? (
+              <textarea
+                form='createStoryForm'
+                id={labelSlug}
+                name={labelSlug}
+                placeholder={item[1]}
+                className={styles.input + ' ' + styles.textarea}
+                onChange={(e) => handleRessourceInfos(e)}></textarea>
+            ) : (
+              <input
+                form='createStoryForm'
+                id={labelSlug}
+                name={labelSlug}
+                className={`${styles.input} ${
+                  item[0].startsWith('-textarea-') ? styles.textarea : ''
+                }`}
+                placeholder={item[1] + ' ...'}
+                type='text'
+                required={item[0].startsWith('-required-') ? true : false}
+                onChange={(e) => handleRessourceInfos(e)}></input>
+            )}
+          </div>
+        );
+      })}
+    </>
+  );
 
   return <>{renderInputs(selected)}</>;
 }
-
-export default renderInputsRessource;

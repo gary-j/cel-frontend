@@ -23,11 +23,8 @@ function renderTransformationPart(newProps) {
     ikUploadRef,
   } = newProps;
   //
-  console.log('ressource transformation part', ressource);
-  // console.log('user render transf part : ', user);
   //
   const handleTransformation = (e) => {
-    console.log('e target name: ', e.target.name);
     switch (e.target.name) {
       case 'bodyPart':
         setRessource({
@@ -71,7 +68,7 @@ function renderTransformationPart(newProps) {
   };
   //
   const onSuccessBefore = (res) => {
-    console.log('SuccesBefore', res);
+    // console.log('SuccesBefore', res);
     setRessource({
       ...ressource,
       ['beforePhotoName']: res.name,
@@ -87,7 +84,7 @@ function renderTransformationPart(newProps) {
   };
   //
   const onSuccessAfter = (res) => {
-    console.log('SuccesAfter', res);
+    // console.log('SuccesAfter', res);
     setRessource({
       ...ressource,
       ['afterPhotoName']: res.name,
@@ -166,7 +163,7 @@ function renderTransformationPart(newProps) {
             // fileName={`${user.id}/before`}
             folder={`citron-en-limonade/transformation-physique`}
             responseFields='customMetadata'
-            customMetadata={{ userId: `${user?.id}`, photo: 'before' }}
+            // customMetadata={{ userId: `${user?.id}`, photo: 'before' }}
             validateFile={(file) => file.size < 5000000}
             // useUniqueFileName={true}
             inputRef={inputRefIK_Before}
