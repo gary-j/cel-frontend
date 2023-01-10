@@ -4,6 +4,8 @@ import { renderInputsRessource } from './renderInputsRessource';
 import renderTransformationPart from './transformation/renderTransformationPart';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../../context/auth.context';
+import Icon_checkboxOn from '../../../../../public/assets/img/svgs/page-icons/icon-page-checkbox-on.svg';
+import Icon_checkboxOff from '../../../../../public/assets/img/svgs/page-icons/icon-page-checkbox-off.svg';
 //
 function Fieldset_Ressource({ user, story, setStory }) {
   const data = [
@@ -102,7 +104,6 @@ function Fieldset_Ressource({ user, story, setStory }) {
   //   console.log('la reponse du backend imagekit auth : ', imagekitAuth);
   // }, []);
   //
-  console.log('la story ', story);
   //
   return (
     <fieldset
@@ -148,12 +149,25 @@ function Fieldset_Ressource({ user, story, setStory }) {
       <div className={styles.transformation}>
         <div className={styles.inputBox}>
           <input
+            className={styles.hidden}
             type='checkbox'
             id='transformation'
-            checked={isChecked}
-            onChange={handleCheckbox}></input>
+            // checked={isChecked}
+            // onChange={handleCheckbox}
+          ></input>
+          {isChecked ? (
+            <Icon_checkboxOn
+              className={styles.checkbox}
+              onClick={handleCheckbox}
+            />
+          ) : (
+            <Icon_checkboxOff
+              className={styles.checkbox}
+              onClick={handleCheckbox}
+            />
+          )}
           <label className={styles.label2} htmlFor='transformation'>
-            Transformation physique / Chirurgie esthétique
+            Transformation physique <br></br>Chirurgie&nbsp;esthétique
           </label>
         </div>
         {isChecked && renderTransformationPart(newProps)}

@@ -137,6 +137,14 @@
   letter-spacing: normal;
   color: $black;
 }
+@mixin labelPetit{
+  // margin: 5px 0 7px 12px;
+  font-size: $third-text;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+}
 @mixin asterisque {
   color: red;
   font-weight: $light;
@@ -181,6 +189,13 @@
 
 @mixin listbox {
   border: 2px solid red;
+}
+
+@mixin checkbox{
+  margin: 0 12px 0 0;
+  width: 24px;
+  height: 24px;        
+  object-fit: contain;
 }
 
 @mixin customInput {

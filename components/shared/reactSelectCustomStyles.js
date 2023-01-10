@@ -19,7 +19,7 @@ const cssControl = {
 
 const cssOption = {};
 
-const ProNamesStyles = {
+const DropDownSelectStyles = {
   container: (_, state) => ({
     // ...provided,
     ...cssContainer,
@@ -67,4 +67,4 @@ const ProNamesStyles = {
   },
 };
 
-export { ProNamesStyles };
+export { DropDownSelectStyles };

@@ -12,40 +12,52 @@ function CreateStoryFormBody({ user }) {
     title: '',
     content: '',
     professionalConsulted: '', // ObjectId
-    professionalToCreate: {},
+    professionalToCreate: null,
     ressource: '', // ObjectID
-    ressourceToCreate: {},
+    ressourceToCreate: null,
     physicalTransformation: {
       isSelected: false,
       bodyPart: '',
       treatment: '',
       beforePictureUrl: '',
       afterPictureUrl: '',
-      isSatisfied: false,
+      isSatisfied: true,
     },
     isAnonym: false,
   });
   //
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('histoire à poster : ', story);
+  };
+  //
   return (
-    <div className={styles.formBody}>
-      <form
-        id='createStoryForm'
-        className={styles.form}
-        // onSubmit={(e) => handleLoginSubmit(e)}
-      >
-        <Fieldset_Histoire
-          story={story}
-          setStory={setStory}></Fieldset_Histoire>
-        <Fieldset_Professionel
-          story={story}
-          setStory={setStory}></Fieldset_Professionel>
-        <Fieldset_Ressource
-          user={user}
-          story={story}
-          setStory={setStory}></Fieldset_Ressource>
-        <Fieldset_Anonym story={story} setStory={setStory}></Fieldset_Anonym>
-      </form>
-    </div>
+    <>
+      <div className={styles.formBody}>
+        <form
+          id='createStoryForm'
+          className={styles.form}
+          // onSubmit={(e) => handleLoginSubmit(e)}
+        >
+          <Fieldset_Histoire
+            story={story}
+            setStory={setStory}></Fieldset_Histoire>
+          <Fieldset_Professionel
+            story={story}
+            setStory={setStory}></Fieldset_Professionel>
+          <Fieldset_Ressource
+            user={user}
+            story={story}
+            setStory={setStory}></Fieldset_Ressource>
+          <Fieldset_Anonym story={story} setStory={setStory}></Fieldset_Anonym>
+          <div className={styles.btnWrapper}>
+            <button className={styles.button} onClick={handleSubmit}>
+              Soumettre mon histoire
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 

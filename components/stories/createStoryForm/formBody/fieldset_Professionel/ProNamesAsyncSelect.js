@@ -2,7 +2,8 @@ import React, { useState, useId } from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import styles from './Fieldset_Professionel.module.scss';
-import { ProNamesStyles } from './stylesCustomSelect';
+import { DropDownSelectStyles } from '../../../../shared/reactSelectCustomStyles';
+
 function ProNamesAsyncSelect({ props }) {
   const {
     story,
@@ -74,7 +75,7 @@ function ProNamesAsyncSelect({ props }) {
         // instanceId='selectProNameBox'
         instanceId={useId()}
         className={styles.gary}
-        styles={ProNamesStyles}
+        styles={DropDownSelectStyles}
         placeholder='M. Professionnel...'
         form='createStoryForm'
         name='search-professional'

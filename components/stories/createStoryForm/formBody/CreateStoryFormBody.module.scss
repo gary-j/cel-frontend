@@ -1,5 +1,15 @@
-@import '../../../../styles/tools/colors', '../../../../styles/tools/fonts', '../../../../styles/tools/form';
+@import '../../../../styles/tools/colors', '../../../../styles/tools/fonts',
+  '../../../../styles/tools/form', '../../../../styles/tools/buttons';
 
-.formBody{
-    @include formBody;
+.formBody {
+  @include formBody;
+  .btnWrapper {
+    width: 100%;
+    display: flex;
+    .button {
+      @include mainButton;
+      width: calc(100% - 32px);
+      margin: auto;
+    }
+  }
 }
