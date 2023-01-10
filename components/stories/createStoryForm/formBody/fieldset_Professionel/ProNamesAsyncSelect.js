@@ -3,7 +3,7 @@ import AsyncCreatableSelect from 'react-select/async-creatable';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import styles from './Fieldset_Professionel.module.scss';
 import { DropDownSelectStyles } from '../../../../shared/reactSelectCustomStyles';
-//
+
 function ProNamesAsyncSelect({ props }) {
   const {
     story,
