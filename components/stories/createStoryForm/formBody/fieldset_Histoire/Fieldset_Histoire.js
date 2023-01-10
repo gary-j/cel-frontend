@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import styles from './Fieldset_Histoire.module.scss';
 import Select from 'react-select';
-import { DropDownSelectStyles } from '../../../../shared/customDropDownReactSelect';
+import { DropDownSelectStyles } from '../../../../shared/reactSelectCustomStyles';
 //
 function Fieldset_Histoire({ story, setStory }) {
   const [themes, setThemes] = useState([]);
