@@ -4,8 +4,6 @@ var slugify = require('slugify');
 
 export function renderInputsRessource(
   selected,
-  ressource,
-  setRessource,
   story,
   setStory
   // inputError,
@@ -67,7 +65,6 @@ export function renderInputsRessource(
   //
   const handleRessourceInfos = (e) => {
     // console.log('e.target : ', e.target);
-    setRessource({ ...ressource, [e.target.name]: e.target.value });
     setStory({
       ...story,
       ressourceToCreate: {

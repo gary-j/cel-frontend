@@ -23,7 +23,41 @@
         margin-bottom: -1.5em;
       }
     }
+    .isSatisfied{
+      margin-top: 12px;
+      .block{
+        display:flex;
+          flex-direction: row;
+          align-items: center;
+        .boolean{
+
+          display:flex;
+          flex-direction: row;
+          align-items: center;
+          font-size: $secondary-text;
+          // gap: 24px;
+          p{
+            margin-left: 12px;
+            margin-right: 24px;
+          }
+          .icon{
+            width: 24px;
+            height: 24px;        
+            object-fit: contain;
+          }
+          .selected{
+            font-weight: $semi-bold;
+            color: $dark-green-2;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal
+          }
+        }
+      }
+    }
   }
+ 
 }
 .customInput {
  @include customInput;

@@ -5,13 +5,7 @@ import renderTransformationPart from './transformation/renderTransformationPart'
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../../context/auth.context';
 //
-function Fieldset_Ressource({
-  user,
-  story,
-  setStory,
-  ressource,
-  setRessource,
-}) {
+function Fieldset_Ressource({ user, story, setStory }) {
   const data = [
     'citation',
     'film',
@@ -36,21 +30,14 @@ function Fieldset_Ressource({
       },
     });
   };
-  // console.log(
-  //   selected
-  //     ? `Ressource sélectionnée : ${selected}`
-  //     : 'aucune ressource selectionnée !'
-  // );
-  //
+
   const handleSelect = (e) => {
     let id = e.target.closest('div').dataset.target;
     // console.log('*** appui sur : ', id);
     if (selected === id) {
-      setRessource({});
       setSelected(null);
       setStory({ ...story, ressourceToCreate: {} });
     } else {
-      setRessource({});
       setSelected(id);
       setStory({
         ...story,
@@ -68,17 +55,19 @@ function Fieldset_Ressource({
   const inputRefIK_Before = useRef(null);
   const inputRefIK_After = useRef(null);
   const ikUploadRef = useRef(null);
+  const [isSatisfied, setIsSatisfied] = useState(true);
+
   //
   let newProps = {
     story,
     setStory,
-    ressource: ressource,
-    setRessource: setRessource,
     bodyparts: bodyparts,
     user: user,
     inputRefIK_Before: inputRefIK_Before,
     inputRefIK_After: inputRefIK_After,
     ikUploadRef: ikUploadRef,
+    isSatisfied: isSatisfied,
+    setIsSatisfied: setIsSatisfied,
   };
   //Fetch bodyparts from DB
   useLayoutEffect(() => {
@@ -113,8 +102,7 @@ function Fieldset_Ressource({
   //   console.log('la reponse du backend imagekit auth : ', imagekitAuth);
   // }, []);
   //
-  // console.log('story depuis ressource', story);
-
+  console.log('la story ', story);
   //
   return (
     <fieldset
@@ -154,14 +142,7 @@ function Fieldset_Ressource({
             );
           })}
         </div>
-        {selected !== null &&
-          renderInputsRessource(
-            selected,
-            ressource,
-            setRessource,
-            story,
-            setStory
-          )}
+        {selected !== null && renderInputsRessource(selected, story, setStory)}
       </div>
 
       <div className={styles.transformation}>
