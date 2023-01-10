@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './renderTransformationPart.module.scss';
 //
 import Icon_upload from '../../../../../../public/assets/img/svgs/page-icons/icon-page-upload.svg';
+import Icon_optinOn from '../../../../../../public/assets/img/svgs/page-icons/icon-page-optin-on.svg';
+import Icon_optinOff from '../../../../../../public/assets/img/svgs/page-icons/icon-page-optin-off.svg';
 import { IKContext, IKImage, IKUpload } from 'imagekitio-react';
 import {
   IMAGEKIT_URL_ENDPOINT,
@@ -14,28 +16,20 @@ function renderTransformationPart(newProps) {
   const {
     story,
     setStory,
-    ressource,
-    setRessource,
+
     bodyparts,
     user,
     inputRefIK_Before,
     inputRefIK_After,
     ikUploadRef,
+    isSatisfied,
+    setIsSatisfied,
   } = newProps;
   //
   //
   const handleTransformation = (e) => {
     switch (e.target.name) {
       case 'bodyPart':
-        setRessource({
-          ...ressource,
-          physicalTransformation: {
-            ...ressource.physicalTransformation,
-            bodyPart: e.target.value,
-            bodyPartName:
-              e.target.options[e.target.selectedIndex].dataset.bodypart,
-          },
-        });
         setStory({
           ...story,
           physicalTransformation: {
@@ -45,13 +39,6 @@ function renderTransformationPart(newProps) {
         });
         break;
       case 'treatment':
-        setRessource({
-          ...ressource,
-          physicalTransformation: {
-            ...ressource.physicalTransformation,
-            treatment: e.target.value,
-          },
-        });
         setStory({
           ...story,
           physicalTransformation: {
@@ -69,37 +56,90 @@ function renderTransformationPart(newProps) {
   //
   const onSuccessBefore = (res) => {
     // console.log('SuccesBefore', res);
-    setRessource({
-      ...ressource,
-      ['beforePhotoName']: res.name,
-      beforeUrl: res.url,
-    });
-    setStory({
-      ...story,
-      physicalTransformation: {
-        ...story.physicalTransformation,
-        beforePictureUrl: res.url,
-      },
-    });
+    // setRessource({
+    //   ...ressource,
+    //   ['beforePictureName']: res.name,
+    //   beforePictureUrl: res.url,
+    // });
+    story.ressourceToCreate.complete
+      ? setStory({
+          ...story,
+          physicalTransformation: {
+            ...story.physicalTransformation,
+            beforePictureUrl: res.url,
+            beforePictureName: res.name,
+          },
+
+          ressourceToCreate: {
+            ...story.ressourceToCreate,
+            physicalTransformation: {
+              ...story.ressourceToCreate.physicalTransformation,
+              ['beforePictureUrl']: res.url,
+              ['beforePictureName']: res.name,
+            },
+          },
+        })
+      : setStory({
+          ...story,
+          physicalTransformation: {
+            ...story.physicalTransformation,
+            beforePictureUrl: res.url,
+            beforePictureName: res.name,
+          },
+        });
   };
   //
   const onSuccessAfter = (res) => {
     // console.log('SuccesAfter', res);
-    setRessource({
-      ...ressource,
-      ['afterPhotoName']: res.name,
-      afterUrl: res.url,
-    });
+    // setRessource({
+    //   ...ressource,
+    //   ['afterPictureName']: res.name,
+    //   afterPictureUrl: res.url,
+    // });
+
+    story.ressourceToCreate.complete
+      ? setStory({
+          ...story,
+          physicalTransformation: {
+            ...story.physicalTransformation,
+            afterPictureUrl: res.url,
+            afterPictureName: res.name,
+          },
+
+          ressourceToCreate: {
+            ...story.ressourceToCreate,
+            physicalTransformation: {
+              ...story.ressourceToCreate.physicalTransformation,
+              ['afterPictureUrl']: res.url,
+              ['afterPictureName']: res.name,
+            },
+          },
+        })
+      : setStory({
+          ...story,
+          physicalTransformation: {
+            ...story.physicalTransformation,
+            afterPictureUrl: res.url,
+            afterPictureName: res.name,
+          },
+        });
+  };
+  //
+  //
+  const handleIsSatisfied = (e) => {
+    let value = e.target.closest('div').dataset.target;
+    console.log('value : ', value);
+    let boolean = value === 'true';
+    console.log('boolean : ', boolean);
+    setIsSatisfied(boolean);
     setStory({
       ...story,
       physicalTransformation: {
         ...story.physicalTransformation,
-        afterPictureUrl: res.url,
+        isSatisfied: boolean,
       },
     });
   };
-
-  //
   return (
     <div className={styles.part2}>
       <div className={styles.inputBox}>
@@ -151,7 +191,7 @@ function renderTransformationPart(newProps) {
           type='file'
           accept='image/*, .pdf'
           id='photoAvant'
-          name='beforeUrl'></input> */}
+          name='beforePictureUrl'></input> */}
         <IKContext
           urlEndpoint={IMAGEKIT_URL_ENDPOINT}
           publicKey={IMAGEKIT_PUBLIC_KEY}
@@ -159,7 +199,7 @@ function renderTransformationPart(newProps) {
           {/* <p>Upload an image</p> */}
           <IKUpload
             id='photoAvant'
-            name='beforeUrl'
+            name='beforePictureUrl'
             // fileName={`${user.id}/before`}
             folder={`citron-en-limonade/transformation-physique`}
             responseFields='customMetadata'
@@ -177,8 +217,8 @@ function renderTransformationPart(newProps) {
               onClick={() => inputRefIK_Before.current.click()}>
               <div className={styles.div}>
                 <p className={styles.placeholder}>
-                  {ressource?.beforePhotoName
-                    ? ressource.beforePhotoName
+                  {story.physicalTransformation?.beforePictureName
+                    ? story.physicalTransformation.beforePictureName
                     : 'Ajouter un fichier...'}
                 </p>
               </div>
@@ -202,7 +242,7 @@ function renderTransformationPart(newProps) {
           type='file'
           accept='image/*, .pdf'
           id='photoAvant'
-          name='beforeUrl'></input> */}
+          name='beforePictureUrl'></input> */}
         <IKContext
           urlEndpoint={IMAGEKIT_URL_ENDPOINT}
           publicKey={IMAGEKIT_PUBLIC_KEY}
@@ -210,7 +250,7 @@ function renderTransformationPart(newProps) {
           {/* <p>Upload an image</p> */}
           <IKUpload
             id='photoApres'
-            name='AfterUrl'
+            name='afterPictureUrl'
             // fileName={'test-upload-gary.png'}
             folder={`citron-en-limonade/transformation-physique`}
             responseFields='customMetadata'
@@ -229,8 +269,8 @@ function renderTransformationPart(newProps) {
               onClick={() => inputRefIK_After.current.click()}>
               <div className={styles.div}>
                 <p className={styles.placeholder}>
-                  {ressource?.afterPhotoName
-                    ? ressource.afterPhotoName
+                  {story.physicalTransformation?.afterPictureName
+                    ? story.physicalTransformation.afterPictureName
                     : 'Ajouter un fichier...'}
                 </p>
               </div>
@@ -250,7 +290,57 @@ function renderTransformationPart(newProps) {
           {' '}
           Êtes-vous satistait(e) ?
         </label>
-        <input type='checkbox'></input>
+        <div className={styles.isSatisfied}>
+          {isSatisfied ? (
+            <div className={styles.block}>
+              <div className={styles.boolean} data-target='true'>
+                <Icon_optinOn
+                  role='checkbox'
+                  tabindex='0'
+                  className={styles.icon}
+                  onClick={handleIsSatisfied}
+                />
+                <p className={styles.selected} onClick={handleIsSatisfied}>
+                  OUI
+                </p>
+              </div>
+              <div className={styles.boolean} data-target='false'>
+                <Icon_optinOff
+                  className={styles.icon}
+                  role='checkbox'
+                  tabindex='0'
+                  onClick={handleIsSatisfied}
+                />
+                <p onClick={handleIsSatisfied}>NON</p>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.block}>
+              <div className={styles.boolean} data-target='true'>
+                <Icon_optinOff
+                  role='checkbox'
+                  // aria-checked
+                  tabindex='0'
+                  className={styles.icon}
+                  onClick={handleIsSatisfied}
+                />
+                <p onClick={handleIsSatisfied}>OUI</p>
+              </div>
+              <div className={styles.boolean} data-target='false'>
+                <Icon_optinOn
+                  role='checkbox'
+                  tabindex='0'
+                  className={styles.icon}
+                  onClick={handleIsSatisfied}
+                />
+                <p className={styles.selected} onClick={handleIsSatisfied}>
+                  NON
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+        {/* <input type='checkbox'></input> */}
       </div>
     </div>
   );

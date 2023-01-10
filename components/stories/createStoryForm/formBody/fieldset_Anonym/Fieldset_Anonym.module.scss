@@ -1,0 +1,18 @@
+@import '../../../../../styles/tools/colors', '../../../../../styles/tools/fonts',
+  '../../../../../styles/tools/form';
+
+  .fieldset {
+    border: none;
+    margin-bottom: 3em;
+    margin-left: 16px;
+    margin-right: 16px;
+  
+    .fieldsetHeader {
+      @include fieldsetHeader;
+      display: flex;
+    }
+    .hidden{
+        // visibility: hidden;
+        display: none;
+    }
+}

@@ -3,6 +3,7 @@ import styles from './CreateStoryFormBody.module.scss';
 import Fieldset_Histoire from './fieldset_Histoire/Fieldset_Histoire';
 import Fieldset_Professionel from './fieldset_Professionel/Fieldset_Professionel';
 import Fieldset_Ressource from './fieldset_Ressource/Fieldset_Ressource';
+import Fieldset_Anonym from './fieldset_Anonym/Fieldset_Anonym';
 
 function CreateStoryFormBody({ user }) {
   const [story, setStory] = useState({
@@ -24,9 +25,7 @@ function CreateStoryFormBody({ user }) {
     },
     isAnonym: false,
   });
-  const [ressource, setRessource] = useState({});
   //
-  console.log('la ressource: ', ressource);
   return (
     <div className={styles.formBody}>
       <form
@@ -43,9 +42,8 @@ function CreateStoryFormBody({ user }) {
         <Fieldset_Ressource
           user={user}
           story={story}
-          setStory={setStory}
-          ressource={ressource}
-          setRessource={setRessource}></Fieldset_Ressource>
+          setStory={setStory}></Fieldset_Ressource>
+        <Fieldset_Anonym story={story} setStory={setStory}></Fieldset_Anonym>
       </form>
     </div>
   );
