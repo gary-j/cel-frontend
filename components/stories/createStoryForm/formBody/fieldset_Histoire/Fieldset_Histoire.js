@@ -31,7 +31,6 @@ function Fieldset_Histoire({ story, setStory }) {
   }, []);
   //
   const handleSelectTheme = (e) => {
-    console.log('e : ', e);
     setStory({ ...story, theme: e.value });
   };
   //

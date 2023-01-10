@@ -104,7 +104,6 @@ function Fieldset_Ressource({ user, story, setStory }) {
   //   console.log('la reponse du backend imagekit auth : ', imagekitAuth);
   // }, []);
   //
-  console.log('la story ', story);
   //
   return (
     <fieldset
