@@ -2,7 +2,7 @@ import React, { useState, useId } from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import styles from './Fieldset_Professionel.module.scss';
-import { DropDownSelectStyles } from '../../../../shared/react-select-CustomStyles';
+import { DropDownSelectStyles } from '../../../../shared/reactSelectCustomStyles';
 //
 function ProNamesAsyncSelect({ props }) {
   const {
