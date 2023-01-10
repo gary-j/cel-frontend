@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { publicRequest } from '../../../../../utils/axiosRequest';
 import styles from './Fieldset_Histoire.module.scss';
+import Select from 'react-select';
+import { DropDownSelectStyles } from '../../../../shared/react-select-CustomStyles';
 
 function Fieldset_Histoire({ story, setStory }) {
   const [themes, setThemes] = useState([]);
+  const [themesSelect, setThemesSelect] = useState([]);
   const caracteresLimit = 1200;
   const [message, setMessage] = useState('');
   // console.log(themes);
@@ -12,13 +15,24 @@ function Fieldset_Histoire({ story, setStory }) {
     async function getThemesFromDB() {
       const res = await publicRequest.get(`/theme/all`);
       const themesDB = await res.data;
-      setThemes(themesDB);
+      // setThemes(themesDB);
+      //
+      const tempArray = [];
+      await themesDB.forEach((element) => {
+        tempArray.push({
+          label: element.name,
+          value: element._id,
+          ...element,
+        });
+      });
+      setThemes(tempArray);
     }
     getThemesFromDB();
   }, []);
   //
   const handleSelectTheme = (e) => {
-    setStory({ ...story, theme: e.target.value });
+    console.log('e : ', e);
+    setStory({ ...story, theme: e.value });
   };
   //
   const handleMessageChange = (event) => {
@@ -42,7 +56,7 @@ function Fieldset_Histoire({ story, setStory }) {
           <label className={styles.label} htmlFor='theme-select'>
             Choix du thème <span className={styles.asterisque}>&nbsp;*</span>
           </label>
-          <select
+          {/* <select
             id='theme-select'
             form='createStoryForm'
             name='themes'
@@ -57,7 +71,17 @@ function Fieldset_Histoire({ story, setStory }) {
                 {theme.name}
               </option>
             ))}
-          </select>
+          </select> */}
+          <Select
+            id='theme-select'
+            instanceId='theme-select'
+            name='themes'
+            form='createStoryForm'
+            styles={DropDownSelectStyles}
+            placeholder='Amitié...'
+            defaultValue={themes[0]}
+            options={themes}
+            onChange={(e) => handleSelectTheme(e)}></Select>
         </div>
         <div className={styles.inputBox + ' ' + styles.content}>
           <label className={styles.label} htmlFor='content'>
