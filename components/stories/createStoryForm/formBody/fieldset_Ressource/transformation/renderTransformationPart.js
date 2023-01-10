@@ -296,7 +296,7 @@ function renderTransformationPart(newProps) {
               <div className={styles.boolean} data-target='true'>
                 <Icon_optinOn
                   role='checkbox'
-                  tabindex='0'
+                  tabIndex='0'
                   className={styles.icon}
                   onClick={handleIsSatisfied}
                 />
@@ -308,7 +308,7 @@ function renderTransformationPart(newProps) {
                 <Icon_optinOff
                   className={styles.icon}
                   role='checkbox'
-                  tabindex='0'
+                  tabIndex='0'
                   onClick={handleIsSatisfied}
                 />
                 <p onClick={handleIsSatisfied}>NON</p>
@@ -320,7 +320,7 @@ function renderTransformationPart(newProps) {
                 <Icon_optinOff
                   role='checkbox'
                   // aria-checked
-                  tabindex='0'
+                  tabIndex='0'
                   className={styles.icon}
                   onClick={handleIsSatisfied}
                 />
@@ -329,7 +329,7 @@ function renderTransformationPart(newProps) {
               <div className={styles.boolean} data-target='false'>
                 <Icon_optinOn
                   role='checkbox'
-                  tabindex='0'
+                  tabIndex='0'
                   className={styles.icon}
                   onClick={handleIsSatisfied}
                 />

@@ -15,4 +15,14 @@
         // visibility: hidden;
         display: none;
     }
+    .wrapper{
+      display: flex;
+      align-items: center;
+      .label{
+        @include labelPetit;
+      }
+      .checkbox{
+        @include checkbox;
+      }
+    }
 }

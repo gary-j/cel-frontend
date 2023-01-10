@@ -96,11 +96,16 @@
       // border: 1px solid red;
       display: flex;
       align-items: center;
-
+      .hidden{
+        display: none;
+      }
+      .checkbox{
+        @include checkbox;
+      }
       .label2 {
         font-weight: $regular;
         font-size: $third-text;
-        margin-left: 16px;
+        // margin-left: 16px;
       }
     }
   }
