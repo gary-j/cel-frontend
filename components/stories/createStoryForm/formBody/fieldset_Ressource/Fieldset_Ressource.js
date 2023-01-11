@@ -83,7 +83,17 @@ function Fieldset_Ressource({ user, story, setStory }) {
           signal: signal,
         });
         const bodyparts = await res.data;
-        setBodyPartsFromDB(bodyparts);
+        //
+        const tempArray = [];
+        await bodyparts.forEach((element) => {
+          tempArray.push({
+            label: element.name,
+            value: element._id,
+            target: { name: 'bodyPart', value: element.name },
+            ...element,
+          });
+        });
+        setBodyPartsFromDB(tempArray);
         controller = null;
         //aborts the request when the component umounts
         return () => controller?.abort();

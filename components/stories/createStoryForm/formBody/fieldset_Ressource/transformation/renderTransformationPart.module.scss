@@ -5,6 +5,9 @@
   // border: 1px solid green;
   margin-top: 16px;
   .inputBox {
+    &.first{
+      margin-bottom: 16px;
+    }
     .label {
       @include label;
       font-size: $third-text;
