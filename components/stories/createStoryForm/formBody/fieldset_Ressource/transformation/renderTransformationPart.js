@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react';
 import styles from './renderTransformationPart.module.scss';
 //
+import Select from 'react-select';
+import { DropDownSelectStyles } from '../../../../../shared/reactSelectCustomStyles';
+//
 import Icon_upload from '../../../../../../public/assets/img/svgs/page-icons/icon-page-upload.svg';
 import Icon_optinOn from '../../../../../../public/assets/img/svgs/page-icons/icon-page-optin-on.svg';
 import Icon_optinOff from '../../../../../../public/assets/img/svgs/page-icons/icon-page-optin-off.svg';
@@ -142,11 +145,11 @@ function renderTransformationPart(newProps) {
   };
   return (
     <div className={styles.part2}>
-      <div className={styles.inputBox}>
+      <div className={`${styles.inputBox} ${styles.first}`}>
         <label className={styles.label} htmlFor='bodyPart'>
           Partie du corps <span className={styles.asterisque}>&nbsp;*</span>
         </label>
-        <select
+        {/* <select
           form='createStoryForm'
           name='bodyPart'
           id='bodyPart'
@@ -167,7 +170,18 @@ function renderTransformationPart(newProps) {
               </option>
             );
           })}
-        </select>
+        </select> */}
+        <Select
+          id='bodyPart'
+          instanceId='bodyPart-select'
+          name='bodyPart'
+          form='createStoryForm'
+          styles={DropDownSelectStyles}
+          className={'BodyPartSelectContainer'} // added to globals.scss
+          placeholder={bodyparts[0]}
+          defaultValue={bodyparts[0]}
+          options={bodyparts}
+          onChange={(e) => handleTransformation(e)}></Select>
       </div>
       <div className={styles.inputBox}>
         <label className={styles.label} htmlFor='treatment'>
