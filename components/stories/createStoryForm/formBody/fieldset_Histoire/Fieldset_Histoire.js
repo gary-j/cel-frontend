@@ -39,6 +39,12 @@ function Fieldset_Histoire({ story, setStory }) {
     setStory({ ...story, content: event.target.value });
   };
   //
+  const moveCaretAtEnd = (e) => {
+    var temp_value = e.target.value;
+    e.target.value = '';
+    e.target.value = temp_value;
+  };
+
   console.log('message : ', message);
   return (
     <>
@@ -96,6 +102,7 @@ function Fieldset_Histoire({ story, setStory }) {
             value={message}
             placeholder='Ça a commencé par...'
             autoFocus
+            onFocus={moveCaretAtEnd}
             className={styles.input + ' ' + styles.textarea}
             onChange={handleMessageChange}></textarea>
           <div className={styles.caracteresLimite}>
