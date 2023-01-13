@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/auth.context';
 
 function Create() {
   const { user } = useContext(AuthContext);
-  console.log('user du context : ', user);
+  // console.log('user du context : ', user);
   return (
     <>
       {/* <div className={styles.create}>create</div>; */}
