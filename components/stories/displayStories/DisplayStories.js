@@ -39,7 +39,7 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
           const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
           // ajout d'une clé à l'objet story pour une variante d'affichage css
           story.proIsAlone =
-            story.ressource === null &&
+            !story.ressource &&
             story.physicalTransformation.isSelected === false;
 
           return (
@@ -91,11 +91,11 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
                       </div>
                       <div className={styles.proNameBlock}>
                         <p className={styles.proName}>
-                          {story.professionalConsulted.name}
+                          {story.professionalConsulted?.name}
                         </p>
                       </div>
                     </div>
-                    {story.ressource !== null && (
+                    {story.ressource && (
                       <div className={styles.ressource + ' ' + styles.part}>
                         <div>
                           <p className={styles.text}>Ressource </p>
@@ -103,8 +103,8 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
                         <div>
                           <Image
                             className={styles.image}
-                            src={`/assets/img/svgs/ressources-icons/${story.ressource.mediaType}.svg`}
-                            alt={`icon ${story.ressource.mediaType}`}
+                            src={`/assets/img/svgs/ressources-icons/${story.ressource?.mediaType}.svg`}
+                            alt={`icon ${story.ressource?.mediaType}`}
                             height='40px'
                             width='40px'></Image>
                         </div>

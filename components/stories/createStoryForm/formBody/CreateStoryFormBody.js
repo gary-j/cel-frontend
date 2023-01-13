@@ -4,6 +4,7 @@ import Fieldset_Histoire from './fieldset_Histoire/Fieldset_Histoire';
 import Fieldset_Professionel from './fieldset_Professionel/Fieldset_Professionel';
 import Fieldset_Ressource from './fieldset_Ressource/Fieldset_Ressource';
 import Fieldset_Anonym from './fieldset_Anonym/Fieldset_Anonym';
+import { publicRequest } from '../../../../utils/axiosRequest';
 
 function CreateStoryFormBody({ user }) {
   const [story, setStory] = useState({
@@ -11,13 +12,13 @@ function CreateStoryFormBody({ user }) {
     theme: '',
     title: '',
     content: '',
-    professionalConsulted: '', // ObjectId
+    // professionalConsulted: '', // ObjectId
     professionalToCreate: null,
-    ressource: '', // ObjectID
+    // ressource: '', // ObjectID
     ressourceToCreate: null,
     physicalTransformation: {
       isSelected: false,
-      bodyPart: '',
+      //bodyPart: '',
       treatment: '',
       beforePictureUrl: '',
       afterPictureUrl: '',
@@ -26,9 +27,14 @@ function CreateStoryFormBody({ user }) {
     isAnonym: false,
   });
   //
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('histoire à poster : ', story);
+    try {
+      const requestBody = story;
+      const response = await publicRequest.post('/story/create', requestBody);
+      console.log('la réponse du back : ', response);
+    } catch (error) {}
   };
   //
   return (

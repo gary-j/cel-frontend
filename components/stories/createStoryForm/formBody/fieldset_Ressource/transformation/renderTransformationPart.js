@@ -64,7 +64,7 @@ function renderTransformationPart(newProps) {
     //   ['beforePictureName']: res.name,
     //   beforePictureUrl: res.url,
     // });
-    story.ressourceToCreate.complete
+    story?.ressourceToCreate?.complete
       ? setStory({
           ...story,
           physicalTransformation: {
@@ -100,7 +100,7 @@ function renderTransformationPart(newProps) {
     //   afterPictureUrl: res.url,
     // });
 
-    story.ressourceToCreate.complete
+    story?.ressourceToCreate?.complete
       ? setStory({
           ...story,
           physicalTransformation: {

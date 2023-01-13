@@ -89,7 +89,7 @@ function Fieldset_Ressource({ user, story, setStory }) {
           tempArray.push({
             label: element.name,
             value: element._id,
-            target: { name: 'bodyPart', value: element.name },
+            target: { name: 'bodyPart', value: element._id },
             ...element,
           });
         });
