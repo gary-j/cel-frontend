@@ -45,7 +45,7 @@ function Fieldset_Histoire({ story, setStory }) {
     e.target.value = temp_value;
   };
 
-  console.log('message : ', message);
+  // console.log('message : ', message);
   return (
     <>
       <fieldset
