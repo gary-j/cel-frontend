@@ -12,7 +12,8 @@ import Icon_google from '../../../public/assets/img/svgs/rs-icons/icon-rs-google
 import Icon_instagram from '../../../public/assets/img/svgs/rs-icons/icon-rs-insta.svg';
 import Icon_close from '../../../public/assets/img/svgs/page-icons/icon-page-close.svg';
 import Icon_checkboxOff from '../../../public/assets/img/svgs/page-icons/icon-page-checkbox-off.svg';
-import Icon_view from '../../../public/assets/img/svgs/page-icons/icon-page-view.svg';
+import Icon_view from '../../../public/assets/img/svgs/page-icons/icon-page-eye.svg';
+import Icon_noView from '../../../public/assets/img/svgs/page-icons/icon-page-eye-crossed.svg';
 import Icon_checkboxOn from '../../../public/assets/img/svgs/page-icons/icon-page-checkbox-on.svg';
 import Loading from '../../commons/Loading';
 //
@@ -140,10 +141,17 @@ const SigninForm = (props) => {
                   onChange={handlePassword}
                   className={styles.input}
                 />
-                <Icon_view
-                  className={styles.showPassword}
-                  onClick={() => togglePassword()}
-                />
+                {passwordShown ? (
+                  <Icon_noView
+                    className={styles.showPassword}
+                    onClick={() => togglePassword()}
+                  />
+                ) : (
+                  <Icon_view
+                    className={styles.showPassword}
+                    onClick={() => togglePassword()}
+                  />
+                )}
               </div>
               {inputError === 'wrong' && (
                 <span className={styles.inputError}>{errorMessage}</span>
