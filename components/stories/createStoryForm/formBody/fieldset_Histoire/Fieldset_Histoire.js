@@ -8,7 +8,7 @@ function Fieldset_Histoire({ story, setStory }) {
   const [themes, setThemes] = useState([]);
   const [themesSelect, setThemesSelect] = useState([]);
   const caracteresLimit = 1200;
-  const [message, setMessage] = useState('Ça a commencé par... ');
+  const [message, setMessage] = useState('Ça a commencé par ');
   // console.log(themes);
   // useEffect appel BD pour récupérer les thèmes
   useEffect(() => {

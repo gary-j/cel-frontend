@@ -71,7 +71,7 @@ export function renderInputsRessource(
         ...story.ressourceToCreate,
         complete: {
           ...story.ressourceToCreate.complete,
-          [selected]: {
+          [slugify(selected, { lower: true })]: {
             ...story.ressourceToCreate.complete[selected],
             [e.target.name]: e.target.value,
           },

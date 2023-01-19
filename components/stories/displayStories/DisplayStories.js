@@ -133,7 +133,9 @@ const DisplayStories = ({ stories, cssBreakPoint }) => {
 
                 <div className={styles.footer}>
                   <div className={styles.storyAction}>
-                    <Icon_story_favorite className={styles.iconAction} />
+                    <Icon_story_favorite
+                      className={styles.iconAction + ' ' + styles.etoile}
+                    />
                     <div className={styles.comments}>
                       <Icon_story_comments className={styles.iconAction} />
                       {story?.comments ? <p>{story.comments.length}</p> : null}

@@ -58,7 +58,7 @@ function CreateStoryFormBody({ user }) {
           <Fieldset_Anonym story={story} setStory={setStory}></Fieldset_Anonym>
           <div className={styles.btnWrapper}>
             <button className={styles.button} onClick={handleSubmit}>
-              Soumettre mon histoire
+              Publier mon histoire
             </button>
           </div>
         </form>

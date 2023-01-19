@@ -1,5 +1,6 @@
 import React, { useState, useLayoutEffect, useContext, useRef } from 'react';
 import styles from './Fieldset_Ressource.module.scss';
+var slugify = require('slugify');
 import { renderInputsRessource } from './renderInputsRessource';
 import renderTransformationPart from './transformation/renderTransformationPart';
 import { publicRequest } from '../../../../../utils/axiosRequest';
@@ -46,8 +47,8 @@ function Fieldset_Ressource({ user, story, setStory }) {
         ressourceToCreate: {
           ...story.ressourceToCreate,
           theme: story.theme,
-          mediaType: id,
-          complete: { [id]: {} },
+          mediaType: slugify(id, { lower: true }),
+          complete: { [slugify(id, { lower: true })]: {} },
         },
       });
     }
