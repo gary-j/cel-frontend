@@ -154,6 +154,9 @@
         .iconAction {
           font-size: $icon-story-action;
           cursor: pointer;
+          &.etoile{
+            margin-bottom: 3px;
+          }
         }
       }
     }
