@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { publicRequest } from '../../../../utils/axiosRequest';
 import { AuthContext } from '../../../../context/auth.context';
 import styles from '../SignupFormContainer.module.scss';
-import Icon_view from '../../../../public/assets/img/svgs/page-icons/icon-page-view.svg';
+import Icon_view from '../../../../public/assets/img/svgs/page-icons/icon-page-eye.svg';
+import Icon_noView from '../../../../public/assets/img/svgs/page-icons/icon-page-eye-crossed.svg';
+
 import LoadingMini from '../../../commons/LoadingMini';
 import Link from 'next/link';
 //
@@ -203,10 +205,17 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
                 onChange={handlePassword}
                 required
               />
-              <Icon_view
-                className={styles.showPassword}
-                onClick={() => togglePassword()}
-              />
+              {passwordShown ? (
+                <Icon_noView
+                  className={styles.showPassword}
+                  onClick={() => togglePassword()}
+                />
+              ) : (
+                <Icon_view
+                  className={styles.showPassword}
+                  onClick={() => togglePassword()}
+                />
+              )}
             </div>
 
             {inputError === 'password' && (
