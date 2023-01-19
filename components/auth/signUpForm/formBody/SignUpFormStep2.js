@@ -30,10 +30,11 @@ const SignUpFormStep2 = ({ props, fieldStateProps }) => {
       console.log('*** selectedThemes *** : ', selectedThemes);
     }
 
-    let themeID = e.target.closest('div').dataset.target;
-    console.log("*** handleToggle, voici l'id : ", themeID);
+    let themeID = e.target.dataset.target;
+    // console.log("*** handleToggle, voici l'id : ", themeID);
+    //
     let themeGroup = document.querySelectorAll(`[data-target='${themeID}']`);
-    console.log('*** handleToggle, themeGroup: ', themeGroup);
+    // console.log('*** handleToggle, themeGroup: ', themeGroup);
     //
     if (selectedThemes.includes(themeID)) {
       // Removing already selected theme
@@ -81,7 +82,7 @@ ${styles.fieldContainer + ' ' + styles.step2} ${
               <p data-target={theme._id} className={styles.text}>
                 {theme.name}
               </p>
-              <div className={styles.svgBox}>
+              <div className={styles.svgBox} data-target={theme._id}>
                 <Image
                   className={`${theme.svg_title} ${styles.svg}`}
                   src={`${
