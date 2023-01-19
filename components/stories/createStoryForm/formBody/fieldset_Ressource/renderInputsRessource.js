@@ -15,7 +15,7 @@ export function renderInputsRessource(
       ['Auteur de la citation']: 'Inconnu',
     },
     film: {
-      ['-required- Titre du film']: 'titre du film',
+      ['-required- Titre du film']: 'Titre du film',
       ['Réalisateur']: 'Coogler',
       ['Acteur principal']: 'Acteur 1',
       ['Acteur 2']: 'Acteur 2',
@@ -29,34 +29,34 @@ export function renderInputsRessource(
         'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
     livre: {
-      ['-required- Titre du livre']: 'titre du livre',
-      ['-required- Auteur du livre']: 'auteur du livre',
+      ['-required- Titre du livre']: 'Titre du livre',
+      ['-required- Auteur du livre']: 'Auteur du livre',
       ['-textarea- Pourquoi cette ressource ?']:
         'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
     musique: {
-      ['-required- Titre de la chanson']: 'titre de la chanson',
-      ["-required- Nom de l'artiste"]: "nom de l'artiste",
+      ['-required- Titre de la chanson']: 'Titre de la chanson',
+      ["-required- Nom de l'artiste"]: "Nom de l'artiste",
       ['-textarea- Pourquoi cette ressource ?']:
         'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
     podcast: {
-      ['-required- Titre du podcast']: 'titre du podcast',
-      ['-required- Auteur du podcast']: 'auteur du podcast',
+      ['-required- Titre du podcast']: 'Titre du podcast',
+      ['-required- Auteur du podcast']: 'Auteur du podcast',
       ['-textarea- Pourquoi cette ressource ?']:
         'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
     série: {
-      ['-required- Titre de la série']: 'titre de la série',
+      ['-required- Titre de la série']: 'Titre de la série',
       ['Acteur principal']: 'Acteur 1',
       ['Acteur 2']: 'Acteur 2',
       ['-textarea- Pourquoi cette ressource ?']:
         'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
     vidéo: {
-      ['-required- Titre de la vidéo']: 'titre de la vidéo',
-      ['Auteur de la vidéo']: 'auteur de la vidéo',
-      ['Site de la vidéo']: 'url de la vidéo',
+      ['-required- Titre de la vidéo']: 'Titre de la vidéo',
+      ['Auteur de la vidéo']: 'Auteur de la vidéo',
+      ['Site de la vidéo']: 'Url de la vidéo',
     },
   };
   // console.log('data[2] : ', Object.keys(data)[2]);
