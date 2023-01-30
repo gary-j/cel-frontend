@@ -57,6 +57,8 @@ export function renderInputsRessource(
       ['-required- Titre de la vidéo']: 'Titre de la vidéo',
       ['Auteur de la vidéo']: 'Auteur de la vidéo',
       ['Site de la vidéo']: 'Url de la vidéo',
+      ['-textarea- Pourquoi cette ressource ?']:
+        'Expliquez brièvement pourquoi vous recommandez cette ressource.',
     },
   };
   // console.log('data[2] : ', Object.keys(data)[2]);
