@@ -1,0 +1,7 @@
+export { default as Ads } from './Ads'
+export { default as Footer } from './Footer'
+export { default as Main } from './Main'
+export { Navbar } from './Navbar'
+export { default as Pros } from './Pros'
+export { default as Resources } from './Resources'
+export { default as Searchbar } from './Searchbar'

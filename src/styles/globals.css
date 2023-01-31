@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.btn {
+		@apply mx-auto w-full rounded-md px-0 py-[10px] text-buttonTitle uppercase laptop:rounded;
+	}
+	.btn-carnation {
+		@apply bg-carnation-400  text-white transition-all hover:bg-carnation-500 focus:outline-none;
+	}
+	.btn-outline-on-blue-stone {
+		@apply bg-transparent text-white outline outline-2 outline-offset-m2 outline-white transition-all hover:bg-blue-stone-800 hover:bg-opacity-75 focus:outline focus:outline-2 focus:outline-white;
+	}
+	.btn-outline-on-porcelain {
+		@apply bg-transparent text-cod-gray-900 outline outline-2 outline-offset-m2 outline-cod-gray-900 transition-all hover:bg-porcelain-100 focus:outline focus:outline-2 focus:outline-cod-gray-900;
+	}
+	.btn-persian-green {
+		@apply bg-persian-green-600 text-white transition-all hover:bg-persian-green-700 focus:outline-none;
+	}
+}
