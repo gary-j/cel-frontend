@@ -16,10 +16,13 @@
 		"jsx": "preserve",
 		"baseUrl": ".",
 		"paths": {
+			"@assets/*": ["public/assets/*"],
 			"@components/*": ["src/components/*"],
+			"@contexts/*": ["src/contexts/*"],
 			"@hooks/*": ["src/hooks/*"],
 			"@lib/*": ["src/lib/*"],
 			"@pages/*": ["src/pages/*"],
+			"@shared/*": ["src/shared/*"],
 			"@styles/*": ["src/styles/*"]
 		}
 	},

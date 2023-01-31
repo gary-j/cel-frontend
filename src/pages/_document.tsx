@@ -24,7 +24,7 @@ const MyDocument = (props: DocumentInitialProps) => {
 					rel='stylesheet'
 				/>
 			</Head>
-			<body className='bg-grey-0'>
+			<body className='bg-porcelain-50'>
 				<Main />
 				<NextScript />
 			</body>

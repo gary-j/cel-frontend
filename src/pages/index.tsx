@@ -1,8 +1,8 @@
-// import styles from '@styles/desktop-Index.module.scss'
-import { Main } from '@components/areas'
-import Page from '@components/Page'
-import { getStories, Story } from '@lib/stories'
+import { Story, getStories } from '@lib/stories'
+
 import { GetStaticProps } from 'next'
+import { Main } from '@components/scenes'
+import Page from '@components/Page'
 
 interface HomePageProps {
 	stories: Story[]

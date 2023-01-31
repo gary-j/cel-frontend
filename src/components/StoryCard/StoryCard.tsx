@@ -16,9 +16,11 @@ const PostCard: React.FC<PostCardProps> = ({ story }) => {
 		<div className='relative mb-8 w-full px-4 pt-5 pb-10 '>
 			<article className='rounded-lg border bg-white px-4 pt-5 pb-10 shadow-story'>
 				<header>
-					<h3 className='mb-4 text-sm uppercase text-green-1'>{name}</h3>
+					<h3 className='mb-4 text-sm uppercase text-persian-green-600'>
+						{name}
+					</h3>
 				</header>
-				<div className='mb-5 h-0.5 bg-grey-0 tablet:hidden' />
+				<div className='mb-5 h-0.5 bg-porcelain-50 tablet:hidden' />
 				<h2 className='mb-4 text-xl font-semibold'>{title}</h2>
 				<p className='mb-5 text-sm leading-loose text-black opacity-75'>
 					<ReactReadMoreReadLess
@@ -27,12 +29,12 @@ const PostCard: React.FC<PostCardProps> = ({ story }) => {
 						ellipsis={'…'}
 						readMoreText={' Lire la suite'}
 						readLessText={'Replier ▲'}
-						readMoreClassName={'float-right text-green-1'}
-						readLessClassName={'float-right text-green-1'}>
+						readMoreClassName={'float-right text-persian-green-600'}
+						readLessClassName={'float-right text-persian-green-600'}>
 						{content}
 					</ReactReadMoreReadLess>
 				</p>
-				<div className='mb-5 h-0.5 bg-grey-0 tablet:hidden' />
+				<div className='mb-5 h-0.5 bg-porcelain-50 tablet:hidden' />
 			</article>
 		</div>
 	)

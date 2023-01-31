@@ -1,25 +1,28 @@
-// import Layout from '../components/commons/Layout'
-// import '../styles/globals.scss'
-// import '../styles/test.scss';
 import '@styles/globals.css'
-import { AppProps } from 'next/app'
+
 import { QueryClient, QueryClientProvider } from 'react-query'
+
+import { AppProps } from 'next/app'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { useEffect } from 'react'
+
 // import { AuthProviderWrapper } from '../../context/auth.context'
-// import { BreakPointProviderWrapper } from '../../context/breakPoints.context'
 
 const queryClient = new QueryClient()
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
+	useEffect(() => {
+		const use = async () => {
+			;(await import('tw-elements')).default
+		}
+		use()
+	}, [])
+
 	return (
 		<QueryClientProvider client={queryClient}>
 			{/* <AuthProviderWrapper> */}
-			{/* <BreakPointProviderWrapper> */}
-			{/* <Layout> */}
 			<Component {...pageProps} />
 			<ReactQueryDevtools initialIsOpen={false} />
-			{/* </Layout> */}
-			{/* </BreakPointProviderWrapper> */}
 			{/* </AuthProviderWrapper> */}
 		</QueryClientProvider>
 	)
