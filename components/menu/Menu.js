@@ -83,7 +83,7 @@ function Menu({ isOpen, toggleMenu }) {
           <div className={styles.menuItemContainer}>
             <div className={styles.item}>
               <Icon_aLaUne className={styles.icon} />
-              <p className={styles.p}>A la une</p>
+              <p className={styles.p}>À la une</p>
             </div>
           </div>
           <Link href=''>
