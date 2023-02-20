@@ -34,7 +34,10 @@ function CreateStoryFormBody({ user }) {
       const requestBody = story;
       const response = await publicRequest.post('/story/create', requestBody);
       console.log('la réponse du back : ', response);
-    } catch (error) {}
+    } catch (error) {
+      const errorDescription = error.response.data.message;
+      console.log('erreur survenue : ', errorDescription);
+    }
   };
   //
   return (
