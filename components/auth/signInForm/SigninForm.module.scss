@@ -39,6 +39,9 @@
     justify-content: center;
     font-size: 4em;
     gap: 16px;
+    .button {
+      cursor: pointer;
+    }
   }
   .or {
     display: flex;
@@ -163,14 +166,13 @@
       margin: 0 auto;
     }
   }
-   // Affichage Desktop
+  // Affichage Desktop
   // .formContent
-  &.desktop{
+  &.desktop {
     width: 416px;
     margin-top: 122px !important;
   }
 }
-
 
 @keyframes rotation {
   from {
@@ -179,6 +181,4 @@
   to {
     transform: rotate(359deg);
   }
-
- 
 }
