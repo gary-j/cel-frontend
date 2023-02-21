@@ -79,7 +79,10 @@ const SigninForm = (props) => {
     setPasswordShown(!passwordShown);
   };
   //
-
+  const callbackUrl =
+    process.env.ENV === 'DEV'
+      ? 'http://localhost:3000'
+      : 'https://citronenlimonade.com';
   return (
     <>
       {isLoading ? (
@@ -104,7 +107,7 @@ const SigninForm = (props) => {
               <Icon_facebook className={styles.button} />
               <Icon_google
                 className={styles.button}
-                onClick={() => signIn('google')}
+                onClick={() => signIn('google', { callbackUrl: callbackUrl })}
               />
               <Icon_instagram className={styles.button} />
             </div>
