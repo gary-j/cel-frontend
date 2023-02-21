@@ -1,3 +1,4 @@
+import { SessionProvider } from 'next-auth/react';
 import Layout from '../components/commons/Layout';
 import '../styles/globals.scss';
 // import '../styles/test.scss';
@@ -11,7 +12,9 @@ function MyApp({ Component, pageProps }) {
     <AuthProviderWrapper>
       <BreakPointProviderWrapper>
         <Layout>
+          {/* <SessionProvider session={session}> */}
           <Component {...pageProps} />
+          {/* </SessionProvider> */}
         </Layout>
       </BreakPointProviderWrapper>
     </AuthProviderWrapper>

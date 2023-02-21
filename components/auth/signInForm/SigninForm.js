@@ -1,6 +1,8 @@
 import React from 'react';
 import { useContext, useState } from 'react';
-
+//
+import { signIn } from 'next-auth/react';
+//
 import { publicRequest } from '../../../utils/axiosRequest';
 import { AuthContext } from '../../../context/auth.context';
 import { useRouter } from 'next/router';
@@ -100,7 +102,7 @@ const SigninForm = (props) => {
             </div>
             <div className={styles.socials}>
               <Icon_facebook />
-              <Icon_google />
+              <Icon_google onClick={signIn} />
               <Icon_instagram />
             </div>
             <div className={styles.or}>

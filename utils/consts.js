@@ -12,3 +12,6 @@ export const IMAGEKIT_PUBLIC_KEY =
 export const IMAGEKIT_AUTH_ENDPOINT =
   process.env.NEXT_PUBLIC_IMAGEKIT_AUTH_ENDPOINT ||
   'http://localhost:5005/api/auth/imagekit';
+
+export const MONGODB_URI_DEV = process.env.MONGODB_URI_DEV;
+export const MONGODB_URI = process.env.MONGODB_URI;
