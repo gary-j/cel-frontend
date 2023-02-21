@@ -102,7 +102,10 @@ const SigninForm = (props) => {
             </div>
             <div className={styles.socials}>
               <Icon_facebook className={styles.button} />
-              <Icon_google className={styles.button} onClick={signIn} />
+              <Icon_google
+                className={styles.button}
+                onClick={() => signIn('google')}
+              />
               <Icon_instagram className={styles.button} />
             </div>
             <div className={styles.or}>
