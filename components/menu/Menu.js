@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './Menu.module.scss';
 //
@@ -16,15 +16,18 @@ import Icon_close from '../../public/assets/img/svgs/page-icons/icon-page-close.
 import Icon_writeMess from '../../public/assets/img/svgs/page-icons/icon-page-message-write.svg';
 //
 import SignFormContainer from '../auth/SignFormContainer';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 function Menu({ isOpen, toggleMenu }) {
-  const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { data: session } = useSession();
+  const { user, isLoggedIn, logOutUser, authenticateUser } =
+    useContext(AuthContext);
   const [displayForm, setDisplayForm] = useState(false);
   //
   const { breakPoint } = useContext(BreakPointContext);
   // let cssbreak = breakPoint;
   // console.log('cssbreak : ', cssbreak);
+
   const handleLogOut = (user) => {
     if (user.provider) {
       signOut();
@@ -32,6 +35,11 @@ function Menu({ isOpen, toggleMenu }) {
       logOutUser();
     }
   };
+
+  useEffect(() => {
+    authenticateUser(session?.user);
+  }, [session]);
+  //
   return (
     <>
       <nav
