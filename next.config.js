@@ -15,6 +15,7 @@ const nextConfig = withPwa({
       'unsplash.com',
       'picsum.photos',
       'i.picsum.photos',
+      'lh3.googleusercontent.com',
     ],
   },
   webpack(config) {
