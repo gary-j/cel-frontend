@@ -75,7 +75,7 @@ function AuthProviderWrapper(props) {
           setStoredToken(null);
         });
     } else if (session?.jwt) {
-      localStorage.removeItem('authToken');
+      // localStorage.removeItem('authToken');
       setIsLoggedIn(true);
       setIsLoading(false);
       setUser(session.user);
