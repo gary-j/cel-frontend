@@ -104,7 +104,12 @@ const SigninForm = (props) => {
               />
             </div>
             <div className={styles.socials}>
-              <Icon_facebook className={styles.button} />
+              <Icon_facebook
+                className={styles.button}
+                onClick={() => {
+                  signIn('facebook', { callbackUrl: callbackUrl });
+                }}
+              />
               <Icon_google
                 className={styles.button}
                 onClick={() => {

@@ -40,6 +40,7 @@ function Menu({ isOpen, toggleMenu }) {
     authenticateUser(session?.user);
   }, [session]);
   //
+  console.log('la sessions Menu : ', session);
   return (
     <>
       <nav

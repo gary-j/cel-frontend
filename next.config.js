@@ -16,6 +16,7 @@ const nextConfig = withPwa({
       'picsum.photos',
       'i.picsum.photos',
       'lh3.googleusercontent.com',
+      'platform-lookaside.fbsbx.com',
     ],
   },
   webpack(config) {
