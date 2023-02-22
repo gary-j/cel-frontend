@@ -5,19 +5,20 @@ import '../styles/globals.scss';
 
 import { AuthProviderWrapper } from '../context/auth.context';
 import { BreakPointProviderWrapper } from '../context/breakPoints.context';
-
+// const cookieAuth = getCookie('next-auth.session-token');
+// console.log('le cookie : ', cookieAuth);
 //
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <AuthProviderWrapper>
-      <BreakPointProviderWrapper>
-        <Layout>
-          {/* <SessionProvider session={session}> */}
-          <Component {...pageProps} />
-          {/* </SessionProvider> */}
-        </Layout>
-      </BreakPointProviderWrapper>
-    </AuthProviderWrapper>
+    <SessionProvider session={session}>
+      <AuthProviderWrapper>
+        <BreakPointProviderWrapper>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </BreakPointProviderWrapper>
+      </AuthProviderWrapper>
+    </SessionProvider>
   );
 }
 

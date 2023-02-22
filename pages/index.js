@@ -5,6 +5,7 @@ import DisplayStories from '../components/stories/displayStories/DisplayStories'
 import ScrollBarPosition from '../components/scrollbar/ScrollBarPosition';
 import { useContext } from 'react';
 import { BreakPointContext } from '../context/breakPoints.context';
+import { useSession } from 'next-auth/react';
 //
 import styles from '../styles/desktop-Index.module.scss';
 

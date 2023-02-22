@@ -16,6 +16,7 @@ import Icon_close from '../../public/assets/img/svgs/page-icons/icon-page-close.
 import Icon_writeMess from '../../public/assets/img/svgs/page-icons/icon-page-message-write.svg';
 //
 import SignFormContainer from '../auth/SignFormContainer';
+import { signOut } from 'next-auth/react';
 
 function Menu({ isOpen, toggleMenu }) {
   const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
@@ -24,6 +25,13 @@ function Menu({ isOpen, toggleMenu }) {
   const { breakPoint } = useContext(BreakPointContext);
   // let cssbreak = breakPoint;
   // console.log('cssbreak : ', cssbreak);
+  const handleLogOut = (user) => {
+    if (user.provider) {
+      signOut();
+    } else {
+      logOutUser();
+    }
+  };
   return (
     <>
       <nav
@@ -40,7 +48,11 @@ function Menu({ isOpen, toggleMenu }) {
             <div className={`${styles.menuItemContainer} ${styles.first}`}>
               <div className={styles.item}>
                 <Image
-                  src={`https://avatars.dicebear.com/api/adventurer/${user.username}.svg`}
+                  src={
+                    user.provider
+                      ? user.image
+                      : `https://avatars.dicebear.com/api/adventurer/${user.username}.svg`
+                  }
                   alt=''
                   width={40}
                   height={40}
@@ -121,7 +133,9 @@ function Menu({ isOpen, toggleMenu }) {
           {isLoggedIn ? (
             <div
               className={`${styles.menuItemContainer} ${styles.logout}`}
-              onClick={logOutUser}>
+              onClick={() => {
+                handleLogOut(user);
+              }}>
               <div className={styles.item}>
                 <Icon_close className={styles.icon} />
                 <p className={styles.p}>Se déconnecter</p>

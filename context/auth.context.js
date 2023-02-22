@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext, useCallback } from 'react';
 import { publicRequest } from '../utils/axiosRequest';
+import { useSession, signOut } from 'next-auth/react';
 
 const AuthContext = createContext();
 
@@ -29,12 +30,14 @@ function AuthProviderWrapper(props) {
     // Upon logout, remove the token from the localStorage
     localStorage.removeItem('authToken');
   };
+  const { data: session } = useSession();
 
+  //
   const authenticateUser = useCallback(() => {
     // console.log('*** AuthContext - authenticateUser ***');
+
     // Get the stored token from the localStorage
     const storedToken = localStorage.getItem('authToken');
-
     // If the token exists in the localStorage
     if (storedToken) {
       // We must send the JWT token in the request's "Authorization" Headers
@@ -55,7 +58,7 @@ function AuthProviderWrapper(props) {
           // Update state variables
           setIsLoggedIn(true);
           setStoredToken(storedToken);
-          // console.log('user de reponse.data : ', user);
+          console.log('user de reponse.data : ', user);
           if (user?.isAdmin === true) {
             setIsAdmin(true);
           }
@@ -71,6 +74,11 @@ function AuthProviderWrapper(props) {
           setUser(null);
           setStoredToken(null);
         });
+    } else if (session?.jwt) {
+      localStorage.removeItem('authToken');
+      setIsLoggedIn(true);
+      setIsLoading(false);
+      setUser(session.user);
     } else {
       // console.log('*** else, token not available *** : ');
       // If the token is not available (or is removed)
@@ -83,7 +91,6 @@ function AuthProviderWrapper(props) {
   const logOutUser = () => {
     // To log out the user, remove the token
     removeToken();
-
     // and update the state variables
     authenticateUser();
   };
@@ -92,6 +99,7 @@ function AuthProviderWrapper(props) {
     authenticateUser();
   }, [authenticateUser]);
 
+  //
   return (
     <AuthContext.Provider
       value={{
