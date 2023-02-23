@@ -117,7 +117,12 @@ const SigninForm = (props) => {
                   signIn('google', { callbackUrl: callbackUrl });
                 }}
               />
-              <Icon_instagram className={styles.button} />
+              <Icon_instagram
+                className={styles.button}
+                onClick={() => {
+                  signIn('instagram', { callbackUrl: callbackUrl });
+                }}
+              />
             </div>
             <div className={styles.or}>
               <div className={styles.separator}></div>
