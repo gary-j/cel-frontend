@@ -205,7 +205,7 @@ const SigninForm = (props) => {
                 {/* on clique afficher le formulaire de création de compte*/}
               </Link>
               <Link href={'/signup'}>
-                <a className={styles.link2}>Informations de comptes oubliées</a>
+                <a className={styles.link2}>Informations de compte oubliées</a>
                 {/* on clique page reinitialisation mot de passe*/}
               </Link>
             </form>
