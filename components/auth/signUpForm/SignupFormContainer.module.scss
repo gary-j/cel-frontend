@@ -179,6 +179,10 @@
         line-height: 1.71;
         letter-spacing: normal;
         color: $inactive;
+        hyphens: none;
+      }
+      .newLine {
+        white-space: pre-line;
       }
       .svgBox {
         // border: 1px solid red;

@@ -178,8 +178,8 @@ function renderTransformationPart(newProps) {
           form='createStoryForm'
           styles={DropDownSelectStyles}
           className={'BodyPartSelectContainer'} // added to globals.scss
-          placeholder={bodyparts[0]}
-          defaultValue={bodyparts[0]}
+          placeholder={'Buste...'}
+          // defaultValue={bodyparts[0]}
           options={bodyparts}
           onChange={(e) => handleTransformation(e)}></Select>
       </div>

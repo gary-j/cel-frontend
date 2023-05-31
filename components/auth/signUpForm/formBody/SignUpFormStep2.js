@@ -67,7 +67,7 @@ ${styles.fieldContainer + ' ' + styles.step2} ${
         id='themesSelection'
         className={`${styles.fieldset} `}>
         {inputError === 'themes' && (
-          <span className={styles.themeError}>{errorMessage}</span>
+          <div className={styles.themeError}>{errorMessage}</div>
         )}
         <div className={styles.themesContainer}>
           {themesFromDB.map((theme) => (
@@ -79,9 +79,22 @@ ${styles.fieldContainer + ' ' + styles.step2} ${
               id={theme._id}
               data-target={theme._id}
               onClick={handleToggle}>
-              <p data-target={theme._id} className={styles.text}>
-                {theme.name}
-              </p>
+              {((number) => {
+                if (number === '4') {
+                  return (
+                    <p data-target={theme._id} className={styles.text}>
+                      Estime de soi | Différences |<br></br>Mal-être | Complexe
+                    </p>
+                  );
+                } else {
+                  return (
+                    <p data-target={theme._id} className={styles.text}>
+                      {theme.name}
+                    </p>
+                  );
+                }
+              })(theme.number)}
+
               <div className={styles.svgBox} data-target={theme._id}>
                 <Image
                   className={`${theme.svg_title} ${styles.svg}`}
@@ -100,7 +113,7 @@ ${styles.fieldContainer + ' ' + styles.step2} ${
           ))}
         </div>
         {inputError === 'themes' && (
-          <span className={styles.themeError}>{errorMessage}</span>
+          <div className={styles.themeError}>{errorMessage}</div>
         )}
         {/* <div> */}
         {/* </div> */}

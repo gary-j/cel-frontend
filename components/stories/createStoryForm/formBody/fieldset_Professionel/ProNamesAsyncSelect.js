@@ -11,6 +11,8 @@ function ProNamesAsyncSelect({ props }) {
     proNamesProps,
     professionalConsulted,
     setProfessionalConsulted,
+    fetchingDB,
+    setFetchingDB,
   } = props;
   //
   const [filteredProNames, setFilteredProNames] = useState([]);
@@ -19,6 +21,7 @@ function ProNamesAsyncSelect({ props }) {
   const getProsFromDB = (inputValue, callback) => {
     setTimeout(async () => {
       try {
+        setFetchingDB(true);
         const res = await publicRequest.get(`/professional/${inputValue}`);
         const professionalsArray = await res.data;
         //
@@ -34,6 +37,7 @@ function ProNamesAsyncSelect({ props }) {
         });
         setFilteredProNames(tempArray);
         callback(tempArray);
+        setFetchingDB(false);
       } catch (error) {
         console.log('catch th hoop : ', error);
       }
@@ -86,6 +90,7 @@ function ProNamesAsyncSelect({ props }) {
         cacheOptions
         defaultOptions={proNamesProps}
         loadOptions={getProsFromDB}
+        isLoading={fetchingDB}
         // onInputChange={() => {
         //   handleInputChange;
         // }}
