@@ -10,6 +10,7 @@ function Fieldset_Professionel({ story, setStory }) {
   const [proNamesProps, setProNamesProps] = useState([]);
   const [professionalConsulted, setProfessionalConsulted] = useState();
   const [inputError, setInputError] = useState();
+  const [fetchingDB, setFetchingDB] = useState(false);
 
   // console.log('pro consulté : ', professionalConsulted);
   //
@@ -19,10 +20,13 @@ function Fieldset_Professionel({ story, setStory }) {
     proNamesProps: proNamesProps,
     professionalConsulted: professionalConsulted,
     setProfessionalConsulted: setProfessionalConsulted,
+    fetchingDB: fetchingDB,
+    setFetchingDB: setFetchingDB,
   };
   // useEffect appel BD pour récupérer les professionels
   useEffect(() => {
     async function getProfessionalsFromDB() {
+      setFetchingDB(true);
       const res = await publicRequest.get(`/professional/`);
       const professionalsArray = await res.data;
       //
@@ -37,6 +41,7 @@ function Fieldset_Professionel({ story, setStory }) {
         });
       });
       setProNamesProps(tempArray);
+      setFetchingDB(false);
     }
     getProfessionalsFromDB();
   }, []);

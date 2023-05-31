@@ -106,7 +106,7 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               autoFocus={inputError === 'lastname' ? true : false}
               form='signupForm'
               id='lastname'
-              placeholder='Dupont'
+              placeholder='Nom de famille'
               type='text'
               name='lastname'
               value={lastname}
@@ -114,9 +114,9 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               required
             />
             {inputError === 'lastname' && (
-              <span className={styles.inputError}>
+              <div className={styles.inputError}>
                 Merci de renseigner votre Nom.
-              </span>
+              </div>
             )}
           </div>
 
@@ -131,7 +131,7 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               autoFocus={inputError === 'firstname' ? true : false}
               form='signupForm'
               id='firstname'
-              placeholder='Catherine'
+              placeholder='Prénom'
               type='text'
               name='firstname'
               value={firstname}
@@ -139,9 +139,9 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               required
             />
             {inputError === 'firstname' && (
-              <span className={styles.inputError}>
+              <div className={styles.inputError}>
                 Merci de renseigner votre Prénom.
-              </span>
+              </div>
             )}
           </div>
           <div className={styles.inputBox}>
@@ -155,7 +155,7 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               autoFocus={inputError === 'username' ? true : false}
               form='signupForm'
               id='username'
-              placeholder='Cathy_cat'
+              placeholder='username'
               type='text'
               name='username'
               value={username}
@@ -163,7 +163,7 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               required
             />
             {inputError === 'username' && (
-              <span className={styles.inputError}>{errorMessage}</span>
+              <div className={styles.inputError}>{errorMessage}</div>
             )}
           </div>
           <div className={styles.inputBox}>
@@ -176,7 +176,7 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               }`}
               autoFocus={inputError === 'email' ? true : false}
               form='signupForm'
-              placeholder='catherine-dupont@gmail.com'
+              placeholder='email'
               type='email'
               name='email'
               value={email}
@@ -184,7 +184,7 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               required
             />
             {inputError === 'email' && (
-              <span className={styles.inputError}>{errorMessage}</span>
+              <div className={styles.inputError}>{errorMessage}</div>
             )}
           </div>
           <div className={styles.inputBox}>
@@ -198,7 +198,7 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
                 }`}
                 autoFocus={inputError === 'password' ? true : false}
                 form='signupForm'
-                placeholder='password'
+                placeholder='Mot de passe'
                 type={passwordShown ? 'text' : 'password'}
                 name='password'
                 value={password}
@@ -219,7 +219,7 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
             </div>
 
             {inputError === 'password' && (
-              <span className={styles.inputError}>{errorMessage}</span>
+              <div className={styles.inputError}>{errorMessage}</div>
             )}
           </div>
           <div className={styles.inputBox}>
@@ -240,9 +240,9 @@ ${styles.fieldContainer + ' ' + styles.step1} ${
               required
             />
             {inputError === 'dateOfBirth' && (
-              <span className={styles.inputError}>
+              <div className={styles.inputError}>
                 Merci de renseigner votre Date de Naissance.
-              </span>
+              </div>
             )}
           </div>
           <div>

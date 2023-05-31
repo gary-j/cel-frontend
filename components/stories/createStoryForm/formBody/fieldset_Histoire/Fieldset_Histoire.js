@@ -9,10 +9,12 @@ function Fieldset_Histoire({ story, setStory }) {
   const [themesSelect, setThemesSelect] = useState([]);
   const caracteresLimit = 1200;
   const [message, setMessage] = useState('Ça a commencé par ');
+  const [fetchingDB, setFetchingDB] = useState(false);
   // console.log(themes);
   // useEffect appel BD pour récupérer les thèmes
   useEffect(() => {
     async function getThemesFromDB() {
+      setFetchingDB(true);
       const res = await publicRequest.get(`/theme/all`);
       const themesDB = await res.data;
       // setThemes(themesDB);
@@ -26,6 +28,7 @@ function Fieldset_Histoire({ story, setStory }) {
         });
       });
       setThemes(tempArray);
+      setFetchingDB(false);
     }
     getThemesFromDB();
   }, []);
@@ -86,6 +89,7 @@ function Fieldset_Histoire({ story, setStory }) {
             styles={DropDownSelectStyles}
             placeholder='Amitié...'
             defaultValue={themes[0]}
+            isLoading={fetchingDB}
             options={themes}
             onChange={(e) => handleSelectTheme(e)}></Select>
         </div>
@@ -112,6 +116,11 @@ function Fieldset_Histoire({ story, setStory }) {
                 : `${caracteresLimit - message.length} caractère restant.`}
             </p>
           </div>
+          {message.length >= '1200' && (
+            <div className={styles.inputError}>
+              Vous avez atteint la limite de 1200 caractères.
+            </div>
+          )}
 
           {/* errors will return when field validation fails  */}
           {/* {errors.exampleRequired && <span>This field is required</span>} */}

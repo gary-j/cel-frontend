@@ -41,6 +41,9 @@
     .input:focus {
       border-color: $dark-green-2;
     }
+    .inputError {
+      color: $red;
+    }
     .select {
       // border: 1px solid red;
       padding: 0 16px;

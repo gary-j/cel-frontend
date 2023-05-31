@@ -129,7 +129,7 @@ const SigninForm = (props) => {
                 Adresse mail
               </label>
               <input
-                placeholder='bonjour@gmail.com'
+                placeholder='exemple@exemple.com'
                 type='text'
                 name='email'
                 value={email}
@@ -140,7 +140,7 @@ const SigninForm = (props) => {
                 autoFocus={inputError === 'email' ? true : false}
               />
               {inputError === 'email' && (
-                <span className={styles.inputError}>{errorMessage}</span>
+                <div className={styles.inputError}>{errorMessage}test</div>
               )}
               <label className={styles.label} htmlFor='password'>
                 Mot de passe
@@ -170,7 +170,7 @@ const SigninForm = (props) => {
                 )}
               </div>
               {inputError === 'wrong' && (
-                <span className={styles.inputError}>{errorMessage}</span>
+                <div className={styles.inputError}>{errorMessage}</div>
               )}
 
               {/* <div

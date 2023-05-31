@@ -26,6 +26,7 @@ function CreateStoryFormBody({ user }) {
     },
     isAnonym: false,
   });
+  const [error, setError] = useState('');
   //
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +38,7 @@ function CreateStoryFormBody({ user }) {
     } catch (error) {
       const errorDescription = error.response.data.message;
       console.log('erreur survenue : ', errorDescription);
+      setError(errorDescription);
     }
   };
   //
@@ -59,6 +61,12 @@ function CreateStoryFormBody({ user }) {
             story={story}
             setStory={setStory}></Fieldset_Ressource>
           <Fieldset_Anonym story={story} setStory={setStory}></Fieldset_Anonym>
+          {error && (
+            <div className={`${styles.inputError + ' ' + styles.input}`}>
+              Merci de remplir tous les champs obligatoires{' '}
+              <span className={styles.asterisque}>*</span>
+            </div>
+          )}
           <div className={styles.btnWrapper}>
             <button className={styles.button} onClick={handleSubmit}>
               Publier mon histoire
